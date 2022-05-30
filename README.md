@@ -8,7 +8,7 @@
 6. [스킬 & 테크 스택](#tech-stack)
 7. [라이센스](#license)
 
-## MC2-Team3-SSAK3
+## MC2-Team16-Ti-It
 
 - [Team notion](https://www.notion.so/avery-in-ada/MC2-407ce33f0c1143f78e6b6423830cd53c)
 
