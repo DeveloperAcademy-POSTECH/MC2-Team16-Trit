@@ -26,6 +26,8 @@
 		A74479B32847BE170083BBF4 /* XSmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479B22847BE170083BBF4 /* XSmallButton.swift */; };
 		A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479B62847C5390083BBF4 /* NoticeTextMsg.swift */; };
 		A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479B82847C99A0083BBF4 /* UnderlineTextField.swift */; };
+		A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */; };
+		A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		A74479B22847BE170083BBF4 /* XSmallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XSmallButton.swift; sourceTree = "<group>"; };
 		A74479B62847C5390083BBF4 /* NoticeTextMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTextMsg.swift; sourceTree = "<group>"; };
 		A74479B82847C99A0083BBF4 /* UnderlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextField.swift; sourceTree = "<group>"; };
+		A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetModal.swift; sourceTree = "<group>"; };
+		A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewWithSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +233,7 @@
 		A744799B28476A350083BBF4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A74479BB2847DC720083BBF4 /* Sheet */,
 				A74479BA2847DBA20083BBF4 /* Text */,
 				A74479B42847C08E0083BBF4 /* Button */,
 			);
@@ -253,6 +258,15 @@
 				A74479B82847C99A0083BBF4 /* UnderlineTextField.swift */,
 			);
 			path = Text;
+			sourceTree = "<group>";
+		};
+		A74479BB2847DC720083BBF4 /* Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */,
+				A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */,
+			);
+			path = Sheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,8 +425,10 @@
 				A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */,
 				A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
+				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
 				3EBC815D2843522900794955 /* ContentView.swift in Sources */,
 				A744799F28476AD00083BBF4 /* FileViewModels.swift in Sources */,
+				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				A74479AB28476AF10083BBF4 /* FileResources.swift in Sources */,
 				A74479B32847BE170083BBF4 /* XSmallButton.swift in Sources */,
 				A74479A728476AE70083BBF4 /* FileHelper.swift in Sources */,
