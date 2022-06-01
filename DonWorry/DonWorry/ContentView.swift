@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isClicked: Bool = false
     var body: some View {
+        ChipButton(
+            text: "chip",
+            isClicked: $isClicked
+        ) {
+            print("ChipBtn Clicked!")
+            isClicked.toggle()
+        }
         // Sheet 사용 샘플 코드
-        SampleViewWithSheet()
+//        SampleViewWithSheet()
     }
 }
 

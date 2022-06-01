@@ -28,6 +28,7 @@
 		A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479B82847C99A0083BBF4 /* UnderlineTextField.swift */; };
 		A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */; };
 		A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */; };
+		A74479C22847E3760083BBF4 /* ChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479C12847E3760083BBF4 /* ChipButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		A74479B82847C99A0083BBF4 /* UnderlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextField.swift; sourceTree = "<group>"; };
 		A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetModal.swift; sourceTree = "<group>"; };
 		A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewWithSheet.swift; sourceTree = "<group>"; };
+		A74479C12847E3760083BBF4 /* ChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 		A744799B28476A350083BBF4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A74479C02847E3060083BBF4 /* Icon */,
 				A74479BB2847DC720083BBF4 /* Sheet */,
 				A74479BA2847DBA20083BBF4 /* Text */,
 				A74479B42847C08E0083BBF4 /* Button */,
@@ -247,6 +250,7 @@
 				A74479AE2847A0600083BBF4 /* MediumButton.swift */,
 				A74479B02847A8190083BBF4 /* SmallButton.swift */,
 				A74479B22847BE170083BBF4 /* XSmallButton.swift */,
+				A74479C12847E3760083BBF4 /* ChipButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -267,6 +271,13 @@
 				A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */,
 			);
 			path = Sheet;
+			sourceTree = "<group>";
+		};
+		A74479C02847E3060083BBF4 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +438,7 @@
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
 				3EBC815D2843522900794955 /* ContentView.swift in Sources */,
+				A74479C22847E3760083BBF4 /* ChipButton.swift in Sources */,
 				A744799F28476AD00083BBF4 /* FileViewModels.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				A74479AB28476AF10083BBF4 /* FileResources.swift in Sources */,
