@@ -24,6 +24,8 @@
 		A74479AF2847A0600083BBF4 /* MediumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479AE2847A0600083BBF4 /* MediumButton.swift */; };
 		A74479B12847A8190083BBF4 /* SmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479B02847A8190083BBF4 /* SmallButton.swift */; };
 		A74479B32847BE170083BBF4 /* XSmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479B22847BE170083BBF4 /* XSmallButton.swift */; };
+		A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479B62847C5390083BBF4 /* NoticeTextMsg.swift */; };
+		A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479B82847C99A0083BBF4 /* UnderlineTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		A74479AE2847A0600083BBF4 /* MediumButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumButton.swift; sourceTree = "<group>"; };
 		A74479B02847A8190083BBF4 /* SmallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallButton.swift; sourceTree = "<group>"; };
 		A74479B22847BE170083BBF4 /* XSmallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XSmallButton.swift; sourceTree = "<group>"; };
+		A74479B62847C5390083BBF4 /* NoticeTextMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTextMsg.swift; sourceTree = "<group>"; };
+		A74479B82847C99A0083BBF4 /* UnderlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,8 +172,8 @@
 		A7447993284759B50083BBF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A744799C28476AC80083BBF4 /* SwiftUIView.swift */,
 				A744799B28476A350083BBF4 /* Common */,
+				A744799C28476AC80083BBF4 /* SwiftUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +229,7 @@
 		A744799B28476A350083BBF4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A74479BA2847DBA20083BBF4 /* Text */,
 				A74479B42847C08E0083BBF4 /* Button */,
 			);
 			path = Common;
@@ -239,6 +244,15 @@
 				A74479B22847BE170083BBF4 /* XSmallButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		A74479BA2847DBA20083BBF4 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				A74479B62847C5390083BBF4 /* NoticeTextMsg.swift */,
+				A74479B82847C99A0083BBF4 /* UnderlineTextField.swift */,
+			);
+			path = Text;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,7 +406,9 @@
 			files = (
 				A74479A128476ADA0083BBF4 /* FileModels.swift in Sources */,
 				A74479B12847A8190083BBF4 /* SmallButton.swift in Sources */,
+				A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */,
 				A74479AD2847A0580083BBF4 /* LargeButton.swift in Sources */,
+				A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */,
 				A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				3EBC815D2843522900794955 /* ContentView.swift in Sources */,
