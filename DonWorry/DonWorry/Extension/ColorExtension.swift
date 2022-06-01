@@ -40,7 +40,6 @@ extension Color {
     
     // ADVENT COLOR
     static let blueMain = Color(hex: "#1C6BFF")
-    static let black00 = Color(hex: "#000000")
     static let grayC5 = Color(hex: "#c5c5c5")
     static let gray81 = Color(hex: "#818181")
     static let gray75 = Color(hex: "#757575")
