@@ -18,7 +18,7 @@
 		A744799F28476AD00083BBF4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744799E28476AD00083BBF4 /* File.swift */; };
 		A74479A128476ADA0083BBF4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A028476ADA0083BBF4 /* File.swift */; };
 		A74479A328476ADE0083BBF4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A228476ADE0083BBF4 /* File.swift */; };
-		A74479A528476AE30083BBF4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A428476AE30083BBF4 /* File.swift */; };
+		A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A428476AE30083BBF4 /* ColorExtension.swift */; };
 		A74479A728476AE70083BBF4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A628476AE70083BBF4 /* File.swift */; };
 		A74479A928476AEC0083BBF4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A828476AEC0083BBF4 /* File.swift */; };
 		A74479AB28476AF10083BBF4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479AA28476AF10083BBF4 /* File.swift */; };
@@ -56,7 +56,7 @@
 		A744799E28476AD00083BBF4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		A74479A028476ADA0083BBF4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		A74479A228476ADE0083BBF4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		A74479A428476AE30083BBF4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		A74479A428476AE30083BBF4 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		A74479A628476AE70083BBF4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		A74479A828476AEC0083BBF4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		A74479AA28476AF10083BBF4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		A744799628475A210083BBF4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				A74479A428476AE30083BBF4 /* File.swift */,
+				A74479A428476AE30083BBF4 /* ColorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -376,7 +376,7 @@
 			files = (
 				A74479A128476ADA0083BBF4 /* File.swift in Sources */,
 				A74479A328476ADE0083BBF4 /* File.swift in Sources */,
-				A74479A528476AE30083BBF4 /* File.swift in Sources */,
+				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				3EBC815D2843522900794955 /* ContentView.swift in Sources */,
 				A744799F28476AD00083BBF4 /* File.swift in Sources */,
 				A74479AB28476AF10083BBF4 /* File.swift in Sources */,
