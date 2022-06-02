@@ -8,4 +8,4 @@
 import Foundation
 import SwiftUI
 
-let iconsArray = ["apple-1", "birthday-cake", "blue-car", "calculator", "camera-icon", "cash-and-coins", "chicken-leg", "chocolate-ice-cream", "coffee-cup", "debit-card", "gas-station", "gift-box", "link", "money", "movie-camera", "shopping-cart", "smartphone-with-bills", "soccer-ball", "spoon-and-knife", "time", "wine-glass"]
+let iconsArray = ["apple-1", "birthday-cake", "blue-car", "camera-icon", "chicken-leg", "chocolate-ice-cream", "coffee-cup", "gas-station", "gift-box", "movie-camera", "shopping-cart", "soccer-ball", "spoon-and-knife", "wine-glass"]

@@ -19,33 +19,23 @@ struct NewPaymentIcon: View {
     @State private var paymentIcon: Image? = nil
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 30) {
             
-            
-            VStack(spacing: 10) {
-                HStack {
-                    Text("정산내역 아이콘을")
-                        .fontWeight(.bold)
-                        .font(.system(size: 30))
-                    
-                    Spacer()
+            VStack(alignment: .leading, spacing: 10) {
+                
+                Group {
+                    Text("정산 내역을")
+                    Text("추가해볼까요?")
                 }
-                HStack {
-                    Text("선택해주세요")
-                        .fontWeight(.bold)
-                        .font(.system(size: 30))
-                    Spacer()
-                }
+                .font(.system(size: 30, weight: .bold))
+                
             }
-            
-            Text("")
-                .frame(height: 120)
             
             VStack {
                 
                 VStack {
                     
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         LazyVGrid(columns: columns) {
                             ForEach(iconsArray, id: \.self) { iconName in
                                 
@@ -60,7 +50,7 @@ struct NewPaymentIcon: View {
                                         Image(iconName)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: 50)
+                                            .frame(width: iconName == "chocolate-ice-cream" ? 30 : 50 ) // size
                                         
                                     }
                                 }
@@ -68,11 +58,7 @@ struct NewPaymentIcon: View {
                             
                         }
                     }
-                    .frame(width: 340, height: 340)
-                    
-                    
-                    
-                    
+                         
                     HStack {
                         Spacer()
                         
@@ -83,18 +69,15 @@ struct NewPaymentIcon: View {
                                 .background(.blue)
                                 .cornerRadius(29)
                         }
+                        .padding(.bottom, 30)
                     }
                 }
-                
-                
-                
-                Text("")
-                    .frame(height: 160)
-                
+                 
             }
             
         }
         .navigationBarBackButtonHidden(true)
+        .padding(.top, -20)
         .padding(.horizontal, 25)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {

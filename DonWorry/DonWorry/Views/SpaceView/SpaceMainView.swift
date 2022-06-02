@@ -15,29 +15,61 @@ struct SpaceMainView: View {
         NavigationView {
             VStack {
                 
-                HStack {
-                    // Space ID
-                    HStack(spacing: 8) {
+                VStack {
+                    
+                    HStack {
+                        Text(spaceTitle)
+                            .font(.system(size: 20, weight: .heavy))
                         
-                        Text("Space ID : \(spaceID)")
-                            .foregroundColor(.secondary)
+                        Spacer()
                         
-                        // 복사 버튼
-                        Image(systemName: "doc.on.doc")
+                        // 스페이스 이름 수정 및 삭제 버튼
+                        Button {
+                            
+                        } label: {
+                            
+                            Image(systemName: "ellipsis")
+                        }
+                        
+                        // 홈으로 돌아가는 버튼
+                        Button {
+                            
+                        } label: {
+                            
+                            Image(systemName: "xmark")
+                            
+                        }
+                        
                         
                     }
+                    .foregroundColor(.black)
                     
-                    Spacer()
-                    
-                    // 정산 추가 버튼
-                    NavigationLink(destination: NewPaymentTitle()) {
-                        Text("정산 추가")
-                            .frame(width: 98, height: 34)
-                            .background(Color.blue
-                                .opacity(0.14))
-                            .cornerRadius(14)
+                    HStack {
+                        // Space ID
+                        HStack(spacing: 8) {
+                            
+                            Text("Space ID : \(spaceID)")
+                                .foregroundColor(.secondary)
+                            
+                            // 복사 버튼
+                            Image(systemName: "doc.on.doc")
+                            
+                        }
+                        
+                        Spacer()
+                        
+                        // 정산 추가 버튼
+                        NavigationLink(destination: NewPaymentTitle()) {
+                            Text("정산 추가")
+                                .font(.system(size: 15, weight: .bold))
+                                .frame(width: 90, height: 35)
+                                .background(Color.blue
+                                    .opacity(0.14))
+                                .cornerRadius(30)
+                        }
                     }
                 }
+                .padding(.top, -30)
                 
                 
                 Spacer()
@@ -51,7 +83,7 @@ struct SpaceMainView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 138.75)
-                        
+                    
                     
                     
                     Text("정산추가 버튼을 눌러 정산내역을 추가 해주세요")
@@ -84,11 +116,6 @@ struct SpaceMainView: View {
                         .cornerRadius(25)
                         
                     }
-                    
-                    
-                    
-                    
-                    
                     // 참석 확인 버튼
                     Button {
                         
@@ -104,44 +131,13 @@ struct SpaceMainView: View {
                         .cornerRadius(25)
                         
                     }
-                    
-                    
-                    
-                    
                 }
+                .padding(.bottom, 30)
             }
-            .padding()
+            //            .padding(.top, -20)
+            .padding(.horizontal, 25)
             //            .navigationTitle(spaceTitle)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Text(spaceTitle)
-                        .font(.title)
-                    //                        .font(.custom("", fixedSize: 20))
-                        .fontWeight(.heavy)
-                }
-                
-                ToolbarItem(placement: .confirmationAction) {
-                    HStack {
-                        // 스페이스 이름 수정 및 삭제 버튼
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "ellipsis")
-                        }
-                        
-                        
-                        // 홈으로 돌아가는 버튼
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "xmark")
-                        }
-                        
-                    }
-                    .foregroundColor(.black)
-                    
-                }
-            }
+            
         }
     }
 }

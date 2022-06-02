@@ -15,80 +15,31 @@ struct NewPaymentTitle: View {
     @State private var paymentTitle: String = ""
     
     let maxLength = 15
-    
-    
+     
     var body: some View {
         
         VStack(alignment: .leading, spacing: 30) {
-            //            Text("정산 내역을\n추가해볼까요?")
-            //                .fontWeight(.bold)
-            //                .font(.system(size: 30))
-            //                .frame(width: 300, height: 500)
-            //                .multilineTextAlignment(.leading)
-            //                .allowsTightening(true)
             
-            
-            VStack(spacing: 10) {
-                HStack {
+            VStack(alignment: .leading, spacing: 10) {
+                
+                Group {
                     Text("정산 내역을")
-                        .fontWeight(.bold)
-                        .font(.system(size: 30))
-                    
-                    Spacer()
-                }
-                HStack {
                     Text("추가해볼까요?")
-                        .fontWeight(.bold)
-                        .font(.system(size: 30))
-                    Spacer()
                 }
+                .font(.system(size: 30, weight: .bold))
+                
             }
             
-            
-            
-            VStack(spacing: 14) {
-                HStack {
-                    TextField("정산하고자 하는 항목을 입력하세요", text: $paymentTitle)
-                        .textInputAutocapitalization(.never)
-                        .onReceive(Just(paymentTitle), perform: { _ in
-                            if maxLength < paymentTitle.count {
-                                paymentTitle = String(paymentTitle.prefix(maxLength))
-                            }
-                        })
-                    
-                    Button {
-                        paymentTitle = ""
-                    } label: {
-                        Image(systemName: "x.circle.fill")
-                            .foregroundColor(.gray)
-                    }
-                    
-                    
-                }
+            VStack(spacing: 20) {
                 
-                
-                // Textfield 밑줄
-                Rectangle()
-                    .frame(height: 1.0, alignment: .bottom)
-                    .foregroundColor(.blue)
-                
-                
-                Text("")
-                    .frame(height: 60)
-                
+                UnderlineTextField(placeholder: "정산하고자 하는 항목을 입력하세요", maxLength: 20, text: $paymentTitle)
                 
                 Image("smartphone-with-bills")
-//                    .resizable()
-//                    .scaledToFill()
-                    
-                //                    .resizable()
-                                    
-                
-                
-                
-                Text("")
-                    .frame(height: 80)
-                
+                    .resizable()
+                    .frame(width: 250, height: 250)
+                    .padding(.top, 30)
+                                           
+                Spacer()
                 
                 HStack {
                     Spacer()
@@ -100,6 +51,7 @@ struct NewPaymentTitle: View {
                             .background(paymentTitle.isEmpty ? .blue.opacity(0.3) : .blue)
                             .cornerRadius(29)
                     }
+                    .padding(.bottom, 30)
                     .disabled(paymentTitle.isEmpty ? true : false)
                 }
                 
@@ -107,6 +59,7 @@ struct NewPaymentTitle: View {
             
         }
         .navigationBarBackButtonHidden(true)
+        .padding(.top, -20)
         .padding(.horizontal, 25)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {

@@ -12,7 +12,7 @@ struct UnderlineTextField: View {
     let placeholder: String
     let maxLength: Int
     
-    @State private var text = ""
+    @Binding var text: String
     
     var body: some View {
         VStack {
@@ -56,8 +56,8 @@ struct UnderlineTextField: View {
     }
 }
 
-struct UnderlineTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        UnderlineTextField(placeholder: "placeholder", maxLength: 20)
-    }
-}
+//struct UnderlineTextField_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UnderlineTextField(placeholder: "placeholder", maxLength: 20)
+//    }
+//}
