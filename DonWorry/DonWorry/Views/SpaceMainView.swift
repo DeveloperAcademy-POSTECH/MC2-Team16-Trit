@@ -10,6 +10,7 @@ import SwiftUI
 //MARK: - navigationBarBackButtonHidden = true ? 처음 화면이라.
 //MARK: - naviagationTitle left padding ? 현재 8.
 //MARK: - 글자수
+//MARK: - 카드색깔 + 날짜색깔
 //카드크기?
 let colors = [Color(hex: "ff5454"), Color.green, Color.purple]
 struct SpaceMainView: View {
@@ -88,7 +89,7 @@ struct SpaceMainView: View {
                                             )
                                     .overlay {
                                         HStack {
-                                            VStack(alignment: .leading) {
+                                            VStack(alignment: .leading, spacing:  0) {
                                                 Text("1차 고기집 파티~")
                                                     .font(.system(size: 15, weight: .heavy))
                                                     .padding(.horizontal, 25)
@@ -96,7 +97,7 @@ struct SpaceMainView: View {
                                                     .foregroundColor(.white)
                                                     
                                                 Spacer()
-                                                HStack(spacing:4){
+                                                HStack(spacing:8){
                                                     Image("chicken-leg")
                                                         .resizable()
                                                         .frame(width: 27, height: 23)
@@ -104,36 +105,85 @@ struct SpaceMainView: View {
                                                         .background(Color.grayEE)
                                                         .cornerRadius(8)
                                                         .padding(.leading, 25)
+                                                   Text("총 5,800원(4명)")
+                                                        .font(.system(size: 20, weight: .heavy))
+                                                        .foregroundColor(.white)
                                                 }
                                                 
                                                 Spacer()
                                                 
                                                 Text("우리은행")
+                                                    .font(.system(size: 13, weight: .heavy))
                                                     .padding(.horizontal, 25)
-                                                    .padding(.top)
-                                                Text("429 - 910 - 10090307")
+                                                    .frame(height:22)
+                                                    .foregroundColor(.white)
+                                                HStack{
+                                                    Text("429-910-10090307 (이한규)")
+                                                        .font(.system(size: 13, weight: .medium))
+                                                        .frame(height:22)
+                                                        .foregroundColor(.white)
+                                                    Button {
+                                                        print("copy!")
+                                                    } label: {
+                                                        Image(systemName: "doc.on.doc")
+                                                            .font(Font.system(size: 15, weight: .medium))
+                                                            .foregroundColor(.white)
+                                                    }
+
+                                                    
+                                                }
+                                                .padding(.leading, 25)
+                                                .padding(.bottom, 16)
+                                            }
+                                            
+//                                            .background(.yellow)//BACKGROUND
+                                            Spacer()
+                                            VStack {
+                                                VStack(spacing:3) {
+                                                    Image("chicken-leg")
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fit)
+                                                        .frame(width: 30, height: 30)
+                                                        
+    //                                                    .background(.red)
+                                                        .clipShape(Circle())
+                                                        .padding(.top, 25)
+                                                    Text("한규")
+                                                        .foregroundColor(.white)
+                                                        .font(.system(size: 13, weight: .medium))
+                                                }
                                                 
-                                                    .padding(.horizontal, 25)
+                                                
+                                                ForEach(0..<4) { _ in
+                                                    Image("chicken-leg")
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fit)
+                                                        .frame(width: 24, height: 25)
+                                                        .clipShape(Circle())
+                                                        .padding(.bottom,-15)
+                                                        
+                                                }
+                                                
+                                                Spacer()
+                                                Text("05/26")
+                                                    .font(.system(size: 9, weight: .bold))
+                                                    .foregroundColor(.blue)
+                                                    .frame(width: 47, height: 24)
+                                                    .padding(3)
+                                                    .background(Color.grayC5)
+                                                    .cornerRadius(25)
+                                                
                                                     .padding(.bottom, 16)
                                                     
-                                            }
-                                            
-                                            .background(.yellow)
-                                            Spacer()
-                                            VStack(alignment: .trailing) {
-                                                Spacer()
-                                                Text("fsdsdsf")
-                                                    
-                                                Text("fddf").padding(.bottom, 16)
                                                     
                                             }
-                                            
-                                            .background(.blue)
+                                            .padding(.trailing, 24)
+//                                            .background(.blue)//BACKGROUND
                                             
 //                                            .frame(maxWidth: .infinity, alignment: .leading)
                                         }
                                         
-                                        .background(.purple)
+//                                        .background(.purple)//BACKGROUND
                                         
                                         
                                     }
