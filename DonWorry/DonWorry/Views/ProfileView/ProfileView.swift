@@ -18,6 +18,7 @@ struct ProfileView: View {
     var profileImage = "blue-car"
         
     var body: some View {
+        
         VStack {
             
             /* Title */
@@ -56,12 +57,12 @@ struct ProfileView: View {
                     Spacer()
                     
                     VStack {
-                        Button {
-                          print("수정하기")
-                        } label: {
+                        
+                        NavigationLink(destination: EditProfileView()) {
                             Image(systemName: "pencil")
                                 .foregroundColor(Color.black)
                         }
+                        
                     }
                 }
                 Line()
@@ -72,11 +73,14 @@ struct ProfileView: View {
                         Text("나의 계좌")
                             .font(.system(size: 17))
                         Spacer()
-                        Button {
-                          print("수정하기")
-                        } label: {
-                            Image(systemName: "pencil")
-                                .foregroundColor(Color.black)
+                        
+                        VStack {
+                            
+                            NavigationLink(destination: EditAccountView()) {
+                                Image(systemName: "pencil")
+                                    .foregroundColor(Color.black)
+                            }
+                            
                         }
                         
                     }
@@ -163,6 +167,8 @@ struct ProfileView: View {
             }
             
         }
+        
+        
     }
 }
 
