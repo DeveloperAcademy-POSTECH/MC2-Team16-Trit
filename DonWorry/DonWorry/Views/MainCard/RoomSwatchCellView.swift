@@ -22,45 +22,31 @@ struct RoomSwatchCellView: View {
     
     var body: some View {
         VStack {
-//            LazyVGrid(columns: [GridItem(.adaptive(minimum: 100, maximum: 100))], content: {
-//                ForEach(0..<5) { index in
-//                    ZStack {
-//                        Text(swatches[index])
-//                            .font(.system(size: 13, weight: .bold))
-//                            .foregroundColor(selection == swatches[index] ? .white : .black)
-//                            .frame(width: 101, height: 35, alignment: .center)
-//                            .background(selection == swatches[index] ? .blue : .gray)
-//                            .cornerRadius(20)
-//                            .onTapGesture {
-//                                selection = swatches[index]
-//                            }
-//                    }
-//                }
-//            })
             VStack {
                 HStack {
                 ForEach(0..<3) { index in
-
-                            Text(swatches[index])
-                                .font(.system(size: 13, weight: .bold))
-                                .foregroundColor(selection == swatches[index] ? .white : .black)
-                                .frame(width: 101, height: 35, alignment: .center)
-                                .background(selection == swatches[index] ? .blue : .gray)
-                                .cornerRadius(20)
-                                .onTapGesture {
-                                    selection = swatches[index]
-                                }
+                    Text(swatches[index])
+                        .frame(width: 80, height: 12, alignment: .center)
+                        .foregroundColor(selection == swatches[index] ? .white : .black)
+                        .font(.system(size: 13, weight: .bold))
+                        .padding()
+                        .background(selection == swatches[index] ? .blue : Color(hex: "EFEFEF"))
+                        .cornerRadius(50)
+                        .onTapGesture {
+                            selection = swatches[index]
+                        }
                     }
                 }
                 HStack {
                     ForEach(3..<5) { index in
                         
                         Text(swatches[index])
-                            .font(.system(size: 13, weight: .bold))
+                            .frame(width: 80, height: 12, alignment: .center)
                             .foregroundColor(selection == swatches[index] ? .white : .black)
-                            .frame(width: 101, height: 35, alignment: .center)
-                            .background(selection == swatches[index] ? .blue : .gray)
-                            .cornerRadius(20)
+                            .font(.system(size: 13, weight: .bold))
+                            .padding()
+                            .background(selection == swatches[index] ? .blue : Color(hex: "EFEFEF"))
+                            .cornerRadius(50)
                             .onTapGesture {
                                 selection = swatches[index]
                             }

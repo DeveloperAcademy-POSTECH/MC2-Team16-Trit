@@ -25,7 +25,6 @@ struct SwiftUIView: View {
                             .font(.system(size: 20, weight: .bold))
                         Text("안녕하세요")
                             .font(.system(size: 17))
-                        
                     }
                 }
                 Spacer()
@@ -33,26 +32,24 @@ struct SwiftUIView: View {
                     .foregroundColor(.blue)
                     .font(.system(size: 40))
             }
-            .padding(.horizontal, 35)
-            .padding(.bottom, 40)
-            
+            .padding(.bottom, 25)
+            .padding(.horizontal, 20)
             RoomSwatchCellView(selection: $selection)
             Spacer().frame(height: 120)
             if contentUser.participate == selection {
                 ScrollView(.horizontal) {
                     HStack {
-                        ParticipateCard()
+                        ParticipateCard(isOnParticipate: false)
                         if contentUser.takeMoney != nil {
                             TakerCard(contentUser: contentUser)
                         }
-                        
                         if contentUser.giveMoney != nil {
                             GiverCard(contentUser: contentUser)
                         }
                     }
                 }
             } else {
-                ParticipateCard()
+                ParticipateCard(isOnParticipate: true)
             }
             ButtonBottomCell()
             Spacer().frame(height: 120)
@@ -68,29 +65,9 @@ struct SwiftUIView_Previews: PreviewProvider {
 
 struct ButtonBottomCell: View {
     var body: some View {
-        HStack {
-            Button {
-                //
-            } label: {
-                Image(systemName: "magnifyingglass")
-                    .font(.system(size: 15, weight: .heavy))
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(width: 70, height: 60)
-                    .background(.gray)
-                    .cornerRadius(30)
-            }
-            Button {
-                //
-            } label: {
-                Text("스페이스 만들기")
-                    .font(.system(size: 15, weight: .heavy))
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(width: 260, height: 60)
-                    .background(.blue)
-                    .cornerRadius(30)
-            }
+        HStack {            
+            XSmallButton(icon: "magnifyingglass", clicked: {})
+            MediumButton(text: "스페이스 만들기", clicked: {})
         }
         .offset(y: 160)
     }
