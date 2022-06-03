@@ -13,7 +13,6 @@ struct GiverCard: View {
             }
         }
         .halfSheet(showSheet: $sheetStateModel.showSheet) {
-            // Sheet내 View의 State 업데이트를 위함
             GiverSheetView(contentUser: contentUser)
                 .environmentObject(sheetStateModel)
         } onEnd: {

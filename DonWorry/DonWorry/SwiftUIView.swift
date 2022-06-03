@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SwiftUIView: View {
+    @State var selection: String = "떱떱해"
     var contentUser: User
     var body: some View {
         VStack {
@@ -24,6 +25,8 @@ struct SwiftUIView: View {
                     }
                 }
             }
+            RoomSwatchCellView(selection: $selection)
+            Text(selection)
         }
     }
 }
