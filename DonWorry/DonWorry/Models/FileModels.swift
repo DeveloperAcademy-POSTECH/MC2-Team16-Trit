@@ -15,4 +15,5 @@ struct User: Identifiable, Hashable {
     var giveMoney: Int?
     var giveTo: String?
     var userAccount: String?
+    var participate: String
 }
