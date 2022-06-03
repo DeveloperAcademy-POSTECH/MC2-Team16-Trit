@@ -13,4 +13,6 @@ struct User: Identifiable, Hashable {
     var profileImage: String
     var takeMoney: Int?
     var giveMoney: Int?
+    var giveTo: String?
+    var userAccount: String?
 }

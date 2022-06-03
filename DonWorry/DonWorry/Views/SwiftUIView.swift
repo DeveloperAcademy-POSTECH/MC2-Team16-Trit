@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct SwiftUIView: View {
+    var contentUser: User
     var body: some View {
         VStack {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             ScrollView(.horizontal) {
                 HStack {
                     ParticipateCard()
-                    GiverCard()
+                    if contentUser.takeMoney != nil {
+                        TakerCard(contentUser: contentUser)
+                    }
+                    
+                    if contentUser.giveMoney != nil {
+                        GiverCard(contentUser: contentUser)
+                    }
                 }
             }
         }
@@ -23,6 +30,6 @@ struct SwiftUIView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        SwiftUIView(contentUser: user4)
     }
 }

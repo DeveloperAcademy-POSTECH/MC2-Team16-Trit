@@ -48,5 +48,6 @@ extension Color {
     static let grayF2F3F5 = Color(hex: "#F2F3F5")
     static let blueCardCenter = Color(hex: "0071ED")
     static let cardColor1 = Color(hex: "401811")
+    static let cardColor2 = Color(hex: "60B35B")
     
 }

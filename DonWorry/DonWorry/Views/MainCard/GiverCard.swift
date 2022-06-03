@@ -1,54 +1,167 @@
 import SwiftUI
 
-func makegiverList(users: [User]) -> [User] {
-    var giverlist: [User] = []
-    users.forEach {
-        if $0.giveMoney != nil {
-            giverlist.append($0)
-        }
-    }
-    return giverlist
-}
-
 struct GiverCard: View {
-    var giverList: [User] = makegiverList(users: users)
-    var ContentUser: User = user3
+    @StateObject var sheetStateModel = SheetStateModel()
+    var contentUser: User
     var body: some View {
-        ZStack {
-            BasicRoundRec(color: .cardColor1)
-            VStack {
-                ForEach(giverList) {user in
-                    if user.userName == ContentUser.userName {
-                        Image(user.profileImage)
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(.white, lineWidth: 2))
-                        Text(user.userName)
-                            .font(.system(size: 15, weight: .light))
-                        Spacer().frame(height: 30)
-                        Text("\(user.giveMoney!)원")
-                            .font(.system(size: 20, weight: .heavy))
-                    }
-                }
-                Spacer().frame(height: 10)
-                VStack {
-                    Image(systemName: "chevron.left.2")
-                        .rotationEffect(.degrees(90))
-                    Spacer().frame(height: 5)
-                    Text("슬라이드해서 보내기")
-                        .font(.system(size: 8, weight: .semibold))
-                }
-                .offset(y: 10)
-                .opacity(0.35)
+        Button {
+            sheetStateModel.showSheet.toggle()
+        } label: {
+            ZStack {
+                BasicRoundRec(color: .cardColor1)
+                GiverCardDetail(contentUser: contentUser)
             }
-            .foregroundColor(.white)
+        }
+        .halfSheet(showSheet: $sheetStateModel.showSheet) {
+            // Sheet내 View의 State 업데이트를 위함
+            GiverSheetView(contentUser: contentUser)
+                .environmentObject(sheetStateModel)
+        } onEnd: {
+            print("Sheet Dismissed")
         }
     }
 }
 
 struct GiverCard_Previews: PreviewProvider {
     static var previews: some View {
-        GiverCard()
+        GiverCard(contentUser: user4)
     }
+}
+
+struct GiverCardDetail: View {
+    var contentUser: User
+    var body: some View {
+        VStack {
+            let taker = findTaker(users: users, contentUser: contentUser)
+            Image(taker.profileImage)
+                .resizable()
+                .frame(width: 50, height: 50)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(.white, lineWidth: 2))
+            Text(taker.userName)
+                .font(.system(size: 15, weight: .light))
+                
+            Spacer().frame(height: 20)
+            Text("줄돈")
+                .font(.system(size: 13, weight: .light))
+            Text("\(contentUser.giveMoney!)원")
+                .font(.system(size: 20, weight: .heavy))
+            
+            VStack {
+                Image(systemName: "chevron.left.2")
+                    .rotationEffect(.degrees(90))
+                Spacer().frame(height: 5)
+                Text("슬라이드해서 보내기")
+                    .font(.system(size: 8, weight: .semibold))
+            }
+            .offset(y: 10)
+            .opacity(0.35)
+        }
+        .foregroundColor(.white)
+    }
+}
+
+struct GiverSheetView: View {
+    @EnvironmentObject var sheetStateModel: SheetStateModel
+    var contentUser: User
+    var body: some View {
+        let taker = findTaker(users: users, contentUser: contentUser)
+        ZStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
+                        Text(taker.userName)
+                            .font(.system(size: 20, weight: .bold))
+                        Text("\(contentUser.giveMoney!)원")
+                            .font(.system(size: 30, weight: .heavy))
+                        Text(taker.userAccount!)
+                            .font(.system(size: 15, weight: .light))
+                            .foregroundColor(.gray31)
+                        Spacer().frame(height: 27)
+                        Text("상세내역")
+                            .font(.system(size: 15))
+                    }
+                    .padding(.horizontal, 10)
+
+                    HStack {
+                        Image("storeicon")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        VStack(alignment: .leading) {
+                            Text("우디네 당구장")
+                                .font(.system(size: 16, weight: .bold))
+                            Text("5/25")
+                                .font(.system(size: 16, weight: .bold))
+                                .opacity(0.4)
+                        }
+                    }
+                    .padding(.horizontal, 10)
+                    HStack {
+                        Text("\(contentUser.giveMoney!)원")
+                            .font(.system(size: 13))
+                        Spacer()
+                        Text("\(taker.takeMoney!)원")
+                            .font(.system(size: 13))
+                            .foregroundColor(.gray31)
+                            .opacity(0.6)
+                    }
+                    .padding(.horizontal, 10)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 325, height: 8)
+                            .foregroundColor(.gray31)
+                            .opacity(0.2)
+                            .padding(.horizontal, 10)
+                        HStack {
+                            Spacer().frame(width: 10)
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: CGFloat((325*contentUser.giveMoney!)/taker.takeMoney!), height: 8)
+                            .foregroundColor(.blueMain)
+                            Spacer()
+                        }
+                    }
+                    Spacer().frame(height: 120)
+                }
+                .padding(.horizontal, 30)
+                Spacer()
+            }
+            HStack {
+                Button {
+                    //
+                } label: {
+                    Text("계좌번호 복사하기")
+                        .frame(width: 170, height: 26, alignment: .center)
+                        .foregroundColor(Color.white)
+                        .font(.system(size: 15, weight: .bold))
+                        .padding()
+                        .background(Color.gray81)
+                        .cornerRadius(50)
+                }
+                
+                Button {
+                    //
+                } label: {
+                    Text("보냈어요!")
+                        .frame(width: 100, height: 26, alignment: .center)
+                        .foregroundColor(Color.white)
+                        .font(.system(size: 15, weight: .bold))
+                        .padding()
+                        .background(Color.blueMain)
+                        .cornerRadius(50)
+                }
+            }
+            .offset(y: 200)
+        }
+        
+    }
+}
+
+func findTaker(users: [User], contentUser: User) -> User {
+    var taker: User!
+    users.forEach {
+        if $0.userName == contentUser.giveTo {
+            taker = $0
+        }
+    }
+    return taker
 }
