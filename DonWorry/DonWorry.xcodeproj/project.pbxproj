@@ -121,8 +121,8 @@
 		2CF61B382849AF73004C3768 /* SpaceView */ = {
 			isa = PBXGroup;
 			children = (
-				2CF61B3B2849AF9A004C3768 /* PaymentView */,
 				2CF61B392849AF97004C3768 /* SpaceEmptyView.swift */,
+				2CF61B3B2849AF9A004C3768 /* PaymentView */,
 			);
 			path = SpaceView;
 			sourceTree = "<group>";

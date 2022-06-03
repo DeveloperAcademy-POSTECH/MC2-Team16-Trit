@@ -55,9 +55,3 @@ struct UnderlineTextField: View {
         .frame(width: 350)
     }
 }
-
-//struct UnderlineTextField_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UnderlineTextField(placeholder: "placeholder", maxLength: 20)
-//    }
-//}

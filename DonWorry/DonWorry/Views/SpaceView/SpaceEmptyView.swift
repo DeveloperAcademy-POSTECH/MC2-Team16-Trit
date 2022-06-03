@@ -40,7 +40,6 @@ struct SpaceEmptyView: View {
                             
                         }
                         
-                        
                     }
                     .foregroundColor(.black)
                     
@@ -70,22 +69,15 @@ struct SpaceEmptyView: View {
                     }
                 }
                 .padding(.top, -30)
-                
-                
+                    
                 Spacer()
-                
-                
-                
-                
                 
                 VStack {
                     Image("debit-card")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 138.75)
-                    
-                    
-                    
+                          
                     Text("정산추가 버튼을 눌러 정산내역을 추가 해주세요")
                         .font(.system(size: 12))
                         .fontWeight(.medium)
@@ -93,14 +85,10 @@ struct SpaceEmptyView: View {
                         .background(Color(hex: "F2F3F5"))
                         .cornerRadius(20)
                     
-                    
                 }
-                
-                
-                
+                  
                 Spacer()
-                
-                
+                 
                 HStack {
                     // 링크 공유 버튼
                     Button {
@@ -147,4 +135,3 @@ struct SpaceEmptyView_Previews: PreviewProvider {
         SpaceEmptyView()
     }
 }
-
