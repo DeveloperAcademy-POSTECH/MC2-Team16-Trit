@@ -10,30 +10,35 @@ import SwiftUI
 struct ParticipateCard: View {
     @State var isOnParticipate: Bool
     var body: some View {
-        ZStack {
-            BasicRoundRec(color: .blueMain)
-            Circle()
-                .frame(width: 83, height: 83)
-                .foregroundColor(Color(hex: "D8D8D8"))
-                .opacity(0.5)
-            VStack {
-                Image(systemName: "ellipsis")
-                    .foregroundColor(.white)
-                .font(.system(size: 30, weight: .bold))
-                
-                Spacer().frame(height: 60)
-                
-                HStack(alignment: .center, spacing: 5) {
-                    if isOnParticipate == false {
-                        Image(systemName: "arrow.up.backward.and.arrow.down.forward")
-                            .foregroundColor(.white)
-                    }
-                    Text(isOnParticipate ? "참석 확인중" : "상세정산내역보기")
+        
+        Button {
+            //
+        } label: {
+            ZStack {
+                BasicRoundRec(color: .blueMain)
+                Circle()
+                    .frame(width: 83, height: 83)
+                    .foregroundColor(Color(hex: "D8D8D8"))
+                    .opacity(0.5)
+                VStack {
+                    Image(systemName: "ellipsis")
                         .foregroundColor(.white)
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 30, weight: .bold))
+                    
+                    Spacer().frame(height: 60)
+                    
+                    HStack(alignment: .center, spacing: 5) {
+                        if isOnParticipate == false {
+                            Image(systemName: "arrow.up.backward.and.arrow.down.forward")
+                                .foregroundColor(.white)
+                        }
+                        Text(isOnParticipate ? "참석 확인중" : "상세정산내역보기")
+                            .foregroundColor(.white)
+                        .font(.system(size: 16, weight: .bold))
+                    }
                 }
+                .offset(y: 40)
             }
-            .offset(y: 40)
         }
     }
 }

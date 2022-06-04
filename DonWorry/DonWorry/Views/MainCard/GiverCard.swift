@@ -67,62 +67,66 @@ struct GiverSheetView: View {
         let taker = findTaker(users: users, contentUser: contentUser)
         ZStack {
             HStack {
-                VStack(alignment: .leading) {
+                ScrollView {
                     VStack(alignment: .leading) {
-                        Text(taker.userName)
-                            .font(.system(size: 20, weight: .bold))
-                        Text("\(contentUser.giveMoney!)원")
-                            .font(.system(size: 30, weight: .heavy))
-                        Text(taker.userAccount!)
-                            .font(.system(size: 15, weight: .light))
-                            .foregroundColor(.gray31)
-                        Spacer().frame(height: 27)
-                        Text("상세내역")
-                            .font(.system(size: 15))
-                    }
-                    .padding(.horizontal, 10)
-
-                    HStack {
-                        Image("storeicon")
-                            .resizable()
-                            .frame(width: 50, height: 50)
                         VStack(alignment: .leading) {
-                            Text("우디네 당구장")
-                                .font(.system(size: 16, weight: .bold))
-                            Text("5/25")
-                                .font(.system(size: 16, weight: .bold))
-                                .opacity(0.4)
+                            Text(taker.userName)
+                                .font(.system(size: 20, weight: .bold))
+                            Text("\(contentUser.giveMoney!)원")
+                                .font(.system(size: 30, weight: .heavy))
+                            Text(taker.userAccount!)
+                                .font(.system(size: 15, weight: .light))
+                                .foregroundColor(.gray31)
+                            Spacer().frame(height: 27)
+                            Text("상세내역")
+                                .font(.system(size: 15))
                         }
-                    }
-                    .padding(.horizontal, 10)
-                    HStack {
-                        Text("\(contentUser.giveMoney!)원")
-                            .font(.system(size: 13))
-                        Spacer()
-                        Text("\(taker.takeMoney!)원")
-                            .font(.system(size: 13))
-                            .foregroundColor(.gray31)
-                            .opacity(0.6)
-                    }
-                    .padding(.horizontal, 10)
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 325, height: 8)
-                            .foregroundColor(.gray31)
-                            .opacity(0.2)
-                            .padding(.horizontal, 10)
+                        .padding(.horizontal, 10)
+
                         HStack {
-                            Spacer().frame(width: 10)
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: CGFloat((325*contentUser.giveMoney!)/taker.takeMoney!), height: 8)
-                            .foregroundColor(.blueMain)
-                            Spacer()
+                            Image("storeicon")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                            VStack(alignment: .leading) {
+                                Text("우디네 당구장")
+                                    .font(.system(size: 16, weight: .bold))
+                                Text("5/25")
+                                    .font(.system(size: 16, weight: .bold))
+                                    .opacity(0.4)
+                            }
                         }
+                        .padding(.horizontal, 10)
+                        HStack {
+                            Text("\(contentUser.giveMoney!)원")
+                                .font(.system(size: 13))
+                            Spacer()
+                            Text("\(taker.takeMoney!)원")
+                                .font(.system(size: 13))
+                                .foregroundColor(.gray31)
+                                .opacity(0.6)
+                        }
+                        .padding(.horizontal, 10)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: 325, height: 8)
+                                .foregroundColor(.gray31)
+                                .opacity(0.2)
+                                .padding(.horizontal, 10)
+                            HStack {
+                                Spacer().frame(width: 10)
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: CGFloat((325*contentUser.giveMoney!)/taker.takeMoney!), height: 8)
+                                .foregroundColor(.blueMain)
+                                Spacer()
+                            }
+                        }
+                        Spacer().frame(height: 120)
                     }
-                    Spacer().frame(height: 120)
+                    .padding(.horizontal, 30)
                 }
-                .padding(.horizontal, 30)
+                .offset(y: 50)
                 Spacer()
+                
             }
             HStack {
                 Button {
@@ -133,7 +137,7 @@ struct GiverSheetView: View {
                         .foregroundColor(Color.white)
                         .font(.system(size: 15, weight: .bold))
                         .padding()
-                        .background(Color.gray81)
+                        .background(Color.grayBC)
                         .cornerRadius(50)
                 }
                 
