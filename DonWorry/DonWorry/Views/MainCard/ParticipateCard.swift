@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ParticipateCard: View {
+    // backend에서 참여자들이 다 참가했으면 "상세정산내역보기" 다 참가하지않았으면 "참석확인중"
     @State var isOnParticipate: Bool
     var body: some View {
-        
         Button {
             //
         } label: {

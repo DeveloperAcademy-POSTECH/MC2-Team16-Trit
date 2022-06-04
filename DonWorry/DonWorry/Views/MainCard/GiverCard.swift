@@ -1,29 +1,34 @@
+//
+//  TakerCard.swift
+//  DonWorry
+//
+//  Created by uiskim on 2022/06/03.
+
 import SwiftUI
 
 struct GiverCard: View {
-    @StateObject var sheetStateModel = SheetStateModel()
+    // SheetView를 띄우기 위한 변수
+    @State var giversheetState = false
+    // 앱특성상 사용자에따라 같은 술자리라도 보이는 카드들과 View가 다르기때문에 사용자가 누군지를 알려주는 변수
     var contentUser: User
     var body: some View {
         Button {
-            sheetStateModel.showSheet.toggle()
+            giversheetState.toggle()    
         } label: {
             ZStack {
                 BasicRoundRec(color: .cardColor1)
                 GiverCardDetail(contentUser: contentUser)
             }
         }
-        .halfSheet(showSheet: $sheetStateModel.showSheet) {
+        .sheet(isPresented: $giversheetState) {
             GiverSheetView(contentUser: contentUser)
-                .environmentObject(sheetStateModel)
-        } onEnd: {
-            print("Sheet Dismissed")
         }
     }
 }
 
 struct GiverCard_Previews: PreviewProvider {
     static var previews: some View {
-        GiverCard(contentUser: user4)
+        GiverCard(contentUser: user1)
     }
 }
 
@@ -31,6 +36,8 @@ struct GiverCardDetail: View {
     var contentUser: User
     var body: some View {
         VStack {
+            // 현재사용유저(contentUser)가 누구에게 돈을 보내야하는지 찾는 함수 = findTaker
+            // contentUser가 돈을 보내야하는 사람의 정보가 담긴 카드를 봐야함
             let taker = findTaker(users: users, contentUser: contentUser)
             Image(taker.profileImage)
                 .resizable()
@@ -50,6 +57,7 @@ struct GiverCardDetail: View {
                 Image(systemName: "chevron.left.2")
                     .rotationEffect(.degrees(90))
                 Spacer().frame(height: 5)
+                // 우선 슬라이드해서 보내는 기능은 미구현, 우선 버튼으로
                 Text("슬라이드해서 보내기")
                     .font(.system(size: 8, weight: .semibold))
             }
@@ -61,7 +69,7 @@ struct GiverCardDetail: View {
 }
 
 struct GiverSheetView: View {
-    @EnvironmentObject var sheetStateModel: SheetStateModel
+    @Environment(\.presentationMode) var presentationMode
     var contentUser: User
     var body: some View {
         let taker = findTaker(users: users, contentUser: contentUser)
@@ -114,6 +122,7 @@ struct GiverSheetView: View {
                                 .padding(.horizontal, 10)
                             HStack {
                                 Spacer().frame(width: 10)
+                                // 정산자(taker)가 받아야할 돈(taker.takemoney)과 contentUser가 보내야할돈(contentUser.giveMoney)의 비율을 계산해서 그래프로 표현
                                 RoundedRectangle(cornerRadius: 10)
                                     .frame(width: CGFloat((325*contentUser.giveMoney!)/taker.takeMoney!), height: 8)
                                 .foregroundColor(.blueMain)
@@ -128,6 +137,7 @@ struct GiverSheetView: View {
                 Spacer()
                 
             }
+            // 여기 버튼은 크기가 다른View들과는 달라서 이걸로 새로 만듦
             HStack {
                 Button {
                     //
@@ -142,7 +152,7 @@ struct GiverSheetView: View {
                 }
                 
                 Button {
-                    //
+                    self.presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("보냈어요!")
                         .frame(width: 100, height: 26, alignment: .center)

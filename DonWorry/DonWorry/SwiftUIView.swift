@@ -14,12 +14,15 @@ struct SwiftUIView: View {
         VStack {
             HStack {
                 HStack {
-                    Image(contentUser.profileImage)
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .background(.black)
-                        .clipShape(Circle())
-                    
+                    Button {
+                        //
+                    } label: {
+                        Image(contentUser.profileImage)
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .background(.black)
+                            .clipShape(Circle())
+                    }
                     VStack(alignment: .leading) {
                         Text(contentUser.userName + "님")
                             .font(.system(size: 20, weight: .bold))
@@ -28,16 +31,20 @@ struct SwiftUIView: View {
                     }
                 }
                 Spacer()
-                Image(systemName: "bell.circle.fill")
-                    .foregroundColor(.blue)
-                    .font(.system(size: 40))
+                Button {
+                    //
+                } label: {
+                    Image(systemName: "bell.circle.fill")
+                        .foregroundColor(.blue)
+                        .font(.system(size: 40))
+                }
             }
             .padding(.bottom, 25)
             .padding(.horizontal, 20)
             RoomSwatchCellView(selection: $selection)
             Spacer().frame(height: 120)
             if contentUser.participate == selection {
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ParticipateCard(isOnParticipate: false)
                         if contentUser.takeMoney != nil {

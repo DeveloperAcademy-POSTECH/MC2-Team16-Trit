@@ -12,7 +12,7 @@ struct DonWorryApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            TakerCard(contentUser: user4)
+            SwiftUIView(contentUser: user4)
         }
     }
 }

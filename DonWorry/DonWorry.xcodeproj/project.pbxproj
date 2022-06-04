@@ -32,6 +32,7 @@
 		C0030EE32848C7880017125A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
 		C07ECB392849919C000C42C1 /* RoomSwatchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ECB382849919C000C42C1 /* RoomSwatchCellView.swift */; };
+		C0931806284B9B6B00E3C9AA /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = C0931805284B9B6B00E3C9AA /* HalfASheet */; };
 		C0936BFD284876800064CEFA /* ParticipateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFC284876800064CEFA /* ParticipateCard.swift */; };
 		C0936BFF28487FFC0064CEFA /* GiverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFE28487FFC0064CEFA /* GiverCard.swift */; };
 		C09C89712849101700E2A929 /* TakerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C89702849101700E2A929 /* TakerCard.swift */; };
@@ -94,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0931806284B9B6B00E3C9AA /* HalfASheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +323,9 @@
 			dependencies = (
 			);
 			name = DonWorry;
+			packageProductDependencies = (
+				C0931805284B9B6B00E3C9AA /* HalfASheet */,
+			);
 			productName = DonWorry;
 			productReference = 3EBC81572843522900794955 /* DonWorry.app */;
 			productType = "com.apple.product-type.application";
@@ -393,6 +398,9 @@
 				Base,
 			);
 			mainGroup = 3EBC814E2843522900794955;
+			packageReferences = (
+				C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */,
+			);
 			productRefGroup = 3EBC81582843522900794955 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -636,7 +644,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = 562Z37RH3N;
+				DEVELOPMENT_TEAM = Z225784MRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -665,7 +673,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = 562Z37RH3N;
+				DEVELOPMENT_TEAM = Z225784MRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -798,6 +806,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/franklynw/HalfASheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C0931805284B9B6B00E3C9AA /* HalfASheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */;
+			productName = HalfASheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3EBC814F2843522900794955 /* Project object */;
 }
