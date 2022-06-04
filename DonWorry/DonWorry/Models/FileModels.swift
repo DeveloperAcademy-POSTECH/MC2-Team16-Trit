@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct User: Identifiable, Hashable {
+    var id = UUID().uuidString
+    var userName: String
+    var profileImage: String
+    var takeMoney: Int?
+    var giveMoney: Int?
+}
