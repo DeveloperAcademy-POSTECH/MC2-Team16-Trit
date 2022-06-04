@@ -53,7 +53,6 @@ struct ToSView: View {
                     .foregroundColor(.white)
                     .font(.system(size: 15, weight: .bold))
                     .padding()
-//                    .background(Color.blueMain)
                     .background(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? Color.blueMain : Color.blueA4C6FF )
                     .cornerRadius(50)
                 }
