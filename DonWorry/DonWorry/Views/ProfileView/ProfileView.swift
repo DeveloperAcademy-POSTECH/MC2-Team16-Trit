@@ -46,7 +46,6 @@ struct ProfileView: View {
                         Text("김유쓰")
                             .bold()
                             .font(.system(size: 22))
-                            .padding(.bottom, 5)
                             
                         Text("김의성")
                             .fontWeight(.light)
