@@ -30,7 +30,7 @@ struct NewPaymentTitle: View {
             
             VStack(spacing: 20) {
                 
-                UnderlineTextField(placeholder: "정산하고자 하는 항목을 입력하세요", maxLength: 20, text: $paymentTitle)
+                UnderlineTextField(placeholder: "정산하고자 하는 항목을 입력하세요", charLimit: 20, text: $paymentTitle)
                 
                 Image("smartphone-with-bills")
                     .resizable()

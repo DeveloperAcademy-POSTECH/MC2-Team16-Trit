@@ -83,13 +83,16 @@ struct NewPaymentPrice: View {
                                 pressNumber(price, column)
                             } label: {
                                 Text(column)
-                                    .frame(width: 100, height: 50)
+                                    .font(.system(size: 20, weight: .bold))
+                                    .frame(width: 125, height: 61)
                             }
-                            
                         }
+                        .padding(.vertical, 17)
                     }
                 }
             }
+            .background(RoundedRectangle(cornerRadius: 38)
+                .stroke(Color.gray97))
             
         }
         .navigationBarBackButtonHidden(true)
@@ -107,18 +110,23 @@ struct NewPaymentPrice: View {
     }
     
     func pressNumber(_ price: String, _ input: String) {
+        
+        // 0원인 상태에서 0 또는 00 버튼을 눌렀을 때 변하는게 없도록 합니다.
         if price.isEmpty && (input == "0" || input == "00") {
             return
         }
         
+        // 금액이 1억원이 넘지 않도록 입력을 제한합니다.
         if price.count == 7 && input == "00" {
             return
         }
         
+        // 금액이 1억원이 넘지 않도록 입력을 제한합니다.
         if price.count > 7 && input != "<" {
             return
         }
         
+        // < 버튼을 눌렀다면 숫자를 하나 지우고, 다른 버튼을 눌렀다면 숫자를 추가합니다.
         if input == "<" {
             self.price.popLast()
         } else {

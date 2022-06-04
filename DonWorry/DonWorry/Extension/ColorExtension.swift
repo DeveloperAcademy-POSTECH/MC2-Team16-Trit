@@ -44,6 +44,7 @@ extension Color {
     static let grayEF = Color(hex: "#EFEFEF")
     static let grayEE = Color(hex: "#EEEEEE")
     static let grayD0 = Color(hex: "#D0D0D0")
+    static let gray97 = Color(hex: "#979797")
     static let grayBC = Color(hex: "#BCBCBC")
     static let grayD8 = Color(hex: "#D8D8D8")
     static let grayF2F3F5 = Color(hex: "#F2F3F5")

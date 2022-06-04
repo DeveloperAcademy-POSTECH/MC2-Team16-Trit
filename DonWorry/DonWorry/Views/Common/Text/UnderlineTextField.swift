@@ -10,7 +10,7 @@ import SwiftUI
 
 struct UnderlineTextField: View {
     let placeholder: String
-    let maxLength: Int
+    let charLimit: Int
     
     @Binding var text: String
     
@@ -21,8 +21,8 @@ struct UnderlineTextField: View {
                     .frame(height: 30)
                     .textInputAutocapitalization(.never)
                     .onReceive(Just(text), perform: { _ in
-                        if maxLength < text.count {
-                            text = String(text.prefix(maxLength))
+                        if charLimit < text.count {
+                            text = String(text.prefix(charLimit))
                         }
                     })
                 
@@ -46,7 +46,7 @@ struct UnderlineTextField: View {
             
             HStack {
                 Spacer()
-                Text("\(text.count)/\(maxLength)")
+                Text("\(text.count)/\(charLimit)")
                     .font(.caption)
                     .foregroundColor(.gray)
                     .padding(.trailing)

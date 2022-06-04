@@ -22,22 +22,17 @@ struct SpaceEmptyView: View {
                             .font(.system(size: 20, weight: .heavy))
                         
                         Spacer()
-                        
-                        // 스페이스 이름 수정 및 삭제 버튼
+                                  
                         Button {
-                            
+                            // Todo : 스페이스 이름 수정
                         } label: {
-                            
                             Image(systemName: "ellipsis")
                         }
                         
-                        // 홈으로 돌아가는 버튼
                         Button {
-                            
+                            // Todo : 스페이스 삭제
                         } label: {
-                            
                             Image(systemName: "xmark")
-                            
                         }
                         
                     }
@@ -90,9 +85,8 @@ struct SpaceEmptyView: View {
                 Spacer()
                  
                 HStack {
-                    // 링크 공유 버튼
                     Button {
-                        
+                        // Todo : 링크 공유 기능 추가
                     } label: {
                         HStack {
                             Text("링크 공유")
@@ -104,9 +98,9 @@ struct SpaceEmptyView: View {
                         .cornerRadius(25)
                         
                     }
-                    // 참석 확인 버튼
+
                     Button {
-                        
+                        // Todo : 참석 확인 기능 추가
                     } label: {
                         HStack {
                             Text("참석 확인")
@@ -122,10 +116,7 @@ struct SpaceEmptyView: View {
                 }
                 .padding(.bottom, 30)
             }
-            //            .padding(.top, -20)
             .padding(.horizontal, 25)
-            //            .navigationTitle(spaceTitle)
-            
         }
     }
 }
