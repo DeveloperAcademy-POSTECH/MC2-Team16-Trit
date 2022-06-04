@@ -42,6 +42,10 @@
 		A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */; };
 		A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */; };
 		A74479C22847E3760083BBF4 /* ChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479C12847E3760083BBF4 /* ChipButton.swift */; };
+		A74479D3284917990083BBF4 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D2284917990083BBF4 /* ProfileView.swift */; };
+		A74479D4284918270083BBF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
+		A74479D6284918D60083BBF4 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D5284918D60083BBF4 /* EditProfileView.swift */; };
+		A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D7284918EB0083BBF4 /* EditAccountView.swift */; };
 		C0936BFD284876800064CEFA /* ParticipateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFC284876800064CEFA /* ParticipateCard.swift */; };
 		C0936BFF28487FFC0064CEFA /* GiverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFE28487FFC0064CEFA /* GiverCard.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +107,9 @@
 		A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetModal.swift; sourceTree = "<group>"; };
 		A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewWithSheet.swift; sourceTree = "<group>"; };
 		A74479C12847E3760083BBF4 /* ChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipButton.swift; sourceTree = "<group>"; };
+		A74479D2284917990083BBF4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A74479D5284918D60083BBF4 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		A74479D7284918EB0083BBF4 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 		C0936BFC284876800064CEFA /* ParticipateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateCard.swift; sourceTree = "<group>"; };
 		C0936BFE28487FFC0064CEFA /* GiverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,6 +247,7 @@
 		A7447993284759B50083BBF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A74479D12849175A0083BBF4 /* ProfileView */,
 				2CC211802849EFDE0009F785 /* AuthView */,
 				2CF61B382849AF73004C3768 /* SpaceView */,
 				C0936BFB284876410064CEFA /* MainCard */,
@@ -346,6 +354,14 @@
 			path = Icon;
 			sourceTree = "<group>";
 		};
+		A74479D12849175A0083BBF4 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				A74479D2284917990083BBF4 /* ProfileView.swift */,
+				A74479D5284918D60083BBF4 /* EditProfileView.swift */,
+				A74479D7284918EB0083BBF4 /* EditAccountView.swift */,
+			);
+			path = ProfileView;
 		C0936BFB284876410064CEFA /* MainCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,6 +476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A74479D4284918270083BBF4 /* Assets.xcassets in Resources */,
 				2CF61B442849B332004C3768 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A74479D6284918D60083BBF4 /* EditProfileView.swift in Sources */,
 				A74479A128476ADA0083BBF4 /* FileModels.swift in Sources */,
 				2CF61B3D2849B00B004C3768 /* NewPaymentTitle.swift in Sources */,
 				2CC211882849F1300009F785 /* TermView.swift in Sources */,
@@ -526,6 +544,9 @@
 				2CC211842849F1160009F785 /* UserInfoView.swift in Sources */,
 				2CC2118C2849F1CF0009F785 /* TermModel.swift in Sources */,
 				A744799F28476AD00083BBF4 /* FileViewModels.swift in Sources */,
+				A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */,
+				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
+				A74479D3284917990083BBF4 /* ProfileView.swift in Sources */,
 				2CF61B432849B271004C3768 /* NewPaymentDetail.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				2CC211822849F0FA0009F785 /* SignInView.swift in Sources */,
