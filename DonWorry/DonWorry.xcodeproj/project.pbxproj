@@ -35,6 +35,8 @@
 		79BF17A4284D002B003A2A68 /* SpaceMainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A1284D002B003A2A68 /* SpaceMainCardView.swift */; };
 		79BF17A6284D0034003A2A68 /* SpaceTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A5284D0034003A2A68 /* SpaceTopView.swift */; };
 		79BF17A8284D0209003A2A68 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A7284D0209003A2A68 /* TextExtension.swift */; };
+		79BF17AB284D143C003A2A68 /* CheckAttendanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17AA284D143C003A2A68 /* CheckAttendanceView.swift */; };
+		79BF17AD284D1454003A2A68 /* CheckAttendanceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17AC284D1454003A2A68 /* CheckAttendanceCardView.swift */; };
 		A744799D28476AC80083BBF4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744799C28476AC80083BBF4 /* HomeView.swift */; };
 		A744799F28476AD00083BBF4 /* FileViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744799E28476AD00083BBF4 /* FileViewModels.swift */; };
 		A74479A128476ADA0083BBF4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A028476ADA0083BBF4 /* User.swift */; };
@@ -115,6 +117,8 @@
 		79BF17A1284D002B003A2A68 /* SpaceMainCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceMainCardView.swift; sourceTree = "<group>"; };
 		79BF17A5284D0034003A2A68 /* SpaceTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceTopView.swift; sourceTree = "<group>"; };
 		79BF17A7284D0209003A2A68 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
+		79BF17AA284D143C003A2A68 /* CheckAttendanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAttendanceView.swift; sourceTree = "<group>"; };
+		79BF17AC284D1454003A2A68 /* CheckAttendanceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAttendanceCardView.swift; sourceTree = "<group>"; };
 		A744799C28476AC80083BBF4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A744799E28476AD00083BBF4 /* FileViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewModels.swift; sourceTree = "<group>"; };
 		A74479A028476ADA0083BBF4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -278,6 +282,15 @@
 			path = SpaceMainViews;
 			sourceTree = "<group>";
 		};
+		79BF17A9284D1411003A2A68 /* CheckAttendanceViews */ = {
+			isa = PBXGroup;
+			children = (
+				79BF17AA284D143C003A2A68 /* CheckAttendanceView.swift */,
+				79BF17AC284D1454003A2A68 /* CheckAttendanceCardView.swift */,
+			);
+			path = CheckAttendanceViews;
+			sourceTree = "<group>";
+		};
 		A7447992284759A60083BBF4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +304,7 @@
 		A7447993284759B50083BBF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				79BF17A9284D1411003A2A68 /* CheckAttendanceViews */,
 				79BF179E284CFFE7003A2A68 /* SpaceMainViews */,
 				A74479D12849175A0083BBF4 /* ProfileView */,
 				2CC211802849EFDE0009F785 /* AuthView */,
@@ -595,6 +609,8 @@
 				79BF179B284CFF6E003A2A68 /* ViewExtension.swift in Sources */,
 				A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */,
 				79BF17A6284D0034003A2A68 /* SpaceTopView.swift in Sources */,
+				79BF17AB284D143C003A2A68 /* CheckAttendanceView.swift in Sources */,
+				79BF17AD284D1454003A2A68 /* CheckAttendanceCardView.swift in Sources */,
 				2CC2118A2849F1400009F785 /* LoginButtonView.swift in Sources */,
 				79BF17A8284D0209003A2A68 /* TextExtension.swift in Sources */,
 				2CC211862849F1230009F785 /* ToSView.swift in Sources */,
