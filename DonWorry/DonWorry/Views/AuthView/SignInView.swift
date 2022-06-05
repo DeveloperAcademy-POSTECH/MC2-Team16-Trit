@@ -32,11 +32,8 @@ struct SignInView: View {
                         .font(.system(size: 15))
 
                     }
-
-                    Text("")
-                        .frame(height: 120)
-
-                    // 임시로 이미지 클릭하면 다음 페이지로
+                    .padding(.bottom, 50)
+                    
                     NavigationLink(destination: UserInfoView()) {
                         Image("SignInViewImage")
                             .resizable()
@@ -44,14 +41,13 @@ struct SignInView: View {
                             .frame(width: 263)
 
                     }
-
-                    Text("")
-                        .frame(height: 52)
+                    .padding(.vertical, 50)
 
                     VStack(spacing: 10) {
-                        ForEach(companies, id: \.self) { company in
-                            LoginButtonView(company: company)
-                        }
+                        
+                        AppleLoginButton()
+                        KakaoTalkLoginButton()
+                        GoogleLoginButton()
                     }
                 }
             }

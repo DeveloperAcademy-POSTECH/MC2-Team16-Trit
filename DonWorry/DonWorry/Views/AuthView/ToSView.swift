@@ -17,24 +17,43 @@ struct ToSView: View {
         Term(title: "돈워리 개인정보 제 3자 제공 동의", content: "돈워리 개인정보 제 3자 제공 동의 내용", isEssential: false, isChecked: false, showContent: false),
         Term(title: "이벤트 알림 수신 동의", content: "이벤트 알림 수신 동의 내용", isEssential: false, isChecked: false, showContent: false)
     ]
-
+    
     var body: some View {
         VStack(spacing: 30) {
-            VStack(alignment: .leading) {
-                Text("돈워리 이용을 위해")
-                Text("약관에 동의해주세요.")
+            VStack {
+                HStack {
+                    Text("돈워리 이용을 위해")
+                    Spacer()
+                }
+                HStack {
+                    Text("약관에 동의해주세요.")
+                    Spacer()
+                }
             }
-            .font(.system(size: 17))
+            .font(.system(size: 17, weight: .heavy))
+            .padding()
             
             ScrollView {
                 HStack {
                     Button {
                         for i in 0..<termsOfService.count {
-                            termsOfService[i].isChecked = true
+                            withAnimation {
+                                termsOfService[i].isChecked = true
+                            }
+                            
                         }
                     } label: {
                         
-                        Text("전체 동의")
+                        HStack {
+                            Image(systemName: "circle.fill")
+                                .foregroundColor(termsOfService.allSatisfy { $0.isChecked } ? Color.blueMain : Color.grayE7)
+                            Text("전체 동의하기")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                        }
+                        .padding()
                         
                     }
                 }
@@ -44,10 +63,10 @@ struct ToSView: View {
                 }
                 
                 Button {
-                    // Sheet
+                    // Todo : Show Sheet
                 } label: {
                     HStack {
-                        Text("다음")
+                        Text("확인")
                     }
                     .frame(width: 100, height: 20, alignment: .center)
                     .foregroundColor(.white)
@@ -56,6 +75,7 @@ struct ToSView: View {
                     .background(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? Color.blueMain : Color.blueA4C6FF )
                     .cornerRadius(50)
                 }
+                .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
                 
             }
         }

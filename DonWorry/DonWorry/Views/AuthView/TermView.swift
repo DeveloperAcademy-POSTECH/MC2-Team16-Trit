@@ -15,8 +15,9 @@ struct TermView: View {
         VStack {
             HStack {
                 Button {
-
-                    term.isChecked.toggle()
+                    withAnimation {
+                        term.isChecked.toggle()
+                    }
                      
                 } label: {
                     Image(systemName: "circle.fill")

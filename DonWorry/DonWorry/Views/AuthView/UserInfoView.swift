@@ -23,7 +23,6 @@ struct UserInfoView: View {
             
             VStack(alignment: .leading, spacing: 45) {
                 
-                // 공통 텍스트필드 입력 컴포넌트(닉네임)
                 VStack(alignment: .leading) {
                     Text("닉네임")
                         .font(.system(size: 17))
@@ -32,7 +31,6 @@ struct UserInfoView: View {
                     
                 }
                 
-                // 계좌번호
                 VStack(alignment: .leading) {
                     Text("계좌번호")
                         .font(.system(size: 17))
@@ -58,9 +56,7 @@ struct UserInfoView: View {
             }
             
             Spacer()
-            
-            // 공용 컴포넌트 다음
-            
+                        
             NavigationLink(destination: ToSView()) {
                 
                 Text("다음")
