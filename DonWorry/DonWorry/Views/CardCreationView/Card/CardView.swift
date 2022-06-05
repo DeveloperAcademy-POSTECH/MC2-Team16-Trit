@@ -29,7 +29,7 @@ struct CardView: View {
             .background(color)
             .opacity(0.71)
             
-            VStack(alignment: .trailing){
+            VStack(alignment: .trailing) {
                 Text("애셔")
                 Spacer()
                 Text("05/22")
@@ -44,8 +44,8 @@ struct CardView: View {
     }
 }
 
-//struct CardView_Previews: PreviewProvider {
+// struct CardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        CardView(color: .yellow)
 //    }
-//}
+// }

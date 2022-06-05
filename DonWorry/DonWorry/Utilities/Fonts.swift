@@ -12,7 +12,6 @@ struct CustomFont {
     static let GmarketSansLight = "GmarketSansTTFLight"
 }
 
-
 @available(iOS 13, macCatalyst 13, tvOS 13, watchOS 6, *)
 struct ScaledFont: ViewModifier {
     @Environment(\.sizeCategory) var sizeCategory
@@ -32,7 +31,6 @@ extension View {
     }
 }
 
-//사용예시
-
-//Text("sssd")
+// 사용예시
+// Text("sssd")
 //    .scaledFont(name: CustomFont.GmarketSansTTFBold, size: 17)

@@ -29,22 +29,13 @@ struct DecorateCardView: View {
         
         NavigationView {
             ZStack {
-                //                Color(.white)
-                //                    .ignoresSafeArea()
                 VStack(spacing: 20) {
-                    
-                    //                    Spacer()
-                    //
                     PreviewCardView(account: $account,
                                     color: $color,
                                     date: $date,
                                     image: $images,
                                     decoCase: $decoCase)
                     .padding(.horizontal, 20)
-                    //                    PreviewCardView(account: $account,
-                    //                                      color: $color,
-                    //                                      image: $images,
-                    //                    .padding(.horizontal, 20)
                     
                     VStack(spacing: 20) {
                         CustomPicker(selected: $decoCase)
@@ -53,10 +44,7 @@ struct DecorateCardView: View {
                             .frame(height: 1)
                             .padding(.horizontal, 40)
                             .background(Color.grayEE)
-//                        Spacer()
                         ZStack {
-                            //                            RoundedRectangle(cornerRadius: 28, style: .continuous)
-                            //                                .fill(Color.grayEE)
                             if decoCase == .account {
                                 accountBox
                             } else if decoCase == .color {
@@ -77,7 +65,7 @@ struct DecorateCardView: View {
                     .padding(.bottom, 20)
                 Spacer()
                 }
-                VStack{
+                VStack {
                     Spacer()
                     SmallButton(
                         text: "완료"
@@ -86,7 +74,6 @@ struct DecorateCardView: View {
                         isClicked.toggle()
                     }
                 }
-                
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -118,7 +105,7 @@ struct DecorateCardView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    //컬러박스 입력 칸
+    // 컬러박스 입력 칸
     private var colorBox: some View {
         LazyVGrid(columns: colorColumns, spacing: 30) {
             ForEach(CardColor.allCases) { CardColor in
@@ -140,25 +127,25 @@ struct DecorateCardView: View {
         }
     }
     
-    //date picker
+    // date picker
     private var dateBox: some View {
         VStack {
             DatePicker("결제한 날짜를 선택해 주세요.", selection: $date, displayedComponents: [.date])
                 .datePickerStyle(.graphical)
-            //달력과 텍스트의 위치를 지정하는 프레임
+    // 달력과 텍스트의 위치를 지정하는 프레임
                 .frame(width: 350, height: 250)
                 .padding(.top, 30.0)
         }
     }
     
-    //계좌번호 입력 칸
+    // 계좌번호 입력 칸
     private var accountBox: some View {
         TextField("계좌번호를 입력해주세요.", text: $account)
             .font(.title3)
             .multilineTextAlignment(.center)
             .padding(.horizontal, 20)
     }
-    //이미지 입력 칸
+    // 이미지 입력 칸
     private var imageBox: some View {
         VStack(spacing: 40) {
             RoundedRectangle(cornerRadius: 10)

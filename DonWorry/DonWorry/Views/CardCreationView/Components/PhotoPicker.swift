@@ -8,7 +8,7 @@
 import PhotosUI
 import SwiftUI
 
-//MARK: Example
+// MARK: Example
 //    .sheet(isPresented: $isPresented) {
 //                let configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
 //                PhotoPicker(configuration: configuration, isPresented: $isPresented)
@@ -57,8 +57,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
             itemProviders.forEach { itemProvider in
                 if itemProvider.canLoadObject(ofClass: UIImage.self) {
                     itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
-                        if let uiImage = image as? UIImage
-                        {
+                        if let uiImage = image as? UIImage {
                             tempImages.append(uiImage)
                             self?.parent.isPresented = false
                             self?.parent.images = tempImages

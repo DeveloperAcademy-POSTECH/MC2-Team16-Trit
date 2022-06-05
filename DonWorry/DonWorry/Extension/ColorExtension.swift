@@ -34,7 +34,7 @@ extension Color {
     static let primaryShadoe = Color.primary.opacity(0.2)
      */
     
-    // ADVENT COLOR
+    // Card COLOR
     static let blueMain = Color(hex: "#1C6BFF")
     static let grayC5 = Color(hex: "#c5c5c5")
     static let gray81 = Color(hex: "#818181")
