@@ -1,20 +1,20 @@
 //
-//  SwiftUIView.swift
+//  RoomSwatchView.swift
 //  DonWorry
 //
-//  Created by Chanhee Jeong on 2022/06/01.
+//  Created by uiskim on 2022/06/03.
 //
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct RoomSwatchView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct RoomSwatchView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        RoomSwatchView()
     }
 }
