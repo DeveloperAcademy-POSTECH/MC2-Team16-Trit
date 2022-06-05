@@ -362,6 +362,8 @@
 				A74479D7284918EB0083BBF4 /* EditAccountView.swift */,
 			);
 			path = ProfileView;
+           sourceTree = "<group>";
+        };
 		C0936BFB284876410064CEFA /* MainCard */ = {
 			isa = PBXGroup;
 			children = (

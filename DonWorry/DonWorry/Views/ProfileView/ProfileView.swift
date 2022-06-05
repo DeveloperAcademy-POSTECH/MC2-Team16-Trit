@@ -167,7 +167,6 @@ struct ProfileView: View {
             
         }
         
-        
     }
 }
 
