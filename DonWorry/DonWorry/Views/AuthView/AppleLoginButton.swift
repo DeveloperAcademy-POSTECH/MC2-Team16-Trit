@@ -5,6 +5,7 @@
 //  Created by 김승창 on 2022/06/05.
 //
 
+import AuthenticationServices
 import SwiftUI
 
 struct AppleLoginButton: View {

@@ -27,7 +27,7 @@ struct KakaoTalkLoginButton: View {
             .font(.system(size: 20))
             .foregroundColor(.black)
             .frame(width: 340, height: 58)
-            .background(Color(hex: "FFE810"))
+            .background(Color.yellowKakao)
             .cornerRadius(15)
         }
     }
