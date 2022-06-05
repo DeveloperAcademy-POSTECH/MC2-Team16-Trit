@@ -8,32 +8,44 @@
 import SwiftUI
 
 struct ParticipateCard: View {
-    @State var isOnParticipate: Bool = false
+    // backend에서 참여자들이 다 참가했으면 "상세정산내역보기" 다 참가하지않았으면 "참석확인중"
+    @State var isParticipateIn: Bool
     var body: some View {
-        ZStack {
-            BasicRoundRec(color: .blueMain)
-            Circle()
-                .frame(width: 83, height: 83)
-                .foregroundColor(.blueCardCenter)
-            VStack {
-                Image(systemName: "ellipsis")
-                    .foregroundColor(.white)
-                .font(.system(size: 30, weight: .bold))
-                
-                Spacer().frame(height: 60)
-                
-                Text(isOnParticipate ? "참석 확인중" : "정산중")
-                    .foregroundColor(.white)
-                    .font(.system(size: 16, weight: .bold))
+        Button {
+            //
+        } label: {
+            ZStack {
+                BasicRoundRec(color: .blueMain)
+                Circle()
+                    .frame(width: 83, height: 83)
+                    .foregroundColor(Color(hex: "D8D8D8"))
+                    .opacity(0.5)
+                VStack {
+                    Image(systemName: "ellipsis")
+                        .foregroundColor(.white)
+                    .font(.system(size: 30, weight: .bold))
+                    
+                    Spacer().frame(height: 60)
+                    
+                    HStack(alignment: .center, spacing: 5) {
+                        if isParticipateIn == false {
+                            Image(systemName: "arrow.up.backward.and.arrow.down.forward")
+                                .foregroundColor(.white)
+                        }
+                        Text(isParticipateIn ? "참석 확인중" : "상세정산내역보기")
+                            .foregroundColor(.white)
+                        .font(.system(size: 16, weight: .bold))
+                    }
+                }
+                .offset(y: 40)
             }
-            .offset(y: 40)
         }
     }
 }
 
 struct ParticipateCard_Previews: PreviewProvider {
     static var previews: some View {
-        ParticipateCard()
+        ParticipateCard(isParticipateIn: false)
     }
 }
 

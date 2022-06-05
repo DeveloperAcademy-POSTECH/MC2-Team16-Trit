@@ -21,7 +21,7 @@ struct SampleViewWithSheet: View {
         .halfSheet(showSheet: $sheetStateModel.showSheet) {
             // Sheet내 View의 State 업데이트를 위함
             SheetView()
-                .environmentObject(sheetStateModel)
+//                .environmentObject(sheetStateModel)
         } onEnd: {
             print("Sheet Dismissed")
         }

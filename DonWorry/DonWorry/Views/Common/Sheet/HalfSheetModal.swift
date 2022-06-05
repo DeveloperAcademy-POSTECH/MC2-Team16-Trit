@@ -16,6 +16,7 @@ extension View {
         // bcz it will automatically use the swiftui frame Size only....
         return self
             .background(
+//                HalfSheetHelper(sheetView: sheetView(), showSheet: showSheet, onEnd: onEnd)
                 HalfSheetHelper(sheetView: sheetView(), showSheet: showSheet, onEnd: onEnd)
             )
             .onChange(of: showSheet.wrappedValue) { newValue in
@@ -76,6 +77,7 @@ struct HalfSheetHelper<SheetView: View>: UIViewControllerRepresentable {
         }
         
         func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+            print("presentationControllerDidDismiss")
             parent.showSheet = false
         }
     }
