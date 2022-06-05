@@ -10,25 +10,25 @@ struct GiverCard: View {
     // SheetView를 띄우기 위한 변수
     @State var giversheetState = false
     // 앱특성상 사용자에따라 같은 술자리라도 보이는 카드들과 View가 다르기때문에 사용자가 누군지를 알려주는 변수
-    var contentUser: User
+    var currentUser: User
     var body: some View {
         Button {
             giversheetState.toggle()    
         } label: {
             ZStack {
-                BasicRoundRec(color: .cardColor1)
-                GiverCardDetail(contentUser: contentUser)
+                BasicRoundRec(color: .givercardColor)
+                GiverCardDetail(contentUser: currentUser)
             }
         }
         .sheet(isPresented: $giversheetState) {
-            GiverSheetView(contentUser: contentUser)
+            GiverSheetView(contentUser: currentUser)
         }
     }
 }
 
 struct GiverCard_Previews: PreviewProvider {
     static var previews: some View {
-        GiverCard(contentUser: user1)
+        GiverCard(currentUser: user1)
     }
 }
 
@@ -92,9 +92,15 @@ struct GiverSheetView: View {
                         .padding(.horizontal, 10)
 
                         HStack {
-                            Image("storeicon")
-                                .resizable()
-                                .frame(width: 50, height: 50)
+                            ZStack(alignment: .center) {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(.grayBC)
+                                Image(systemName: "cart")
+                                    .resizable()
+                                    .foregroundColor(.black)
+                                .frame(width: 30, height: 30)
+                            }
                             VStack(alignment: .leading) {
                                 Text("우디네 당구장")
                                     .font(.system(size: 16, weight: .bold))

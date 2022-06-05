@@ -1,5 +1,5 @@
 //
-//  RoomSwatchCellView.swift
+//  RoomSwitchCellView.swift
 //  DonWorry
 //
 //  Created by uiskim on 2022/06/03.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct RoomSwatchCellView: View {
+struct RoomSwitchCellView: View {
     @Binding var selection: String
     let screen = UIScreen.main.bounds
-    let swatches = ["MC2 번개모임", "떱떱해", "밤샘코딩", "트라잇", "문샷"]
+    let switches = ["MC2 번개모임", "떱떱해", "밤샘코딩", "트라잇", "문샷"]
     var body: some View {
         VStack {
             VStack {
@@ -19,29 +19,29 @@ struct RoomSwatchCellView: View {
                 // 아래에 2개의 버튼을 가운데에 쌓는식으로 구성
                 HStack {
                 ForEach(0..<3) { index in
-                    Text(swatches[index])
+                    Text(switches[index])
                         .frame(width: 80, height: 12, alignment: .center)
-                        .foregroundColor(selection == swatches[index] ? .white : .black)
+                        .foregroundColor(selection == switches[index] ? .white : .black)
                         .font(.system(size: 13, weight: .bold))
                         .padding()
-                        .background(selection == swatches[index] ? .blue : Color(hex: "EFEFEF"))
+                        .background(selection == switches[index] ? .blue : Color(hex: "EFEFEF"))
                         .cornerRadius(50)
                         .onTapGesture {
-                            selection = swatches[index]
+                            selection = switches[index]
                         }
                     }
                 }
                 HStack {
                     ForEach(3..<5) { index in
-                    Text(swatches[index])
+                    Text(switches[index])
                         .frame(width: 80, height: 12, alignment: .center)
-                        .foregroundColor(selection == swatches[index] ? .white : .black)
+                        .foregroundColor(selection == switches[index] ? .white : .black)
                         .font(.system(size: 13, weight: .bold))
                         .padding()
-                        .background(selection == swatches[index] ? .blue : Color(hex: "EFEFEF"))
+                        .background(selection == switches[index] ? .blue : Color(hex: "EFEFEF"))
                         .cornerRadius(50)
                         .onTapGesture {
-                            selection = swatches[index]
+                            selection = switches[index]
                         }
                     }
                 }
@@ -52,6 +52,6 @@ struct RoomSwatchCellView: View {
 
 struct RoomSwatchCellView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomSwatchCellView(selection: .constant("떱떱해"))
+        RoomSwitchCellView(selection: .constant("떱떱해"))
     }
 }

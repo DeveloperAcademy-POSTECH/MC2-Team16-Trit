@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  User.swift
 //  DonWorry
 //
 //  Created by Chanhee Jeong on 2022/06/01.
@@ -15,5 +15,5 @@ struct User: Identifiable, Hashable {
     var giveMoney: Int?
     var giveTo: String?
     var userAccount: String?
-    var participate: String
+    var participant: String
 }

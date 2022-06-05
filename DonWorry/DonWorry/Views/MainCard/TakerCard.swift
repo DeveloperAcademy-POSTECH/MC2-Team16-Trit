@@ -9,35 +9,35 @@ import SwiftUI
 
 struct TakerCard: View {
     @State var takersheetStateModel = false
-    var contentUser: User
+    var currentUser: User
     var body: some View {
         Button {
             takersheetStateModel.toggle()
         } label: {
             ZStack(alignment: .leading) {
-                BasicRoundRec(color: Color(hex: "60B35B"))
-                TakerCardDetail(contentUser: contentUser)
+                BasicRoundRec(color: .takercardColor)
+                TakerCardDetail(currentUser: currentUser)
                 
             }
         }
         .sheet(isPresented: $takersheetStateModel) {
-            TakerSheetView(contentUser: contentUser)
+            TakerSheetView(currentUser: currentUser)
         }
     }
 }
 
 struct TakerCard_Previews: PreviewProvider {
     static var previews: some View {
-        TakerCard(takersheetStateModel: true, contentUser: user4)
+        TakerCard(takersheetStateModel: true, currentUser: user4)
     }
 }
 
 struct TakerSheetView: View {
     @Environment(\.presentationMode) var presentationMode
-    var contentUser: User
+    var currentUser: User
     var body: some View {
         // 현재사용자가 돈을 받아야할사람일때 어떤사람에게 돈을 받아야할지를 List로 반환해주는 함수(makegiverList)
-        let givers: [User] = makegiverList(users: users, contentUser: contentUser)
+        let givers: [User] = makeGiverList(users: users, contentUser: currentUser)
         ZStack {
             HStack {
                 ScrollView {
@@ -50,7 +50,7 @@ struct TakerSheetView: View {
                                 Text("18000원")
                                     .font(.system(size: 30, weight: .heavy))
                                     .offset(y: 3)
-                                Text("/ \(contentUser.takeMoney!)원")
+                                Text("/ \(currentUser.takeMoney!)원")
                                     .font(.system(size: 20, weight: .heavy))
                             }
                             Spacer().frame(height: 27)
@@ -58,9 +58,15 @@ struct TakerSheetView: View {
                                 .font(.system(size: 15))
                         }
                         HStack {
-                            Image("storeicon")
-                                .resizable()
-                                .frame(width: 50, height: 50)
+                            ZStack(alignment: .center) {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(.grayBC)
+                                Image(systemName: "cart")
+                                    .resizable()
+                                    .foregroundColor(.black)
+                                .frame(width: 30, height: 30)
+                            }
                             
                             HStack {
                                 Text("루미네 당구장")
@@ -74,10 +80,15 @@ struct TakerSheetView: View {
                         Text("정산 내역")
                             .font(.system(size: 15))
                         HStack {
-                            Image("storeicon")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .opacity(0.1)
+                            ZStack(alignment: .center) {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(.grayBC)
+                                Image(systemName: "cart")
+                                    .resizable()
+                                    .foregroundColor(.black)
+                                .frame(width: 30, height: 30)
+                            }
                             
                             HStack {
                                 Text("루미네 당구장")
@@ -112,12 +123,11 @@ struct TakerSheetView: View {
 }
 
 struct TakerCardDetail: View {
-    var contentUser: User
+    var currentUser: User
     var body: some View {
         // 정산받아야할사람들(givers: [User])을 전부 보여주면 사람이 많아지면 카드 밖으로 이미지가 삐져나감
         // 그래서 최대 4명만 TakerCard에 보여주고 나머지 리스트는 옆의 점세개를 누르면 나오게끔
-        let displayGivers: [User] = makeDisplaygiverList(users: users, contentUser: contentUser)
-        Group {
+        let displayGivers: [User] = makeDisplayGiverList(users: users, contentUser: currentUser)
             VStack {
                 Text("현재정산금액")
                     .font(.system(size: 12, weight: .bold))
@@ -138,7 +148,7 @@ struct TakerCardDetail: View {
                     VStack {
                         Text("미정산금액")
                             .font(.system(size: 8, weight: .medium))
-                        Text("\(contentUser.takeMoney!)")
+                        Text("\(currentUser.takeMoney!)")
                             .font(.system(size: 10, weight: .bold))
                     }
                     .foregroundColor(.white)
@@ -167,7 +177,7 @@ struct TakerCardDetail: View {
                 ZStack {
                     Circle()
                         .frame(width: 30, height: 30)
-                        .foregroundColor(.cardColor2)
+                        .foregroundColor(.takercardColor)
                     Image(systemName: "ellipsis")
                         .foregroundColor(.white)
                 }
@@ -176,11 +186,11 @@ struct TakerCardDetail: View {
                     print("show all menbers")
                 }
             }
-        }
+        
     }
 }
 
-func makegiverList(users: [User], contentUser: User) -> [User] {
+func makeGiverList(users: [User], contentUser: User) -> [User] {
     var giverlist: [User] = []
     users.forEach {
         if $0.giveMoney != nil && $0.giveTo == contentUser.userName {
@@ -190,7 +200,7 @@ func makegiverList(users: [User], contentUser: User) -> [User] {
     return giverlist
 }
 
-func makeDisplaygiverList(users: [User], contentUser: User) -> [User] {
+func makeDisplayGiverList(users: [User], contentUser: User) -> [User] {
     var giverlist: [User] = []
     
     if users.count > 3 {

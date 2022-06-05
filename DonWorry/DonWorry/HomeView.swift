@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  HomeView.swift
 //  DonWorry
 //
 //  Created by Chanhee Jeong on 2022/06/01.
@@ -9,22 +9,22 @@ import SwiftUI
 
 struct SwiftUIView: View {
     @State var selection: String = "떱떱해"
-    var contentUser: User
+    var currentUser: User
     var body: some View {
         VStack {
             HStack {
                 HStack {
                     Button {
-                        //
+                        // TODO - 프로필뷰로 넘어갈 버튼
                     } label: {
-                        Image(contentUser.profileImage)
+                        Image(currentUser.profileImage)
                             .resizable()
                             .frame(width: 50, height: 50)
                             .background(.black)
                             .clipShape(Circle())
                     }
                     VStack(alignment: .leading) {
-                        Text(contentUser.userName + "님")
+                        Text(currentUser.userName + "님")
                             .font(.system(size: 20, weight: .bold))
                         Text("안녕하세요")
                             .font(.system(size: 17))
@@ -32,7 +32,7 @@ struct SwiftUIView: View {
                 }
                 Spacer()
                 Button {
-                    //
+                    // TODO - 알림창으로 넘어갈 버튼
                 } label: {
                     Image(systemName: "bell.circle.fill")
                         .foregroundColor(.blue)
@@ -41,22 +41,22 @@ struct SwiftUIView: View {
             }
             .padding(.bottom, 25)
             .padding(.horizontal, 20)
-            RoomSwatchCellView(selection: $selection)
+            RoomSwitchCellView(selection: $selection)
             Spacer().frame(height: 120)
-            if contentUser.participate == selection {
+            if currentUser.participant == selection {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ParticipateCard(isOnParticipate: false)
-                        if contentUser.takeMoney != nil {
-                            TakerCard(contentUser: contentUser)
+                        ParticipateCard(isParticipateIn: false)
+                        if currentUser.takeMoney != nil {
+                            TakerCard(currentUser: currentUser)
                         }
-                        if contentUser.giveMoney != nil {
-                            GiverCard(contentUser: contentUser)
+                        if currentUser.giveMoney != nil {
+                            GiverCard(currentUser: currentUser)
                         }
                     }
                 }
             } else {
-                ParticipateCard(isOnParticipate: true)
+                ParticipateCard(isParticipateIn: true)
             }
             ButtonBottomCell()
             Spacer().frame(height: 120)
@@ -66,7 +66,7 @@ struct SwiftUIView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView(contentUser: user4)
+        SwiftUIView(currentUser: user1)
     }
 }
 
