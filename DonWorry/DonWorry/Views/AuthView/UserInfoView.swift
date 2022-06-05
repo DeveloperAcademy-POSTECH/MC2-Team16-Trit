@@ -28,7 +28,7 @@ struct UserInfoView: View {
                     Text("닉네임")
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
-                    UnderlineTextField(placeholder: "닉네임을 입력해주세요", maxLength: 20, text: $nickName)
+                    UnderlineTextField(placeholder: "닉네임을 입력해주세요", charLimit: 20, text: $nickName)
                     
                 }
                 
@@ -52,7 +52,7 @@ struct UserInfoView: View {
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                     
-                    UnderlineTextField(placeholder: "예금주명을 입력해주세요", maxLength: 10, text: $holder)
+                    UnderlineTextField(placeholder: "예금주명을 입력해주세요", charLimit: 20, text: $holder)
                 }
                 
             }

@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct EditAccountView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
@@ -29,9 +27,9 @@ struct EditAccountView: View {
             
             .padding(.bottom, 30)
             
-            UnderlineTextField(placeholder: "예금주명을 입력해 주세요.", charLimit: 20)
-            
-            UnderlineTextField(placeholder: "계좌번호를 입력해주세요", charLimit: 20)
+//            UnderlineTextField(placeholder: "예금주명을 입력해 주세요.", charLimit: 20)
+//            
+//            UnderlineTextField(placeholder: "계좌번호를 입력해주세요", charLimit: 20)
             
             Spacer()
             VStack {
@@ -68,4 +66,3 @@ struct EditAccountView_Previews: PreviewProvider {
         EditProfileView()
     }
 }
-

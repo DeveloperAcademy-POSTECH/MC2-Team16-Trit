@@ -26,7 +26,7 @@ struct EditProfileView: View {
             
             .padding(.bottom, 30)
             
-            UnderlineTextField(placeholder: "수정할 이름을 입력해주세요", charLimit: 20)
+//            UnderlineTextField(placeholder: "수정할 이름을 입력해주세요", charLimit: 20)
             
             Spacer()
             VStack {
