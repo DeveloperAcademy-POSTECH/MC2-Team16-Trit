@@ -15,7 +15,7 @@ struct TakerCard: View {
             takersheetStateModel.toggle()
         } label: {
             ZStack(alignment: .leading) {
-                BasicRoundRec(color: .takercardColor)
+                BasicRoundRec(color: .takerCardColor)
                 TakerCardDetail(currentUser: currentUser)
                 
             }
@@ -177,7 +177,7 @@ struct TakerCardDetail: View {
                 ZStack {
                     Circle()
                         .frame(width: 30, height: 30)
-                        .foregroundColor(.takercardColor)
+                        .foregroundColor(.takerCardColor)
                     Image(systemName: "ellipsis")
                         .foregroundColor(.white)
                 }

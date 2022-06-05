@@ -16,7 +16,7 @@ struct GiverCard: View {
             giversheetState.toggle()    
         } label: {
             ZStack {
-                BasicRoundRec(color: .givercardColor)
+                BasicRoundRec(color: .giverCardColor)
                 GiverCardDetail(contentUser: currentUser)
             }
         }
