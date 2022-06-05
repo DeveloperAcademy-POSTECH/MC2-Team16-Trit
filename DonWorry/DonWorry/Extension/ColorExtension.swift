@@ -34,7 +34,6 @@ extension Color {
     static let primaryShadoe = Color.primary.opacity(0.2)
      */
     
-    // ADVENT COLOR
     static let blueMain = Color(hex: "#1C6BFF")
     static let grayC5 = Color(hex: "#c5c5c5")
     static let gray81 = Color(hex: "#818181")
@@ -43,11 +42,23 @@ extension Color {
     static let gray4E = Color(hex: "#4E4E4E")
     static let grayEF = Color(hex: "#EFEFEF")
     static let grayEE = Color(hex: "#EEEEEE")
+    static let grayE7 = Color(hex: "#E7E7E7")
+    static let grayD0 = Color(hex: "#D0D0D0")
+    static let grayF6 = Color(hex: "#F6F6F6")
+    static let grayBD = Color(hex: "#BDBDBD")
+    static let gray97 = Color(hex: "#979797")
     static let grayBC = Color(hex: "#BCBCBC")
     static let grayD8 = Color(hex: "#D8D8D8")
     static let grayF2F3F5 = Color(hex: "#F2F3F5")
     static let blueCardCenter = Color(hex: "0071ED")
     static let giverCardColor = Color(hex: "401811")
     static let takerCardColor = Color(hex: "60B35B")
+    static let gray91 = Color(hex: "#919191")
+    static let grayF0 = Color(hex: "#F0F0F0")
+    static let grayAccount = Color(hex: "#4B4A4A")
+    static let grayWithBlue = Color(hex: "#798191")
+    static let blueCardCenter = Color(hex: "#0071ED")
+    static let cardColor1 = Color(hex: "#401811")
+    static let blueA4C6FF = Color(hex: "#A4C6FF")
     
 }
