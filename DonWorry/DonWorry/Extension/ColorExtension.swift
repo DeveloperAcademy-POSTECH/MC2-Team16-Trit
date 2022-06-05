@@ -48,3 +48,48 @@ extension Color {
     static let grayF2F3F5 = Color(hex: "#F2F3F5")
     
 }
+enum CardColor: String, Identifiable, CaseIterable {
+    case azure
+    case blue
+    case brown
+    case green
+    case indigo
+    case maroon
+    case pink
+    case purple
+    case red
+    case yellow
+    
+    var id: String {
+        self.rawValue
+    }
+    
+    var name: String {
+        self.rawValue
+    }
+    
+    var color: Color {
+        switch self {
+        case .azure:
+            return Color("Azure")
+        case .blue:
+            return Color("Blue")
+        case .brown:
+            return Color("Brown")
+        case .green:
+            return Color("Green")
+        case .indigo:
+            return Color("Indigo")
+        case .maroon:
+            return Color("Maroon")
+        case .pink:
+            return Color("Pink")
+        case .purple:
+            return Color("Purple")
+        case .red:
+            return Color("Red")
+        case .yellow:
+            return Color("Yellow")
+        }
+    }
+}
