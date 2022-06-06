@@ -38,6 +38,7 @@ struct ChooseBankSheet: View {
                 } label: {
                     Text("확인")
                 }
+                .disabled(inputBank.isEmpty)
                 
             }
             .foregroundColor(.black)

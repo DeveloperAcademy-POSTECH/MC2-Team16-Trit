@@ -60,7 +60,7 @@ struct UserInfoView: View {
             
             Spacer()
             
-            NavigationLink(destination: ToSView()) {
+            NavigationLink(destination: TermView()) {
                 
                 Text("다음")
                     .frame(width: 100, height: 20, alignment: .center)

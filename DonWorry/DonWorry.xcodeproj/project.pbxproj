@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		2CC211822849F0FA0009F785 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211812849F0FA0009F785 /* SignInView.swift */; };
 		2CC211842849F1160009F785 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211832849F1160009F785 /* UserInfoView.swift */; };
-		2CC211862849F1230009F785 /* ToSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211852849F1230009F785 /* ToSView.swift */; };
-		2CC211882849F1300009F785 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211872849F1300009F785 /* TermView.swift */; };
+		2CC211862849F1230009F785 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211852849F1230009F785 /* TermView.swift */; };
+		2CC211882849F1300009F785 /* TermRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211872849F1300009F785 /* TermRowView.swift */; };
 		2CC2118C2849F1CF0009F785 /* TermModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC2118B2849F1CF0009F785 /* TermModel.swift */; };
 		2CC21192284AF14C0009F785 /* AccountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC21191284AF14C0009F785 /* AccountTextField.swift */; };
 		2CC211AE284BBE960009F785 /* ChooseBankSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211AD284BBE960009F785 /* ChooseBankSheet.swift */; };
@@ -89,8 +89,8 @@
 /* Begin PBXFileReference section */
 		2CC211812849F0FA0009F785 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2CC211832849F1160009F785 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
-		2CC211852849F1230009F785 /* ToSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSView.swift; sourceTree = "<group>"; };
-		2CC211872849F1300009F785 /* TermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
+		2CC211852849F1230009F785 /* TermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
+		2CC211872849F1300009F785 /* TermRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermRowView.swift; sourceTree = "<group>"; };
 		2CC2118B2849F1CF0009F785 /* TermModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermModel.swift; sourceTree = "<group>"; };
 		2CC21191284AF14C0009F785 /* AccountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTextField.swift; sourceTree = "<group>"; };
 		2CC211AD284BBE960009F785 /* ChooseBankSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseBankSheet.swift; sourceTree = "<group>"; };
@@ -99,6 +99,7 @@
 		2CC211B3284C6BB60009F785 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
 		2CC211B5284C7EAF0009F785 /* DonWorry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DonWorry.entitlements; sourceTree = "<group>"; };
 		2CC211B6284CE9880009F785 /* TermSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermSheetView.swift; sourceTree = "<group>"; };
+		2CC211B9284E03F00009F785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2CF61B392849AF97004C3768 /* SpaceEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceEmptyView.swift; sourceTree = "<group>"; };
 		2CF61B3C2849B00B004C3768 /* NewPaymentTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentTitle.swift; sourceTree = "<group>"; };
 		2CF61B3E2849B18A004C3768 /* NewPaymentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentIcon.swift; sourceTree = "<group>"; };
@@ -181,11 +182,11 @@
 			children = (
 				2CC211812849F0FA0009F785 /* SignInView.swift */,
 				2CC211832849F1160009F785 /* UserInfoView.swift */,
-				2CC211852849F1230009F785 /* ToSView.swift */,
+				2CC211852849F1230009F785 /* TermView.swift */,
 				2CC211AF284C6A690009F785 /* AppleLoginButton.swift */,
 				2CC211B1284C6A9E0009F785 /* KakaoTalkLoginButton.swift */,
 				2CC211B3284C6BB60009F785 /* GoogleLoginButton.swift */,
-				2CC211872849F1300009F785 /* TermView.swift */,
+				2CC211872849F1300009F785 /* TermRowView.swift */,
 			);
 			path = AuthView;
 			sourceTree = "<group>";
@@ -233,6 +234,7 @@
 		3EBC81592843522900794955 /* DonWorry */ = {
 			isa = PBXGroup;
 			children = (
+				2CC211B9284E03F00009F785 /* Info.plist */,
 				2CC211B5284C7EAF0009F785 /* DonWorry.entitlements */,
 				A744799928475A830083BBF4 /* Resources */,
 				A744799A28475A9A0083BBF4 /* Utilities */,
@@ -628,20 +630,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A74479A128476ADA0083BBF4 /* FileModels.swift in Sources */,
+				A74479A128476ADA0083BBF4 /* User.swift in Sources */,
 				2CC211B2284C6A9E0009F785 /* KakaoTalkLoginButton.swift in Sources */,
 				A74479A128476ADA0083BBF4 /* User.swift in Sources */,
 				A74479D6284918D60083BBF4 /* EditProfileView.swift in Sources */,
 				A74479A128476ADA0083BBF4 /* User.swift in Sources */,
 				2CF61B3D2849B00B004C3768 /* NewPaymentTitle.swift in Sources */,
-				2CC211882849F1300009F785 /* TermView.swift in Sources */,
+				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
 				A74479B12847A8190083BBF4 /* SmallButton.swift in Sources */,
 				A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */,
 				4D6229CA2849295300A8E24C /* ImageManager.swift in Sources */,
 				A74479AD2847A0580083BBF4 /* LargeButton.swift in Sources */,
 				2CF61B412849B1A0004C3768 /* NewPaymentPrice.swift in Sources */,
 				A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */,
-				2CC211862849F1230009F785 /* ToSView.swift in Sources */,
+				2CC211862849F1230009F785 /* TermView.swift in Sources */,
 				2CC211AE284BBE960009F785 /* ChooseBankSheet.swift in Sources */,
 				A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */,
 				4D6229C32849277500A8E24C /* Fonts.swift in Sources */,
@@ -842,9 +844,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = Z225784MRD;
+				DEVELOPMENT_TEAM = P8QLF9WL7T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DonWorry/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -872,9 +875,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = Z225784MRD;
+				DEVELOPMENT_TEAM = P8QLF9WL7T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DonWorry/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

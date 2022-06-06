@@ -15,14 +15,13 @@ struct SignInView: View {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [.white, Color.blueMain]), startPoint: .init(x: 0, y: 0.47), endPoint: .init(x: 0, y: 1))
                     .ignoresSafeArea()
-
+                
                 VStack {
                     VStack(spacing: 15) {
                         Text("돈.워리")
                             .foregroundColor(Color.blueMain)
-                            .font(.system(size: 30))
-                            .fontWeight(.bold)
-
+                            .scaledFont(name: CustomFont.GmarketSansBold, size: 30)
+                        
                         VStack {
                             Text("때인돈 받아드립니다.")
                                 .fontWeight(.light)
@@ -30,19 +29,17 @@ struct SignInView: View {
                                 .fontWeight(.light)
                         }
                         .font(.system(size: 15))
-
                     }
                     .padding(.bottom, 70)
-           
+                    
                     NavigationLink(destination: UserInfoView()) {
                         Image("SignInViewImage")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 230)
-
                     }
                     .padding(.vertical, 50)
-
+                    
                     VStack(spacing: 10) {
                         AppleLoginButton()
                         KakaoTalkLoginButton()

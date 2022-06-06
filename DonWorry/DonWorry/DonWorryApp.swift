@@ -12,7 +12,8 @@ struct DonWorryApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            SwiftUIView(currentUser: user4)
+//            SwiftUIView(currentUser: user4)
+            SignInView()
         }
     }
 }

@@ -137,6 +137,6 @@ struct NewPaymentPrice: View {
 
 struct NewPaymentPrice_Previews: PreviewProvider {
     static var previews: some View {
-        NewPaymentPrice(paymentTitle: "땡떙이네 스타벅스", paymentIcon: Image("chicken-leg"))
+        NewPaymentPrice(paymentTitle: "땡땡이네 스타벅스", paymentIcon: Image("chicken-leg"))
     }
 }
