@@ -14,8 +14,7 @@ struct LoginButtonView: View {
     
     var body: some View {
         Button {
-            // 소셜 로그인 기능 구현하기
-            
+            // 
         } label: {
             HStack(spacing: 100) {
                 Image(company)
