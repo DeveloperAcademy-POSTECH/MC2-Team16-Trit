@@ -103,6 +103,7 @@
 		3E208728284DA4CB003A4CFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E208732284DA688003A4CFD /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		3E208734284DC6F5003A4CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3E208736284E65AD003A4CFD /* DonWorry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DonWorry.entitlements; sourceTree = "<group>"; };
 		3EBC81572843522900794955 /* DonWorry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonWorry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBC815A2843522900794955 /* DonWorryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryApp.swift; sourceTree = "<group>"; };
 		3EBC815C2843522900794955 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -234,6 +235,7 @@
 		3EBC81592843522900794955 /* DonWorry */ = {
 			isa = PBXGroup;
 			children = (
+				3E208736284E65AD003A4CFD /* DonWorry.entitlements */,
 				3E208734284DC6F5003A4CFD /* Info.plist */,
 				A744799928475A830083BBF4 /* Resources */,
 				A744799A28475A9A0083BBF4 /* Utilities */,
@@ -840,6 +842,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DonWorry/DonWorry.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
@@ -870,6 +873,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DonWorry/DonWorry.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
