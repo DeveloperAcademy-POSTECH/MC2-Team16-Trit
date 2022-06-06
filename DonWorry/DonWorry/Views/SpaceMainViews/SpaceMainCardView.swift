@@ -11,6 +11,7 @@ struct SpaceMainCardView: View {
     var index: Int = 0
     var clicked: () -> Void
     let colors = [Color(hex: "ff5454"), Color.green, Color.purple]
+    var isParticipated = true
     var body: some View {
         Button {
             print("card view..")
@@ -93,6 +94,12 @@ struct SpaceMainCardView: View {
                             }
                             .padding(.trailing, 24)
                             //                                            .background(.blue)//BACKGROUND
+                        }
+                        .blur(radius: isParticipated ? 5 : 0)
+                        if isParticipated {
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.white)
+                                .font(.system(size: 70))
                         }
                         //                                        .background(.purple)//BACKGROUND
                     }
