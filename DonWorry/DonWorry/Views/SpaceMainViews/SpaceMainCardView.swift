@@ -32,7 +32,6 @@ struct SpaceMainCardView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(Color.white, lineWidth: 1)
                     )
-                
                     .overlay {
                         HStack {
                             VStack(alignment: .leading, spacing: 0) {

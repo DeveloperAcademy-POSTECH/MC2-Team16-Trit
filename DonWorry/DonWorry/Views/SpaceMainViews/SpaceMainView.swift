@@ -16,7 +16,7 @@ import SwiftUI
 //MARK: - Scroll시 카드가 눌리는가..?
 //MARK: - SpaceID가 길 경우? TopView
 //MARK: - MainCardView Data
-
+//MARK: - CheckAttendanceCardView 글자넘어서지않도록.
 
 struct SpaceMainView: View {
     let leftPaddingSize: CGFloat = 25.0
