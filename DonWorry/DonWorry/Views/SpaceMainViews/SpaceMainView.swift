@@ -14,10 +14,9 @@ struct SpaceMainView: View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 VStack {
-                    Spacer()
                     ScrollView {
                         SpaceTopView(spaceID: "213d42s3s5")
-                        .padding(.vertical, 21)
+                            .padding(.vertical, 21)
                         LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 24) {
                             ForEach(0..<5) { index in
                                 if index == 4 {
@@ -25,25 +24,20 @@ struct SpaceMainView: View {
                                         print("calculate start FUNCTION")
                                     }) .padding(.bottom, 70)
                                 } else {
-                                    SpaceMainCardView(index: index) {
+                                    SpaceMainCardView(color:.blueMain, account: "42910090307",index: index, clicked: {
                                         print("MainCard FUNCTION")
-                                    }
+                                    }, isParticipated: false, date: "05/05")
+                                    
+                                    //                                    SpaceMainCardView(index: index) {
+                                    //                                        print("MainCard FUNCTION")
                                 }
                             }
                         }
                     }
-                    .navigationBarTitleDisplayMode(.inline)
                 }
-                HStack(spacing: 25) {
-                    SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
-                        print("링크 공유 FUNCTION")
-                    }
-                    SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color(hex: "#A4C6FF"), textColor: .white) {
-                        print("참석 확인 FUNCTION")
-                    }
-                }
+                .navigationBarTitleDisplayMode(.inline)
             }
-        .toolbar {
+            .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Text("MC2 첫 회식")
                         .font(.system(size: 20, weight: .heavy))
@@ -64,7 +58,16 @@ struct SpaceMainView: View {
                     }
                 }
             }
+            HStack(spacing: 25) {
+                SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
+                    print("링크 공유 FUNCTION")
+                }
+                SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color(hex: "#A4C6FF"), textColor: .white) {
+                    print("참석 확인 FUNCTION")
+                }
+            }
         }
+        
     }
 }
 

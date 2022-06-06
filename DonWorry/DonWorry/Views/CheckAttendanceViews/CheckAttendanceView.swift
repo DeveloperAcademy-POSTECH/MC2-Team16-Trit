@@ -12,8 +12,9 @@ struct CheckAttendanceView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack {
-                Spacer(minLength: 50)
+//                Spacer(minLength: 50)
                 ScrollView {
+                    Spacer(minLength: 50)
                     LazyVGrid(columns: [GridItem(.fixed(340))], spacing: 12) {
                         ForEach(0..<5) { index in
                             HStack(alignment: .center, spacing: 0) {
@@ -28,7 +29,8 @@ struct CheckAttendanceView: View {
                         }
                     }
                 }
-            }.navigationBarTitleDisplayMode(.inline)
+            }
+            .navigationBarTitleDisplayMode(.inline)
             HStack(spacing: 25) {
                 SpaceMainBottomButton(text: "모두 선택", systemImageString: "", backgroundColor: .blueMain, textColor: .white) {
                     print("링크 공유 FUNCTION")
@@ -38,6 +40,7 @@ struct CheckAttendanceView: View {
                 }
             }
         }
+        
         .toolbar {
             ToolbarItem(placement: .principal) {
                             Text("참석확인")
