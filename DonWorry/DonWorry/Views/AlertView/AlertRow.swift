@@ -17,9 +17,14 @@ struct AlertRow: View {
             HStack {
                 HStack {
                     // Image Goes Here
+                    Image(isPayment
+                          ? "cash-and-coins" : "calculator")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
                 }
                 .frame(width: 45, height: 45)
-                .background(Color.gray)
+                .background(Color.grayEE)
                 .cornerRadius(15)
                 .padding(.horizontal, 5)
                 .padding(.trailing, 5)
