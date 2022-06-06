@@ -13,66 +13,71 @@ let companies = ["Apple", "KakaoTalk", "Google"]
 
 struct SignInView: View {
     
-    
-    //SignIn을 위해 선언하였습니다.
+    // SignIn을 위해 선언하였습니다.
     @State var isLoading: Bool = false
     @AppStorage("SignIn Status") var log_status = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: [.white, Color.blueMain]), startPoint: .init(x: 0, y: 0.47), endPoint: .init(x: 0, y: 1))
-                    .ignoresSafeArea()
+        
+        if log_status == true {
+            HomeView(currentUser: user1)
+        }else{
+            NavigationView {
+                ZStack {
+                    LinearGradient(gradient: Gradient(colors: [.white, Color.blueMain]), startPoint: .init(x: 0, y: 0.47), endPoint: .init(x: 0, y: 1))
+                        .ignoresSafeArea()
 
-                VStack {
-                    VStack(spacing: 15) {
-                        Text("돈.워리")
-                            .foregroundColor(Color.blueMain)
-                            .font(.system(size: 30))
-                            .fontWeight(.bold)
+                    VStack {
+                        VStack(spacing: 15) {
+                            Text("돈.워리")
+                                .foregroundColor(Color.blueMain)
+                                .font(.system(size: 30))
+                                .fontWeight(.bold)
 
-                        VStack {
-                            Text("때인돈 받아드립니다.")
-                                .fontWeight(.light)
-                            Text("걱정마세요.")
-                                .fontWeight(.light)
+                            VStack {
+                                Text("때인돈 받아드립니다.")
+                                    .fontWeight(.light)
+                                Text("걱정마세요.")
+                                    .fontWeight(.light)
+                            }
+                            .font(.system(size: 15))
+
                         }
-                        .font(.system(size: 15))
 
-                    }
+                        Text("")
+                            .frame(height: 120)
 
-                    Text("")
-                        .frame(height: 120)
+                        // 임시로 이미지 클릭하면 다음 페이지로
+                        NavigationLink(destination: UserInfoView()) {
+                            Image("SignInViewImage")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 263)
 
-                    // 임시로 이미지 클릭하면 다음 페이지로
-                    NavigationLink(destination: UserInfoView()) {
-                        Image("SignInViewImage")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 263)
+                        }
 
-                    }
+                        Text("")
+                            .frame(height: 52)
 
-                    Text("")
-                        .frame(height: 52)
-
-//                    VStack(spacing: 10) {
-//                        ForEach(companies, id: \.self) { company in
-//                            LoginButtonView(company: company)
-//                        }
-//                    }
-                    // MARK: Test용 Button (추후에 UI Design이 수정될 것 같아 임시로 기능 확인을 위해 만들었습니다.)
-                    Button {
-                        googleHandleLogin() //Google Social Login function
-                    } label: {
-                        HStack(spacing: 20) {
-                            Image("Google")
-                            Text("구글로 로그인하기")
+    //                    VStack(spacing: 10) {
+    //                        ForEach(companies, id: \.self) { company in
+    //                            LoginButtonView(company: company)
+    //                        }
+    //                    }
+                        // MARK: Test용 Button (추후에 UI Design이 수정될 것 같아 임시로 기능 확인을 위해 만들었습니다.)
+                        Button {
+                            googleHandleLogin() //Google Social Login function
+                        } label: {
+                            HStack(spacing: 20) {
+                                Image("Google")
+                                Text("구글로 로그인하기")
+                            }
                         }
                     }
                 }
             }
         }
+        
     }
     
     // 구글 소셜 로그인
@@ -115,9 +120,11 @@ struct SignInView: View {
                 }
                 // 4. 확인을 위해 User name을 출력했습니다. 추후 제거할 의향이 있습니다.
                 guard let user = result?.user else {
+                   
                     return
                 }
-                
+                log_status = true
+                print(log_status)
                 print(user.displayName ?? "Success!")
             }
         }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct HomeView: View {
     @State var selection: String = "떱떱해"
     var currentUser: User
     var body: some View {
@@ -64,11 +64,11 @@ struct SwiftUIView: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        SwiftUIView(currentUser: user1)
-    }
-}
+//struct SwiftUIView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        H(currentUser: user1)
+//    }
+//}
 
 struct ButtonBottomCell: View {
     var body: some View {
