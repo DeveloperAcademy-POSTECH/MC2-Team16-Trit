@@ -10,6 +10,8 @@ import SwiftUI
 struct ToSView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    @State private var showSheet = false
+    
     @State private var termsOfService = [
         Term(title: "만 14세 이상입니다.", content: "만 14세 이상입니다. 내용", isEssential: true, isChecked: false, showContent: false),
         Term(title: "돈워리 서비스 이용약관 동의", content: "돈워리 서비스 이용약관 동의 내용", isEssential: true, isChecked: false, showContent: false),
@@ -36,11 +38,18 @@ struct ToSView: View {
             ScrollView {
                 HStack {
                     Button {
+                        let isAllChecked = termsOfService.allSatisfy { $0.isChecked }
                         for i in 0..<termsOfService.count {
                             withAnimation {
-                                termsOfService[i].isChecked = true
+                                if isAllChecked {
+                                    // 모두 체크되어있으면 다 빼기
+                                    termsOfService[i].isChecked = false
+                                    
+                                } else {
+                                    // 하나라도 체크 안되어있으면 모두 체크하기
+                                    termsOfService[i].isChecked = true
+                                }
                             }
-                            
                         }
                     } label: {
                         
@@ -61,23 +70,25 @@ struct ToSView: View {
                 ForEach($termsOfService, id: \.self) {
                     TermView(term: $0)
                 }
-                
-                Button {
-                    // Todo : Show Sheet
-                } label: {
-                    HStack {
-                        Text("확인")
-                    }
-                    .frame(width: 100, height: 20, alignment: .center)
-                    .foregroundColor(.white)
-                    .font(.system(size: 15, weight: .bold))
-                    .padding()
-                    .background(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? Color.blueMain : Color.blueA4C6FF )
-                    .cornerRadius(50)
-                }
-                .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
-                
             }
+            
+            Button {
+                showSheet = true
+                
+                // Todo : 회원가입 완료 후 메인 페이지로 넘어가기
+                
+            } label: {
+                HStack {
+                    Text("확인")
+                }
+                .frame(width: 100, height: 20, alignment: .center)
+                .foregroundColor(.white)
+                .font(.system(size: 15, weight: .bold))
+                .padding()
+                .background(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? Color.blueMain : Color.blueA4C6FF )
+                .cornerRadius(50)
+            }
+            .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -94,8 +105,12 @@ struct ToSView: View {
                     .font(.system(size: 20, weight: .heavy))
             }
         }
+        .halfSheet(showSheet: $showSheet) {
+            TermSheetView(agreedTerms: termsOfService.filter { $0.isChecked }, showSheet: $showSheet)
+        } onEnd: {
+            showSheet = false
+        }
     }
-    
 }
 
 struct ToSView_Previews: PreviewProvider {

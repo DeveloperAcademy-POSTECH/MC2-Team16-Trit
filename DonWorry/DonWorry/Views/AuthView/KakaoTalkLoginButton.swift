@@ -9,26 +9,27 @@ import SwiftUI
 
 struct KakaoTalkLoginButton: View {
     var body: some View {
+    
         Button {
-            
-            // Todo : 소셜 로그인 기능 구현하기
-            
+            // Todo : 소셜 로그인 기능 추가
         } label: {
-            HStack(spacing: 15) {
-                
+            HStack {
                 Image("KakaoTalk")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 25)
+                    .frame(width: 35, height: 35)
+                    .foregroundColor(Color(hex: "#000000"))
                 
-                Text("KakaoTalk로 로그인")
+                Spacer()
+                    .frame(width: 75)
                 
+                Text("카카오 로그인")
+                    .font(.system(size: 15))
+                    .foregroundColor(Color(hex: "#000000")
+                        .opacity(0.85))
             }
-            .font(.system(size: 20))
-            .foregroundColor(.black)
-            .frame(width: 340, height: 58)
-            .background(Color.yellowKakao)
-            .cornerRadius(15)
+            .frame(width: 330, height: 60)
+            .background(RoundedRectangle(cornerRadius: 12)
+                .foregroundColor(Color.yellowKakao))
         }
     }
 }

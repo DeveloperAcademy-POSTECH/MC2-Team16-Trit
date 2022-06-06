@@ -5,28 +5,30 @@
 //  Created by 김승창 on 2022/06/05.
 //
 
-import AuthenticationServices
 import SwiftUI
 
 struct AppleLoginButton: View {
     var body: some View {
+        
         Button {
             
             // Todo : 소셜 로그인 기능 구현하기
             
         } label: {
-            HStack(spacing: 15) {
-                Image(systemName: "applelogo")
+            HStack {
+                Image("Apple")
+                
+                Spacer()
+                    .frame(width: 30)
                 
                 Text("Apple로 로그인")
-                    .padding(.leading, 42)
+                    .font(.system(size: 15))
+                    .foregroundColor(.white)
                 
             }
-            .font(.system(size: 20))
-            .foregroundColor(.white)
-            .frame(width: 340, height: 58)
-            .background(.black)
-            .cornerRadius(15)
+            .frame(width: 330, height: 60)
+            .background(RoundedRectangle(cornerRadius: 12)
+                .foregroundColor(Color.black))
         }
     }
 }

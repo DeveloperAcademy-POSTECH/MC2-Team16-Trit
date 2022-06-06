@@ -17,6 +17,7 @@
 		2CC211B0284C6A690009F785 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211AF284C6A690009F785 /* AppleLoginButton.swift */; };
 		2CC211B2284C6A9E0009F785 /* KakaoTalkLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B1284C6A9E0009F785 /* KakaoTalkLoginButton.swift */; };
 		2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B3284C6BB60009F785 /* GoogleLoginButton.swift */; };
+		2CC211B7284CE9880009F785 /* TermSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B6284CE9880009F785 /* TermSheetView.swift */; };
 		2CF61B3A2849AF97004C3768 /* SpaceEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B392849AF97004C3768 /* SpaceEmptyView.swift */; };
 		2CF61B3D2849B00B004C3768 /* NewPaymentTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B3C2849B00B004C3768 /* NewPaymentTitle.swift */; };
 		2CF61B3F2849B18A004C3768 /* NewPaymentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B3E2849B18A004C3768 /* NewPaymentIcon.swift */; };
@@ -78,6 +79,7 @@
 		2CC211B1284C6A9E0009F785 /* KakaoTalkLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoTalkLoginButton.swift; sourceTree = "<group>"; };
 		2CC211B3284C6BB60009F785 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
 		2CC211B5284C7EAF0009F785 /* DonWorry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DonWorry.entitlements; sourceTree = "<group>"; };
+		2CC211B6284CE9880009F785 /* TermSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermSheetView.swift; sourceTree = "<group>"; };
 		2CF61B392849AF97004C3768 /* SpaceEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceEmptyView.swift; sourceTree = "<group>"; };
 		2CF61B3C2849B00B004C3768 /* NewPaymentTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentTitle.swift; sourceTree = "<group>"; };
 		2CF61B3E2849B18A004C3768 /* NewPaymentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentIcon.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */,
 				A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */,
 				2CC211AD284BBE960009F785 /* ChooseBankSheet.swift */,
+				2CC211B6284CE9880009F785 /* TermSheetView.swift */,
 			);
 			path = Sheet;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
 				C0936BFD284876800064CEFA /* ParticipateCard.swift in Sources */,
 				3EBC815D2843522900794955 /* ContentView.swift in Sources */,
+				2CC211B7284CE9880009F785 /* TermSheetView.swift in Sources */,
 				A74479C22847E3760083BBF4 /* ChipButton.swift in Sources */,
 				2CC211842849F1160009F785 /* UserInfoView.swift in Sources */,
 				2CC2118C2849F1CF0009F785 /* TermModel.swift in Sources */,

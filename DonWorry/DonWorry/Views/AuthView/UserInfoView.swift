@@ -24,10 +24,13 @@ struct UserInfoView: View {
             VStack(alignment: .leading, spacing: 45) {
                 
                 VStack(alignment: .leading) {
-                    Text("닉네임")
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
-                    UnderlineTextField(placeholder: "닉네임을 입력해주세요", charLimit: 20, text: $nickName)
+                    HStack {
+                        Text("닉네임")
+                            .font(.system(size: 17))
+                            .fontWeight(.semibold)
+                        
+                    }
+                    UnderlineTextField(placeholder: "친구들이 나를 찾을 닉네임을 입력해주세요.", charLimit: 20, text: $nickName)
                     
                 }
                 
@@ -56,7 +59,7 @@ struct UserInfoView: View {
             }
             
             Spacer()
-                        
+            
             NavigationLink(destination: ToSView()) {
                 
                 Text("다음")

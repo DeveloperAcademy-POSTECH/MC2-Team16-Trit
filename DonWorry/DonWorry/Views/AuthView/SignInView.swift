@@ -32,19 +32,18 @@ struct SignInView: View {
                         .font(.system(size: 15))
 
                     }
-                    .padding(.bottom, 50)
-                    
+                    .padding(.bottom, 70)
+           
                     NavigationLink(destination: UserInfoView()) {
                         Image("SignInViewImage")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 263)
+                            .frame(width: 230)
 
                     }
                     .padding(.vertical, 50)
 
                     VStack(spacing: 10) {
-                        
                         AppleLoginButton()
                         KakaoTalkLoginButton()
                         GoogleLoginButton()

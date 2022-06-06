@@ -9,25 +9,29 @@ import SwiftUI
 
 struct GoogleLoginButton: View {
     var body: some View {
+        
         Button {
             
             // Todo : 소셜 로그인 기능 구현하기
             
         } label: {
-            HStack(spacing: 15) {
+            HStack {
                 Image("Google")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20)
+                
+                Spacer()
+                    .frame(width: 20)
+                
                 Text("Google로 로그인")
-                    .padding(.leading, 30)
+                    .font(.system(size: 15))
+                    .foregroundColor(.black)
                 
             }
-            .font(.system(size: 20))
-            .foregroundColor(.black)
-            .frame(width: 340, height: 58)
-            .background(.white)
-            .cornerRadius(15)
+            .frame(width: 330, height: 60)
+            .background(RoundedRectangle(cornerRadius: 12)
+                .foregroundColor(Color(hex: "#FFFFFF")))
         }
     }
 }
