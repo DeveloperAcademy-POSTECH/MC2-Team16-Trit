@@ -15,11 +15,16 @@ struct HomeView: View {
     var currentUser: User
     var body: some View {
         NavigationView {
+            
+           
             VStack {
                 HStack {
                     HStack {
+                        NavigationLink(destination: ProfileView(), tag: "profile", selection: $naviSelection) { EmptyView() }
+                        
                         Button {
                             // TODO - 프로필뷰로 넘어갈 버튼
+                            self.naviSelection = "profile"
                         } label: {
                             Image(currentUser.profileImage)
                                 .resizable()
@@ -35,7 +40,6 @@ struct HomeView: View {
                         }
                     }
                     Spacer()
-                    
                     NavigationLink(destination: AlertView(), tag: "alert", selection: $naviSelection) { EmptyView() }
                     
                     Button {
