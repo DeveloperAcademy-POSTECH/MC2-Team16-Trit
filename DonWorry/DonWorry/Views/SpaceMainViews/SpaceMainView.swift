@@ -36,6 +36,7 @@ struct SpaceMainView: View {
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
+//                .navigationBarHidden(true)
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
