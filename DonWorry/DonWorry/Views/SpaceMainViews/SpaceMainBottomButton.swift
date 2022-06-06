@@ -31,7 +31,6 @@ struct SpaceMainBottomButton: View {
 
 struct SpaceMainBottomButton_Previews: PreviewProvider {
     static var previews: some View {
-        
         SpaceMainBottomButton(text: "링크 공유", textSize: 17.0, systemImageString: "square.and.arrow.up", backgroundColor: Color.blueMain, textColor: Color.white) {
             print("hi")
         }

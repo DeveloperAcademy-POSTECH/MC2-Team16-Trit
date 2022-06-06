@@ -11,12 +11,12 @@ struct SpaceMainCardView: View {
     var index: Int = 0
     var clicked: () -> Void
     let colors = [Color(hex: "ff5454"), Color.green, Color.purple]
+    var isParticipated = true
     var body: some View {
         Button {
             print("card view..")
         } label: {
             ZStack(alignment: .trailing) {
-             
                 RoundedRectangle(cornerRadius: 20)
                     .fill(colors[index%3])
                     .frame(width: 340, height: 216)
@@ -24,7 +24,6 @@ struct SpaceMainCardView: View {
                     .clipped()
                     .shadow(radius: 5)
                 RoundedRectangle(cornerRadius: 20)
-                
                     .fill(colors[index%3])
                     .opacity(0.72)
                     .frame(width: 340, height: 216)
@@ -94,6 +93,10 @@ struct SpaceMainCardView: View {
                             .padding(.trailing, 24)
                             //                                            .background(.blue)//BACKGROUND
                         }
+                        .blur(radius: isParticipated ? 3 : 0)
+                        Image(systemName: isParticipated ? "checkmark" : "")
+                            .foregroundColor(.white)
+                            .font(.system(size: 70))
                         //                                        .background(.purple)//BACKGROUND
                     }
             }

@@ -38,7 +38,7 @@ struct SpaceMainView: View {
                     SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
                         print("링크 공유 FUNCTION")
                     }
-                    SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color(hex: "#A4C6FF"), textColor: .blueMain) {
+                    SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color(hex: "#A4C6FF"), textColor: .white) {
                         print("참석 확인 FUNCTION")
                     }
                 }
@@ -61,8 +61,7 @@ struct SpaceMainView: View {
                         } label: {
                             Image(systemName: "xmark")
                         }.padding(.trailing, 8)
-                        
-                        }
+                    }
                 }
             }
         }
