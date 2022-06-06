@@ -9,15 +9,15 @@ import SwiftUI
 
 struct AlertRow: View {
     
-    var isPayment: Bool = false
-    
+    var isReminder: Bool = false
+
     var body : some View {
         HStack {
             
             HStack {
                 HStack {
                     // Image Goes Here
-                    Image(isPayment
+                    Image(isReminder
                           ? "cash-and-coins" : "calculator")
                         .resizable()
                         .scaledToFit()
@@ -43,7 +43,7 @@ struct AlertRow: View {
             
             Spacer()
             
-            if isPayment == true {
+            if isReminder == true {
                 HStack {
                     Button(action: {
                         print("정산하기 버튼이 눌렸다")

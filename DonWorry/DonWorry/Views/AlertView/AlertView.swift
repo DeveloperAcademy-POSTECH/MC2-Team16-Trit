@@ -24,7 +24,7 @@ struct AlertView: View {
                 
                 /* ALERT-ROW */
                 AlertRow()
-                AlertRow(isPayment: true)
+                AlertRow(isReminder: true)
                 
                 Line().padding(.bottom, 12)
                 
@@ -36,13 +36,14 @@ struct AlertView: View {
                 
                 /* ALERT-ROW */
                 AlertRow()
-                AlertRow(isPayment: true)
+                AlertRow(isReminder: true)
                 
                 Spacer()
                 
             }
             .padding(.top, -20)
             .padding(.horizontal, 25)
+            
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
