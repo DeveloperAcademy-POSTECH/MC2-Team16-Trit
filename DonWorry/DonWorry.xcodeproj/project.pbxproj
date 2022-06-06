@@ -20,6 +20,7 @@
 		2CF61B412849B1A0004C3768 /* NewPaymentPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B402849B1A0004C3768 /* NewPaymentPrice.swift */; };
 		2CF61B432849B271004C3768 /* NewPaymentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B422849B271004C3768 /* NewPaymentDetail.swift */; };
 		2CF61B442849B332004C3768 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
+		3E208729284DA4CB003A4CFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E208728284DA4CB003A4CFD /* GoogleService-Info.plist */; };
 		3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815A2843522900794955 /* DonWorryApp.swift */; };
 		3EBC815D2843522900794955 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815C2843522900794955 /* ContentView.swift */; };
 		3EBC816C2843522A00794955 /* DonWorryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC816B2843522A00794955 /* DonWorryTests.swift */; };
@@ -42,15 +43,15 @@
 		A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */; };
 		A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */; };
 		A74479C22847E3760083BBF4 /* ChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479C12847E3760083BBF4 /* ChipButton.swift */; };
+		A74479D3284917990083BBF4 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D2284917990083BBF4 /* ProfileView.swift */; };
+		A74479D4284918270083BBF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
+		A74479D6284918D60083BBF4 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D5284918D60083BBF4 /* EditProfileView.swift */; };
+		A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D7284918EB0083BBF4 /* EditAccountView.swift */; };
 		C0030EE32848C7880017125A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
 		C07ECB392849919C000C42C1 /* RoomSwitchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ECB382849919C000C42C1 /* RoomSwitchCellView.swift */; };
 		C0931806284B9B6B00E3C9AA /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = C0931805284B9B6B00E3C9AA /* HalfASheet */; };
 		C0931808284C3EF900E3C9AA /* UserModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0931807284C3EF900E3C9AA /* UserModels.swift */; };
-		A74479D3284917990083BBF4 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D2284917990083BBF4 /* ProfileView.swift */; };
-		A74479D4284918270083BBF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
-		A74479D6284918D60083BBF4 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D5284918D60083BBF4 /* EditProfileView.swift */; };
-		A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D7284918EB0083BBF4 /* EditAccountView.swift */; };
 		C0936BFD284876800064CEFA /* ParticipateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFC284876800064CEFA /* ParticipateCard.swift */; };
 		C0936BFF28487FFC0064CEFA /* GiverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFE28487FFC0064CEFA /* GiverCard.swift */; };
 		C09C89712849101700E2A929 /* TakerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C89702849101700E2A929 /* TakerCard.swift */; };
@@ -86,6 +87,7 @@
 		2CF61B3E2849B18A004C3768 /* NewPaymentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentIcon.swift; sourceTree = "<group>"; };
 		2CF61B402849B1A0004C3768 /* NewPaymentPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentPrice.swift; sourceTree = "<group>"; };
 		2CF61B422849B271004C3768 /* NewPaymentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentDetail.swift; sourceTree = "<group>"; };
+		3E208728284DA4CB003A4CFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3EBC81572843522900794955 /* DonWorry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonWorry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBC815A2843522900794955 /* DonWorryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryApp.swift; sourceTree = "<group>"; };
 		3EBC815C2843522900794955 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,12 +115,12 @@
 		A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetModal.swift; sourceTree = "<group>"; };
 		A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewWithSheet.swift; sourceTree = "<group>"; };
 		A74479C12847E3760083BBF4 /* ChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipButton.swift; sourceTree = "<group>"; };
-		C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleProgressBar.swift; sourceTree = "<group>"; };
-		C07ECB382849919C000C42C1 /* RoomSwitchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSwitchCellView.swift; sourceTree = "<group>"; };
-		C0931807284C3EF900E3C9AA /* UserModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModels.swift; sourceTree = "<group>"; };
 		A74479D2284917990083BBF4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A74479D5284918D60083BBF4 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A74479D7284918EB0083BBF4 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
+		C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleProgressBar.swift; sourceTree = "<group>"; };
+		C07ECB382849919C000C42C1 /* RoomSwitchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSwitchCellView.swift; sourceTree = "<group>"; };
+		C0931807284C3EF900E3C9AA /* UserModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModels.swift; sourceTree = "<group>"; };
 		C0936BFC284876800064CEFA /* ParticipateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateCard.swift; sourceTree = "<group>"; };
 		C0936BFE28487FFC0064CEFA /* GiverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverCard.swift; sourceTree = "<group>"; };
 		C09C89702849101700E2A929 /* TakerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerCard.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		3EBC814E2843522900794955 = {
 			isa = PBXGroup;
 			children = (
+				3E208728284DA4CB003A4CFD /* GoogleService-Info.plist */,
 				3EBC81592843522900794955 /* DonWorry */,
 				3EBC816A2843522A00794955 /* DonWorryTests */,
 				3EBC81742843522B00794955 /* DonWorryUITests */,
@@ -250,9 +253,8 @@
 		A7447992284759A60083BBF4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A74479A028476ADA0083BBF4 /* User.swift */,
 				C0931807284C3EF900E3C9AA /* UserModels.swift */,
-				A74479A028476ADA0083BBF4 /* FileModels.swift */,
+				A74479A028476ADA0083BBF4 /* User.swift */,
 				2CC2118B2849F1CF0009F785 /* TermModel.swift */,
 			);
 			path = Models;
@@ -375,8 +377,8 @@
 				A74479D7284918EB0083BBF4 /* EditAccountView.swift */,
 			);
 			path = ProfileView;
-           sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		C0936BFB284876410064CEFA /* MainCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0030EE32848C7880017125A /* Assets.xcassets in Resources */,
+				3E208729284DA4CB003A4CFD /* GoogleService-Info.plist in Resources */,
 				A74479D4284918270083BBF4 /* Assets.xcassets in Resources */,
 				2CF61B442849B332004C3768 /* Assets.xcassets in Resources */,
 			);
@@ -549,7 +552,7 @@
 			files = (
 				A74479A128476ADA0083BBF4 /* User.swift in Sources */,
 				A74479D6284918D60083BBF4 /* EditProfileView.swift in Sources */,
-				A74479A128476ADA0083BBF4 /* FileModels.swift in Sources */,
+				A74479A128476ADA0083BBF4 /* User.swift in Sources */,
 				2CF61B3D2849B00B004C3768 /* NewPaymentTitle.swift in Sources */,
 				2CC211882849F1300009F785 /* TermView.swift in Sources */,
 				A74479B12847A8190083BBF4 /* SmallButton.swift in Sources */,
@@ -747,7 +750,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = Z225784MRD;
+				DEVELOPMENT_TEAM = 2S73QX9MMY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -776,7 +779,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = Z225784MRD;
+				DEVELOPMENT_TEAM = 2S73QX9MMY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
