@@ -4,16 +4,11 @@
 //
 //  Created by Hankyu Lee on 2022/06/05.
 //
-
+//
 import SwiftUI
 
 struct SpaceHistoryDetailView: View {
     
-    // 다른 checkattendanceview  뷰 위에 랭스 이상한것.
-    // 모든 .aspectRatio(contentMode: .fit) 모든이미지에 적용할것.
-    // 모든 multi line text처리
-    // 여기에 modal 괜찮을까?
-    // Always include a button that dismisses the modal view. For example, you might use Done or Cancel. Including a button ensures that the modal view is accessible to assistive technologies and provides an alternative to dismissal gestures.
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -30,7 +25,6 @@ struct SpaceHistoryDetailView: View {
                             .foregroundColor(.black)
                     }
                 }
-                
                 Text("총 102,000원")
                     .applyTextWithLineLimitModifier(size: 30, weight: .heavy, color: .black)
                     .padding(.bottom, 43.5)
@@ -51,7 +45,6 @@ struct SpaceHistoryDetailView: View {
                 HStack(spacing: 12) {
                     Image("chicken-leg")
                         .applyClipCircleModifier(width: 35, height: 35, background: .black, innerPadding: 5)
-                       
                     Text("김유쓰")
                         .applyTextWithLineLimitModifier(size: 17, weight: .regular, color: .black)
                 }

@@ -4,7 +4,7 @@
 //
 //  Created by Hankyu Lee on 2022/06/03.
 //
-
+//
 import SwiftUI
 
 struct SpaceMainBottomButton: View {
@@ -24,7 +24,7 @@ struct SpaceMainBottomButton: View {
                     .font(Font.system(size: textSize, weight: .light))
                     .foregroundColor(Color.white)
             }
-            .applyButtonCustomModifier()
+            .applyButtonCustomModifier(backgroundColor: backgroundColor)
         })
     }
 }

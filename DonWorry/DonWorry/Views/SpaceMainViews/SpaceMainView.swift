@@ -4,19 +4,8 @@
 //
 //  Created by Hankyu Lee on 2022/06/02.
 //
-
+//
 import SwiftUI
-
-//MARK: - navigationBarBackButtonHidden = true ? 처음 화면이라.
-//MARK: - naviagationTitle left padding ? 현재 8.
-//MARK: - 글자수
-//MARK: - 카드색깔 + 날짜색깔
-//MARK: - Nvigation bar
-//MARK: - BottomButton color
-//MARK: - Scroll시 카드가 눌리는가..?
-//MARK: - SpaceID가 길 경우? TopView
-//MARK: - MainCardView Data
-
 
 struct SpaceMainView: View {
     let leftPaddingSize: CGFloat = 25.0
@@ -25,10 +14,9 @@ struct SpaceMainView: View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 VStack {
-                    Spacer()//필요한가?
+                    Spacer()
                     ScrollView {
                         SpaceTopView(spaceID: "213d42s3s5")
-                        //이친구의 width가 크기때문에 scrollview width가 크다.
                         .padding(.vertical, 21)
                         LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 24) {
                             ForEach(0..<5) { index in
@@ -44,7 +32,6 @@ struct SpaceMainView: View {
                             }
                         }
                     }
-    //                .background(.brown)
                     .navigationBarTitleDisplayMode(.inline)
                 }
                 HStack(spacing: 25) {
@@ -88,4 +75,3 @@ struct SpaceMainView_Previews: PreviewProvider {
         
     }
 }
-
