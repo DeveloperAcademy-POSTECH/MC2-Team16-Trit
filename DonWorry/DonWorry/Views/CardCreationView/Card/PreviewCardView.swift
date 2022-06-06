@@ -17,21 +17,15 @@ struct PreviewCardView: View {
     @Binding var decoCase: DecoCase
     
     var body: some View {
-        mainPart
-    }
-    
-    private var mainPart: some View {
         VStack(alignment: .leading) {
-            
             CardView(color: color.color, account: account, date: date)
-        
         }
         .padding()
     }
 }
 
-//struct PreviewCardView_Previews: PreviewProvider {
+// struct PreviewCardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        PreviewCardView()
 //    }
-//}
+// }

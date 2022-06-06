@@ -12,8 +12,7 @@ struct CardView: View {
     var color: Color
     var account: String
     var date: Date
-    
-    @ViewBuilder
+
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading) {

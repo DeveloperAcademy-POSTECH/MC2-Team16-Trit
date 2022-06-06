@@ -1,18 +1,13 @@
-//
+//  https://www.hackingwithswift.com/books/ios-swiftui/importing-an-image-into-swiftui-using-phpickerviewcontroller
 //  PhotoPicker.swift
 //  DonWorry
 //
 //  Created by 임영후 on 2022/06/03.
 //
+// 사용자 라이브러리에서 사진 선택
 
-import PhotosUI
 import SwiftUI
-
-// MARK: Example
-//    .sheet(isPresented: $isPresented) {
-//                let configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-//                PhotoPicker(configuration: configuration, isPresented: $isPresented)
-//    }
+import PhotosUI
 
 extension PHPickerConfiguration {
     static let config: PHPickerConfiguration = {
@@ -20,7 +15,7 @@ extension PHPickerConfiguration {
         tempConfig.selectionLimit = 1
         tempConfig.filter = .images
         return tempConfig
-    }()
+    } ()
 }
 
 struct PhotoPicker: UIViewControllerRepresentable {
@@ -39,7 +34,6 @@ struct PhotoPicker: UIViewControllerRepresentable {
         Coordinator(self)
     }
     
-    // Use a Coordinator to act as your PHPickerViewControllerDelegate
     class Coordinator: PHPickerViewControllerDelegate {
       
         private let parent: PhotoPicker
@@ -50,18 +44,19 @@ struct PhotoPicker: UIViewControllerRepresentable {
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             
-            let itemProviders = results.map{ $0.itemProvider }
+            let itemProviders = results.map { $0.itemProvider }
             
             var tempImages: [UIImage] = []
             
             itemProviders.forEach { itemProvider in
                 if itemProvider.canLoadObject(ofClass: UIImage.self) {
-                    itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
-                        if let uiImage = image as? UIImage {
-                            tempImages.append(uiImage)
-                            self?.parent.isPresented = false
-                            self?.parent.images = tempImages
-                        }
+                    itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
+                        guard let self = self else { return }
+                                                if let uiImage = image as? UIImage {
+                                                    tempImages.append(uiImage)
+                                                    self.parent.isPresented = false
+                                                    self.parent.images = tempImages
+                                                }
                     }
                 }
             }

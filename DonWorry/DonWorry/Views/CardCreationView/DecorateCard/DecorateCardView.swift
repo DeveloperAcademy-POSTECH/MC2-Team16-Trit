@@ -8,25 +8,38 @@
 import SwiftUI
 import PhotosUI
 
+/* 카드 디자인 변경 케이스 */
+enum DecoCase: String, Identifiable, CaseIterable {
+    
+    case color
+    case date
+    case account
+    case image
+    
+    var id: String {
+        self.rawValue
+    }
+    
+    var name: String {
+        self.rawValue
+    }
+}
+
 struct DecorateCardView: View {
     
-//    @StateObject var vm = DecorateCardViewModel()
-    
+    //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
+    //  @StateObject var vm = DecorateCardViewModel()
     @State private var decoCase: DecoCase = .account
-    
-    @State private var account: String = "1002-034-1234" // @@@@
-    @State private var color: CardColor = CardColor.blue// @@@@
-    @State private var images: [UIImage] = []// @@@@
+    @State private var account: String = "1002-034-1234"
+    @State private var color: CardColor = CardColor.blue
+    @State private var images: [UIImage] = []
     @State private var showPhotoPicker = false
     @State var isClicked: Bool = false
     @State private var date = Date()
     
-    //    let dismiss: () -> Void
-    
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     
     var body: some View {
-        
         NavigationView {
             ZStack {
                 VStack(spacing: 20) {
@@ -45,15 +58,16 @@ struct DecorateCardView: View {
                             .padding(.horizontal, 40)
                             .background(Color.grayEE)
                         ZStack {
-                            if decoCase == .account {
-                                accountBox
-                            } else if decoCase == .color {
+                            switch decoCase {
+                            case .color:
                                 colorBox
                                     .padding(.horizontal, 30)
-                            } else if decoCase == .date {
+                            case .date:
                                 dateBox
                                     .padding(.horizontal, 30)
-                            } else {
+                            case .account:
+                                accountBox
+                            case .image:
                                 imageBox
                                     .padding(.horizontal, 40)
                             }
@@ -63,7 +77,7 @@ struct DecorateCardView: View {
                     .frame(maxWidth: 380)
                     .frame(maxHeight: 400)
                     .padding(.bottom, 20)
-                Spacer()
+                    Spacer()
                 }
                 VStack {
                     Spacer()
@@ -78,8 +92,7 @@ struct DecorateCardView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(role: .cancel) {
-                        //                        dismiss()
-                        print("ㅇㅇㅇ")
+                        print("이전 페이지 뷰 연결")
                     } label: {
                         Image(systemName: "chevron.backward")
                             .font(.title2.weight(.bold))
@@ -87,12 +100,10 @@ struct DecorateCardView: View {
                     .buttonStyle(.plain)
                 }
             }
-            
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(role: .cancel) {
-                        //                        dismiss()
-                        print("ㅇㅇㅇ")
+                        print("클릭 시 스페이스 메인으로 가게 하려고 함")
                     } label: {
                         Text("MC2 첫 회식")
                             .font(.title2.weight(.bold))
@@ -105,7 +116,7 @@ struct DecorateCardView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    // 컬러박스 입력 칸
+    // MARK: 컬러박스 입력 칸
     private var colorBox: some View {
         LazyVGrid(columns: colorColumns, spacing: 30) {
             ForEach(CardColor.allCases) { CardColor in
@@ -127,25 +138,26 @@ struct DecorateCardView: View {
         }
     }
     
-    // date picker
+    // MARK: date picker
     private var dateBox: some View {
         VStack {
             DatePicker("결제한 날짜를 선택해 주세요.", selection: $date, displayedComponents: [.date])
                 .datePickerStyle(.graphical)
-    // 달력과 텍스트의 위치를 지정하는 프레임
+            // 달력과 텍스트의 위치를 지정하는 프레임
                 .frame(width: 350, height: 250)
                 .padding(.top, 30.0)
         }
     }
     
-    // 계좌번호 입력 칸
+    // MARK: 계좌번호 입력 칸
     private var accountBox: some View {
         TextField("계좌번호를 입력해주세요.", text: $account)
             .font(.title3)
             .multilineTextAlignment(.center)
             .padding(.horizontal, 20)
     }
-    // 이미지 입력 칸
+    
+    // MARK: 이미지 입력 칸
     private var imageBox: some View {
         VStack(spacing: 40) {
             RoundedRectangle(cornerRadius: 10)
@@ -179,23 +191,6 @@ struct DecorateCardView: View {
     }
 }
 
-/* 카드 디자인 변경 케이스 */
-enum DecoCase: String, Identifiable, CaseIterable {
-    
-    case color
-    case date
-    case account
-    case image
-    
-    var id: String {
-        self.rawValue
-    }
-    
-    var name: String {
-        self.rawValue
-    }
-}
-
 struct CustomPicker: View {
     
     @Binding var selected: DecoCase
@@ -204,7 +199,7 @@ struct CustomPicker: View {
         HStack(spacing: 0) {
             
             ForEach(DecoCase.allCases) { decoCase in
-                GeometryReader { geo in
+                GeometryReader { _ in
                     Text(decoCase.name)
                         .font(.subheadline.bold())
                         .foregroundColor(decoCase == selected ? .white : .gray)
