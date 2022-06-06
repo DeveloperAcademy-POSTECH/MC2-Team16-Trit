@@ -26,6 +26,7 @@ enum DecoCase: String, Identifiable, CaseIterable {
 }
 
 struct DecorateCardView: View {
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
     //  @StateObject var vm = DecorateCardViewModel()
@@ -48,13 +49,16 @@ struct DecorateCardView: View {
     
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     
+    var paymentIcon: Image?
+    
     var body: some View {
         
    
             ZStack {
                 VStack(spacing: 20) {
                     
-                    PreviewCardView(account: $account,
+                    PreviewCardView(paymentIcon: paymentIcon,
+                                    account: $account,
                                     color: $color,
                                     date: dateFormatter.string(from: Date()),
                                     image: $images,
@@ -103,10 +107,9 @@ struct DecorateCardView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(role: .cancel) {
-                        print("이전 페이지 뷰 연결")
+                        self.mode.wrappedValue.dismiss()
                     } label: {
-                        Image(systemName: "chevron.backward")
-                            .font(.title2.weight(.bold))
+                        Image(systemName: "chevron.left")
                     }
                     .buttonStyle(.plain)
                 }
@@ -159,11 +162,16 @@ struct DecorateCardView: View {
     }
     
     // MARK: 계좌번호 입력 칸
-    private var accountBox: some View {
-        TextField("계좌번호를 입력해주세요.", text: $account)
-            .font(.title3)
-            .multilineTextAlignment(.center)
-            .padding(.horizontal, 20)
+    @ViewBuilder private var accountBox: some View {
+        VStack{
+            UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: .constant("김예금"))
+            AccountTextField()
+        }
+        
+//        TextField("계좌번호를 입력해주세요.", text: $account)
+//            .font(.title3)
+//            .multilineTextAlignment(.center)
+//            .padding(.horizontal, 20)
     }
     
     // MARK: 이미지 입력 칸

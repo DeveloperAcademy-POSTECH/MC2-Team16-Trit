@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PreviewCardView: View {
     
+    var paymentIcon: Image?
+    
     @Binding var account: String
     @Binding var color: CardColor
     let date: String
@@ -22,7 +24,7 @@ struct PreviewCardView: View {
 
             SpaceMainCardView(color: color.color, account: account, index: 0, clicked: {
                 
-            }, isParticipated: false, date: date)
+            }, isParticipated: false, date: date, paymentIcon: paymentIcon)
         }
         .padding()
     }

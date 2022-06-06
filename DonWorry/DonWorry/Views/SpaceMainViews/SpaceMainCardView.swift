@@ -15,6 +15,8 @@ struct SpaceMainCardView: View {
 //    let colors = [Color(hex: "ff5454"), Color.green, Color.purple]
     var isParticipated = false
     let date: String
+    var paymentIcon: Image?
+    
     var body: some View {
         
         ZStack(alignment: .trailing) {
@@ -42,7 +44,8 @@ struct SpaceMainCardView: View {
                                 
                             Spacer()
                             HStack(spacing: 8) {
-                                Image("chicken-leg")
+//                                Image("chicken-leg")
+                                paymentIcon!
                                     .applyRectangleImageModifier(width: 27, height: 23, background: .grayEE, innerPadding: 8)
                                     .padding(.leading, 25)
                                 Text("총 135,800원(4명)")

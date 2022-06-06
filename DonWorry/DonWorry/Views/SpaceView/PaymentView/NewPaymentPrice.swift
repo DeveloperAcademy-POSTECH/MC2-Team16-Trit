@@ -64,7 +64,7 @@ struct NewPaymentPrice: View {
             HStack {
                 Spacer()
                 
-                NavigationLink(destination: DecorateCardView()) {
+                NavigationLink(destination: DecorateCardView(paymentIcon: paymentIcon)) {
                     Text("다음")
                         .frame(width: 135, height: 50)
                         .foregroundColor(.white)
