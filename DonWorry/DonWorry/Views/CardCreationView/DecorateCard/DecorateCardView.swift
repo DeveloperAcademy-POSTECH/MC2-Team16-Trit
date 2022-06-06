@@ -34,6 +34,7 @@ struct DecorateCardView: View {
     @State private var color: CardColor = CardColor.blue
     @State private var images: [UIImage] = []
     @State private var showPhotoPicker = false
+    
     @State private var isClicked: Bool = false
     @State private var date = Date()
     
@@ -43,19 +44,22 @@ struct DecorateCardView: View {
         return formatter
     }
     
+    
+    
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     
     var body: some View {
-        NavigationView {
+        
+   
             ZStack {
                 VStack(spacing: 20) {
+                    
                     PreviewCardView(account: $account,
                                     color: $color,
-                                    date: dateFormatter.string(from: date),
+                                    date: dateFormatter.string(from: Date()),
                                     image: $images,
                                     decoCase: $decoCase)
                     .padding(.horizontal, 20)
-                    
                     VStack(spacing: 20) {
                         CustomPicker(selected: $decoCase)
                             .padding(.horizontal, 20)
@@ -82,7 +86,7 @@ struct DecorateCardView: View {
                     }
                     .frame(maxWidth: 380)
                     .frame(maxHeight: 400)
-                    .padding(.bottom, 20)
+//                    .padding(.bottom, 20)
                     Spacer()
                 }
                 VStack {
@@ -95,8 +99,9 @@ struct DecorateCardView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(role: .cancel) {
                         print("이전 페이지 뷰 연결")
                     } label: {
@@ -105,9 +110,7 @@ struct DecorateCardView: View {
                     }
                     .buttonStyle(.plain)
                 }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(role: .cancel) {
                         print("클릭 시 스페이스 메인으로 가게 하려고 함")
                     } label: {
@@ -118,8 +121,8 @@ struct DecorateCardView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+        
+//        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     // MARK: 컬러박스 입력 칸
@@ -247,6 +250,9 @@ struct CustomPicker: View {
 
 struct DecorateCardView_Previews: PreviewProvider {
     static var previews: some View {
-        DecorateCardView()
+        NavigationView{
+            DecorateCardView()
+        }
+        
     }
 }

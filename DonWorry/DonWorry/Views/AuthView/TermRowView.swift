@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TermView: View {
+struct TermRowView: View {
     @Binding var term: Term
     
     var body: some View {
@@ -15,34 +15,37 @@ struct TermView: View {
         VStack {
             HStack {
                 Button {
-
-                    term.isChecked.toggle()
-                     
+                    withAnimation {
+                        term.isChecked.toggle()
+                    }
                 } label: {
                     Image(systemName: "circle.fill")
                         .foregroundColor(term.isChecked ? Color.blueMain : Color.grayE7)
+                        .padding(.trailing, 5)
                 }
                 
-                Text(term.isEssential ? "(필수)" : "(선택)")
-                Text(term.title)
+                Group {
+                    Text(term.isEssential ? "(필수)" : "(선택)")
+                    Text(term.title)
+                }
+                .font(.system(size: 15))
+                .foregroundColor(Color.gray81)
                 
                 Spacer()
                 
                 Button {
-
                     withAnimation {
                         term.showContent.toggle()
                     }
-                    
                 } label: {
-                    
                     Image(systemName: term.showContent ? "chevron.up" : "chevron.down")
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.gray81)
                 }
-     
-                }
+                
+            }
             .frame(maxWidth: .infinity)
-            .padding()
+            .padding(.horizontal)
+            .padding(.vertical, 5)
             
             if term.showContent {
                 Text(term.content)

@@ -64,7 +64,7 @@ struct NewPaymentPrice: View {
             HStack {
                 Spacer()
                 
-                NavigationLink(destination: NewPaymentDetail()) {
+                NavigationLink(destination: DecorateCardView()) {
                     Text("다음")
                         .frame(width: 135, height: 50)
                         .foregroundColor(.white)
@@ -137,6 +137,6 @@ struct NewPaymentPrice: View {
 
 struct NewPaymentPrice_Previews: PreviewProvider {
     static var previews: some View {
-        NewPaymentPrice(paymentTitle: "땡떙이네 스타벅스", paymentIcon: Image("chicken-leg"))
+        NewPaymentPrice(paymentTitle: "땡땡이네 스타벅스", paymentIcon: Image("chicken-leg"))
     }
 }

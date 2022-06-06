@@ -13,8 +13,12 @@ struct DonWorryApp: App {
         WindowGroup {
 //            ContentView()
 //            SwiftUIView(currentUser: user4)
-            SpaceMainView()
-            
+
+            SpaceEmptyView()
+//            SpaceMainView()
+//=======
+//            SignInView()
+//>>>>>>> AuthView
         }
     }
 }
