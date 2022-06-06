@@ -34,6 +34,8 @@
 		4D6229C7284927E100A8E24C /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D6229C6284927E100A8E24C /* GmarketSansTTFBold.ttf */; };
 		4D6229CA2849295300A8E24C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229C92849295300A8E24C /* ImageManager.swift */; };
 		4D6229CD284929C000A8E24C /* DecorateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229CC284929C000A8E24C /* DecorateCardView.swift */; };
+		A704FC3F284E01A300AC9736 /* SlideOverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC3E284E01A200AC9736 /* SlideOverCard.swift */; };
+		A704FC42284E01E400AC9736 /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = A704FC41284E01E400AC9736 /* SlideOverCard */; };
 		A744799D28476AC80083BBF4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744799C28476AC80083BBF4 /* HomeView.swift */; };
 		A744799F28476AD00083BBF4 /* FileViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744799E28476AD00083BBF4 /* FileViewModels.swift */; };
 		A74479A128476ADA0083BBF4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A028476ADA0083BBF4 /* User.swift */; };
@@ -58,7 +60,6 @@
 		C0030EE32848C7880017125A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
 		C07ECB392849919C000C42C1 /* RoomSwitchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ECB382849919C000C42C1 /* RoomSwitchCellView.swift */; };
-		C0931806284B9B6B00E3C9AA /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = C0931805284B9B6B00E3C9AA /* HalfASheet */; };
 		C0931808284C3EF900E3C9AA /* UserModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0931807284C3EF900E3C9AA /* UserModels.swift */; };
 		C0936BFD284876800064CEFA /* ParticipateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFC284876800064CEFA /* ParticipateCard.swift */; };
 		C0936BFF28487FFC0064CEFA /* GiverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFE28487FFC0064CEFA /* GiverCard.swift */; };
@@ -113,6 +114,7 @@
 		4D6229C6284927E100A8E24C /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 		4D6229C92849295300A8E24C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		4D6229CC284929C000A8E24C /* DecorateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorateCardView.swift; sourceTree = "<group>"; };
+		A704FC3E284E01A200AC9736 /* SlideOverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOverCard.swift; sourceTree = "<group>"; };
 		A744799C28476AC80083BBF4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A744799E28476AD00083BBF4 /* FileViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewModels.swift; sourceTree = "<group>"; };
 		A74479A028476ADA0083BBF4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -146,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0931806284B9B6B00E3C9AA /* HalfASheet in Frameworks */,
+				A704FC42284E01E400AC9736 /* SlideOverCard in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +310,14 @@
 			path = CardCreationView;
 			sourceTree = "<group>";
 		};
+		A704FC3D284E019600AC9736 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A704FC3E284E01A200AC9736 /* SlideOverCard.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A7447992284759A60083BBF4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +395,7 @@
 		A744799B28476A350083BBF4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A704FC3D284E019600AC9736 /* View */,
 				A74479C02847E3060083BBF4 /* Icon */,
 				A74479BB2847DC720083BBF4 /* Sheet */,
 				A74479BA2847DBA20083BBF4 /* Text */,
@@ -471,7 +482,7 @@
 			);
 			name = DonWorry;
 			packageProductDependencies = (
-				C0931805284B9B6B00E3C9AA /* HalfASheet */,
+				A704FC41284E01E400AC9736 /* SlideOverCard */,
 			);
 			productName = DonWorry;
 			productReference = 3EBC81572843522900794955 /* DonWorry.app */;
@@ -546,7 +557,7 @@
 			);
 			mainGroup = 3EBC814E2843522900794955;
 			packageReferences = (
-				C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */,
+				A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 			);
 			productRefGroup = 3EBC81582843522900794955 /* Products */;
 			projectDirPath = "";
@@ -661,6 +672,7 @@
 				3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */,
 				A74479AF2847A0600083BBF4 /* MediumButton.swift in Sources */,
 				C07ECB392849919C000C42C1 /* RoomSwitchCellView.swift in Sources */,
+				A704FC3F284E01A300AC9736 /* SlideOverCard.swift in Sources */,
 				C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */,
 				A74479A928476AEC0083BBF4 /* FileUtilities.swift in Sources */,
 				A744799D28476AC80083BBF4 /* HomeView.swift in Sources */,
@@ -986,21 +998,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */ = {
+		A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/franklynw/HalfASheet.git";
+			repositoryURL = "https://github.com/joogps/SlideOverCard.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C0931805284B9B6B00E3C9AA /* HalfASheet */ = {
+		A704FC41284E01E400AC9736 /* SlideOverCard */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */;
-			productName = HalfASheet;
+			package = A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */;
+			productName = SlideOverCard;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
