@@ -57,7 +57,6 @@ extension Color {
     static let grayF0 = Color(hex: "#F0F0F0")
     static let grayAccount = Color(hex: "#4B4A4A")
     static let grayWithBlue = Color(hex: "#798191")
-    static let blueCardCenter = Color(hex: "#0071ED")
     static let cardColor1 = Color(hex: "#401811")
     static let blueA4C6FF = Color(hex: "#A4C6FF")
     

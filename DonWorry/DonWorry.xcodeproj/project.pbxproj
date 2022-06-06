@@ -21,6 +21,9 @@
 		2CF61B432849B271004C3768 /* NewPaymentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B422849B271004C3768 /* NewPaymentDetail.swift */; };
 		2CF61B442849B332004C3768 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		3E208729284DA4CB003A4CFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E208728284DA4CB003A4CFD /* GoogleService-Info.plist */; };
+		3E20872C284DA5A5003A4CFD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3E20872B284DA5A5003A4CFD /* FirebaseAuth */; };
+		3E20872F284DA5F3003A4CFD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 3E20872E284DA5F3003A4CFD /* GoogleSignIn */; };
+		3E208731284DA5F3003A4CFD /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3E208730284DA5F3003A4CFD /* GoogleSignInSwift */; };
 		3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815A2843522900794955 /* DonWorryApp.swift */; };
 		3EBC815D2843522900794955 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815C2843522900794955 /* ContentView.swift */; };
 		3EBC816C2843522A00794955 /* DonWorryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC816B2843522A00794955 /* DonWorryTests.swift */; };
@@ -132,6 +135,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0931806284B9B6B00E3C9AA /* HalfASheet in Frameworks */,
+				3E20872C284DA5A5003A4CFD /* FirebaseAuth in Frameworks */,
+				3E20872F284DA5F3003A4CFD /* GoogleSignIn in Frameworks */,
+				3E208731284DA5F3003A4CFD /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +416,9 @@
 			name = DonWorry;
 			packageProductDependencies = (
 				C0931805284B9B6B00E3C9AA /* HalfASheet */,
+				3E20872B284DA5A5003A4CFD /* FirebaseAuth */,
+				3E20872E284DA5F3003A4CFD /* GoogleSignIn */,
+				3E208730284DA5F3003A4CFD /* GoogleSignInSwift */,
 			);
 			productName = DonWorry;
 			productReference = 3EBC81572843522900794955 /* DonWorry.app */;
@@ -485,6 +494,8 @@
 			mainGroup = 3EBC814E2843522900794955;
 			packageReferences = (
 				C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */,
+				3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 3EBC81582843522900794955 /* Products */;
 			projectDirPath = "";
@@ -914,6 +925,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.2.0;
+			};
+		};
 		C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/franklynw/HalfASheet.git";
@@ -925,6 +952,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3E20872B284DA5A5003A4CFD /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3E20872E284DA5F3003A4CFD /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		3E208730284DA5F3003A4CFD /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
 		C0931805284B9B6B00E3C9AA /* HalfASheet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */;
