@@ -9,16 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     @State var isClicked: Bool = false
+    
+    @State var selectedTag: String?
+    
     var body: some View {
-        ChipButton(
-            text: "chip",
-            isClicked: $isClicked
-        ) {
-            print("ChipBtn Clicked!")
-            isClicked.toggle()
+        NavigationView {
+                
+            LargeButton(text: "Large Button") {
+                self.selectedTag = "goProfileView"
+            }
+            .background(
+                NavigationLink("", tag: "goProfileView", selection: $selectedTag, destination: {
+                    ProfileView()
+                })
+                .onDisappear(perform: {
+//                    print("onDisappear", selectedTag)
+                })
+                .onAppear(perform: {
+                    selectedTag = ""
+//                    print("onAppear", selectedTag)
+                })
+            )
+
         }
-        // Sheet 사용 샘플 코드
-//        SampleViewWithSheet()
     }
 }
 
