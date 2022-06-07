@@ -63,7 +63,6 @@ struct SpaceMainView: View {
                 } label: {
                     EmptyView()
                 }
-                
             }
             .sheet(isPresented: $isModalPresented, content: {
                 SpaceHistoryDetailView()

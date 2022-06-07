@@ -11,14 +11,7 @@ import SwiftUI
 struct DonWorryApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//            SwiftUIView(currentUser: user4)
-//            SampleViewWithSheet()
-//            SpaceEmptyView()
             SpaceMainView()
-//=======
-//            SignInView()
-//>>>>>>> AuthView
         }
     }
 }

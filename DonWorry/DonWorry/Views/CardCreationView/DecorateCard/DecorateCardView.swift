@@ -55,7 +55,7 @@ struct DecorateCardView: View {
                     PreviewCardView(paymentIcon: paymentIcon,
                                     account: $account,
                                     color: $color,
-                                    date: dateFormatter.string(from: Date()),
+                                    date: $date,
                                     image: $images,
                                     decoCase: $decoCase)
                     .padding(.horizontal, 20)
