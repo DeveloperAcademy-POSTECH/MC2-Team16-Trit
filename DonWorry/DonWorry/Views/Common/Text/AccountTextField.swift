@@ -64,9 +64,3 @@ struct AccountTextField: View {
         }
     }
 }
-
-//struct AccountTextField_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AccountTextField()
-//    }
-//}

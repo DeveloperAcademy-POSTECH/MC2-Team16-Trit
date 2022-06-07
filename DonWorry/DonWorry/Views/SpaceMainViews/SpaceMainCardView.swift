@@ -108,11 +108,3 @@ struct SpaceMainCardView: View {
         }
     }
 }
-
-//struct SpaceMainCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SpaceMainCardView(color: .blueMain, account: "42991010093007", clicked: {
-//            print("f")
-//        }, date: "06/26")
-//    }
-//}

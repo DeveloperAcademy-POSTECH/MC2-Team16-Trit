@@ -253,7 +253,7 @@ struct CustomPicker: View {
 
 struct DecorateCardView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
+        NavigationView {
             DecorateCardView()
         }
         
