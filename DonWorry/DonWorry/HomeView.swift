@@ -8,14 +8,14 @@
 import SwiftUI
 import SlideOverCard
 
-struct SwiftUIView: View {
+struct HomeView: View {
     @State var selection: String = "떱떱해"
     @State var isPresented : Bool = false
     @State var spaceID: String = ""
     
     var currentUser: User
     var body: some View {
-        ZStack{
+        ZStack {
             VStack {
                 HStack {
                     HStack {
@@ -106,8 +106,10 @@ struct SwiftUIView: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        SwiftUIView(currentUser: user1)
-    }
-}
+//
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SwiftUIView(currentUser: user1)
+//    }
+//}
+//

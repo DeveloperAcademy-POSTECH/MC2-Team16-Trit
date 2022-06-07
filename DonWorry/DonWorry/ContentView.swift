@@ -13,25 +13,9 @@ struct ContentView: View {
     @State var selectedTag: String?
     
     var body: some View {
-        NavigationView {
-                
-            LargeButton(text: "Large Button") {
-                self.selectedTag = "goProfileView"
-            }
-            .background(
-                NavigationLink("", tag: "goProfileView", selection: $selectedTag, destination: {
-                    ProfileView()
-                })
-                .onDisappear(perform: {
-//                    print("onDisappear", selectedTag)
-                })
-                .onAppear(perform: {
-                    selectedTag = ""
-//                    print("onAppear", selectedTag)
-                })
-            )
-
-        }
+        
+        SampleShareSheetView()
+        
     }
 }
 
