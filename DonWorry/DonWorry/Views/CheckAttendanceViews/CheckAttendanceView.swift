@@ -8,38 +8,67 @@
 import SwiftUI
 
 struct CheckAttendanceView: View {
+    
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     let leftPaddingSize: CGFloat = 25
+    let cards = [0, 1, 2, 3, 4]
+    private var numberOfCards: Int {
+        cards.count
+    }
+    private var numberOfcheck: Int {
+        checkedArray.count
+    }
+    private func filterArray(_ checkedArray: [Int], index: Int) -> [Int] {
+        if checkedArray.contains(index) {
+            return checkedArray.filter { $0 != index }
+        } else {
+            return checkedArray + [index]
+        }
+    }
+    @State var checkedArray: [Int] = []
+    
     var body: some View {
-        ZStack(alignment: .bottom) {
-            VStack {
-                ScrollView {
-                    Spacer(minLength: 50)
-                    LazyVGrid(columns: [GridItem(.fixed(340))], spacing: 12) {
-                        ForEach(0..<5) { index in
-                            HStack(alignment: .center, spacing: 0) {
-                                Circle()
-                                    .frame(width: 42, height: 42, alignment: .leading)
-                                    .foregroundColor(Color.grayEE)
-                                Spacer()
-                                CheckAttendanceCardView(index: index) {
-                                    print("card")
-                                }.padding(.bottom, index == 4 ? 70 : 0)
+            ZStack(alignment: .bottom) {
+                VStack {
+                    ScrollView {
+                        Spacer(minLength: 50)
+                        LazyVGrid(columns: [GridItem(.fixed(340))], spacing: 12) {
+                            ForEach(cards, id: \.self) { index in
+                                HStack {
+                                    Button {
+                                         checkedArray = filterArray(checkedArray, index: index)
+                                    } label: {
+                                        ZStack {
+                                            Circle()
+                                                .frame(width: 42, height: 42, alignment: .leading)
+                                            if checkedArray.contains(index) {
+                                                Image(systemName: "checkmark")
+                                                    .font(Font.system(size: 24, weight: .heavy))
+                                                    .foregroundColor(Color(hex: "#1c6bff"))
+                                            }
+                                        }.foregroundColor(Color.grayEE)
+                                    }
+                                    Spacer()
+                                    CheckAttendanceCardView(index: index).padding(.bottom, index == 4 ? 70 : 0)
+                                }
                             }
                         }
                     }
                 }
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            HStack(spacing: 25) {
-                SpaceMainBottomButton(text: "모두 선택", systemImageString: nil, backgroundColor: .blueMain, textColor: .white) {
-                    print("링크 공유 FUNCTION")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                
+                HStack(spacing: leftPaddingSize) {
+                    SpaceMainBottomButton(text: "모두 선택", systemImageString: nil, backgroundColor: .blueMain, textColor: .white) {
+                        checkedArray = [Int](0..<numberOfCards)
+                        print("링크 공유 FUNCTION")
+                    }
+                    SpaceMainBottomButton(text: "참석 확인", systemImageString: nil, backgroundColor: Color(hex: "#A4C6FF"), textColor: .blueMain) {
+                        mode.wrappedValue.dismiss()
+                        print("참석 확인 FUNCTION")
+                    }
                 }
-                SpaceMainBottomButton(text: "참석 확인", systemImageString: nil, backgroundColor: Color(hex: "#A4C6FF"), textColor: .blueMain) {
-                    print("참석 확인 FUNCTION")
-                }
             }
-        }
-        
         .toolbar {
             ToolbarItem(placement: .principal) {
                             Text("참석확인")
@@ -47,17 +76,20 @@ struct CheckAttendanceView: View {
                         }
             ToolbarItemGroup(placement: .navigationBarLeading) {
                 Button {
+                    mode.wrappedValue.dismiss()
                     print("참석확인")
                 } label: {
                     Text("취소")
                         .applyTextWithLineLimitModifier(size: 17, weight: .regular, color: .black)
                 }
             }
+            
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 HStack(spacing: 0) {
-                    Text("1")
+                    Text("\(numberOfcheck)")
                         .applyTextWithLineLimitModifier(size: 17, weight: .medium, color: .blueMain)
                     Button {
+                        checkedArray = []
                         print("선택해제")
                     } label: {
                         Text("선택해제")

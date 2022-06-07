@@ -25,12 +25,14 @@ struct SpaceHistoryDetailView: View {
                         Image(systemName: "ellipsis")
                             .foregroundColor(.black)
                     }
-                }
+                }.padding(.top, 50)
+                
                 Text("총 102,000원")
                     .applyTextWithLineLimitModifier(size: 30, weight: .heavy, color: .black)
                     .padding(.bottom, 43.5)
                 Text("첨부 사진")
                     .applyTextWithLineLimitModifier(size: 17, weight: .heavy, color: .black)
+                
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: [GridItem(.fixed(64.0))], spacing: 13) {
                         ForEach(0..<9, id: \.self) { _ in
@@ -40,6 +42,7 @@ struct SpaceHistoryDetailView: View {
                     }
                     .frame(height: 64)
                 }
+                
                 Text("정산자")
                     .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
                     .padding(.top, 27.5)
@@ -74,6 +77,7 @@ struct SpaceHistoryDetailView: View {
                     }
                     .padding()
                 }
+                
                 Text("정산 참가자")
                     .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
                     .padding(.top, 35)

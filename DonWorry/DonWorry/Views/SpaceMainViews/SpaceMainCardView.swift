@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SpaceMainCardView: View {
     
+    let spaceName: String = "고기광"
     var color: Color
     var account: String
     var index: Int = 0
@@ -16,7 +17,7 @@ struct SpaceMainCardView: View {
     var isParticipated = false
     let date: String
     var paymentIcon: Image?
-    
+
     var body: some View {
         
         ZStack(alignment: .trailing) {
@@ -37,7 +38,7 @@ struct SpaceMainCardView: View {
                 .overlay {
                     HStack {
                         VStack(alignment: .leading, spacing: 0) {
-                            Text("1차 고기집 파티~")
+                            Text(spaceName)
                                 .applyTextWithLineLimitModifier(size: 15, weight: .heavy, color: .white)
                                 .padding(.horizontal, 25)
                                 .padding(.vertical, 25)
@@ -102,7 +103,7 @@ struct SpaceMainCardView: View {
                 }
         }
         .onTapGesture {
-            print("Card tap")
+            clicked()
         }
     }
 }

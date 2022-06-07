@@ -10,6 +10,7 @@ import SwiftUI
 struct EditSpaceNameView: View {
     
     @State var spaceName: String
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
         VStack {
@@ -24,6 +25,7 @@ struct EditSpaceNameView: View {
             HStack {
                 Spacer()
                 SmallButton(text: "다음") {
+                    mode.wrappedValue.dismiss()
                     print("Next level")
                 }
                 .padding(.top, 23)
@@ -31,11 +33,13 @@ struct EditSpaceNameView: View {
             }
             Spacer()
         }
+        .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button {
                         print("참석확인")
+                        mode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "chevron.backward")
                             .font(.system(size: 25, weight: .bold))
