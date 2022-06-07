@@ -8,6 +8,8 @@
 import SwiftUI
 import Firebase
 import GoogleSignIn
+import AuthenticationServices
+import CryptoKit
 
 let companies = ["Apple", "KakaoTalk", "Google"]
 
@@ -16,12 +18,13 @@ struct SignInView: View {
     // SignIn을 위해 선언하였습니다.
     @State var isLoading: Bool = false
     @AppStorage("SignIn Status") var log_status = false
+    @StateObject var appleloginData = AppleLoginViewModel()
     
     var body: some View {
         
-        if log_status == true {
+        if log_status == false {
             HomeView(currentUser: user1)
-        }else{
+        }else {
             NavigationView {
                 ZStack {
                     LinearGradient(gradient: Gradient(colors: [.white, Color.blueMain]), startPoint: .init(x: 0, y: 0.47), endPoint: .init(x: 0, y: 1))
@@ -65,13 +68,40 @@ struct SignInView: View {
     //                        }
     //                    }
                         // MARK: Test용 Button (추후에 UI Design이 수정될 것 같아 임시로 기능 확인을 위해 만들었습니다.)
-                        Button {
-                            googleHandleLogin() //Google Social Login function
-                        } label: {
-                            HStack(spacing: 20) {
-                                Image("Google")
-                                Text("구글로 로그인하기")
+                        VStack {
+                            Button {
+                                googleHandleLogin() //Google Social Login function
+                            } label: {
+                                HStack(spacing: 20) {
+                                    Image("Google")
+                                    Text("구글로 로그인하기")
+                                }
                             }
+                
+                            // Apple SignIn Butoon 입니다.
+                            SignInWithAppleButton { (request) in
+                                
+                                appleloginData.nonce = randomNonceString()
+                                request.requestedScopes = [.email, .fullName]
+                                request.nonce = sha256(appleloginData.nonce)
+                                
+                            } onCompletion: { (result) in
+                                
+                                switch result {
+                                case .success(let user):
+                                    print("success")
+                                    
+                                    guard let credential = user.credential as?
+                                            ASAuthorizationAppleIDCredential else {
+                                        print("Firebase Error")
+                                        return
+                                    }
+                                    appleloginData.authenticate(credential: credential)
+                                case .failure(let error):
+                                    print(error.localizedDescription)
+                                }
+                            }.frame(width:325, height: 70)
+                                .clipShape(Capsule())
                         }
                     }
                 }
