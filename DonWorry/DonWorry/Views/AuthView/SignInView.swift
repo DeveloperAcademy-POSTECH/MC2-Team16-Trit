@@ -16,13 +16,13 @@ let companies = ["Apple", "KakaoTalk", "Google"]
 struct SignInView: View {
     
     // SignIn을 위해 선언하였습니다.
-    @State var isLoading: Bool = false //추후 ProgressView를 넣을 것으로 예상하여, 변수를 생성
+    @State var isLoading: Bool = true // 추후 ProgressView를 넣을 것으로 예상하여, 변수를 생성
     @AppStorage("SignIn Status") var log_status = false // SignIn상태 저장
-    @StateObject var appleloginData = AppleLoginViewModel() //Firebase 공식 문서의 가이드라인을 따랐습니다.
+    @StateObject var appleloginData = AppleLoginViewModel() // Firebase 공식 문서의 가이드라인을 따랐습니다.
     
     var body: some View {
         
-        if log_status == false { //이미 로그인된 상태라면 홈뷰로 가도록 했습니다.
+        if log_status == false { // 이미 로그인된 상태라면 홈뷰로 가도록 했습니다.
             HomeView(currentUser: user1)
         } else {
             NavigationView {
@@ -87,7 +87,7 @@ struct SignInView: View {
                             } onCompletion: { (result) in
                                 
                                 switch result {
-                                case .success(let user): //로그인에 성공한 경우
+                                case .success(let user): // 로그인에 성공한 경우
                                     print("성공")
                                     guard let credential = user.credential as?
                                             ASAuthorizationAppleIDCredential else {
@@ -95,7 +95,8 @@ struct SignInView: View {
                                         return
                                     }
                                     appleloginData.authenticate(credential: credential)
-                                case .failure(let error): //로그인에 실패한 경우
+                                    log_status = true
+                                case .failure(let error): // 로그인에 실패한 경우
                                     print(error.localizedDescription)
                                 }
                             }.frame(width: 325, height: 70)
