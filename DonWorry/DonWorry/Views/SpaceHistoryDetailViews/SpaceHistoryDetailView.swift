@@ -10,6 +10,7 @@ import SwiftUI
 struct SpaceHistoryDetailView: View {
     
     var body: some View {
+        
         ScrollView {
             VStack(alignment: .leading) {
                 HStack(alignment: .center, spacing: 10) {
@@ -73,7 +74,6 @@ struct SpaceHistoryDetailView: View {
                     }
                     .padding()
                 }
-                
                 Text("정산 참가자")
                     .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
                     .padding(.top, 35)

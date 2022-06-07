@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SpaceMainCardView: View {
+    
     var color: Color
     var account: String
     var index: Int = 0
     var clicked: () -> Void
-//    let colors = [Color(hex: "ff5454"), Color.green, Color.purple]
     var isParticipated = false
     let date: String
     var paymentIcon: Image?
@@ -41,11 +41,9 @@ struct SpaceMainCardView: View {
                                 .applyTextWithLineLimitModifier(size: 15, weight: .heavy, color: .white)
                                 .padding(.horizontal, 25)
                                 .padding(.vertical, 25)
-                                
                             Spacer()
                             HStack(spacing: 8) {
-//                                Image("chicken-leg")
-                                paymentIcon!
+                                (paymentIcon ?? Image("chicken-leg"))
                                     .applyRectangleImageModifier(width: 27, height: 23, background: .grayEE, innerPadding: 8)
                                     .padding(.leading, 25)
                                 Text("총 135,800원(4명)")
@@ -56,12 +54,10 @@ struct SpaceMainCardView: View {
                                 .applyTextWithLineLimitModifier(size: 13.0, weight: .heavy)
                                 .padding(.horizontal, 25)
                                 .padding(.vertical, 5)
-                         
                             HStack(alignment: .firstTextBaseline) {
                                 Text(account)
                                     .applyTextWithLineLimitModifier(size: 13, weight: .medium)
                                 Spacer()
-                                
                                 Button {
                                     print("copy!")
                                 } label: {
@@ -75,7 +71,6 @@ struct SpaceMainCardView: View {
                             .padding(.leading, 25)
                             .padding(.bottom, 16)
                         }
-                        //                                            .background(.yellow)//BACKGROUND
                         Spacer()
                         VStack {
                             VStack(spacing: 2) {
@@ -86,7 +81,6 @@ struct SpaceMainCardView: View {
                                     .applyTextWithLineLimitModifier(size: 12, weight: .medium)
                             }
                             ForEach(0..<4) { _ in
-                                
                                 Image("chicken-leg")
                                     .applyClipCircleModifier(width: 24, height: 25, background: .clear, innerPadding: 0)
                                     .padding(.bottom, -17)
@@ -98,39 +92,25 @@ struct SpaceMainCardView: View {
                                 .padding(.bottom, 16)
                         }
                         .padding(.trailing, 24)
-                        //                                            .background(.blue)//BACKGROUND
                     }
                     .blur(radius: isParticipated ? 3 : 0)
-                    Image(systemName: isParticipated ? "checkmark" : "")
-                        .foregroundColor(.white)
-                        .font(.system(size: 70))
-                    //                                        .background(.purple)//BACKGROUND
+                    if isParticipated {
+                        Image(systemName: "checkmark")
+                            .foregroundColor(.white)
+                            .font(.system(size: 70))
+                    }
                 }
         }
         .onTapGesture {
-            print("df")
+            print("Card tap")
         }
     }
 }
 
 struct SpaceMainCardView_Previews: PreviewProvider {
     static var previews: some View {
-//        SpaceMainCardView(clicked: {})
         SpaceMainCardView(color: .blueMain, account: "42991010093007", clicked: {
             print("f")
         }, date: "06/26")
-    }
-}
-
-struct FilledButton: ButtonStyle {
-    @Environment(\.isEnabled) private var isEnabled
-
-    func makeBody(configuration: Configuration) -> some View {
-        configuration
-            .label
-            .foregroundColor(configuration.isPressed ? .gray : .white)
-            .padding()
-            .background(isEnabled ? Color.accentColor : .gray)
-            .cornerRadius(8)
     }
 }

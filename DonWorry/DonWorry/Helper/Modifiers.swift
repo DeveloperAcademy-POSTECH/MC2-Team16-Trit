@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct textModifierWithLineLimit: ViewModifier {
+struct textCustomModifier: ViewModifier {
     var lineLimit: Int = 1
     var size: CGFloat
     var weight: Font.Weight

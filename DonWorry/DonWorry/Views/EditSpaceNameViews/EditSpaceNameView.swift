@@ -19,7 +19,6 @@ struct EditSpaceNameView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 46)
                 .padding(.leading, 25)
-                
             UnderlineTextField(placeholder: "스페이스 이름", charLimit: 20, text: $spaceName)
                 .padding(.top, 30)
             HStack {
@@ -44,7 +43,6 @@ struct EditSpaceNameView: View {
                         
                     }
                 }
-                
             }
     }
 }
@@ -54,6 +52,5 @@ struct EditSpaceNameViews_Previews: PreviewProvider {
         NavigationView {
             EditSpaceNameView(spaceName: "MC2 아자")
         }
-        
     }
 }

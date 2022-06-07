@@ -24,19 +24,23 @@ struct SpaceMainView: View {
                                         print("calculate start FUNCTION")
                                     }) .padding(.bottom, 70)
                                 } else {
-                                    SpaceMainCardView(color:.blueMain, account: "42910090307",index: index, clicked: {
+                                    SpaceMainCardView(color: .blueMain, account: "42910090307", index: index, clicked: {
                                         print("MainCard FUNCTION")
                                     }, isParticipated: false, date: "05/05")
-                                    
-                                    //                                    SpaceMainCardView(index: index) {
-                                    //                                        print("MainCard FUNCTION")
                                 }
                             }
                         }
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
-//                .navigationBarHidden(true)
+                HStack(spacing: 25) {
+                    SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
+                        print("링크 공유 FUNCTION")
+                    }
+                    SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color(hex: "#A4C6FF"), textColor: .white) {
+                        print("참석 확인 FUNCTION")
+                    }
+                }
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
@@ -59,14 +63,7 @@ struct SpaceMainView: View {
                     }
                 }
             }
-            HStack(spacing: 25) {
-                SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
-                    print("링크 공유 FUNCTION")
-                }
-                SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color(hex: "#A4C6FF"), textColor: .white) {
-                    print("참석 확인 FUNCTION")
-                }
-            }
+            
         }
         
     }

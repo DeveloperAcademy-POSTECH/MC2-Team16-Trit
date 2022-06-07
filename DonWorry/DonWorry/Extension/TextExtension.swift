@@ -10,6 +10,6 @@ import SwiftUI
 
 extension Text {
     func applyTextWithLineLimitModifier(lineLimit: Int = 1, size: CGFloat, weight: Font.Weight, color: Color = Color.white) -> some View {
-        modifier(textModifierWithLineLimit(lineLimit: lineLimit, size: size, weight: weight, color: color))
+        modifier(textCustomModifier(lineLimit: lineLimit, size: size, weight: weight, color: color))
     }
 }

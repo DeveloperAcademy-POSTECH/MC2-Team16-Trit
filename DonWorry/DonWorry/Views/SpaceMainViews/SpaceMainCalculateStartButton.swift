@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SpaceMainCalculateStartButton: View {
+    
     var clicked: () -> Void
+    
     var body: some View {
         Button(action: clicked) {
             ZStack(alignment: .center) {

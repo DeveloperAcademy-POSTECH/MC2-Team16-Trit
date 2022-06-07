@@ -14,8 +14,8 @@ struct DonWorryApp: App {
 //            ContentView()
 //            SwiftUIView(currentUser: user4)
 
-            SpaceEmptyView()
-//            SpaceMainView()
+//            SpaceEmptyView()
+            SpaceMainView()
 //=======
 //            SignInView()
 //>>>>>>> AuthView

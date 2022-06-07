@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct SpaceTopView: View {
+    
     let leftPaddingSize = 25.0
     var spaceID: String = ""
+    
     var body: some View {
         HStack {
             Text("Space ID : \(spaceID)")

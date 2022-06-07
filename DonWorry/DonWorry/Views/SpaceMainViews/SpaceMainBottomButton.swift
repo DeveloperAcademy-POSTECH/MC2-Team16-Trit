@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct SpaceMainBottomButton: View {
+    
     var text: String
     var textSize: CGFloat = 17.0
-    var systemImageString: String
+    var systemImageString: String? 
     var backgroundColor: Color
     var textColor: Color
     var clicked: (() -> Void)
@@ -20,9 +21,11 @@ struct SpaceMainBottomButton: View {
             HStack {
                 Text(text)
                     .applyTextWithLineLimitModifier(size: textSize, weight: .bold, color: textColor)
-                Image(systemName: systemImageString)
-                    .font(Font.system(size: textSize, weight: .light))
-                    .foregroundColor(Color.white)
+                systemImageString.map {
+                    Image(systemName: $0)
+                        .font(Font.system(size: textSize, weight: .light))
+                        .foregroundColor(Color.white)
+                }
             }
             .applyButtonCustomModifier(backgroundColor: backgroundColor)
         })
