@@ -39,7 +39,7 @@ struct UserInfoView: View {
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                     
-                    AccountTextField()
+//                    AccountTextField()
                     
                     Text("정산을 받으실 계좌번호입니다.(추후 변경 가능)")
                         .font(.system(size: 13))

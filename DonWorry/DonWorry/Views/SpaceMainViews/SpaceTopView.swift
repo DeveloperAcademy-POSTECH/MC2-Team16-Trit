@@ -11,7 +11,7 @@ struct SpaceTopView: View {
     
     let leftPaddingSize = 25.0
     var spaceID: String = ""
-    
+    @State var isNewPaymentTitleShown = false
     var body: some View {
         HStack {
             Text("Space ID : \(spaceID)")
@@ -28,12 +28,19 @@ struct SpaceTopView: View {
             }
             Button {
                 print("정산추가")
+                isNewPaymentTitleShown = true
             } label: {
                 Text("정산추가")
                     .applyTextWithLineLimitModifier(size: 16.0, weight: .bold, color: .blueMain)
                     .applyButtonCustomModifier(backgroundColor: Color(hex: "#DFEAFF"), width: 92, height: 26, padding: 4, cornerRadius: 16, strokeLineWith: 0)
                     .padding(.trailing, leftPaddingSize)
             }
+            NavigationLink(isActive: $isNewPaymentTitleShown) {
+                NewPaymentTitle()
+            } label: {
+                EmptyView()
+            }
+
         }
     }
 }

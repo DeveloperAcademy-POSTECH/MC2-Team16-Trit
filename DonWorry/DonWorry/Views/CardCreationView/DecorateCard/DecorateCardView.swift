@@ -35,7 +35,7 @@ struct DecorateCardView: View {
     @State private var color: CardColor = CardColor.blue
     @State private var images: [UIImage] = []
     @State private var showPhotoPicker = false
-    
+    @State private var bank: String = "은행 선택"
     @State private var isClicked: Bool = false
     @State private var date = Date()
     
@@ -52,7 +52,7 @@ struct DecorateCardView: View {
             ZStack {
                 VStack(spacing: 20) {
                     
-                    PreviewCardView(paymentIcon: paymentIcon,
+                    PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
                                     account: $account,
                                     color: $color,
                                     date: $date,
@@ -160,7 +160,7 @@ struct DecorateCardView: View {
     @ViewBuilder private var accountBox: some View {
         VStack {
             UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: .constant("김예금"))
-            AccountTextField()
+            AccountTextField(account: $account, bank: $bank)
         }
         
 //        TextField("계좌번호를 입력해주세요.", text: $account)

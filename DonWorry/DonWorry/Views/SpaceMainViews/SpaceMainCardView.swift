@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SpaceMainCardView: View {
     
+    let bank: String
     let spaceName: String = "고기광"
     var color: Color
     var account: String
@@ -51,7 +52,7 @@ struct SpaceMainCardView: View {
                                     .applyTextWithLineLimitModifier(size: 18.0, weight: .heavy)
                             }
                             Spacer()
-                            Text("우리은행")
+                            Text(bank)
                                 .applyTextWithLineLimitModifier(size: 13.0, weight: .heavy)
                                 .padding(.horizontal, 25)
                                 .padding(.vertical, 5)
@@ -108,10 +109,10 @@ struct SpaceMainCardView: View {
     }
 }
 
-struct SpaceMainCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        SpaceMainCardView(color: .blueMain, account: "42991010093007", clicked: {
-            print("f")
-        }, date: "06/26")
-    }
-}
+//struct SpaceMainCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SpaceMainCardView(color: .blueMain, account: "42991010093007", clicked: {
+//            print("f")
+//        }, date: "06/26")
+//    }
+//}

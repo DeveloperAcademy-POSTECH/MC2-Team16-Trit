@@ -31,7 +31,7 @@ struct SpaceMainView: View {
                                         print("calculate start FUNCTION")
                                     }) .padding(.bottom, 70)
                                 } else {
-                                    SpaceMainCardView(color: .blueMain, account: "42910090307", index: index, clicked: {
+                                    SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "42910090307", index: index, clicked: {
                                         isModalPresented = true
                                         print("MainCard FUNCTION")
                                         

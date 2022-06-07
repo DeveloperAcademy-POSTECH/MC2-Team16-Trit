@@ -9,9 +9,9 @@ import Combine
 import SwiftUI
 
 struct AccountTextField: View {
-    @State private var account = ""
+    @Binding var account: String
     @State private var showSheet = false
-    @State private var bank = "은행 선택"
+    @Binding var bank: String
     
     let charLimit = 14
     
@@ -65,8 +65,8 @@ struct AccountTextField: View {
     }
 }
 
-struct AccountTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountTextField()
-    }
-}
+//struct AccountTextField_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AccountTextField()
+//    }
+//}
