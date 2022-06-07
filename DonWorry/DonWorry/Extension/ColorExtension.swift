@@ -103,6 +103,7 @@ enum CardColor: String, Identifiable, CaseIterable {
             return Color("Purple")
         case .red:
             return Color("Red")
+
         case .black:
             return Color("Black")
 

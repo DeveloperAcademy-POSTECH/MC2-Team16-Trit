@@ -44,16 +44,11 @@ struct DecorateCardView: View {
         formatter.dateFormat = "MM / dd"
         return formatter
     }
-    
-    
-    
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
-    
     var paymentIcon: Image?
     
     var body: some View {
         
-   
             ZStack {
                 VStack(spacing: 20) {
                     
@@ -163,7 +158,7 @@ struct DecorateCardView: View {
     
     // MARK: 계좌번호 입력 칸
     @ViewBuilder private var accountBox: some View {
-        VStack{
+        VStack {
             UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: .constant("김예금"))
             AccountTextField()
         }
