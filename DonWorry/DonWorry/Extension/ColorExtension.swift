@@ -59,7 +59,7 @@ extension Color {
 
     static let cardColor1 = Color(hex: "#401811")
     static let blueA4C6FF = Color(hex: "#A4C6FF")
-    static let yellowKakao = Color(hex: "#FEE500")
+    static let skyBlue = Color(hex: "#0A84FF")
     
 }
 enum CardColor: String, Identifiable, CaseIterable {
