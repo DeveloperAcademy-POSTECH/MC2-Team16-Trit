@@ -64,6 +64,7 @@ struct ProfileView: View {
                         
                     }
                 }
+                
                 Line()
                 
                 /* Section 2 : Bank Account */
@@ -176,13 +177,6 @@ struct ProfileView_Previews: PreviewProvider {
     }
 }
 
-struct Line: View {
-    var body : some View {
-        Rectangle()
-            .frame(height: 0.5, alignment: .bottom)
-            .foregroundColor(.grayC5)
-    }
-}
 
 struct MoreInfoListItem: View {
     

@@ -30,6 +30,11 @@
 		3EBC816C2843522A00794955 /* DonWorryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC816B2843522A00794955 /* DonWorryTests.swift */; };
 		3EBC81762843522B00794955 /* DonWorryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC81752843522B00794955 /* DonWorryUITests.swift */; };
 		3EBC81782843522B00794955 /* DonWorryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC81772843522B00794955 /* DonWorryUITestsLaunchTests.swift */; };
+		A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC32284DDCF700AC9736 /* AlertView.swift */; };
+		A704FC36284DDD5C00AC9736 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC35284DDD5C00AC9736 /* Line.swift */; };
+		A704FC38284DE22C00AC9736 /* AlertRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC37284DE22C00AC9736 /* AlertRow.swift */; };
+		A704FC3A284DF28900AC9736 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC39284DF28900AC9736 /* Alert.swift */; };
+		A704FC3C284DF62F00AC9736 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC3B284DF62F00AC9736 /* Date.swift */; };
 		4D6229BA2848FEE300A8E24C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229B92848FEE300A8E24C /* CardView.swift */; };
 		4D6229BB2849075800A8E24C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		4D6229BD284925B900A8E24C /* PreviewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229BC284925B900A8E24C /* PreviewCardView.swift */; };
@@ -113,6 +118,11 @@
 		3EBC81712843522B00794955 /* DonWorryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonWorryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBC81752843522B00794955 /* DonWorryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryUITests.swift; sourceTree = "<group>"; };
 		3EBC81772843522B00794955 /* DonWorryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A704FC32284DDCF700AC9736 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		A704FC35284DDD5C00AC9736 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		A704FC37284DE22C00AC9736 /* AlertRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRow.swift; sourceTree = "<group>"; };
+		A704FC39284DF28900AC9736 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		A704FC3B284DF62F00AC9736 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		4D6229B92848FEE300A8E24C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		4D6229BC284925B900A8E24C /* PreviewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCardView.swift; sourceTree = "<group>"; };
 		4D6229BF284926F600A8E24C /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
@@ -277,6 +287,23 @@
 			path = DonWorryUITests;
 			sourceTree = "<group>";
 		};
+		A704FC31284DDCD600AC9736 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				A704FC32284DDCF700AC9736 /* AlertView.swift */,
+				A704FC37284DE22C00AC9736 /* AlertRow.swift */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
+		A704FC34284DDD5200AC9736 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A704FC35284DDD5C00AC9736 /* Line.swift */,
+			);
+			path = View;
+      sourceTree = "<group>";
+		};
 		4D6229B82848FED000A8E24C /* Card */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +354,7 @@
 				C0931807284C3EF900E3C9AA /* UserModels.swift */,
 				A74479A028476ADA0083BBF4 /* User.swift */,
 				2CC2118B2849F1CF0009F785 /* TermModel.swift */,
+				A704FC39284DF28900AC9736 /* Alert.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -334,6 +362,7 @@
 		A7447993284759B50083BBF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A704FC31284DDCD600AC9736 /* AlertView */,
 				4D6229D4284BC20200A8E24C /* CardCreationView */,
 				A74479D12849175A0083BBF4 /* ProfileView */,
 				2CC211802849EFDE0009F785 /* AuthView */,
@@ -392,6 +421,7 @@
 			children = (
 				4D6229C22849277500A8E24C /* Fonts.swift */,
 				A74479A828476AEC0083BBF4 /* FileUtilities.swift */,
+				A704FC3B284DF62F00AC9736 /* Date.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -399,6 +429,7 @@
 		A744799B28476A350083BBF4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A704FC34284DDD5200AC9736 /* View */,
 				A74479C02847E3060083BBF4 /* Icon */,
 				A74479BB2847DC720083BBF4 /* Sheet */,
 				A74479BA2847DBA20083BBF4 /* Text */,
@@ -639,11 +670,13 @@
 				A74479A128476ADA0083BBF4 /* User.swift in Sources */,
 				2CF61B3D2849B00B004C3768 /* NewPaymentTitle.swift in Sources */,
 				2CC211882849F1300009F785 /* TermView.swift in Sources */,
+				A704FC38284DE22C00AC9736 /* AlertRow.swift in Sources */,
 				A74479B12847A8190083BBF4 /* SmallButton.swift in Sources */,
 				A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */,
 				4D6229CA2849295300A8E24C /* ImageManager.swift in Sources */,
 				A74479AD2847A0580083BBF4 /* LargeButton.swift in Sources */,
 				2CF61B412849B1A0004C3768 /* NewPaymentPrice.swift in Sources */,
+				A704FC36284DDD5C00AC9736 /* Line.swift in Sources */,
 				A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */,
 				2CC2118A2849F1400009F785 /* LoginButtonView.swift in Sources */,
 				2CC211862849F1230009F785 /* ToSView.swift in Sources */,
@@ -654,6 +687,7 @@
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
 				4D6229CD284929C000A8E24C /* DecorateCardView.swift in Sources */,
 				C0931808284C3EF900E3C9AA /* UserModels.swift in Sources */,
+				A704FC3C284DF62F00AC9736 /* Date.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				2CF61B3A2849AF97004C3768 /* SpaceEmptyView.swift in Sources */,
 				C0936BFF28487FFC0064CEFA /* GiverCard.swift in Sources */,
@@ -665,6 +699,8 @@
 				2CC211842849F1160009F785 /* UserInfoView.swift in Sources */,
 				2CC2118C2849F1CF0009F785 /* TermModel.swift in Sources */,
 				A744799F28476AD00083BBF4 /* FileViewModels.swift in Sources */,
+				A704FC3A284DF28900AC9736 /* Alert.swift in Sources */,
+				A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */,
 				4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */,
 				C09C89712849101700E2A929 /* TakerCard.swift in Sources */,
 				A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */,
@@ -843,7 +879,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = 2S73QX9MMY;
+				DEVELOPMENT_TEAM = 562Z37RH3N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DonWorry/Info.plist;
@@ -873,7 +909,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = 2S73QX9MMY;
+				DEVELOPMENT_TEAM = 562Z37RH3N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DonWorry/Info.plist;
