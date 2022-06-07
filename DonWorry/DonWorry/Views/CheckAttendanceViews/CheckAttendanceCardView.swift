@@ -10,6 +10,7 @@ import SwiftUI
 struct CheckAttendanceCardView: View {
     let index: Int
     @State var checked: Bool = false
+    // TODO - colors는 사용자가 선택한 colors로 대체 됩니다.
     let colors = [Color(hex: "ff5454"), Color.green, Color.purple]
     var body: some View {
         ZStack(alignment: .trailing) {
@@ -40,6 +41,7 @@ struct CheckAttendanceCardView: View {
                 }
             
             RoundedRectangle(cornerRadius: 20)
+            // TODO - color는 사용자가 선택한 color로 대체 됩니다.
                 .fill(colors[index%3])
                 .frame(width: 281, height: 139)
                 .frame(width: 69, alignment: .trailing)

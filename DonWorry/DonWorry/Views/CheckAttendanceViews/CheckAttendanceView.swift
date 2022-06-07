@@ -10,22 +10,13 @@ import SwiftUI
 struct CheckAttendanceView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    let leftPaddingSize: CGFloat = 25
-    let cards = [0, 1, 2, 3, 4]
-    private var numberOfCards: Int {
-        cards.count
-    }
-    private var numberOfcheck: Int {
-        checkedArray.count
-    }
-    private func filterArray(_ checkedArray: [Int], index: Int) -> [Int] {
-        if checkedArray.contains(index) {
-            return checkedArray.filter { $0 != index }
-        } else {
-            return checkedArray + [index]
-        }
-    }
-    @State var checkedArray: [Int] = []
+        @State var checkedArray: [Int] = []
+        
+        let leftPaddingSize: CGFloat = 25
+    //Todo : cards는 카드로 대체
+        let cards = [0, 1, 2, 3, 4]
+        private var numberOfCards: Int { cards.count }
+        private var numberOfcheck: Int { checkedArray.count }
     
     var body: some View {
             ZStack(alignment: .bottom) {
@@ -105,6 +96,17 @@ struct CheckAttendanceView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             CheckAttendanceView()
+        }
+    }
+}
+
+extension CheckAttendanceView {
+    // 또 선택하면 사라지고, 아니면 추가 되도록합니다.
+    private func filterArray(_ checkedArray: [Int], index: Int) -> [Int] {
+        if checkedArray.contains(index) {
+            return checkedArray.filter { $0 != index }
+        } else {
+            return checkedArray + [index]
         }
     }
 }

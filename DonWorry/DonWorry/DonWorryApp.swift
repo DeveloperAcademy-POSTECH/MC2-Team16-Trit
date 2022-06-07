@@ -18,7 +18,9 @@ struct DonWorryApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            HomeView(currentUser: user4)
+//            SpaceMainView()
+            SpaceEmptyView()
+//            HomeView(currentUser: user4)
         }
     }
 }

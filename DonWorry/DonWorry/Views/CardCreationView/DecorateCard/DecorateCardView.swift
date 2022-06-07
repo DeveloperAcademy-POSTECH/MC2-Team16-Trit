@@ -39,11 +39,6 @@ struct DecorateCardView: View {
     @State private var isClicked: Bool = false
     @State private var date = Date()
     
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM / dd"
-        return formatter
-    }
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     var paymentIcon: Image?
     

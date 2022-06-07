@@ -15,11 +15,6 @@ struct PreviewCardView: View {
     @Binding var color: CardColor
     @Binding var date: Date
     
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM / dd"
-        return formatter
-    }
     @Binding var image: [UIImage]
     
     @Binding var decoCase: DecoCase
@@ -29,7 +24,7 @@ struct PreviewCardView: View {
 
             SpaceMainCardView(bank: bank, color: color.color, account: account, index: 0, clicked: {
                 
-            }, isParticipated: false, date: dateFormatter.string(from: date), paymentIcon: paymentIcon)
+            }, isParticipated: false, date: date.getStringForMMDD(), paymentIcon: paymentIcon)
         }
         .padding()
     }

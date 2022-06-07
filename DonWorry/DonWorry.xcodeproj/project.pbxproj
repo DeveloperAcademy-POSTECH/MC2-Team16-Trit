@@ -34,12 +34,6 @@
 		3EBC816C2843522A00794955 /* DonWorryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC816B2843522A00794955 /* DonWorryTests.swift */; };
 		3EBC81762843522B00794955 /* DonWorryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC81752843522B00794955 /* DonWorryUITests.swift */; };
 		3EBC81782843522B00794955 /* DonWorryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC81772843522B00794955 /* DonWorryUITestsLaunchTests.swift */; };
-		A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC32284DDCF700AC9736 /* AlertView.swift */; };
-		A704FC36284DDD5C00AC9736 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC35284DDD5C00AC9736 /* Line.swift */; };
-		A704FC38284DE22C00AC9736 /* AlertRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC37284DE22C00AC9736 /* AlertRow.swift */; };
-		A704FC3A284DF28900AC9736 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC39284DF28900AC9736 /* Alert.swift */; };
-		A704FC3C284DF62F00AC9736 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC3B284DF62F00AC9736 /* Date.swift */; };
-		4D6229BA2848FEE300A8E24C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229B92848FEE300A8E24C /* CardView.swift */; };
 		4D6229BB2849075800A8E24C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		4D6229BD284925B900A8E24C /* PreviewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229BC284925B900A8E24C /* PreviewCardView.swift */; };
 		4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229BF284926F600A8E24C /* PhotoPicker.swift */; };
@@ -62,6 +56,11 @@
 		79BF17AD284D1454003A2A68 /* CheckAttendanceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17AC284D1454003A2A68 /* CheckAttendanceCardView.swift */; };
 		79BF17B0284D953B003A2A68 /* SpaceHistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17AF284D953B003A2A68 /* SpaceHistoryDetailView.swift */; };
 		79BF17B3284D977C003A2A68 /* EditSpaceNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17B2284D977C003A2A68 /* EditSpaceNameView.swift */; };
+		A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC32284DDCF700AC9736 /* AlertView.swift */; };
+		A704FC36284DDD5C00AC9736 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC35284DDD5C00AC9736 /* Line.swift */; };
+		A704FC38284DE22C00AC9736 /* AlertRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC37284DE22C00AC9736 /* AlertRow.swift */; };
+		A704FC3A284DF28900AC9736 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC39284DF28900AC9736 /* Alert.swift */; };
+		A704FC3C284DF62F00AC9736 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC3B284DF62F00AC9736 /* Date.swift */; };
 		A744799D28476AC80083BBF4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744799C28476AC80083BBF4 /* HomeView.swift */; };
 		A744799F28476AD00083BBF4 /* FileViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744799E28476AD00083BBF4 /* FileViewModels.swift */; };
 		A74479A128476ADA0083BBF4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A028476ADA0083BBF4 /* User.swift */; };
@@ -141,12 +140,6 @@
 		3EBC81712843522B00794955 /* DonWorryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonWorryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBC81752843522B00794955 /* DonWorryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryUITests.swift; sourceTree = "<group>"; };
 		3EBC81772843522B00794955 /* DonWorryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		A704FC32284DDCF700AC9736 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
-		A704FC35284DDD5C00AC9736 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		A704FC37284DE22C00AC9736 /* AlertRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRow.swift; sourceTree = "<group>"; };
-		A704FC39284DF28900AC9736 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		A704FC3B284DF62F00AC9736 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		4D6229B92848FEE300A8E24C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		4D6229BC284925B900A8E24C /* PreviewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCardView.swift; sourceTree = "<group>"; };
 		4D6229BF284926F600A8E24C /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		4D6229C22849277500A8E24C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -167,6 +160,11 @@
 		79BF17AC284D1454003A2A68 /* CheckAttendanceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAttendanceCardView.swift; sourceTree = "<group>"; };
 		79BF17AF284D953B003A2A68 /* SpaceHistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceHistoryDetailView.swift; sourceTree = "<group>"; };
 		79BF17B2284D977C003A2A68 /* EditSpaceNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSpaceNameView.swift; sourceTree = "<group>"; };
+		A704FC32284DDCF700AC9736 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		A704FC35284DDD5C00AC9736 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		A704FC37284DE22C00AC9736 /* AlertRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRow.swift; sourceTree = "<group>"; };
+		A704FC39284DF28900AC9736 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		A704FC3B284DF62F00AC9736 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		A744799C28476AC80083BBF4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A744799E28476AD00083BBF4 /* FileViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewModels.swift; sourceTree = "<group>"; };
 		A74479A028476ADA0083BBF4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -326,23 +324,6 @@
 			path = DonWorryUITests;
 			sourceTree = "<group>";
 		};
-		A704FC31284DDCD600AC9736 /* AlertView */ = {
-			isa = PBXGroup;
-			children = (
-				A704FC32284DDCF700AC9736 /* AlertView.swift */,
-				A704FC37284DE22C00AC9736 /* AlertRow.swift */,
-			);
-			path = AlertView;
-			sourceTree = "<group>";
-		};
-		A704FC34284DDD5200AC9736 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A704FC35284DDD5C00AC9736 /* Line.swift */,
-			);
-			path = View;
-      sourceTree = "<group>";
-		};
 		4D6229B82848FED000A8E24C /* Card */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +404,23 @@
 			path = EditSpaceNameViews;
 			sourceTree = "<group>";
 		};
+		A704FC31284DDCD600AC9736 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				A704FC32284DDCF700AC9736 /* AlertView.swift */,
+				A704FC37284DE22C00AC9736 /* AlertRow.swift */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
+		A704FC34284DDD5200AC9736 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A704FC35284DDD5C00AC9736 /* Line.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A7447992284759A60083BBF4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +469,7 @@
 		A744799628475A210083BBF4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				79BF1798284CFF40003A2A68 /* Modifiers.swift */,
 				A74479A428476AE30083BBF4 /* ColorExtension.swift */,
 				79BF179A284CFF6E003A2A68 /* ViewExtension.swift */,
 				79BF179C284CFF83003A2A68 /* ImageExtension.swift */,
@@ -485,7 +484,6 @@
 			children = (
 				4D6229C92849295300A8E24C /* ImageManager.swift */,
 				A74479A628476AE70083BBF4 /* FileHelper.swift */,
-				79BF1798284CFF40003A2A68 /* Modifiers.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -758,7 +756,7 @@
 				A74479A128476ADA0083BBF4 /* User.swift in Sources */,
 				2CF61B3D2849B00B004C3768 /* NewPaymentTitle.swift in Sources */,
 				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
-				2CC211882849F1300009F785 /* TermView.swift in Sources */,
+				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
 				A704FC38284DE22C00AC9736 /* AlertRow.swift in Sources */,
 				A74479B12847A8190083BBF4 /* SmallButton.swift in Sources */,
 				79BF17B3284D977C003A2A68 /* EditSpaceNameView.swift in Sources */,
@@ -986,8 +984,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = P8QLF9WL7T;
-				DEVELOPMENT_TEAM = 2S73QX9MMY;
 				DEVELOPMENT_TEAM = 562Z37RH3N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1019,8 +1015,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = P8QLF9WL7T;
-				DEVELOPMENT_TEAM = 2S73QX9MMY;
 				DEVELOPMENT_TEAM = 562Z37RH3N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
