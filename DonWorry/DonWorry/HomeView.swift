@@ -79,11 +79,13 @@ struct HomeView: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(currentUser: user1)
-    }
-}
+
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        H(currentUser: user1)
+//    }
+//}
+
 
 struct ButtonBottomCell: View {
     var body: some View {
