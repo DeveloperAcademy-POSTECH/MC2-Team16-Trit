@@ -28,8 +28,7 @@ class AppleLoginViewModel: ObservableObject {
         }
         
         let firebaseCredetial = OAuthProvider.credential(withProviderID: "apple.com", idToken: tokenString, rawNonce: nonce)
-        
-        Auth.auth().signIn(with: firebaseCredetial) { (Result, err) in
+        Auth.auth().signIn(with: firebaseCredetial) { (result, err) in
             
             if let error = err {
                 print(error.localizedDescription)
@@ -40,8 +39,6 @@ class AppleLoginViewModel: ObservableObject {
         }
     }
 }
-
-
 
 func sha256(_ input: String) -> String {
   let inputData = Data(input.utf8)

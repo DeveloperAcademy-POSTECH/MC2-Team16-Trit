@@ -26,6 +26,7 @@
 		3E208731284DA5F3003A4CFD /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3E208730284DA5F3003A4CFD /* GoogleSignInSwift */; };
 		3E208733284DA688003A4CFD /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E208732284DA688003A4CFD /* ViewExtension.swift */; };
 		3E208738284F6C98003A4CFD /* AppleLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */; };
+		3E20873A284F8A9D003A4CFD /* SignInViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */; };
 		3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815A2843522900794955 /* DonWorryApp.swift */; };
 		3EBC815D2843522900794955 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815C2843522900794955 /* ContentView.swift */; };
 		3EBC816C2843522A00794955 /* DonWorryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC816B2843522A00794955 /* DonWorryTests.swift */; };
@@ -106,6 +107,7 @@
 		3E208734284DC6F5003A4CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3E208736284E65AD003A4CFD /* DonWorry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DonWorry.entitlements; sourceTree = "<group>"; };
 		3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginViewModel.swift; sourceTree = "<group>"; };
+		3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewExtension.swift; sourceTree = "<group>"; };
 		3EBC81572843522900794955 /* DonWorry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonWorry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBC815A2843522900794955 /* DonWorryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryApp.swift; sourceTree = "<group>"; };
 		3EBC815C2843522900794955 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 			children = (
 				A74479A428476AE30083BBF4 /* ColorExtension.swift */,
 				3E208732284DA688003A4CFD /* ViewExtension.swift */,
+				3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				2CC211822849F0FA0009F785 /* SignInView.swift in Sources */,
 				2CF61B3F2849B18A004C3768 /* NewPaymentIcon.swift in Sources */,
+				3E20873A284F8A9D003A4CFD /* SignInViewExtension.swift in Sources */,
 				A74479AB28476AF10083BBF4 /* FileResources.swift in Sources */,
 				A74479B32847BE170083BBF4 /* XSmallButton.swift in Sources */,
 				4D6229BA2848FEE300A8E24C /* CardView.swift in Sources */,
