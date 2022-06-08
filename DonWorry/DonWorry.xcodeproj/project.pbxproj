@@ -44,6 +44,9 @@
 		4D6229C7284927E100A8E24C /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D6229C6284927E100A8E24C /* GmarketSansTTFBold.ttf */; };
 		4D6229CA2849295300A8E24C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229C92849295300A8E24C /* ImageManager.swift */; };
 		4D6229CD284929C000A8E24C /* DecorateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229CC284929C000A8E24C /* DecorateCardView.swift */; };
+		A704FC3F284E01A300AC9736 /* SlideOverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC3E284E01A200AC9736 /* SlideOverCard.swift */; };
+		A704FC42284E01E400AC9736 /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = A704FC41284E01E400AC9736 /* SlideOverCard */; };
+		A704FC44284F6B5200AC9736 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC43284F6B5200AC9736 /* ShareSheet.swift */; };
 		7991F9FE28487E2B00DCAFB8 /* SpaceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9FD28487E2B00DCAFB8 /* SpaceMainView.swift */; };
 		7991F9FF2848C76D00DCAFB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		79BF1799284CFF40003A2A68 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF1798284CFF40003A2A68 /* Modifiers.swift */; };
@@ -87,7 +90,6 @@
 		C0030EE32848C7880017125A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
 		C07ECB392849919C000C42C1 /* RoomSwitchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ECB382849919C000C42C1 /* RoomSwitchCellView.swift */; };
-		C0931806284B9B6B00E3C9AA /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = C0931805284B9B6B00E3C9AA /* HalfASheet */; };
 		C0931808284C3EF900E3C9AA /* UserModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0931807284C3EF900E3C9AA /* UserModels.swift */; };
 		C0936BFD284876800064CEFA /* ParticipateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFC284876800064CEFA /* ParticipateCard.swift */; };
 		C0936BFF28487FFC0064CEFA /* GiverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFE28487FFC0064CEFA /* GiverCard.swift */; };
@@ -152,6 +154,8 @@
 		4D6229C6284927E100A8E24C /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 		4D6229C92849295300A8E24C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		4D6229CC284929C000A8E24C /* DecorateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorateCardView.swift; sourceTree = "<group>"; };
+		A704FC3E284E01A200AC9736 /* SlideOverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOverCard.swift; sourceTree = "<group>"; };
+		A704FC43284F6B5200AC9736 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		7991F9FD28487E2B00DCAFB8 /* SpaceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceMainView.swift; sourceTree = "<group>"; };
 		79BF1798284CFF40003A2A68 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		79BF179A284CFF6E003A2A68 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -203,7 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0931806284B9B6B00E3C9AA /* HalfASheet in Frameworks */,
+				A704FC42284E01E400AC9736 /* SlideOverCard in Frameworks */,
 				3E20872C284DA5A5003A4CFD /* FirebaseAuth in Frameworks */,
 				3E20872F284DA5F3003A4CFD /* GoogleSignIn in Frameworks */,
 				3E208731284DA5F3003A4CFD /* GoogleSignInSwift in Frameworks */,
@@ -418,14 +422,18 @@
 			path = AlertView;
 			sourceTree = "<group>";
 		};
-		A704FC34284DDD5200AC9736 /* View */ = {
+		
+    A704FC3D284E019600AC9736 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A704FC35284DDD5C00AC9736 /* Line.swift */,
+				A704FC3E284E01A200AC9736 /* SlideOverCard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
+    
+    /////****** 여기까지 ******////////
+    
 		A7447992284759A60083BBF4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -517,7 +525,7 @@
 		A744799B28476A350083BBF4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				A704FC34284DDD5200AC9736 /* View */,
+				A704FC3D284E019600AC9736 /* View */,
 				A74479C02847E3060083BBF4 /* Icon */,
 				A74479BB2847DC720083BBF4 /* Sheet */,
 				A74479BA2847DBA20083BBF4 /* Text */,
@@ -553,6 +561,7 @@
 			children = (
 				A74479BC2847DF340083BBF4 /* HalfSheetModal.swift */,
 				A74479BE2847DF8D0083BBF4 /* SampleViewWithSheet.swift */,
+				A704FC43284F6B5200AC9736 /* ShareSheet.swift */,
 				2CC211AD284BBE960009F785 /* ChooseBankSheet.swift */,
 				2CC211B6284CE9880009F785 /* TermSheetView.swift */,
 			);
@@ -606,7 +615,7 @@
 			);
 			name = DonWorry;
 			packageProductDependencies = (
-				C0931805284B9B6B00E3C9AA /* HalfASheet */,
+				A704FC41284E01E400AC9736 /* SlideOverCard */,
 				3E20872B284DA5A5003A4CFD /* FirebaseAuth */,
 				3E20872E284DA5F3003A4CFD /* GoogleSignIn */,
 				3E208730284DA5F3003A4CFD /* GoogleSignInSwift */,
@@ -684,7 +693,7 @@
 			);
 			mainGroup = 3EBC814E2843522900794955;
 			packageReferences = (
-				C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */,
+				A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 				3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
@@ -813,6 +822,7 @@
 				A704FC3A284DF28900AC9736 /* Alert.swift in Sources */,
 				A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */,
 				4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */,
+				A704FC44284F6B5200AC9736 /* ShareSheet.swift in Sources */,
 				C09C89712849101700E2A929 /* TakerCard.swift in Sources */,
 				A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
@@ -831,6 +841,7 @@
 				3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */,
 				A74479AF2847A0600083BBF4 /* MediumButton.swift in Sources */,
 				C07ECB392849919C000C42C1 /* RoomSwitchCellView.swift in Sources */,
+				A704FC3F284E01A300AC9736 /* SlideOverCard.swift in Sources */,
 				C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */,
 				A74479A928476AEC0083BBF4 /* FileUtilities.swift in Sources */,
 				A744799D28476AC80083BBF4 /* HomeView.swift in Sources */,
@@ -1160,6 +1171,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+    A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joogps/SlideOverCard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1176,17 +1195,14 @@
 				minimumVersion = 6.2.0;
 			};
 		};
-		C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/franklynw/HalfASheet.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A704FC41284E01E400AC9736 /* SlideOverCard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */;
+			productName = SlideOverCard;
+		};
 		3E20872B284DA5A5003A4CFD /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1201,11 +1217,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
-		};
-		C0931805284B9B6B00E3C9AA /* HalfASheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C0931804284B9B6B00E3C9AA /* XCRemoteSwiftPackageReference "HalfASheet" */;
-			productName = HalfASheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
