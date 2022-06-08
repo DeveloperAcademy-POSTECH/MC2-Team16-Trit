@@ -8,20 +8,23 @@
 import SwiftUI
 import Firebase
 import GoogleSignIn
+import AuthenticationServices
+import CryptoKit
 
 let companies = ["Apple", "KakaoTalk", "Google"]
 
 struct SignInView: View {
     
     // SignIn을 위해 선언하였습니다.
-    @State var isLoading: Bool = false
-    @AppStorage("SignIn Status") var log_status = false
+    @State var isLoading: Bool = true // 추후 ProgressView를 넣을 것으로 예상하여, 변수를 생성
+    @AppStorage("SignIn Status") var log_status = false // SignIn상태 저장
+    @StateObject var appleloginData = AppleLoginViewModel() // Firebase 공식 문서의 가이드라인을 따랐습니다.
     
     var body: some View {
         
-        if log_status == true {
+        if log_status == false { // 이미 로그인된 상태라면 홈뷰로 가도록 했습니다.
             HomeView(currentUser: user1)
-        }else{
+        } else {
             NavigationView {
                 ZStack {
                     LinearGradient(gradient: Gradient(colors: [.white, Color.blueMain]), startPoint: .init(x: 0, y: 0.47), endPoint: .init(x: 0, y: 1))
@@ -65,67 +68,42 @@ struct SignInView: View {
     //                        }
     //                    }
                         // MARK: Test용 Button (추후에 UI Design이 수정될 것 같아 임시로 기능 확인을 위해 만들었습니다.)
-                        Button {
-                            googleHandleLogin() //Google Social Login function
-                        } label: {
-                            HStack(spacing: 20) {
-                                Image("Google")
-                                Text("구글로 로그인하기")
+                        VStack {
+                            Button {
+                                googleHandleLogin() // Google Social Login function
+                            } label: {
+                                HStack(spacing: 20) {
+                                    Image("Google")
+                                    Text("구글로 로그인하기")
+                                }
                             }
+                
+                            // Apple SignIn Butoon 입니다.
+                            // Xcode에서 SignInWithAppleButton이라는 컴포넌트를 지원합니다.
+                            SignInWithAppleButton { (request) in
+                                appleloginData.nonce = randomNonceString()
+                                request.requestedScopes = [.email, .fullName]
+                                request.nonce = sha256(appleloginData.nonce)
+                            } onCompletion: { (result) in
+                                
+                                switch result {
+                                case .success(let user): // 로그인에 성공한 경우
+                                    print("성공")
+                                    guard let credential = user.credential as?
+                                            ASAuthorizationAppleIDCredential else {
+                                        print("Firebase 오류") // credential 생성 성공여부
+                                        return
+                                    }
+                                    appleloginData.authenticate(credential: credential)
+                                    log_status = true
+                                case .failure(let error): // 로그인에 실패한 경우
+                                    print(error.localizedDescription)
+                                }
+                            }.frame(width: 325, height: 70)
+                                .clipShape(Capsule())
                         }
                     }
                 }
-            }
-        }
-        
-    }
-    
-    // 구글 소셜 로그인
-    func googleHandleLogin() {
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        
-        // 1. GoogleLogin configuration을 생성합니다.
-        let config = GIDConfiguration(clientID: clientID)
-        
-        isLoading = true
-        
-        // 2. 생성된 configuration을 이용
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: getRootViewController()) {[self] user, err in
-            
-            if let error = err {
-                isLoading = false
-                print(error.localizedDescription)
-                return
-            }
-            
-            guard
-                let authentication = user?.authentication,
-                let idToken = authentication.idToken
-            else {
-                isLoading = false
-                return
-            }
-            
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                           accessToken: authentication.accessToken)
-            // 3. Firebase에 계정 추가
-            
-            Auth.auth().signIn(with: credential) { result, err in
-                
-                isLoading = false
-                
-                if let error = err {
-                    print(error.localizedDescription)
-                    return
-                }
-                // 4. 확인을 위해 User name을 출력했습니다. 추후 제거할 의향이 있습니다.
-                guard let user = result?.user else {
-                   
-                    return
-                }
-                log_status = true
-                print(log_status)
-                print(user.displayName ?? "Success!")
             }
         }
     }
