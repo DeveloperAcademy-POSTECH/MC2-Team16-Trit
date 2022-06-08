@@ -86,7 +86,7 @@ struct TakerDonCardSheetView: View {
             LargeButton(text: "재촉하기", clicked: {
                 showTakerSheet.toggle()
             })
-            .offset(y: 200)
+            .offset(y: 185)
         }
         
     }

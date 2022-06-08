@@ -80,31 +80,14 @@ struct GiverDonCardSheetView: View {
             }
             // 여기 버튼은 크기가 다른View들과는 달라서 이걸로 새로 만듦
             HStack {
-                Button {
+                HalfSheetMediumButton(text: "계좌번호 복사하기", clicked: {
                     //
-                } label: {
-                    Text("계좌번호 복사하기")
-                        .frame(width: 170, height: 26, alignment: .center)
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 15, weight: .bold))
-                        .padding()
-                        .background(Color.grayBC)
-                        .cornerRadius(50)
-                }
-
-                Button {
-                    showGiverSheet.toggle()
-                } label: {
-                    Text("보냈어요!")
-                        .frame(width: 100, height: 26, alignment: .center)
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 15, weight: .bold))
-                        .padding()
-                        .background(Color.blueMain)
-                        .cornerRadius(50)
-                }
+                })
+                HalfSheetSmallButton(text: "보냈어요!", clicked: {
+                    //
+                })
             }
-            .offset(y: 200)
+            .offset(y: 185)
         }
         
     }
