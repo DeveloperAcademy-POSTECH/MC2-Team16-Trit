@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditSpaceNameView: View {
     
-    @State var spaceName: String
+    @Binding var spaceName: String
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
@@ -51,6 +51,7 @@ struct EditSpaceNameView: View {
     }
 }
 
+/*
 struct EditSpaceNameViews_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -58,3 +59,4 @@ struct EditSpaceNameViews_Previews: PreviewProvider {
         }
     }
 }
+*/
