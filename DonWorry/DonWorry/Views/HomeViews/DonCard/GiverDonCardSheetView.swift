@@ -59,14 +59,15 @@ struct GiverDonCardSheetView: View {
                         }
                         ZStack(alignment: .leading) {
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 325, height: 8)
+                                .frame(width: 335, height: 8)
                                 .foregroundColor(.gray31)
                                 .opacity(0.2)
                             HStack {
                                 // 정산자(taker)가 받아야할 돈(taker.takemoney)과 contentUser가 보내야할돈(contentUser.giveMoney)의 비율을 계산해서 그래프로 표현
                                 RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: CGFloat((325*currentUser.giveMoney!)/taker.takeMoney!), height: 8)
+                                    .frame(width: CGFloat((335*currentUser.giveMoney!)/taker.takeMoney!), height: 8)
                                 .foregroundColor(.blueMain)
+                                .opacity(0.2)
                                 
                                 Spacer()
                             }
