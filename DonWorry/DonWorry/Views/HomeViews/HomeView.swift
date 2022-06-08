@@ -7,10 +7,13 @@
 
 import SwiftUI
 import SlideOverCard
+import HalfASheet
 
 struct HomeView: View {
     @State var selection: String = "떱떱해"
     @State var isPresented : Bool = false
+    @State var showGiverSheet = false
+    @State var showTakerSheet = false
     @State var spaceID: String = ""
     
     var currentUser: User
@@ -53,10 +56,19 @@ struct HomeView: View {
                         HStack {
                             ParticipateDonCard(isParticipateIn: false)
                             if currentUser.takeMoney != nil {
-                                TakerDonCard(currentUser: currentUser)
+                                Button {
+                                    showTakerSheet.toggle()
+                                } label: {
+                                    TakerDonCard(currentUser: currentUser)
+                                }
                             }
                             if currentUser.giveMoney != nil {
-                                GiverDonCard(currentUser: currentUser)
+                                
+                                Button {
+                                    showGiverSheet.toggle()
+                                } label: {
+                                    GiverDonCard(currentUser: currentUser)
+                                }
                             }
                         }
                     }
@@ -77,6 +89,14 @@ struct HomeView: View {
                 
                 Spacer().frame(height: 120)
             }
+            HalfASheet(isPresented: $showGiverSheet, content: {
+                GiverDonCardSheetView(showGiverSheet: $showGiverSheet, currentUser: currentUser)
+            })
+            .height(.proportional(0.58))
+            HalfASheet(isPresented: $showTakerSheet, content: {
+                TakerDonCardSheetView(showTakerSheet: $showTakerSheet, currentUser: currentUser)
+            })
+            .height(.proportional(0.58))
         }
         .slideOverCard(isPresented: $isPresented, onDismiss: {
             
@@ -102,7 +122,7 @@ struct HomeView: View {
             }
             .frame(width: 315, height: 350)
         }
-        
+        .ignoresSafeArea(.all)
     }
 }
 

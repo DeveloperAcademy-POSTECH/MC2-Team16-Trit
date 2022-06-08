@@ -83,6 +83,9 @@
 		A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D7284918EB0083BBF4 /* EditAccountView.swift */; };
 		C0030EE32848C7880017125A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
+		C04CB5B32851007F00621101 /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = C04CB5B22851007F00621101 /* HalfASheet */; };
+		C04CB5B52851010000621101 /* TakerDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */; };
+		C04CB5B72851012600621101 /* GiverDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */; };
 		C07ECB392849919C000C42C1 /* SpaceChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ECB382849919C000C42C1 /* SpaceChipsView.swift */; };
 		C0936BFD284876800064CEFA /* ParticipateDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFC284876800064CEFA /* ParticipateDonCard.swift */; };
 		C0936BFF28487FFC0064CEFA /* GiverDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */; };
@@ -181,6 +184,8 @@
 		A74479D5284918D60083BBF4 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A74479D7284918EB0083BBF4 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 		C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleProgressBar.swift; sourceTree = "<group>"; };
+		C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCardSheetView.swift; sourceTree = "<group>"; };
+		C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverDonCardSheetView.swift; sourceTree = "<group>"; };
 		C07ECB382849919C000C42C1 /* SpaceChipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceChipsView.swift; sourceTree = "<group>"; };
 		C0936BFC284876800064CEFA /* ParticipateDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateDonCard.swift; sourceTree = "<group>"; };
 		C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverDonCard.swift; sourceTree = "<group>"; };
@@ -193,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A704FC42284E01E400AC9736 /* SlideOverCard in Frameworks */,
+				C04CB5B32851007F00621101 /* HalfASheet in Frameworks */,
 				3E20872C284DA5A5003A4CFD /* FirebaseAuth in Frameworks */,
 				3E20872F284DA5F3003A4CFD /* GoogleSignIn in Frameworks */,
 				3E208731284DA5F3003A4CFD /* GoogleSignInSwift in Frameworks */,
@@ -401,6 +407,8 @@
 				C0936BFC284876800064CEFA /* ParticipateDonCard.swift */,
 				C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */,
 				C09C89702849101700E2A929 /* TakerDonCard.swift */,
+				C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */,
+				C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */,
 			);
 			path = DonCard;
 			sourceTree = "<group>";
@@ -610,6 +618,7 @@
 				3E20872B284DA5A5003A4CFD /* FirebaseAuth */,
 				3E20872E284DA5F3003A4CFD /* GoogleSignIn */,
 				3E208730284DA5F3003A4CFD /* GoogleSignInSwift */,
+				C04CB5B22851007F00621101 /* HalfASheet */,
 			);
 			productName = DonWorry;
 			productReference = 3EBC81572843522900794955 /* DonWorry.app */;
@@ -687,6 +696,7 @@
 				A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 				3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				C04CB5B12851007F00621101 /* XCRemoteSwiftPackageReference "HalfASheet" */,
 			);
 			productRefGroup = 3EBC81582843522900794955 /* Products */;
 			projectDirPath = "";
@@ -770,6 +780,7 @@
 				A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */,
 				4D6229CA2849295300A8E24C /* ImageManager.swift in Sources */,
 				3E208738284F6C98003A4CFD /* AppleLoginViewModel.swift in Sources */,
+				C04CB5B52851010000621101 /* TakerDonCardSheetView.swift in Sources */,
 				A74479AD2847A0580083BBF4 /* LargeButton.swift in Sources */,
 				2CF61B412849B1A0004C3768 /* AddCardPriceView.swift in Sources */,
 				A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */,
@@ -786,6 +797,7 @@
 				2CC211AE284BBE960009F785 /* ChooseBankSheet.swift in Sources */,
 				A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */,
 				4D6229C32849277500A8E24C /* Fonts.swift in Sources */,
+				C04CB5B72851012600621101 /* GiverDonCardSheetView.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				4D6229BD284925B900A8E24C /* PreviewCardView.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
@@ -1179,6 +1191,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		C04CB5B12851007F00621101 /* XCRemoteSwiftPackageReference "HalfASheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/franklynw/HalfASheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1201,6 +1221,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */;
 			productName = SlideOverCard;
+		};
+		C04CB5B22851007F00621101 /* HalfASheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C04CB5B12851007F00621101 /* XCRemoteSwiftPackageReference "HalfASheet" */;
+			productName = HalfASheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
