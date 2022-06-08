@@ -61,7 +61,7 @@ struct TermSheetView: View {
         }
     }
 }
-
+/*
 struct TermSheetView_Previews: PreviewProvider {
     static var previews: some View {
         TermSheetView(agreedTerms: [
@@ -73,3 +73,4 @@ struct TermSheetView_Previews: PreviewProvider {
         ], showSheet: .constant(true))
     }
 }
+*/

@@ -11,14 +11,7 @@ struct TermView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State private var showSheet = false
-    
-    @State private var termsOfService = [
-        Term(title: "만 14세 이상입니다.", content: "만 14세 이상입니다. 내용", isEssential: true, isChecked: false, showContent: false),
-        Term(title: "돈워리 서비스 이용약관 동의", content: "돈워리 서비스 이용약관 동의 내용", isEssential: true, isChecked: false, showContent: false),
-        Term(title: "돈워리 개인정보 수집 및 이용 동의", content: "돈워리 개인정보 수집 및 이용 동의 내용", isEssential: true, isChecked: false, showContent: false),
-        Term(title: "돈워리 개인정보 제 3자 제공 동의", content: "돈워리 개인정보 제 3자 제공 동의 내용", isEssential: false, isChecked: false, showContent: false),
-        Term(title: "이벤트 알림 수신 동의", content: "이벤트 알림 수신 동의 내용", isEssential: false, isChecked: false, showContent: false)
-    ]
+    @State private var termsOfService = terms
     
     var body: some View {
         VStack(spacing: 30) {
@@ -55,7 +48,7 @@ struct TermView: View {
                         
                         HStack {
                             Image(systemName: "circle.fill")
-                                .foregroundColor(termsOfService.allSatisfy { $0.isChecked } ? Color.blueMain : Color.grayE7)
+                                .foregroundColor(termsOfService.allSatisfy { $0.isAgreed } ? Color.blueMain : Color.grayE7)
                                 .padding(.trailing, 5)
                             Text("전체 동의하기")
                                 .font(.system(size: 17, weight: .bold))
@@ -86,10 +79,10 @@ struct TermView: View {
                 .foregroundColor(.white)
                 .font(.system(size: 15, weight: .bold))
                 .padding()
-                .background(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? Color.blueMain : Color.blueA4C6FF )
+                .background(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isAgreed } ? Color.blueMain : Color.blueA4C6FF )
                 .cornerRadius(50)
             }
-            .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
+            .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isAgreed } ? false : true)
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -107,7 +100,7 @@ struct TermView: View {
             }
         }
         .halfSheet(showSheet: $showSheet) {
-            TermSheetView(agreedTerms: termsOfService.filter { $0.isChecked }, showSheet: $showSheet)
+            TermSheetView(agreedtermsOfService: termsOfService.filter { $0.isAgreed }, showSheet: $showSheet)
         } onEnd: {
             showSheet = false
         }
