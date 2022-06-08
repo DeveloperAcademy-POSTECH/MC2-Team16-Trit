@@ -1,5 +1,5 @@
 //
-//  AccountInputView.swift
+//  AccountTextField.swift
 //  DonWorry
 //
 //  Created by 김승창 on 2022/06/03.
@@ -9,7 +9,9 @@ import Combine
 import SwiftUI
 
 struct AccountTextField: View {
-    @State private var account = ""
+    @Binding var account: String
+    @State private var showSheet = false
+    @Binding var bank: String
     
     let charLimit = 14
     
@@ -44,7 +46,7 @@ struct AccountTextField: View {
             .cornerRadius(29)
             
             HStack {
-                Text("은행 선택")
+                Text(bank)
                 Image(systemName: "chevron.down")
             }
             .font(.system(size: 13))
@@ -52,12 +54,13 @@ struct AccountTextField: View {
             .frame(width: 101, height: 50)
             .background(Color.grayBD)
             .cornerRadius(29)
+            .onTapGesture {
+                showSheet = true
+            }
+            .sheet(isPresented: $showSheet, onDismiss: { showSheet = false }) {
+                ChooseBankSheet(showSheet: $showSheet, bank: $bank)
+            }
+            
         }
-    }
-}
-
-struct AccountTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountTextField()
     }
 }

@@ -9,16 +9,22 @@ import SwiftUI
 
 struct PreviewCardView: View {
     
+    var paymentIcon: Image?
+    @Binding var bank: String
     @Binding var account: String
     @Binding var color: CardColor
     @Binding var date: Date
+    
     @Binding var image: [UIImage]
     
     @Binding var decoCase: DecoCase
     
     var body: some View {
         VStack(alignment: .leading) {
-            CardView(color: color.color, account: account, date: date)
+
+            SpaceMainCardView(bank: bank, color: color.color, account: account, index: 0, clicked: {
+                
+            }, isParticipated: false, date: date.getStringForMMDD(), paymentIcon: paymentIcon)
         }
         .padding()
     }
@@ -26,6 +32,6 @@ struct PreviewCardView: View {
 
 // struct PreviewCardView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        PreviewCardView()
+//        PreviewCardView(paymentIcon: Image(systemName: "circle"), account: .constant(" asd"), color: .constant(.black), date: .constant(Date()), image: .constant([UIImage(systemName: "circle")!]), decoCase: .constant(.image))
 //    }
 // }
