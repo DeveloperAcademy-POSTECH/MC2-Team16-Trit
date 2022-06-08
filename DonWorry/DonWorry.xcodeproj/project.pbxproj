@@ -83,6 +83,8 @@
 		A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D7284918EB0083BBF4 /* EditAccountView.swift */; };
 		C0030EE32848C7880017125A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
+		C027ED6D28510977008E4441 /* HalfSheetMediumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C027ED6C28510977008E4441 /* HalfSheetMediumButton.swift */; };
+		C027ED6F28510983008E4441 /* HalfSheetSmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C027ED6E28510983008E4441 /* HalfSheetSmallButton.swift */; };
 		C04CB5B32851007F00621101 /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = C04CB5B22851007F00621101 /* HalfASheet */; };
 		C04CB5B52851010000621101 /* TakerDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */; };
 		C04CB5B72851012600621101 /* GiverDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */; };
@@ -184,6 +186,8 @@
 		A74479D5284918D60083BBF4 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A74479D7284918EB0083BBF4 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 		C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleProgressBar.swift; sourceTree = "<group>"; };
+		C027ED6C28510977008E4441 /* HalfSheetMediumButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetMediumButton.swift; sourceTree = "<group>"; };
+		C027ED6E28510983008E4441 /* HalfSheetSmallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetSmallButton.swift; sourceTree = "<group>"; };
 		C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCardSheetView.swift; sourceTree = "<group>"; };
 		C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverDonCardSheetView.swift; sourceTree = "<group>"; };
 		C07ECB382849919C000C42C1 /* SpaceChipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceChipsView.swift; sourceTree = "<group>"; };
@@ -551,6 +555,8 @@
 				A74479B02847A8190083BBF4 /* SmallButton.swift */,
 				A74479B22847BE170083BBF4 /* XSmallButton.swift */,
 				A74479C12847E3760083BBF4 /* ChipButton.swift */,
+				C027ED6C28510977008E4441 /* HalfSheetMediumButton.swift */,
+				C027ED6E28510983008E4441 /* HalfSheetSmallButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 				4D6229C32849277500A8E24C /* Fonts.swift in Sources */,
 				C04CB5B72851012600621101 /* GiverDonCardSheetView.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
+				C027ED6F28510983008E4441 /* HalfSheetSmallButton.swift in Sources */,
 				4D6229BD284925B900A8E24C /* PreviewCardView.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
 				4D6229CD284929C000A8E24C /* AddCardDecoView.swift in Sources */,
@@ -825,6 +832,7 @@
 				A704FC44284F6B5200AC9736 /* ShareSheet.swift in Sources */,
 				C09C89712849101700E2A929 /* TakerDonCard.swift in Sources */,
 				A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */,
+				C027ED6D28510977008E4441 /* HalfSheetMediumButton.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				A74479D3284917990083BBF4 /* ProfileView.swift in Sources */,
 				79BF17B0284D953B003A2A68 /* CardDetailView.swift in Sources */,

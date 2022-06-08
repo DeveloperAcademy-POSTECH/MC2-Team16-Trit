@@ -91,7 +91,7 @@ struct GiverDonCardSheetView: View {
                         .background(Color.grayBC)
                         .cornerRadius(50)
                 }
-                
+
                 Button {
                     showGiverSheet.toggle()
                 } label: {
