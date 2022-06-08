@@ -26,7 +26,7 @@ struct AlertView: View {
                 AlertRow()
                 AlertRow(isReminder: true)
                 
-                Line().padding(.bottom, 12)
+                GrayLine().padding(.bottom, 12)
                 
                 /* DATE-ROW */
                 HStack {

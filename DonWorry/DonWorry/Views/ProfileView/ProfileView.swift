@@ -65,7 +65,7 @@ struct ProfileView: View {
                     }
                 }
                 
-                Line()
+                GrayLine()
                 
                 /* Section 2 : Bank Account */
                 VStack {
@@ -119,22 +119,22 @@ struct ProfileView: View {
                     }
                 }
                 .padding(.vertical, 10)
-                Line()
+                GrayLine()
                    
                 /* Section 3 : 공지사항, 이용약관, 1대1문의, 회원탈퇴 */
                 VStack {
                     
                     MoreInfoListItem(title: "공지사항")
-                    Line()
+                    GrayLine()
                     
                     MoreInfoListItem(title: "이용약관")
-                    Line()
+                    GrayLine()
                     
                     MoreInfoListItem(title: "1대1문의", subTitle: "불편한점이나 바라는점을 말씀해주세요")
-                    Line()
+                    GrayLine()
                                        
                     MoreInfoListItem(title: "회원탈퇴")
-                    Line()
+                    GrayLine()
                     
                 }
                 .padding(.bottom, 15)
