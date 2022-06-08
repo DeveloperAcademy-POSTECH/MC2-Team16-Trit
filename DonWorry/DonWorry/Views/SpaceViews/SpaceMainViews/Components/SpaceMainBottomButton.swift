@@ -23,7 +23,7 @@ struct SpaceMainBottomButton: View {
                     .applyTextWithLineLimitModifier(size: textSize, weight: .bold, color: textColor)
                 systemImageString.map {
                     Image(systemName: $0)
-                        .font(Font.system(size: textSize, weight: .light))
+                        .font(Font.system(size: textSize, weight: .bold))
                         .foregroundColor(Color.white)
                 }
             }

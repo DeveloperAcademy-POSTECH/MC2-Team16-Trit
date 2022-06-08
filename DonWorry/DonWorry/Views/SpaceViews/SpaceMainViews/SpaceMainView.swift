@@ -57,7 +57,7 @@ struct SpaceMainView: View {
                         SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
                             print("링크 공유 FUNCTION")
                         }
-                        SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color(hex: "#A4C6FF"), textColor: .white) {
+                        SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color(hex: "#A4C6FF"), textColor: .blueMain) {
                             isCheckOutAttendanceViewOpened = true
                             print("참석 확인 FUNCTION")
                         }
@@ -106,13 +106,15 @@ struct SpaceMainView: View {
                             .padding(.leading, 8)
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        HStack(spacing: leftPaddingSize) {
+                        HStack(spacing: 20) {
                             
                             // Edit Space
                             Button {
                                 isShowingDialog = true
                             } label: {
                                 Image(systemName: "ellipsis")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundColor(.black)
                             }
                             
                             // Home
@@ -120,6 +122,8 @@ struct SpaceMainView: View {
                                 isHomeView.toggle()
                             } label: {
                                 Image(systemName: "xmark")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundColor(.black)
                             }.padding(.trailing, 8)
                         }
                     }
@@ -131,11 +135,11 @@ struct SpaceMainView: View {
     }
 }
 
-/*
+
 struct SpaceMainView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceMainView()
+        SpaceMainView(spaceID: .constant("Asdasd"))
         
     }
 }
- */
+ 

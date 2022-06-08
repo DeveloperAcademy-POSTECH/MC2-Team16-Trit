@@ -15,10 +15,9 @@ struct SpaceTopView: View {
     var body: some View {
         HStack {
             Text("Space ID : \(spaceID)")
-                .applyTextWithLineLimitModifier(size: 14, weight: .bold, color: .black)
+                .applyTextWithLineLimitModifier(size: 14, weight: .regular, color: .black)
                 .opacity(0.5)
                 .padding(.leading, leftPaddingSize)
-            Spacer()
             Button {
                 print("")
             } label: {
@@ -26,6 +25,7 @@ struct SpaceTopView: View {
                     .applyTextWithLineLimitModifier(size: 9, weight: .bold, color: .white)
                     .applyButtonCustomModifier(backgroundColor: .grayC5, width: 47, height: 19, padding: 3)
             }
+            Spacer()
             Button {
                 print("정산추가")
                 isAddCardTitleViewShown = true
@@ -45,10 +45,10 @@ struct SpaceTopView: View {
     }
 }
 
-/*
+
 struct SpaceTopView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceTopView()
+        SpaceTopView(spaceID: .constant("asdvasdvasdvas"))
     }
 }
- */
+ 
