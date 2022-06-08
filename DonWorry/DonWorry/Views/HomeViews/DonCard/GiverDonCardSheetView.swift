@@ -115,4 +115,3 @@ struct GiverDonCardSheetView_Previews: PreviewProvider {
         GiverDonCardSheetView(showGiverSheet: .constant(true), currentUser: user4)
     }
 }
-

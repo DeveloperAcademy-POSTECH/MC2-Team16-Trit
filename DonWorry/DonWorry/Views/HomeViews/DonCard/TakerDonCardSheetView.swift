@@ -97,4 +97,3 @@ struct TakerDonCardSheetView_Previews: PreviewProvider {
         TakerDonCardSheetView(showTakerSheet: .constant(true), currentUser: user4)
     }
 }
-

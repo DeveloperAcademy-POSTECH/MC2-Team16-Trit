@@ -11,7 +11,7 @@ import HalfASheet
 
 struct HomeView: View {
     @State var selection: String = "떱떱해"
-    @State var isPresented : Bool = false
+    @State var isPresented: Bool = false
     @State var showGiverSheet = false
     @State var showTakerSheet = false
     @State var spaceID: String = ""
@@ -20,35 +20,7 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             VStack {
-                HStack {
-                    HStack {
-                        Button {
-                            // TODO - 프로필뷰로 넘어갈 버튼
-                        } label: {
-                            Image(currentUser.profileImage)
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .background(.black)
-                                .clipShape(Circle())
-                        }
-                        VStack(alignment: .leading) {
-                            Text(currentUser.userName + "님")
-                                .font(.system(size: 20, weight: .bold))
-                            Text("안녕하세요")
-                                .font(.system(size: 17))
-                        }
-                    }
-                    Spacer()
-                    Button {
-                        // TODO - 알림창으로 넘어갈 버튼
-                    } label: {
-                        Image(systemName: "bell.circle.fill")
-                            .foregroundColor(.blue)
-                            .font(.system(size: 40))
-                    }
-                }
-                .padding(.bottom, 25)
-                .padding(.horizontal, 20)
+                MainProfileView(currentUser: currentUser)
                 SpaceChipsView(selection: $selection)
                 Spacer().frame(height: 120)
                 if currentUser.participant == selection {
@@ -75,7 +47,6 @@ struct HomeView: View {
                 } else {
                     ParticipateDonCard(isParticipateIn: true)
                 }
-                
                 /* Bottom Buttons */
                 HStack {
                     XSmallButton(icon: "magnifyingglass") {
@@ -99,9 +70,7 @@ struct HomeView: View {
             .height(.proportional(0.58))
         }
         .slideOverCard(isPresented: $isPresented, onDismiss: {
-            
             isPresented = false
-            
         }) {
             VStack(alignment: .center, spacing: 25) {
                 
@@ -133,3 +102,38 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 */
+
+struct MainProfileView: View {
+    var currentUser: User
+    var body: some View {
+        HStack {
+            HStack {
+                Button {
+                    // TO DO - 프로필뷰로 넘어갈 버튼
+                } label: {
+                    Image(currentUser.profileImage)
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .background(.black)
+                        .clipShape(Circle())
+                }
+                VStack(alignment: .leading) {
+                    Text(currentUser.userName + "님")
+                        .font(.system(size: 20, weight: .bold))
+                    Text("안녕하세요")
+                        .font(.system(size: 17))
+                }
+            }
+            Spacer()
+            Button {
+                // TO DO - 알림창으로 넘어갈 버튼
+            } label: {
+                Image(systemName: "bell.circle.fill")
+                    .foregroundColor(.blue)
+                    .font(.system(size: 40))
+            }
+        }
+        .padding(.bottom, 25)
+        .padding(.horizontal, 20)
+    }
+}

@@ -119,4 +119,3 @@ func makeDisplayGiverList(users: [User], contentUser: User) -> [User] {
     }
     return giverlist
 }
-
