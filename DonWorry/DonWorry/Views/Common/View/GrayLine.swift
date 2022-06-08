@@ -1,13 +1,13 @@
 //
-//  Line.swift
+//  GrayLine.swift
 //  DonWorry
 //
-//  Created by Chanhee Jeong on 2022/06/06.
+//  Created by Chanhee Jeong on 2022/06/08.
 //
 
 import SwiftUI
 
-struct Line: View {
+struct GrayLine: View {
     var body : some View {
         Rectangle()
             .frame(height: 0.5, alignment: .bottom)
@@ -15,9 +15,9 @@ struct Line: View {
     }
 }
 
-struct Line_Previews: PreviewProvider {
+struct GrayLine_Previews: PreviewProvider {
     static var previews: some View {
-        Line()
+        GrayLine()
     }
 }
 
