@@ -15,6 +15,7 @@ struct Alert: Identifiable, Hashable {
     var sender: String // 리마인더 : 알림을 보내는 사람
     var timestamp : Date // 알림을 보낸날짜 "yyyy-MM-dd HH:mm:ss"
 }
+
 /*
 let alertList: [String: [Alert]] = [
 
