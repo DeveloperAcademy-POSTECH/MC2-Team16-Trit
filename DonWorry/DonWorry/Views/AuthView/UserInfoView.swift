@@ -23,22 +23,23 @@ struct UserInfoView: View {
             
             VStack(alignment: .leading, spacing: 45) {
                 
-                // 공통 텍스트필드 입력 컴포넌트(닉네임)
                 VStack(alignment: .leading) {
-                    Text("닉네임")
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
-                    UnderlineTextField(placeholder: "닉네임을 입력해주세요", charLimit: 20, text: $nickName)
+                    HStack {
+                        Text("닉네임")
+                            .font(.system(size: 17))
+                            .fontWeight(.semibold)
+                        
+                    }
+                    UnderlineTextField(placeholder: "친구들이 나를 찾을 닉네임을 입력해주세요.", charLimit: 20, text: $nickName)
                     
                 }
                 
-                // 계좌번호
                 VStack(alignment: .leading) {
                     Text("계좌번호")
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                     
-                    AccountTextField()
+//                    AccountTextField()
                     
                     Text("정산을 받으실 계좌번호입니다.(추후 변경 가능)")
                         .font(.system(size: 13))
@@ -52,16 +53,14 @@ struct UserInfoView: View {
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                     
-                    UnderlineTextField(placeholder: "예금주명을 입력해주세요", charLimit: 20, text: $holder)
+                    UnderlineTextField(placeholder: "예금주명을 입력해주세요", charLimit: 10, text: $holder)
                 }
                 
             }
             
             Spacer()
             
-            // 공용 컴포넌트 다음
-            
-            NavigationLink(destination: ToSView()) {
+            NavigationLink(destination: TermView()) {
                 
                 Text("다음")
                     .frame(width: 100, height: 20, alignment: .center)

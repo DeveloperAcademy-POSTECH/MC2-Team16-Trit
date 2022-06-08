@@ -56,6 +56,7 @@ extension Color {
     static let grayF0 = Color(hex: "#F0F0F0")
     static let grayAccount = Color(hex: "#4B4A4A")
     static let grayWithBlue = Color(hex: "#798191")
+    static let yellowKakao = Color(hex: "#FEE500")
     static let cardColor1 = Color(hex: "#401811")
     static let blueA4C6FF = Color(hex: "#A4C6FF")
     static let skyBlue = Color(hex: "#0A84FF")
@@ -71,7 +72,8 @@ enum CardColor: String, Identifiable, CaseIterable {
     case pink
     case purple
     case red
-    case yellow
+    case black
+    
     
     var id: String {
         self.rawValue
@@ -101,8 +103,10 @@ enum CardColor: String, Identifiable, CaseIterable {
             return Color("Purple")
         case .red:
             return Color("Red")
-        case .yellow:
-            return Color("Yellow")
+
+        case .black:
+            return Color("Black")
+
         }
     }
 }

@@ -22,3 +22,14 @@ extension String {
         
     }
 }
+
+// Date를 MM / dd string 으로 출력하고 싶을때
+extension Date {
+    
+    func getStringForMMDD() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM / dd"
+        return formatter.string(from: self)
+    }
+    
+}
