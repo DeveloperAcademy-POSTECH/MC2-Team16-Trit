@@ -23,21 +23,15 @@ struct NewPaymentIcon: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
-            
             VStack(alignment: .leading, spacing: 10) {
-                
                 Group {
                     Text("정산 내역을")
                     Text("추가해볼까요?")
                 }
                 .font(.system(size: 30, weight: .bold))
-                
             }
-            
             VStack {
-                
                 VStack {
-                    
                     ScrollView(showsIndicators: false) {
                         LazyVGrid(columns: columns) {
                             ForEach(iconsArray, id: \.self) { iconName in
@@ -60,10 +54,8 @@ struct NewPaymentIcon: View {
                                     }
                                 }
                             }
-                            
                         }
                     }
-                         
                     HStack {
                         Spacer()
                         

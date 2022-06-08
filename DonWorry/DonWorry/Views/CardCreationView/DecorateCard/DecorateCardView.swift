@@ -26,6 +26,7 @@ enum DecoCase: String, Identifiable, CaseIterable {
 }
 
 struct DecorateCardView: View {
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
     //  @StateObject var vm = DecorateCardViewModel()
@@ -34,22 +35,25 @@ struct DecorateCardView: View {
     @State private var color: CardColor = CardColor.blue
     @State private var images: [UIImage] = []
     @State private var showPhotoPicker = false
-    @State var isClicked: Bool = false
+    @State private var bank: String = "은행 선택"
+    @State private var isClicked: Bool = false
     @State private var date = Date()
     
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
+    var paymentIcon: Image?
     
     var body: some View {
-        NavigationView {
+        
             ZStack {
                 VStack(spacing: 20) {
-                    PreviewCardView(account: $account,
+                    
+                    PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
+                                    account: $account,
                                     color: $color,
                                     date: $date,
                                     image: $images,
                                     decoCase: $decoCase)
                     .padding(.horizontal, 20)
-                    
                     VStack(spacing: 20) {
                         CustomPicker(selected: $decoCase)
                             .padding(.horizontal, 20)
@@ -76,7 +80,7 @@ struct DecorateCardView: View {
                     }
                     .frame(maxWidth: 380)
                     .frame(maxHeight: 400)
-                    .padding(.bottom, 20)
+//                    .padding(.bottom, 20)
                     Spacer()
                 }
                 VStack {
@@ -89,19 +93,17 @@ struct DecorateCardView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(role: .cancel) {
-                        print("이전 페이지 뷰 연결")
+                        self.mode.wrappedValue.dismiss()
                     } label: {
-                        Image(systemName: "chevron.backward")
-                            .font(.title2.weight(.bold))
+                        Image(systemName: "chevron.left")
                     }
                     .buttonStyle(.plain)
                 }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(role: .cancel) {
                         print("클릭 시 스페이스 메인으로 가게 하려고 함")
                     } label: {
@@ -112,8 +114,8 @@ struct DecorateCardView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+        
+//        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     // MARK: 컬러박스 입력 칸
@@ -150,11 +152,16 @@ struct DecorateCardView: View {
     }
     
     // MARK: 계좌번호 입력 칸
-    private var accountBox: some View {
-        TextField("계좌번호를 입력해주세요.", text: $account)
-            .font(.title3)
-            .multilineTextAlignment(.center)
-            .padding(.horizontal, 20)
+    @ViewBuilder private var accountBox: some View {
+        VStack {
+            UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: .constant("김예금"))
+            AccountTextField(account: $account, bank: $bank)
+        }
+        
+//        TextField("계좌번호를 입력해주세요.", text: $account)
+//            .font(.title3)
+//            .multilineTextAlignment(.center)
+//            .padding(.horizontal, 20)
     }
     
     // MARK: 이미지 입력 칸
@@ -241,6 +248,9 @@ struct CustomPicker: View {
 
 struct DecorateCardView_Previews: PreviewProvider {
     static var previews: some View {
-        DecorateCardView()
+        NavigationView {
+            DecorateCardView()
+        }
+        
     }
 }
