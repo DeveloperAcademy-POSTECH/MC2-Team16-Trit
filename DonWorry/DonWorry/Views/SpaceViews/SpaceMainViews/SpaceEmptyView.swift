@@ -53,7 +53,7 @@ struct SpaceEmptyView: View {
                         Spacer()
                         
                         // 정산 추가 버튼
-                        NavigationLink(destination: NewPaymentTitle()) {
+                        NavigationLink(destination: AddCardTitleView()) {
                             Text("정산 추가")
                                 .font(.system(size: 15, weight: .bold))
                                 .frame(width: 90, height: 35)

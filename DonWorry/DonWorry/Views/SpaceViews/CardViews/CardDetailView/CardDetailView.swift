@@ -1,5 +1,5 @@
 //
-//  PaymentDetailView.swift
+//  CardDetailView.swift
 //  DonWorry
 //
 //  Created by Hankyu Lee on 2022/06/05.
@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-struct PaymentDetailView: View {
+struct CardDetailView: View {
     
     var body: some View {
         
@@ -99,8 +99,8 @@ struct PaymentDetailView: View {
 }
 }
 
-struct PaymentDetailView_Previews: PreviewProvider {
+struct CardDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentDetailView()
+        CardDetailView()
     }
 }

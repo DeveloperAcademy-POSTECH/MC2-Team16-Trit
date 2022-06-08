@@ -1,5 +1,5 @@
 //
-//  NewPaymentPrice.swift
+//  AddCardPriceView.swift
 //  DonWorry
 //
 //  Created by 김승창 on 2022/06/02.
@@ -14,7 +14,7 @@ let rows = [
     ["00", "0", "<"]
 ]
 
-struct NewPaymentPrice: View {
+struct AddCardPriceView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State private var price = ""
@@ -64,7 +64,7 @@ struct NewPaymentPrice: View {
             HStack {
                 Spacer()
                 
-                NavigationLink(destination: DecorateCardView(paymentIcon: paymentIcon)) {
+                NavigationLink(destination: AddCardDecoView(paymentIcon: paymentIcon)) {
                     Text("다음")
                         .frame(width: 135, height: 50)
                         .foregroundColor(.white)
@@ -135,8 +135,8 @@ struct NewPaymentPrice: View {
     }
 }
 
-struct NewPaymentPrice_Previews: PreviewProvider {
+struct AddCardPriceView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPaymentPrice(paymentTitle: "땡땡이네 스타벅스", paymentIcon: Image("chicken-leg"))
+        AddCardPriceView(paymentTitle: "땡땡이네 스타벅스", paymentIcon: Image("chicken-leg"))
     }
 }

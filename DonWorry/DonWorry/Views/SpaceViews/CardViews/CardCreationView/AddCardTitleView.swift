@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewPaymentTitle: View {
+struct AddCardTitleView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State private var paymentTitle: String = ""
@@ -42,7 +42,7 @@ struct NewPaymentTitle: View {
                 HStack {
                     Spacer()
                     
-                    NavigationLink(destination: NewPaymentIcon(paymentTitle: paymentTitle)) {
+                    NavigationLink(destination: AddCardIconView(paymentTitle: paymentTitle)) {
                         Text("다음")
                             .frame(width: 135, height: 50)
                             .foregroundColor(.white)
@@ -74,6 +74,6 @@ struct NewPaymentTitle: View {
 
 struct NewPayment_Title_Previews: PreviewProvider {
     static var previews: some View {
-        NewPaymentTitle()
+        AddCardTitleView()
     }
 }

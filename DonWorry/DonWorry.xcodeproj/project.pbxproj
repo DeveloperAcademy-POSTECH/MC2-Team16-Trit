@@ -19,9 +19,9 @@
 		2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B3284C6BB60009F785 /* GoogleLoginButton.swift */; };
 		2CC211B7284CE9880009F785 /* TermSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B6284CE9880009F785 /* TermSheetView.swift */; };
 		2CF61B3A2849AF97004C3768 /* SpaceEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B392849AF97004C3768 /* SpaceEmptyView.swift */; };
-		2CF61B3D2849B00B004C3768 /* NewPaymentTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B3C2849B00B004C3768 /* NewPaymentTitle.swift */; };
-		2CF61B3F2849B18A004C3768 /* NewPaymentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B3E2849B18A004C3768 /* NewPaymentIcon.swift */; };
-		2CF61B412849B1A0004C3768 /* NewPaymentPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B402849B1A0004C3768 /* NewPaymentPrice.swift */; };
+		2CF61B3D2849B00B004C3768 /* AddCardTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B3C2849B00B004C3768 /* AddCardTitleView.swift */; };
+		2CF61B3F2849B18A004C3768 /* AddCardIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B3E2849B18A004C3768 /* AddCardIconView.swift */; };
+		2CF61B412849B1A0004C3768 /* AddCardPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B402849B1A0004C3768 /* AddCardPriceView.swift */; };
 		2CF61B442849B332004C3768 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		3E208729284DA4CB003A4CFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E208728284DA4CB003A4CFD /* GoogleService-Info.plist */; };
 		3E20872C284DA5A5003A4CFD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3E20872B284DA5A5003A4CFD /* FirebaseAuth */; };
@@ -41,7 +41,7 @@
 		4D6229C5284927C800A8E24C /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D6229C4284927C800A8E24C /* GmarketSansTTFLight.ttf */; };
 		4D6229C7284927E100A8E24C /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D6229C6284927E100A8E24C /* GmarketSansTTFBold.ttf */; };
 		4D6229CA2849295300A8E24C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229C92849295300A8E24C /* ImageManager.swift */; };
-		4D6229CD284929C000A8E24C /* DecorateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229CC284929C000A8E24C /* DecorateCardView.swift */; };
+		4D6229CD284929C000A8E24C /* AddCardDecoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229CC284929C000A8E24C /* AddCardDecoView.swift */; };
 		7991F9FE28487E2B00DCAFB8 /* SpaceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9FD28487E2B00DCAFB8 /* SpaceMainView.swift */; };
 		7991F9FF2848C76D00DCAFB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		79BF1799284CFF40003A2A68 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF1798284CFF40003A2A68 /* Modifiers.swift */; };
@@ -53,7 +53,7 @@
 		79BF17A8284D0209003A2A68 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A7284D0209003A2A68 /* TextExtension.swift */; };
 		79BF17AB284D143C003A2A68 /* CheckAttendanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17AA284D143C003A2A68 /* CheckAttendanceView.swift */; };
 		79BF17AD284D1454003A2A68 /* SmallCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17AC284D1454003A2A68 /* SmallCardView.swift */; };
-		79BF17B0284D953B003A2A68 /* PaymentHistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17AF284D953B003A2A68 /* PaymentHistoryDetailView.swift */; };
+		79BF17B0284D953B003A2A68 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17AF284D953B003A2A68 /* CardDetailView.swift */; };
 		79BF17B3284D977C003A2A68 /* EditSpaceNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17B2284D977C003A2A68 /* EditSpaceNameView.swift */; };
 		A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC32284DDCF700AC9736 /* AlertView.swift */; };
 		A704FC38284DE22C00AC9736 /* AlertRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704FC37284DE22C00AC9736 /* AlertRow.swift */; };
@@ -119,9 +119,9 @@
 		2CC211B3284C6BB60009F785 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
 		2CC211B6284CE9880009F785 /* TermSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermSheetView.swift; sourceTree = "<group>"; };
 		2CF61B392849AF97004C3768 /* SpaceEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceEmptyView.swift; sourceTree = "<group>"; };
-		2CF61B3C2849B00B004C3768 /* NewPaymentTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentTitle.swift; sourceTree = "<group>"; };
-		2CF61B3E2849B18A004C3768 /* NewPaymentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentIcon.swift; sourceTree = "<group>"; };
-		2CF61B402849B1A0004C3768 /* NewPaymentPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentPrice.swift; sourceTree = "<group>"; };
+		2CF61B3C2849B00B004C3768 /* AddCardTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardTitleView.swift; sourceTree = "<group>"; };
+		2CF61B3E2849B18A004C3768 /* AddCardIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardIconView.swift; sourceTree = "<group>"; };
+		2CF61B402849B1A0004C3768 /* AddCardPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardPriceView.swift; sourceTree = "<group>"; };
 		3E208728284DA4CB003A4CFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E208734284DC6F5003A4CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3E208736284E65AD003A4CFD /* DonWorry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DonWorry.entitlements; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		4D6229C4284927C800A8E24C /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
 		4D6229C6284927E100A8E24C /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 		4D6229C92849295300A8E24C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		4D6229CC284929C000A8E24C /* DecorateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorateCardView.swift; sourceTree = "<group>"; };
+		4D6229CC284929C000A8E24C /* AddCardDecoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardDecoView.swift; sourceTree = "<group>"; };
 		7991F9FD28487E2B00DCAFB8 /* SpaceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceMainView.swift; sourceTree = "<group>"; };
 		79BF1798284CFF40003A2A68 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		79BF179C284CFF83003A2A68 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 		79BF17A7284D0209003A2A68 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 		79BF17AA284D143C003A2A68 /* CheckAttendanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAttendanceView.swift; sourceTree = "<group>"; };
 		79BF17AC284D1454003A2A68 /* SmallCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCardView.swift; sourceTree = "<group>"; };
-		79BF17AF284D953B003A2A68 /* PaymentHistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryDetailView.swift; sourceTree = "<group>"; };
+		79BF17AF284D953B003A2A68 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		79BF17B2284D977C003A2A68 /* EditSpaceNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSpaceNameView.swift; sourceTree = "<group>"; };
 		A704FC32284DDCF700AC9736 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		A704FC37284DE22C00AC9736 /* AlertRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRow.swift; sourceTree = "<group>"; };
@@ -226,16 +226,16 @@
 			path = AuthViews;
 			sourceTree = "<group>";
 		};
-		2CF61B3B2849AF9A004C3768 /* PaymentCreationView */ = {
+		2CF61B3B2849AF9A004C3768 /* CardCreationView */ = {
 			isa = PBXGroup;
 			children = (
 				4D6229B82848FED000A8E24C /* Card */,
-				2CF61B3C2849B00B004C3768 /* NewPaymentTitle.swift */,
-				2CF61B3E2849B18A004C3768 /* NewPaymentIcon.swift */,
-				2CF61B402849B1A0004C3768 /* NewPaymentPrice.swift */,
-				4D6229CC284929C000A8E24C /* DecorateCardView.swift */,
+				2CF61B3C2849B00B004C3768 /* AddCardTitleView.swift */,
+				2CF61B3E2849B18A004C3768 /* AddCardIconView.swift */,
+				2CF61B402849B1A0004C3768 /* AddCardPriceView.swift */,
+				4D6229CC284929C000A8E24C /* AddCardDecoView.swift */,
 			);
-			path = PaymentCreationView;
+			path = CardCreationView;
 			sourceTree = "<group>";
 		};
 		3EBC814E2843522900794955 = {
@@ -341,12 +341,12 @@
 			path = CheckAttendanceView;
 			sourceTree = "<group>";
 		};
-		79BF17AE284D951D003A2A68 /* PaymentHistoryDetailView */ = {
+		79BF17AE284D951D003A2A68 /* CardDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				79BF17AF284D953B003A2A68 /* PaymentHistoryDetailView.swift */,
+				79BF17AF284D953B003A2A68 /* CardDetailView.swift */,
 			);
-			path = PaymentHistoryDetailView;
+			path = CardDetailView;
 			sourceTree = "<group>";
 		};
 		79BF17B1284D9765003A2A68 /* EditSpaceViews */ = {
@@ -379,20 +379,20 @@
 			isa = PBXGroup;
 			children = (
 				79BF179E284CFFE7003A2A68 /* SpaceMainViews */,
-				A7133C33285037FB006ED054 /* PaymentViews */,
+				A7133C33285037FB006ED054 /* CardViews */,
 				79BF17A9284D1411003A2A68 /* CheckAttendanceView */,
 				79BF17B1284D9765003A2A68 /* EditSpaceViews */,
 			);
 			path = SpaceViews;
 			sourceTree = "<group>";
 		};
-		A7133C33285037FB006ED054 /* PaymentViews */ = {
+		A7133C33285037FB006ED054 /* CardViews */ = {
 			isa = PBXGroup;
 			children = (
-				2CF61B3B2849AF9A004C3768 /* PaymentCreationView */,
-				79BF17AE284D951D003A2A68 /* PaymentHistoryDetailView */,
+				2CF61B3B2849AF9A004C3768 /* CardCreationView */,
+				79BF17AE284D951D003A2A68 /* CardDetailView */,
 			);
-			path = PaymentViews;
+			path = CardViews;
 			sourceTree = "<group>";
 		};
 		A7133C342850387C006ED054 /* DonCard */ = {
@@ -761,7 +761,7 @@
 				A74479A128476ADA0083BBF4 /* User.swift in Sources */,
 				A74479D6284918D60083BBF4 /* EditProfileView.swift in Sources */,
 				A74479A128476ADA0083BBF4 /* User.swift in Sources */,
-				2CF61B3D2849B00B004C3768 /* NewPaymentTitle.swift in Sources */,
+				2CF61B3D2849B00B004C3768 /* AddCardTitleView.swift in Sources */,
 				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
 				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
 				A704FC38284DE22C00AC9736 /* AlertRow.swift in Sources */,
@@ -771,7 +771,7 @@
 				4D6229CA2849295300A8E24C /* ImageManager.swift in Sources */,
 				3E208738284F6C98003A4CFD /* AppleLoginViewModel.swift in Sources */,
 				A74479AD2847A0580083BBF4 /* LargeButton.swift in Sources */,
-				2CF61B412849B1A0004C3768 /* NewPaymentPrice.swift in Sources */,
+				2CF61B412849B1A0004C3768 /* AddCardPriceView.swift in Sources */,
 				A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */,
 				79BF17A6284D0034003A2A68 /* SpaceTopView.swift in Sources */,
 				79BF17AB284D143C003A2A68 /* CheckAttendanceView.swift in Sources */,
@@ -789,7 +789,7 @@
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				4D6229BD284925B900A8E24C /* PreviewCardView.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
-				4D6229CD284929C000A8E24C /* DecorateCardView.swift in Sources */,
+				4D6229CD284929C000A8E24C /* AddCardDecoView.swift in Sources */,
 				A7133C3028503674006ED054 /* ViewExtension.swift in Sources */,
 				A704FC3C284DF62F00AC9736 /* Date.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
@@ -815,11 +815,11 @@
 				A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				A74479D3284917990083BBF4 /* ProfileView.swift in Sources */,
-				79BF17B0284D953B003A2A68 /* PaymentHistoryDetailView.swift in Sources */,
+				79BF17B0284D953B003A2A68 /* CardDetailView.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */,
 				2CC211822849F0FA0009F785 /* SignInView.swift in Sources */,
-				2CF61B3F2849B18A004C3768 /* NewPaymentIcon.swift in Sources */,
+				2CF61B3F2849B18A004C3768 /* AddCardIconView.swift in Sources */,
 				3E20873A284F8A9D003A4CFD /* SignInViewExtension.swift in Sources */,
 				A74479B32847BE170083BBF4 /* XSmallButton.swift in Sources */,
 				2CC21192284AF14C0009F785 /* AccountTextField.swift in Sources */,

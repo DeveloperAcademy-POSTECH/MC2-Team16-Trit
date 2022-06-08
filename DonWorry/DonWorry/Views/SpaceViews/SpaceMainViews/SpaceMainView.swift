@@ -65,7 +65,7 @@ struct SpaceMainView: View {
                 }
             }
             .sheet(isPresented: $isModalPresented, content: {
-                PaymentDetailView()
+                CardDetailView()
             })
             .confirmationDialog("", isPresented: $isShowingDialog, titleVisibility: .hidden) {
                             Button("스페이스 이름 설정") {

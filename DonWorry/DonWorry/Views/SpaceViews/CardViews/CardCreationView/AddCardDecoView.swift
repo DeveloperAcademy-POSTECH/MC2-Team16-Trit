@@ -1,5 +1,5 @@
 //
-//  DecorateCardView.swift
+//  AddCardDecoView.swift
 //  DonWorry
 //
 //  Created by 임영후 on 2022/06/03.
@@ -25,11 +25,11 @@ enum DecoCase: String, Identifiable, CaseIterable {
     }
 }
 
-struct DecorateCardView: View {
+struct AddCardDecoView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
-    //  @StateObject var vm = DecorateCardViewModel()
+    //  @StateObject var vm = AddCardDecoViewModel()
     @State private var decoCase: DecoCase = .account
     @State private var account: String = "1002-034-1234"
     @State private var color: CardColor = CardColor.blue
@@ -246,10 +246,10 @@ struct CustomPicker: View {
     }
 }
 
-struct DecorateCardView_Previews: PreviewProvider {
+struct AddCardDecoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DecorateCardView()
+            AddCardDecoView()
         }
         
     }

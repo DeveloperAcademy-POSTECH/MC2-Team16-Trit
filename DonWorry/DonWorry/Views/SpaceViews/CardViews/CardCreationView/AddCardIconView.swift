@@ -1,5 +1,5 @@
 //
-//  NewPaymentIcon1.swift
+//  AddCardIconView1.swift
 //  SpaceView
 //
 //  Created by 김승창 on 2022/06/01.
@@ -9,7 +9,7 @@ import SwiftUI
 
 let iconsArray = ["apple-1", "birthday-cake", "blue-car", "camera-icon", "chicken-leg", "chocolate-ice-cream", "coffee-cup", "gas-station", "gift-box", "movie-camera", "shopping-cart", "soccer-ball", "spoon-and-knife", "wine-glass"]
 
-struct NewPaymentIcon: View {
+struct AddCardIconView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     let paymentTitle: String
@@ -59,7 +59,7 @@ struct NewPaymentIcon: View {
                     HStack {
                         Spacer()
                         
-                        NavigationLink(destination: NewPaymentPrice(paymentTitle: paymentTitle, paymentIcon: paymentIcon)) {
+                        NavigationLink(destination: AddCardPriceView(paymentTitle: paymentTitle, paymentIcon: paymentIcon)) {
                             Text("다음")
                                 .frame(width: 135, height: 50)
                                 .foregroundColor(.white)
@@ -90,8 +90,8 @@ struct NewPaymentIcon: View {
     }
 }
 
-struct NewPaymentIcon1_Previews: PreviewProvider {
+struct AddCardIconView1_Previews: PreviewProvider {
     static var previews: some View {
-        NewPaymentIcon(paymentTitle: "땡땡이네 스타벅스")
+        AddCardIconView(paymentTitle: "땡땡이네 스타벅스")
     }
 }
