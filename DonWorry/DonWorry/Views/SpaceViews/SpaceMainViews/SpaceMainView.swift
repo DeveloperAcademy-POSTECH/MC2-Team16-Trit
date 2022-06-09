@@ -46,7 +46,7 @@ struct SpaceMainView: View {
                                             isModalPresented = true
                                             print("MainCard FUNCTION")
                                             
-                                        }, isParticipated: false, date: "05/05")
+                                        }, isParticipated: false, date: "05/05", paymentIcon: Image("chicken-leg"))
                                     }
                                 }
                             }
@@ -147,7 +147,8 @@ struct SpaceMainView: View {
 
 struct SpaceMainView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceMainView(spaceID: .constant("Asdasd"))
+//        SpaceMainView(spaceID: .constant("Asdasd"))
+        SpaceMainView(spaceID: .constant("asdasd"))
         
     }
 }
