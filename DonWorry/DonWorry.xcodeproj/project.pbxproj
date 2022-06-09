@@ -85,10 +85,8 @@
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
 		C027ED6D28510977008E4441 /* HalfSheetMediumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C027ED6C28510977008E4441 /* HalfSheetMediumButton.swift */; };
 		C027ED6F28510983008E4441 /* HalfSheetSmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C027ED6E28510983008E4441 /* HalfSheetSmallButton.swift */; };
-		C04CB5B32851007F00621101 /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = C04CB5B22851007F00621101 /* HalfASheet */; };
 		C04CB5B52851010000621101 /* TakerDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */; };
 		C04CB5B72851012600621101 /* GiverDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */; };
-		C05886E22851A38E007DC2DA /* ResizableSheet in Frameworks */ = {isa = PBXBuildFile; productRef = C05886E12851A38E007DC2DA /* ResizableSheet */; };
 		C07ECB392849919C000C42C1 /* SpaceChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ECB382849919C000C42C1 /* SpaceChipsView.swift */; };
 		C0936BFD284876800064CEFA /* ParticipateDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFC284876800064CEFA /* ParticipateDonCard.swift */; };
 		C0936BFF28487FFC0064CEFA /* GiverDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */; };
@@ -202,9 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C05886E22851A38E007DC2DA /* ResizableSheet in Frameworks */,
 				A704FC42284E01E400AC9736 /* SlideOverCard in Frameworks */,
-				C04CB5B32851007F00621101 /* HalfASheet in Frameworks */,
 				3E20872C284DA5A5003A4CFD /* FirebaseAuth in Frameworks */,
 				3E20872F284DA5F3003A4CFD /* GoogleSignIn in Frameworks */,
 				3E208731284DA5F3003A4CFD /* GoogleSignInSwift in Frameworks */,
@@ -626,8 +622,6 @@
 				3E20872B284DA5A5003A4CFD /* FirebaseAuth */,
 				3E20872E284DA5F3003A4CFD /* GoogleSignIn */,
 				3E208730284DA5F3003A4CFD /* GoogleSignInSwift */,
-				C04CB5B22851007F00621101 /* HalfASheet */,
-				C05886E12851A38E007DC2DA /* ResizableSheet */,
 			);
 			productName = DonWorry;
 			productReference = 3EBC81572843522900794955 /* DonWorry.app */;
@@ -705,8 +699,6 @@
 				A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 				3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				C04CB5B12851007F00621101 /* XCRemoteSwiftPackageReference "HalfASheet" */,
-				C05886E02851A38E007DC2DA /* XCRemoteSwiftPackageReference "ResizableSheet" */,
 			);
 			productRefGroup = 3EBC81582843522900794955 /* Products */;
 			projectDirPath = "";
@@ -1203,22 +1195,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		C04CB5B12851007F00621101 /* XCRemoteSwiftPackageReference "HalfASheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/franklynw/HalfASheet.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		C05886E02851A38E007DC2DA /* XCRemoteSwiftPackageReference "ResizableSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mtj0928/ResizableSheet";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1241,16 +1217,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */;
 			productName = SlideOverCard;
-		};
-		C04CB5B22851007F00621101 /* HalfASheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C04CB5B12851007F00621101 /* XCRemoteSwiftPackageReference "HalfASheet" */;
-			productName = HalfASheet;
-		};
-		C05886E12851A38E007DC2DA /* ResizableSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C05886E02851A38E007DC2DA /* XCRemoteSwiftPackageReference "ResizableSheet" */;
-			productName = ResizableSheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,13 +7,12 @@
 
 import SwiftUI
 import SlideOverCard
-import ResizableSheet
 
 struct HomeView: View {
     @State var selection: String = "떱떱해"
     @State var isPresented: Bool = false
-    @State var showGiverSheet: ResizableSheetState = .hidden
-    @State var showTakerSheet: ResizableSheetState = .hidden
+    @State private var showGiverSheet = false
+    @State private var showTakerSheet = false
     @State var spaceID: String = ""
     
     var currentUser: User
@@ -29,26 +28,16 @@ struct HomeView: View {
                             ParticipateDonCard(isParticipateIn: false)
                             if currentUser.takeMoney != nil {
                                 Button {
-                                    showTakerSheet = .medium
+                                    showGiverSheet = true
                                 } label: {
                                     TakerDonCard(currentUser: currentUser)
-                                }
-                                .resizableSheet($showTakerSheet) { builders in
-                                    builders.content { contexts in
-                                        TakerDonCardSheetView(currentUser: currentUser)
-                                    }
                                 }
                             }
                             if currentUser.giveMoney != nil {
                                 Button {
-                                    showGiverSheet = .medium
+                                    showTakerSheet = true
                                 } label: {
                                     GiverDonCard(currentUser: currentUser)
-                                }
-                                .resizableSheet($showGiverSheet) { builder in
-                                    builder.content { context in
-                                        TakerDonCardSheetView(currentUser: currentUser)
-                                    }
                                 }
                             }
                         }
@@ -69,6 +58,8 @@ struct HomeView: View {
                 
                 Spacer().frame(height: 120)
             }
+            TakerDonCardSheetView(isShowing: $showTakerSheet, currentUser: currentUser)
+            GiverDonCardSheetView(isShowing: $showGiverSheet, currentUser: currentUser)
         }
         .slideOverCard(isPresented: $isPresented, onDismiss: {
             isPresented = false
@@ -99,9 +90,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        ResizableSheetPreview{
-            HomeView(currentUser: user4)
-        }
+        HomeView(currentUser: user4)
     }
 }
 
