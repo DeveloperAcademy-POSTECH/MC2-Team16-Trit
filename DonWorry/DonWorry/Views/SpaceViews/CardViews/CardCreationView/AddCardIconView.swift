@@ -14,26 +14,26 @@ struct AddCardIconView: View {
     
     let paymentTitle: String
     
-    let columns = [
-        GridItem(.adaptive(minimum: 100))
-    ]
-    
-    @State private var paymentIcon: Image? = nil
+    @State private var paymentIcon : Image? = nil
     @State private var selectedItem: String = ""
+    @State private var naviSelection : String? = nil
+    private let iconColumns = [GridItem](repeating: GridItem(spacing: 10), count: 3)
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 30) {
-            VStack(alignment: .leading, spacing: 10) {
-                Group {
-                    Text("정산 내역을")
-                    Text("추가해볼까요?")
+        ZStack {
+            VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading) {
+                        Text("정산 내역을")
+                        Text("추가해볼까요?")
                 }
-                .font(.system(size: 30, weight: .bold))
-            }
-            VStack {
+                .font(.system(size: 25, weight: .bold))
+                .padding(.horizontal, 30)
+                .padding(.vertical)
+                
                 VStack {
                     ScrollView(showsIndicators: false) {
-                        LazyVGrid(columns: columns) {
+                        
+                        LazyVGrid(columns: iconColumns, spacing: 10) {
                             ForEach(iconsArray, id: \.self) { iconName in
                                 
                                 Button {
@@ -55,38 +55,38 @@ struct AddCardIconView: View {
                                 }
                             }
                         }
-                    }
-                    HStack {
-                        Spacer()
-                        
-                        NavigationLink(destination: AddCardPriceView(paymentTitle: paymentTitle, paymentIcon: paymentIcon)) {
-                            Text("다음")
-                                .frame(width: 135, height: 50)
-                                .foregroundColor(.white)
-                                .background(.blue)
-                                .cornerRadius(29)
-                        }
-                        .padding(.bottom, 30)
+                        .padding(.horizontal, 30)
                     }
                 }
-                 
             }
             
+                        VStack {
+                            Spacer()
+                            NavigationLink(destination: AddCardPriceView(paymentTitle: paymentTitle, paymentIcon: paymentIcon),
+                                           tag: "price",
+                                           selection: $naviSelection) {EmptyView()}
+                            HStack {
+                                Spacer()
+                                SmallButton(text: "다음") {
+                                    self.naviSelection = "price"
+                                }
+                            }
+                            .padding(.horizontal, 30)
+                        }
         }
         .navigationBarBackButtonHidden(true)
-        .padding(.top, -20)
-        .padding(.horizontal, 25)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button {
+                Button(role: .cancel) {
                     self.mode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
+                        .padding(.horizontal)
                 }
+                .buttonStyle(.plain)
             }
-            
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

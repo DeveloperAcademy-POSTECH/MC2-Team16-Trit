@@ -18,6 +18,7 @@ struct AddCardPriceView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State private var price = ""
+    @State private var naviSelection: String? = nil
     
     var numberPrice: Int {
         Int(price) ?? 0
@@ -36,77 +37,79 @@ struct AddCardPriceView: View {
     }
     
     var body: some View {
-        VStack(spacing: 60) {
-            HStack {
-                paymentIcon?
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 37, height: 37)
-                    .background(Color.grayEE)
-                    .cornerRadius(5)
-                
-                Text(paymentTitle)
-                    .font(.system(size: 24))
-                    .fontWeight(.bold)
-                
-                Spacer()
-            }
-            
-            HStack(alignment: .bottom) {
-                Text(price.isEmpty ? "0" : numberFormatter.string(for: numberPrice) ?? "")
-                    .font(.system(size: 50))
-                    .fontWeight(.heavy)
-                
-                Text("원")
-                    .font(.system(size: 17))
-            }
-            
-            HStack {
-                Spacer()
-                
-                NavigationLink(destination: AddCardDecoView(paymentIcon: paymentIcon)) {
-                    Text("다음")
-                        .frame(width: 135, height: 50)
-                        .foregroundColor(.white)
-                        .background(.blue)
-                        .cornerRadius(29)
-                }
-            }
-            
-            // 숫자 자판
-            
             VStack {
-                ForEach(rows, id: \.self) { row in
-                    HStack {
-                        ForEach(row, id: \.self) { column in
-                            Button {
-                                pressNumber(price, column)
-                            } label: {
-                                Text(column)
-                                    .font(.system(size: 20, weight: .bold))
-                                    .frame(width: 125, height: 61)
-                            }
-                        }
-                        .padding(.vertical, 17)
+                HStack {
+                    paymentIcon?
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 37, height: 37)
+                        .background(Color.grayEE)
+                        .cornerRadius(5)
+                    
+                    Text(paymentTitle)
+                        .font(.system(size: 24))
+                        .fontWeight(.bold)
+                    
+                    Spacer()
+                }
+                .padding(.horizontal, 30)
+                .padding(.vertical)
+                
+                HStack(alignment: .bottom) {
+                    Text(price.isEmpty ? "0" : numberFormatter.string(for: numberPrice) ?? "")
+                        .font(.system(size: 50))
+                        .fontWeight(.heavy)
+                    
+                    Text("원")
+                        .font(.system(size: 17))
+                }
+                
+                Spacer()
+                
+                NavigationLink(destination: AddCardDecoView(paymentIcon: paymentIcon),
+                               tag: "deco",
+                               selection: $naviSelection) {EmptyView()}
+                HStack {
+                    Spacer()
+                    SmallButton(text: "다음") {
+                        self.naviSelection = "deco"
                     }
                 }
+                .padding(.horizontal, 30)
+                
+                // 숫자 자판
+                VStack {
+                    ForEach(rows, id: \.self) { row in
+                        HStack {
+                            ForEach(row, id: \.self) { column in
+                                Button {
+                                    pressNumber(price, column)
+                                } label: {
+                                    Text(column)
+                                        .font(.system(size: 20, weight: .bold))
+                                        .frame(width: 125, height: 50)
+                                }
+                            }
+                            .padding(.vertical, 17)
+                        }
+                    }
+                }
+                .frame(height: 360, alignment: .top)
+                .background(RoundedRectangle(cornerRadius: 38).stroke(Color.grayF5))
             }
-            .background(RoundedRectangle(cornerRadius: 38)
-                .stroke(Color.gray97))
-            
-        }
         .navigationBarBackButtonHidden(true)
-        .padding(.horizontal, 25)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button {
+                Button(role: .cancel) {
                     self.mode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
+                        .padding(.horizontal)
                 }
+                .buttonStyle(.plain)
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     func pressNumber(_ price: String, _ input: String) {
