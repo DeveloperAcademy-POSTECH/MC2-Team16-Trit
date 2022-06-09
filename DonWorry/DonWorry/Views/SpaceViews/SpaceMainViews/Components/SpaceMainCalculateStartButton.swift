@@ -20,12 +20,14 @@ struct SpaceMainCalculateStartButton: View {
                     .shadow(radius: 2)
                     .opacity(0.3)
                 VStack(spacing: 10) {
-                    Image(systemName: "checkmark.circle.fill")
-                        .font(Font.system(size: 36, weight: .ultraLight))
-                        .foregroundColor(Color(hex: "#1c6bff"))
-                        .foregroundColor(.blueMain)
+                    Image(systemName: "checkmark")
+                        .font(Font.system(size: 16, weight: .regular))
+                        .padding(10)
+                        .background(Color.blueMain)
+                        .clipShape(Circle())
+                        .foregroundColor(.white)
                     Text("정산 시작")
-                        .foregroundColor(Color(hex: "#1c6bff"))
+                        .applyTextWithLineLimitModifier(size: 14, weight: .bold, color: .blueMain)
                 }
             }
         }

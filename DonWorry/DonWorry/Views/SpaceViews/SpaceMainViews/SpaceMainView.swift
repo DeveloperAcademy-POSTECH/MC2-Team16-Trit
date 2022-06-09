@@ -34,7 +34,7 @@ struct SpaceMainView: View {
                         ScrollView {
                             SpaceTopView(spaceID: $spaceID)
                                 .padding(.vertical, 21)
-                            LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 24) {
+                            LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                                 ForEach(0..<5) { index in
                                     if index == 4 {
                                         SpaceMainCalculateStartButton(clicked: {
@@ -78,6 +78,10 @@ struct SpaceMainView: View {
                     CardDetailView()
                 })
                 .confirmationDialog("", isPresented: $isShowingDialog, titleVisibility: .hidden) {
+                    
+                                Button("스페이스 초기화") {
+                                    //Todo: 스페이스 초기화 기능
+                                }
                                 Button("스페이스 이름 설정") {
                                     isEditSpaceNaveViewOpened = true
                                 }
