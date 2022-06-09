@@ -14,3 +14,9 @@ struct Transfer {
     var amount: Int // 금액
     var isCompleted: Bool = false // 송금완료 여부
 }
+
+var transfers: [Transfer] = [
+    Transfer(giver: users[0], taker: users[1], amount: 12000),
+    Transfer(giver: users[1], taker: users[2], amount: 19000),
+    Transfer(giver: users[3], taker: users[2], amount: 24000)
+]

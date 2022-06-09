@@ -18,3 +18,7 @@ struct Space: Identifiable { //Hashable
     var userList: [User] //참가자 리스트
     var admin: User // Space 주인 
 }
+
+var spaces: [Space] = [
+    Space(spaceID: "17391798749", spaceName: "트라잇회식", payment: payments, status: true, transfer: transfers, userList: users, admin: users[0])
+]
