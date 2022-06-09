@@ -15,14 +15,16 @@ extension PHPickerConfiguration {
         tempConfig.selectionLimit = 1
         tempConfig.filter = .images
         return tempConfig
-    } ()
+    }()
 }
 
 struct PhotoPicker: UIViewControllerRepresentable {
     
+    typealias UIViewControllerType = PHPickerViewController
+    
     let configuration: PHPickerConfiguration
     @Binding var images: [UIImage]
-    @Binding var isPresented: Bool
+//    @Binding var isPresented: Bool
     
     func makeUIViewController(context: Context) -> PHPickerViewController {
         let controller = PHPickerViewController(configuration: configuration)
@@ -43,6 +45,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
         }
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            picker.dismiss(animated: true)
             
             let itemProviders = results.map { $0.itemProvider }
             
@@ -54,7 +57,6 @@ struct PhotoPicker: UIViewControllerRepresentable {
                         guard let self = self else { return }
                                                 if let uiImage = image as? UIImage {
                                                     tempImages.append(uiImage)
-                                                    self.parent.isPresented = false
                                                     self.parent.images = tempImages
                                                 }
                     }
