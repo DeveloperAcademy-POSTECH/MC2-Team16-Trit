@@ -36,7 +36,7 @@ func makeGiverList(trnasfers: [Transfer], currentUser: User) -> [Transfer] {
 }
 
 // currentUser가 돈을 줘야할 user의 리스트
-func findTaker(trnasfers: [Transfer], currentUser: User) -> [Transfer] {
+func makeTakerList(trnasfers: [Transfer], currentUser: User) -> [Transfer] {
     var takerTransferList: [Transfer] = []
     transfers.forEach {
         if $0.giver.userName == currentUser.userName {
@@ -49,7 +49,7 @@ func findTaker(trnasfers: [Transfer], currentUser: User) -> [Transfer] {
 
 // currentUser한테 돈을 줘야할 user의 DisplayList
 // card에는 profile image가 최대 4개만
-func makeDisplayGiverList(makeGiverList: [Transfer]) {
+func makeDisplayGiverList(makeGiverList: [Transfer]) -> [String]{
     var giverProfileImage: [String] = []
     if makeGiverList.count > 3 {
         makeGiverList[0..<4].forEach {
@@ -60,4 +60,5 @@ func makeDisplayGiverList(makeGiverList: [Transfer]) {
             giverProfileImage.append($0.giver.image)
         }
     }
+    return giverProfileImage
 }

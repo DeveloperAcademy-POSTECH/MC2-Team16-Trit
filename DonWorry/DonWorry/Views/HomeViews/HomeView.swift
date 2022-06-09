@@ -37,7 +37,7 @@ struct HomeView: View {
                                 Button {
                                     self.naviSelection = "profile"
                                 } label: {
-                                    Image(currentUser.profileImage)
+                                    currentUser.profileImage
                                         .resizable()
                                         .frame(width: 50, height: 50)
                                         .background(.black)

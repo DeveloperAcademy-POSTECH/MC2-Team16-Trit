@@ -19,7 +19,7 @@ struct SpaceMainView: View {
     @State var isEditSpaceNaveViewOpened = false
     
     // DATA Model 이후
-    @State var currentUser = user4
+    @State var currentUser = users[0]
     @State var spaceName = "MC2 첫 회식"
     @Binding var spaceID: String
     

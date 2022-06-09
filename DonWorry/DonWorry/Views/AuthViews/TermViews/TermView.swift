@@ -99,11 +99,11 @@ struct TermView: View {
                     .font(.system(size: 20, weight: .heavy))
             }
         }
-        .halfSheet(showSheet: $showSheet) {
-            TermSheetView(agreedtermsOfService: termsOfService.filter { $0.isAgreed }, showSheet: $showSheet)
-        } onEnd: {
-            showSheet = false
-        }
+//        .halfSheet(showSheet: $showSheet) {
+//            TermSheetView(agreedtermsOfService: termsOfService.filter { $0.isAgreed }, showSheet: $showSheet)
+//        } onEnd: {
+//            showSheet = false
+//        }
     }
 }
 

@@ -23,7 +23,7 @@ struct SignInView: View {
     var body: some View {
         
         if log_status == false { // 이미 로그인된 상태라면 홈뷰로 가도록 했습니다.
-            HomeView(currentUser: user1)
+            HomeView(currentUser: users[0])
         } else {
             NavigationView {
                 ZStack {
