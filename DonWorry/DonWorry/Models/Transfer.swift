@@ -16,7 +16,9 @@ struct Transfer {
 }
 
 var transfers: [Transfer] = [
-    Transfer(giver: users[0], taker: users[1], amount: 12000),
-    Transfer(giver: users[1], taker: users[2], amount: 19000),
-    Transfer(giver: users[3], taker: users[2], amount: 24000)
+    Transfer(giver: users[3], taker: users[1], amount: 72734),
+    Transfer(giver: users[5], taker: users[1], amount: 5718),
+    Transfer(giver: users[5], taker: users[0], amount: 62980),
+    Transfer(giver: users[4], taker: users[0], amount: 23432),
+    Transfer(giver: users[4], taker: users[2], amount: 19984)
 ]
