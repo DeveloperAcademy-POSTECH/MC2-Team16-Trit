@@ -13,7 +13,7 @@ struct CheckAttendanceView: View {
         @State var checkedArray: [Int] = []
         
         let leftPaddingSize: CGFloat = 25
-    //Todo : cards는 카드로 대체
+    // Todo : cards는 카드로 대체
         let cards = [0, 1, 2, 3, 4]
         private var numberOfCards: Int { cards.count }
         private var numberOfcheck: Int { checkedArray.count }
