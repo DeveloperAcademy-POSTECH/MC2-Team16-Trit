@@ -18,6 +18,7 @@ struct UnderlineTextField: View {
         VStack {
             HStack {
                 TextField(placeholder, text: $text)
+                    .font(.body)
                     .frame(height: 30)
                     .textInputAutocapitalization(.never)
                     .onReceive(Just(text), perform: { _ in
@@ -52,6 +53,6 @@ struct UnderlineTextField: View {
                     .padding(.trailing)
             }
         }
-        .frame(width: 350)
+        .frame(width: 335)
     }
 }
