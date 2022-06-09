@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TakerDonCardSheetView: View {
-    @Binding var showTakerSheet: Bool
     var currentUser: User
     var body: some View {
         // 현재사용자가 돈을 받아야할사람일때 어떤사람에게 돈을 받아야할지를 List로 반환해주는 함수(makegiverList)
@@ -25,7 +24,7 @@ struct TakerDonCardSheetView: View {
                                 Text("18000원")
                                     .font(.system(size: 30, weight: .heavy))
                                     .offset(y: 3)
-                                Text("/ \(currentUser.takeMoney!)원")
+                                Text("/ 12000원")
                                     .font(.system(size: 20, weight: .heavy))
                             }
                             Spacer().frame(height: 27)
@@ -47,7 +46,7 @@ struct TakerDonCardSheetView: View {
                                 Text("루미네 당구장")
                                     .font(.system(size: 16, weight: .bold))
                                 Spacer()
-                                Text("\(givers[0].giveMoney!)원")
+                                Text("12000원")
                                     .font(.system(size: 16, weight: .bold))
                             }
                         }
@@ -69,7 +68,7 @@ struct TakerDonCardSheetView: View {
                                 Text("루미네 당구장")
                                     .font(.system(size: 16, weight: .bold))
                                 Spacer()
-                                Text("\(givers[0].giveMoney!)원")
+                                Text("12000원")
                                     .font(.system(size: 16, weight: .bold))
                         
                             }
@@ -84,7 +83,7 @@ struct TakerDonCardSheetView: View {
                 Spacer()
             }
             LargeButton(text: "재촉하기", clicked: {
-                showTakerSheet.toggle()
+//                showTakerSheet.toggle()
             })
             .offset(y: 185)
         }
@@ -92,8 +91,8 @@ struct TakerDonCardSheetView: View {
     }
 }
 
-struct TakerDonCardSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        TakerDonCardSheetView(showTakerSheet: .constant(true), currentUser: user4)
-    }
-}
+//struct TakerDonCardSheetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TakerDonCardSheetView(showTakerSheet: .constant(true), currentUser: user4)
+//    }
+//}

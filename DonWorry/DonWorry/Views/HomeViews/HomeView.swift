@@ -7,13 +7,13 @@
 
 import SwiftUI
 import SlideOverCard
-import HalfASheet
+import ResizableSheet
 
 struct HomeView: View {
     @State var selection: String = "떱떱해"
     @State var isPresented: Bool = false
-    @State var showGiverSheet = false
-    @State var showTakerSheet = false
+    @State var showGiverSheet: ResizableSheetState = .hidden
+    @State var showTakerSheet: ResizableSheetState = .hidden
     @State var spaceID: String = ""
     
     var currentUser: User
@@ -29,17 +29,26 @@ struct HomeView: View {
                             ParticipateDonCard(isParticipateIn: false)
                             if currentUser.takeMoney != nil {
                                 Button {
-                                    showTakerSheet.toggle()
+                                    showTakerSheet = .medium
                                 } label: {
                                     TakerDonCard(currentUser: currentUser)
                                 }
+                                .resizableSheet($showTakerSheet) { builders in
+                                    builders.content { contexts in
+                                        TakerDonCardSheetView(currentUser: currentUser)
+                                    }
+                                }
                             }
                             if currentUser.giveMoney != nil {
-                                
                                 Button {
-                                    showGiverSheet.toggle()
+                                    showGiverSheet = .medium
                                 } label: {
                                     GiverDonCard(currentUser: currentUser)
+                                }
+                                .resizableSheet($showGiverSheet) { builder in
+                                    builder.content { context in
+                                        TakerDonCardSheetView(currentUser: currentUser)
+                                    }
                                 }
                             }
                         }
@@ -60,14 +69,6 @@ struct HomeView: View {
                 
                 Spacer().frame(height: 120)
             }
-            HalfASheet(isPresented: $showGiverSheet, content: {
-                GiverDonCardSheetView(showGiverSheet: $showGiverSheet, currentUser: currentUser)
-            })
-            .height(.proportional(0.80))
-            HalfASheet(isPresented: $showTakerSheet, content: {
-                TakerDonCardSheetView(showTakerSheet: $showTakerSheet, currentUser: currentUser)
-            })
-            .height(.proportional(0.80))
         }
         .slideOverCard(isPresented: $isPresented, onDismiss: {
             isPresented = false
@@ -95,13 +96,14 @@ struct HomeView: View {
     }
 }
 
-/*
+
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView(currentUser: user1)
+        ResizableSheetPreview{
+            HomeView(currentUser: user4)
+        }
     }
 }
-*/
 
 struct MainProfileView: View {
     var currentUser: User

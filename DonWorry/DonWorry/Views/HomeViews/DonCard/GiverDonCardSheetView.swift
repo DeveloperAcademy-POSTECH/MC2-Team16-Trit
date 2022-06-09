@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct GiverDonCardSheetView: View {
-    @Binding var showGiverSheet: Bool
     var currentUser: User
     var body: some View {
         let taker = findTaker(users: users, currentUser: currentUser)
@@ -94,8 +93,8 @@ struct GiverDonCardSheetView: View {
     }
 }
 
-struct GiverDonCardSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        GiverDonCardSheetView(showGiverSheet: .constant(true), currentUser: user4)
-    }
-}
+//struct GiverDonCardSheetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GiverDonCardSheetView(showGiverSheet: .constant(true), currentUser: user4)
+//    }
+//}
