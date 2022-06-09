@@ -34,14 +34,16 @@ struct CheckAttendanceView: View {
                                                 .frame(width: 42, height: 42, alignment: .leading)
                                             if checkedArray.contains(index) {
                                                 Image(systemName: "checkmark")
-                                                    .font(Font.system(size: 24, weight: .heavy))
-                                                    .foregroundColor(Color(hex: "#1c6bff"))
+                                                    .font(Font.system(size: 16, weight: .bold))
+                                                    .foregroundColor(Color.blueMain)
                                             }
                                         }.foregroundColor(Color.grayEE)
                                     }
                                     Spacer()
-                                    SmallCardView(index: index).padding(.bottom, index == 4 ? 70 : 0)
+                                    SmallCardView(index: index)
                                 }
+                                .padding(.bottom, index == 4 ? 70 : 0)
+                                //Todo: index는 item개수로 대체 됩니다.
                             }
                         }
                     }
