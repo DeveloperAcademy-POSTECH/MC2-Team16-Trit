@@ -63,11 +63,11 @@ struct HomeView: View {
             HalfASheet(isPresented: $showGiverSheet, content: {
                 GiverDonCardSheetView(showGiverSheet: $showGiverSheet, currentUser: currentUser)
             })
-            .height(.proportional(0.58))
+            .height(.proportional(0.80))
             HalfASheet(isPresented: $showTakerSheet, content: {
                 TakerDonCardSheetView(showTakerSheet: $showTakerSheet, currentUser: currentUser)
             })
-            .height(.proportional(0.58))
+            .height(.proportional(0.80))
         }
         .slideOverCard(isPresented: $isPresented, onDismiss: {
             isPresented = false
