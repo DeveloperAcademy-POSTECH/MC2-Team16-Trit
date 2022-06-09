@@ -45,9 +45,10 @@ struct SpaceMainCardView: View {
                                 .padding(.vertical, 25)
                             Spacer()
                             HStack(spacing: 8) {
-                                (paymentIcon ?? Image("chicken-leg"))
-                                    .applyRectangleImageModifier(width: 27, height: 23, background: .grayEE, innerPadding: 8)
-                                    .padding(.leading, 25)
+                                paymentIcon.map {
+                                    $0.applyRectangleImageModifier(width: 27, height: 23, background: .grayEE, innerPadding: 8)
+                                        .padding(.leading, 25)
+                                }
                                 Text("총 135,800원(4명)")
                                     .applyTextWithLineLimitModifier(size: 18.0, weight: .heavy)
                             }
@@ -106,10 +107,11 @@ struct SpaceMainCardView: View {
         }
     }
 }
+
 struct SpaceMainCardView_Previews: PreviewProvider {
     static var previews: some View {
         SpaceMainCardView(bank: "qwqwqwqwqwqw", color: .blueMain, account: "sdsd", clicked: {
             print("f")
-        }, date: "Sdsd")
+        }, date: "Sdsd",paymentIcon: Image("chicken-leg"))
     }
 }

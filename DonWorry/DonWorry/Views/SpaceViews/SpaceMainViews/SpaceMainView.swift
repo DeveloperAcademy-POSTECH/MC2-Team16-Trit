@@ -145,7 +145,6 @@ struct SpaceMainView: View {
     }
 }
 
-
 struct SpaceMainView_Previews: PreviewProvider {
     static var previews: some View {
         SpaceMainView(spaceID: .constant("Asdasd"))
