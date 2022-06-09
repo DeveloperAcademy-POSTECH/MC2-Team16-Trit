@@ -23,6 +23,7 @@ struct CardDetailView: View {
                         print("ecllipsis FUNCTION")
                     } label: {
                         Image(systemName: "ellipsis")
+                            .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.black)
                     }
                 }.padding(.top, 50)

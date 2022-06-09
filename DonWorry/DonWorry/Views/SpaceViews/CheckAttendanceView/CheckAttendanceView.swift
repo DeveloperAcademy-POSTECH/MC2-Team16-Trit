@@ -43,7 +43,7 @@ struct CheckAttendanceView: View {
                                     SmallCardView(index: index)
                                 }
                                 .padding(.bottom, index == 4 ? 70 : 0)
-                                //Todo: index는 item개수로 대체 됩니다.
+                                // Todo: index는 item개수로 대체 됩니다.
                             }
                         }
                     }
