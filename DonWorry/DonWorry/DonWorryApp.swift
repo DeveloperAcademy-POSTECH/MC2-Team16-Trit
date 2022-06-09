@@ -8,7 +8,6 @@
 import SwiftUI
 import Firebase
 import GoogleSignIn
-import ResizableSheet
 
 @main
 struct DonWorryApp: App {
@@ -21,9 +20,7 @@ struct DonWorryApp: App {
 //            ContentView()
 //            HomeView(currentUser: user4)
 //            SignInView()
-            ResizableSheetPreview {
-                HomeView(currentUser: user4)
-            }
+            HomeView(currentUser: user4)
         }
     }
 }

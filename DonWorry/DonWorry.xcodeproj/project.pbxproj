@@ -91,6 +91,8 @@
 		C0936BFD284876800064CEFA /* ParticipateDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFC284876800064CEFA /* ParticipateDonCard.swift */; };
 		C0936BFF28487FFC0064CEFA /* GiverDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */; };
 		C09C89712849101700E2A929 /* TakerDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C89702849101700E2A929 /* TakerDonCard.swift */; };
+		C0DBFADD28525D6C004650F1 /* GIverDonCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBFADC28525D6C004650F1 /* GIverDonCardDetail.swift */; };
+		C0DBFADF28525D95004650F1 /* TakerDonCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBFADE28525D95004650F1 /* TakerDonCardDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +195,8 @@
 		C0936BFC284876800064CEFA /* ParticipateDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateDonCard.swift; sourceTree = "<group>"; };
 		C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverDonCard.swift; sourceTree = "<group>"; };
 		C09C89702849101700E2A929 /* TakerDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCard.swift; sourceTree = "<group>"; };
+		C0DBFADC28525D6C004650F1 /* GIverDonCardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIverDonCardDetail.swift; sourceTree = "<group>"; };
+		C0DBFADE28525D95004650F1 /* TakerDonCardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCardDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +412,8 @@
 			children = (
 				C0936BFC284876800064CEFA /* ParticipateDonCard.swift */,
 				C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */,
+				C0DBFADC28525D6C004650F1 /* GIverDonCardDetail.swift */,
+				C0DBFADE28525D95004650F1 /* TakerDonCardDetail.swift */,
 				C09C89702849101700E2A929 /* TakerDonCard.swift */,
 				C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */,
 				C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */,
@@ -826,11 +832,13 @@
 				A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */,
 				4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */,
 				A704FC44284F6B5200AC9736 /* ShareSheet.swift in Sources */,
+				C0DBFADD28525D6C004650F1 /* GIverDonCardDetail.swift in Sources */,
 				C09C89712849101700E2A929 /* TakerDonCard.swift in Sources */,
 				A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */,
 				C027ED6D28510977008E4441 /* HalfSheetMediumButton.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				A74479D3284917990083BBF4 /* ProfileView.swift in Sources */,
+				C0DBFADF28525D95004650F1 /* TakerDonCardDetail.swift in Sources */,
 				79BF17B0284D953B003A2A68 /* CardDetailView.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */,
@@ -1004,7 +1012,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = 562Z37RH3N;
+				DEVELOPMENT_TEAM = Z225784MRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DonWorry/Info.plist;
@@ -1018,7 +1026,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-0220301.DonWorry";
+				PRODUCT_BUNDLE_IDENTIFIER = "-0220301.DonWorry.Youth";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1035,7 +1043,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = 562Z37RH3N;
+				DEVELOPMENT_TEAM = Z225784MRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DonWorry/Info.plist;
@@ -1049,7 +1057,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-0220301.DonWorry";
+				PRODUCT_BUNDLE_IDENTIFIER = "-0220301.DonWorry.Youth";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

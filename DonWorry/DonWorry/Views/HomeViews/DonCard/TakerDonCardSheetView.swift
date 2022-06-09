@@ -69,7 +69,7 @@ struct TakerDonCardSheetView: View {
                         }
                         Spacer().frame(height: 27)
                     }
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, 25)
                     ScrollView {
                         HStack {
                             Text("미정산 내역")
@@ -206,7 +206,7 @@ struct TakerDonCardSheetView: View {
                         }
                         .opacity(0.1)
                     }
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, 25)
                     LargeButton(text: "정산재촉하기", clicked: {
                         isShowing = false
                     })
