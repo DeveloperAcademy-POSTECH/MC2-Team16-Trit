@@ -38,9 +38,9 @@ struct AddCardDecoView: View {
     @State private var bank: String = "은행 선택"
     @State private var isClicked: Bool = false
     @State private var date = Date()
-    
+    @State var clickedIndex = 0
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
-    var paymentIcon: Image?
+    @State var paymentIcon: Image?
     
     var body: some View {
         
@@ -166,43 +166,70 @@ struct AddCardDecoView: View {
 //            .padding(.horizontal, 20)
     }
     
-    
     // MARK: 이미지 입력 칸
     private var imageBox: some View {
-        VStack(spacing: 30) {
-            HStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.grayBC)
-                    .frame(width: 80, height: 80)
-                    .overlay(
-                        ZStack {
-                            
-                            Image(systemName: "plus")
-                                .font(.largeTitle.weight(.light))
-                                .foregroundColor(Color.white)
-                            
-                            if let image = images.last {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .frame(width: 80, height: 80)
+            VStack(spacing: 30) {
+                HStack {
+                    LazyHGrid(rows: [GridItem(.fixed(340.0))], spacing: 20) {
+                        ForEach(0..<3) { index in
+                               if images.count >= index {
+                                Button {
+                                    clickedIndex = index
+                                    showPhotoPicker = true
+                                } label: {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.grayBC)
+                                        .frame(width: 100, height: 100)
+                                        .overlay(
+                                                ZStack {
+                                                    Image(systemName: "plus")
+                                                        .font(.largeTitle.weight(.light))
+                                                        .foregroundColor(Color.white)
+                                                        
+                                                    if index < images.count {
+                                                        Image(uiImage: images[index])
+                                                            .resizable()
+                                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                        Button {
+                                                            print("remove")
+                                                            removeImage(index: index)
+                                                        } label: {
+                                                            Image(systemName: "xmark")
+                                                                .font(.headline)
+                                                                .padding(5)
+                                                                .foregroundColor(.white)
+                                                                .background(Color.black.opacity(0.5))
+                                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                                .frame(width: 80, height: 80, alignment: .topTrailing)
+                                                                .padding(5)
+                                                        }
+                                                    }
+                                                }
+                                        )
+                                
+                                }
                             }
                         }
-                    )
-                Spacer()
+                    }
+
+                    Spacer()
+                }
+                .padding(.top, 15.0)
+            }.frame(width: 340, height: 80)
+            .contentShape(Rectangle())
+            .sheet(isPresented: $showPhotoPicker) {
+                let configuration = PHPickerConfiguration.config
+                PhotoPicker(index: $clickedIndex, configuration: configuration,
+                            images: $images,
+                            isPresented: $showPhotoPicker)
             }
         }
-        .contentShape(Rectangle())
-        
-        .onTapGesture {
-            showPhotoPicker = true
-        }
-        
-        .sheet(isPresented: $showPhotoPicker) {
-            let configuration = PHPickerConfiguration.config
-            PhotoPicker(configuration: configuration,
-                        images: $images)
-        }
+    }
+
+extension AddCardDecoView {
+    private func removeImage(index: Int) {
+        print("remove")
+        images.remove(at: index)
     }
 }
 
@@ -225,6 +252,8 @@ struct CustomPicker: View {
                         selected = decoCase
                     }
                 }
+            
+// 애니매이션 효과있는 커스텀 피커
 //                GeometryReader { _ in
 //                    Text(decoCase.name)
 //                        .font(.subheadline.bold())
@@ -252,18 +281,18 @@ struct CustomPicker: View {
 //        )
     }
 
-    private func getCapsuleWidth(width: CGFloat) -> CGFloat {
-        switch selected {
-        case .색상변경:
-            return width / 4
-        case .날짜선택:
-            return width / 2
-        case .계좌번호:
-            return width / 4 * 3
-        case .첨부파일:
-            return width
-        }
-    }
+//    private func getCapsuleWidth(width: CGFloat) -> CGFloat {
+//        switch selected {
+//        case .색상변경:
+//            return width / 4
+//        case .날짜선택:
+//            return width / 2
+//        case .계좌번호:
+//            return width / 4 * 3
+//        case .첨부파일:
+//            return width
+//        }
+//    }
 }
 
 struct AddCardDecoView_Previews: PreviewProvider {

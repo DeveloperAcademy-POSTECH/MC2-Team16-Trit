@@ -22,9 +22,10 @@ struct PhotoPicker: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = PHPickerViewController
     
+    @Binding var index : Int
     let configuration: PHPickerConfiguration
     @Binding var images: [UIImage]
-//    @Binding var isPresented: Bool
+    @Binding var isPresented: Bool
     
     func makeUIViewController(context: Context) -> PHPickerViewController {
         let controller = PHPickerViewController(configuration: configuration)
@@ -33,16 +34,18 @@ struct PhotoPicker: UIViewControllerRepresentable {
     }
     func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) { }
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        Coordinator(self, index: index)
     }
     
     class Coordinator: PHPickerViewControllerDelegate {
       
         private let parent: PhotoPicker
+        let index: Int
         
-        init(_ parent: PhotoPicker) {
-            self.parent = parent
-        }
+        init(_ parent: PhotoPicker, index : Int) {
+                    self.parent = parent
+                    self.index = index
+                }
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true)
@@ -52,16 +55,19 @@ struct PhotoPicker: UIViewControllerRepresentable {
             var tempImages: [UIImage] = []
             
             itemProviders.forEach { itemProvider in
-                if itemProvider.canLoadObject(ofClass: UIImage.self) {
-                    itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
-                        guard let self = self else { return }
-                                                if let uiImage = image as? UIImage {
-                                                    tempImages.append(uiImage)
-                                                    self.parent.images = tempImages
-                                                }
+                            if itemProvider.canLoadObject(ofClass: UIImage.self) {
+                                itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
+                                    guard let self = self else { return }
+                                    if let uiImage = image as? UIImage {
+                                        self.parent.isPresented = false
+                                        if self.parent.images.count <= self.index {
+                                            self.parent.images += [UIImage()]
+                                        }
+                                        self.parent.images[self.index] = uiImage
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
-        }
-    }
-}
