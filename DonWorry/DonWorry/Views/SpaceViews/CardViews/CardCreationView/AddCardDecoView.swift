@@ -201,8 +201,7 @@ struct AddCardDecoView: View {
         .sheet(isPresented: $showPhotoPicker) {
             let configuration = PHPickerConfiguration.config
             PhotoPicker(configuration: configuration,
-                        images: $images,
-                        isPresented: $showPhotoPicker)
+                        images: $images)
         }
     }
 }
