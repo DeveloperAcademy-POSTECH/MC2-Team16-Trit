@@ -30,7 +30,7 @@ struct AddCardDecoView: View {
     
     //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
     //  @StateObject var vm = AddCardDecoViewModel()
-    @State private var decoCase: DecoCase = .계좌번호
+    @State private var decoCase: DecoCase = .색상변경
     @State private var account: String = "1002-034-1234"
     @State private var color: CardColor = CardColor.blue
     @State private var images: [UIImage] = []
@@ -101,6 +101,7 @@ struct AddCardDecoView: View {
                         self.mode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "chevron.left")
+                            .padding(.horizontal)
                     }
                     .buttonStyle(.plain)
                 }
@@ -165,6 +166,7 @@ struct AddCardDecoView: View {
 //            .padding(.horizontal, 20)
     }
     
+    
     // MARK: 이미지 입력 칸
     private var imageBox: some View {
         VStack(spacing: 30) {
@@ -174,6 +176,7 @@ struct AddCardDecoView: View {
                     .frame(width: 80, height: 80)
                     .overlay(
                         ZStack {
+                            
                             Image(systemName: "plus")
                                 .font(.largeTitle.weight(.light))
                                 .foregroundColor(Color.white)
@@ -190,9 +193,11 @@ struct AddCardDecoView: View {
             }
         }
         .contentShape(Rectangle())
+        
         .onTapGesture {
             showPhotoPicker = true
         }
+        
         .sheet(isPresented: $showPhotoPicker) {
             let configuration = PHPickerConfiguration.config
             PhotoPicker(configuration: configuration,
@@ -207,34 +212,45 @@ struct CustomPicker: View {
     @Binding var selected: DecoCase
     
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: 10) {
             
             ForEach(DecoCase.allCases) { decoCase in
-                GeometryReader { _ in
-                    Text(decoCase.name)
-                        .font(.subheadline.bold())
-                        .foregroundColor(decoCase == selected ? .white : .gray)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .contentShape(Capsule())
-                        .onTapGesture {
-                            withAnimation(.spring()) {
-                                selected = decoCase
-                            }
-                        }
+                Text(decoCase.name)
+                    .frame(width: 45, height: 12, alignment: .center)
+                    .foregroundColor(selected == decoCase ? .white : .gray)
+                    .font(.system(size: 13, weight: .bold))
+                    .padding()
+                    .background(selected == decoCase ? .blue : Color(hex: "EFEFEF"))
+                    .cornerRadius(50)
+                    .onTapGesture {
+                        selected = decoCase
+                    }
                 }
-                .frame(height: 40)
-            }
+//                GeometryReader { _ in
+//                    Text(decoCase.name)
+//                        .font(.subheadline.bold())
+//                        .foregroundColor(decoCase == selected ? .white : .gray)
+//                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                        .contentShape(Capsule())
+//                        .onTapGesture {
+//                            withAnimation(.spring()) {
+//                                selected = decoCase
+//                            }
+//                        }
+//                }
+//                .frame(height: 40)
+//            }
         }
-        .background(
-            GeometryReader { geo in
-                Capsule()
-                    .fill(Color.blueMain)
-                    .frame(width: geo.size.width / 4)
-                    .frame(maxWidth: getCapsuleWidth(width: geo.size.width), alignment: .trailing)
-            }
-            .frame(maxWidth: .infinity)
-            
-        )
+//        .background(
+//            GeometryReader { geo in
+//                Capsule()
+//                    .fill(Color.blueMain)
+//                    .frame(width: geo.size.width / 4)
+//                    .frame(maxWidth: getCapsuleWidth(width: geo.size.width), alignment: .trailing)
+//            }
+//            .frame(maxWidth: .infinity)
+//
+//        )
     }
 
     private func getCapsuleWidth(width: CGFloat) -> CGFloat {
