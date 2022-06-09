@@ -22,7 +22,32 @@ struct Payment: Identifiable { //, Hashable
 }
 
 var payments: [Payment] = [
-    Payment(paymentTitle: "1차 고기집", category: "chicken", amount: 130000, color: "red", date: "6월9일", attachedFile: [], givers: users, taker: users[0], account: [users[0].account]),
-    Payment(paymentTitle: "2차 횟집", category: "fish", amount: 118000, color: "blue", date: "6월9일", attachedFile: [], givers: [users[0],users[1],users[2],users[3],users[5]], taker: users[1], account: [users[1].account]),
-    Payment(paymentTitle: "3차 뼈찜", category: "bone", amount: 87000, color: "brown", date: "6월10일", attachedFile: [], givers: [users[0],users[2],users[3],users[4]], taker: users[2], account: [users[2].account])
+    Payment(paymentTitle: "1차 고기집",
+            category: "chicken",
+            amount: 130000,
+            color: "red",
+            date: "6월9일",
+            attachedFile: [],
+            givers: users,
+            taker: users[0],
+            account: [users[0].account]),
+    
+    Payment(paymentTitle: "2차 횟집",
+            category: "fish",
+            amount: 118000,
+            color: "blue",
+            date: "6월9일",
+            attachedFile: [],
+            givers: [users[0],users[1],users[2],users[3],users[5]],
+            taker: users[1],
+            account: [users[1].account]),
+    
+    Payment(paymentTitle: "3차 뼈찜",
+            category: "bone",
+            amount: 87000,
+            color: "brown",
+            date: "6월10일",
+            attachedFile: [],
+            givers: [users[0],users[2],users[3],users[4]],
+            taker: users[2], account: [users[2].account])
 ]

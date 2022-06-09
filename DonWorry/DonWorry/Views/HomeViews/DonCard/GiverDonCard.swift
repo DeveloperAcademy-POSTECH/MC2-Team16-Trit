@@ -28,7 +28,7 @@ struct GiverDonCard: View {
 
 struct GiverDonCard_Previews: PreviewProvider {
     static var previews: some View {
-        GiverDonCard(currentUser: user1)
+        GiverDonCard(currentUser: users[0])
     }
 }
 
@@ -175,12 +175,12 @@ struct GiverSheetView: View {
     }
 }
 
-func findTaker(users: [User], contentUser: User) -> User {
-    var taker: User!
-    users.forEach {
-        if $0.userName == contentUser.giveTo {
-            taker = $0
-        }
-    }
-    return taker
-}
+//func findTaker(users: [User], contentUser: User) -> User {
+//    var taker: User!
+//    users.forEach {
+//        if $0.userName == contentUser.giveTo {
+//            taker = $0
+//        }
+//    }
+//    return taker
+//}

@@ -189,16 +189,16 @@ struct TakerDonCardDetail: View {
         
     }
 }
-
-func makeGiverList(users: [User], contentUser: User) -> [User] {
-    var giverlist: [User] = []
-    users.forEach {
-        if $0.giveMoney != nil && $0.giveTo == contentUser.userName {
-            giverlist.append($0)
-        }
-    }
-    return giverlist
-}
+//
+//func makeGiverList(users: [User], contentUser: User) -> [User] {
+//    var giverlist: [User] = []
+//    users.forEach {
+//        if $0.giveMoney != nil && $0.giveTo == contentUser.userName {
+//            giverlist.append($0)
+//        }
+//    }
+//    return giverlist
+//}
 
 func makeDisplayGiverList(users: [User], contentUser: User) -> [User] {
     var giverlist: [User] = []
