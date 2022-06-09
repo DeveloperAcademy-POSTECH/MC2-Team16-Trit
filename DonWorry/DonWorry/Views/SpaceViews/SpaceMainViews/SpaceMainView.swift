@@ -17,6 +17,7 @@ struct SpaceMainView: View {
     @State var isModalPresented = false
     @State var isCheckOutAttendanceViewOpened = false
     @State var isEditSpaceNaveViewOpened = false
+    @State var isShareSheetPresented = false
     
     // DATA Model 이후
     @State var currentUser = user4
@@ -55,6 +56,7 @@ struct SpaceMainView: View {
                     
                     HStack(spacing: 25) {
                         SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
+                            isShareSheetPresented.toggle()
                             print("링크 공유 FUNCTION")
                         }
                         SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color(hex: "#A4C6FF"), textColor: .blueMain) {
@@ -74,6 +76,10 @@ struct SpaceMainView: View {
                         EmptyView()
                     }
                 }
+                
+                .sheet(isPresented: $isShareSheetPresented, content: {
+                    ShareSheet(items: ["트라잇에서 정산해요!"])
+                })
                 .sheet(isPresented: $isModalPresented, content: {
                     CardDetailView()
                 })
