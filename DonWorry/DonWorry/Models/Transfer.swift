@@ -9,7 +9,7 @@ import Foundation
 
 // 커스텀 타입
 struct Transfer {
-    var giver: User //보내는 사람
+    var giver: User // 보내는 사람
     var taker: User // 받는 사람
     var amount: Int // 금액
     var isCompleted: Bool = false // 송금완료 여부
@@ -32,7 +32,7 @@ func makeGiverList(trnasfers: [Transfer], currentUser: User) -> [Transfer] {
         }
     }
     return giverTransferList
-    //예상결과 : contentUser = users[0]일떄 giverTransferList = [transfer[2], transfer[3]]
+    // 예상결과 : contentUser = users[0]일떄 giverTransferList = [transfer[2], transfer[3]]
 }
 
 // currentUser가 돈을 줘야할 user의 리스트
@@ -44,12 +44,12 @@ func makeTakerList(trnasfers: [Transfer], currentUser: User) -> [Transfer] {
         }
     }
     return takerTransferList
-    //예상결과 : contentUser = users[0]일때 takerTransferList = []
+    // 예상결과 : contentUser = users[0]일때 takerTransferList = []
 }
 
 // currentUser한테 돈을 줘야할 user의 DisplayList
 // card에는 profile image가 최대 4개만
-func makeDisplayGiverList(makeGiverList: [Transfer]) -> [String]{
+func makeDisplayGiverList(makeGiverList: [Transfer]) -> [String] {
     var giverProfileImage: [String] = []
     if makeGiverList.count > 3 {
         makeGiverList[0..<4].forEach {

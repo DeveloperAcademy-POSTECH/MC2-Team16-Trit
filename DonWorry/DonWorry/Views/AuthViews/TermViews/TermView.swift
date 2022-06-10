@@ -31,16 +31,16 @@ struct TermView: View {
             ScrollView {
                 HStack {
                     Button {
-                        let isAllChecked = termsOfService.allSatisfy { $0.isChecked }
+                        let isAllChecked = termsOfService.allSatisfy { $0.isAgreed }
                         for i in 0..<termsOfService.count {
                             withAnimation {
                                 if isAllChecked {
                                     // 모두 체크되어있으면 다 빼기
-                                    termsOfService[i].isChecked = false
+                                    termsOfService[i].isAgreed = false
                                     
                                 } else {
                                     // 하나라도 체크 안되어있으면 모두 체크하기
-                                    termsOfService[i].isChecked = true
+                                    termsOfService[i].isAgreed = true
                                 }
                             }
                         }

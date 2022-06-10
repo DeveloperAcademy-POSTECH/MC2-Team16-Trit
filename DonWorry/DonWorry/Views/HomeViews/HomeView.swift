@@ -12,7 +12,7 @@ struct HomeView: View {
     
     @State var selection: String = "떱떱해"
     @State var spaceID: String = ""
-    @State var isPresented : Bool = false // Space 입장 ID 입력 Sheet
+    @State var isPresented: Bool = false // Space 입장 ID 입력 Sheet
     @State var isSpaceView: Bool = false
     @State private var naviSelection: String? = nil // tag - profile: 로 전환, alert: 로 전환, create: 로 전환
     
@@ -68,17 +68,35 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                         SpaceChipsView(selection: $selection)
                         Spacer().frame(height: 120)
-                        //지금 현재 사용 유저의 스페이스 이름이 내가선택한 스페이스이름이랑 같을 때
-                        if currentUser.spaceList[0].spaceName == selection {
+                        // 지금 현재 사용 유저의 스페이스 이름이 내가선택한 스페이스이름이랑 같을 때
+//                        if currentUser.spaceList[0].spaceName == selection {
+//                            ScrollView(.horizontal, showsIndicators: false) {
+//                                HStack {
+//                                    ParticipateDonCard(isParticipateIn: false, isSpaceView: $isSpaceView)
+//
+//                                    if currentUser.takeMoney != nil {
+//                                        TakerDonCard(currentUser: currentUser)
+//                                    }
+//                                    if currentUser.giveMoney != nil {
+//                                        GiverDonCard(currentUser: currentUser)
+//                                    }
+//                                }
+//                            }
+                        
+                        // MARK: 여기 수정해야합니다! 빌드만 가능하게 돌려놨어요...
+                        if currentUser.spaceList[0] == selection {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     ParticipateDonCard(isParticipateIn: false, isSpaceView: $isSpaceView)
                                     
-                                    if currentUser.takeMoney != nil {
+//                                    if currentUser.takeMoney != nil {
+                                    if transfers[0].taker != nil {
                                         TakerDonCard(currentUser: currentUser)
                                     }
-                                    if currentUser.giveMoney != nil {
-                                        GiverDonCard(currentUser: currentUser)
+//                                    if currentUser.giveMoney != nil {
+                                    if transfers[0].giver != nil {
+//                                        GiverDonCard(currentUser: currentUser)
+                                        GiverDonCard(taker: transfers[1], currentUser: currentUser)
                                     }
                                 }
                             }
@@ -93,7 +111,7 @@ struct HomeView: View {
                             }
                             NavigationLink(destination: AddSpaceView(),
                                            tag: "create",
-                                           selection: $naviSelection){ EmptyView()}
+                                           selection: $naviSelection) { EmptyView()}
                             MediumButton(text: "스페이스 만들기") {
                                 self.naviSelection = "create"
                             }

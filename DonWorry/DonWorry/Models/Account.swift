@@ -11,5 +11,5 @@ import Foundation
 struct Account {
     var accountHolder: String // 예금주
     var accountBank: String // 은행명
-    var accountNumber: String //계좌번호
+    var accountNumber: String // 계좌번호
 }
