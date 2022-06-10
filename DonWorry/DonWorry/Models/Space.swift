@@ -20,5 +20,5 @@ struct Space: Identifiable { //Hashable
 }
 
 var spaces: [Space] = [
-    Space(spaceID: "17391798749", spaceName: "트라잇회식", payment: payments, status: true, transfer: transfers, userList: users, admin: users[0])
+    Space(spaceID: "17391798749", spaceName: "떱떱해", payment: payments, status: true, transfer: transfers, userList: users, admin: users[0])
 ]

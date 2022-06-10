@@ -68,7 +68,8 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                         SpaceChipsView(selection: $selection)
                         Spacer().frame(height: 120)
-                        if currentUser.participant == selection {
+                        //지금 현재 사용 유저의 스페이스 이름이 내가선택한 스페이스이름이랑 같을 때
+                        if currentUser.spaceList[0].spaceName == selection {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     ParticipateDonCard(isParticipateIn: false, isSpaceView: $isSpaceView)
