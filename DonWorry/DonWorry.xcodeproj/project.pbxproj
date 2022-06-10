@@ -31,6 +31,7 @@
 		3E20873A284F8A9D003A4CFD /* SignInViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */; };
 		3E39E8902853747100D8E44C /* FireStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E88F2853747100D8E44C /* FireStoreViewModel.swift */; };
 		3E39E893285374F800D8E44C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3E39E892285374F800D8E44C /* FirebaseFirestore */; };
+		3E39E89528537DB500D8E44C /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89428537DB500D8E44C /* AccountViewModel.swift */; };
 		3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815A2843522900794955 /* DonWorryApp.swift */; };
 		3EBC815D2843522900794955 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815C2843522900794955 /* ContentView.swift */; };
 		3EBC816C2843522A00794955 /* DonWorryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC816B2843522A00794955 /* DonWorryTests.swift */; };
@@ -135,6 +136,7 @@
 		3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginViewModel.swift; sourceTree = "<group>"; };
 		3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewExtension.swift; sourceTree = "<group>"; };
 		3E39E88F2853747100D8E44C /* FireStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreViewModel.swift; sourceTree = "<group>"; };
+		3E39E89428537DB500D8E44C /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		3EBC81572843522900794955 /* DonWorry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonWorry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBC815A2843522900794955 /* DonWorryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryApp.swift; sourceTree = "<group>"; };
 		3EBC815C2843522900794955 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 			children = (
 				3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */,
 				3E39E88F2853747100D8E44C /* FireStoreViewModel.swift */,
+				3E39E89428537DB500D8E44C /* AccountViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -804,6 +807,7 @@
 				A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */,
 				79BF17A3284D002B003A2A68 /* SpaceMainCalculateStartButton.swift in Sources */,
 				7991F9FE28487E2B00DCAFB8 /* SpaceMainView.swift in Sources */,
+				3E39E89528537DB500D8E44C /* AccountViewModel.swift in Sources */,
 				2CC211862849F1230009F785 /* TermView.swift in Sources */,
 				3E39E8902853747100D8E44C /* FireStoreViewModel.swift in Sources */,
 				2CC211AE284BBE960009F785 /* ChooseBankSheet.swift in Sources */,

@@ -11,7 +11,8 @@ import FirebaseFirestore
 
 class FireStoreViewModel: ObservableObject {
 
-    @Published var list = [User]()
+    @Published var userList = [User]()
+    @Published var accountList = [Account]()
 
     // 유저 삭제하기 함수
     func deleteUserData(userToDelete: User) {
@@ -23,7 +24,7 @@ class FireStoreViewModel: ObservableObject {
             if error == nil {
 
                 DispatchQueue.main.async {
-                    self.list.removeAll { user in
+                    self.userList.removeAll { user in
                         return user.id == userToDelete.id
                     }
                 }
@@ -65,7 +66,7 @@ class FireStoreViewModel: ObservableObject {
                 if let snapshot = snapshot {
 
                     DispatchQueue.main.async {
-                        self.list = snapshot.documents.map { d in
+                        self.userList = snapshot.documents.map { d in
                             return User(id: d.documentID,
                                         userName: d["userName"] as! String,
                                         nickName: d["nickName"] as! String,
