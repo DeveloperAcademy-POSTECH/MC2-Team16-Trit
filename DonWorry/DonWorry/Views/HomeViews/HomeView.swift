@@ -30,14 +30,14 @@ struct HomeView: View {
                                 Button {
                                     showGiverSheet = true
                                 } label: {
-                                    TakerDonCard(currentUser: currentUser)
+                                    GiverDonCard(currentUser: currentUser)
                                 }
                             }
                             if currentUser.giveMoney != nil {
                                 Button {
                                     showTakerSheet = true
                                 } label: {
-                                    GiverDonCard(currentUser: currentUser)
+                                    TakerDonCard(currentUser: currentUser)
                                 }
                             }
                         }
