@@ -31,6 +31,9 @@
 		3E208733284DA688003A4CFD /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E208732284DA688003A4CFD /* ViewExtension.swift */; };
 		3E208738284F6C98003A4CFD /* AppleLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */; };
 		3E20873A284F8A9D003A4CFD /* SignInViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */; };
+		3E39E87E2851EB1400D8E44C /* FIreStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E87D2851EB1400D8E44C /* FIreStoreViewModel.swift */; };
+		3E39E8812851EC9900D8E44C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3E39E8802851EC9900D8E44C /* FirebaseFirestore */; };
+		3E39E883285226DB00D8E44C /* FireBaseTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E882285226DB00D8E44C /* FireBaseTestView.swift */; };
 		3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815A2843522900794955 /* DonWorryApp.swift */; };
 		3EBC815D2843522900794955 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815C2843522900794955 /* ContentView.swift */; };
 		3EBC816C2843522A00794955 /* DonWorryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC816B2843522A00794955 /* DonWorryTests.swift */; };
@@ -136,6 +139,8 @@
 		3E208736284E65AD003A4CFD /* DonWorry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DonWorry.entitlements; sourceTree = "<group>"; };
 		3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginViewModel.swift; sourceTree = "<group>"; };
 		3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewExtension.swift; sourceTree = "<group>"; };
+		3E39E87D2851EB1400D8E44C /* FIreStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIreStoreViewModel.swift; sourceTree = "<group>"; };
+		3E39E882285226DB00D8E44C /* FireBaseTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseTestView.swift; sourceTree = "<group>"; };
 		3EBC81572843522900794955 /* DonWorry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonWorry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBC815A2843522900794955 /* DonWorryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryApp.swift; sourceTree = "<group>"; };
 		3EBC815C2843522900794955 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -209,6 +214,7 @@
 				A704FC42284E01E400AC9736 /* SlideOverCard in Frameworks */,
 				3E20872C284DA5A5003A4CFD /* FirebaseAuth in Frameworks */,
 				3E20872F284DA5F3003A4CFD /* GoogleSignIn in Frameworks */,
+				3E39E8812851EC9900D8E44C /* FirebaseFirestore in Frameworks */,
 				3E208731284DA5F3003A4CFD /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +268,14 @@
 				2CF61B422849B271004C3768 /* NewPaymentDetail.swift */,
 			);
 			path = PaymentView;
+			sourceTree = "<group>";
+		};
+		3E39E884285226E500D8E44C /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				3E39E882285226DB00D8E44C /* FireBaseTestView.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 		3EBC814E2843522900794955 = {
@@ -444,6 +458,7 @@
 		A7447993284759B50083BBF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E39E884285226E500D8E44C /* Test */,
 				79BF17B1284D9765003A2A68 /* EditSpaceNameViews */,
 				79BF17AE284D951D003A2A68 /* SpaceHistoryDetailViews */,
 				79BF17A9284D1411003A2A68 /* CheckAttendanceViews */,
@@ -464,6 +479,7 @@
 			children = (
 				A744799E28476AD00083BBF4 /* FileViewModels.swift */,
 				3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */,
+				3E39E87D2851EB1400D8E44C /* FIreStoreViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -615,6 +631,7 @@
 				3E20872B284DA5A5003A4CFD /* FirebaseAuth */,
 				3E20872E284DA5F3003A4CFD /* GoogleSignIn */,
 				3E208730284DA5F3003A4CFD /* GoogleSignInSwift */,
+				3E39E8802851EC9900D8E44C /* FirebaseFirestore */,
 			);
 			productName = DonWorry;
 			productReference = 3EBC81572843522900794955 /* DonWorry.app */;
@@ -692,6 +709,7 @@
 				A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 				3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				3E39E87F2851EC9900D8E44C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 3EBC81582843522900794955 /* Products */;
 			projectDirPath = "";
@@ -770,6 +788,7 @@
 				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
 				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
 				A704FC38284DE22C00AC9736 /* AlertRow.swift in Sources */,
+				3E39E87E2851EB1400D8E44C /* FIreStoreViewModel.swift in Sources */,
 				A74479B12847A8190083BBF4 /* SmallButton.swift in Sources */,
 				79BF17B3284D977C003A2A68 /* EditSpaceNameView.swift in Sources */,
 				A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */,
@@ -831,6 +850,7 @@
 				2CF61B3F2849B18A004C3768 /* NewPaymentIcon.swift in Sources */,
 				3E20873A284F8A9D003A4CFD /* SignInViewExtension.swift in Sources */,
 				A74479AB28476AF10083BBF4 /* FileResources.swift in Sources */,
+				3E39E883285226DB00D8E44C /* FireBaseTestView.swift in Sources */,
 				A74479B32847BE170083BBF4 /* XSmallButton.swift in Sources */,
 				A74479A728476AE70083BBF4 /* FileHelper.swift in Sources */,
 				2CC21192284AF14C0009F785 /* AccountTextField.swift in Sources */,
@@ -1183,6 +1203,14 @@
 				minimumVersion = 6.2.0;
 			};
 		};
+		3E39E87F2851EC9900D8E44C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/joogps/SlideOverCard.git";
@@ -1208,6 +1236,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		3E39E8802851EC9900D8E44C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		A704FC41284E01E400AC9736 /* SlideOverCard */ = {
 			isa = XCSwiftPackageProductDependency;
