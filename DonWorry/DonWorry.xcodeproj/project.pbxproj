@@ -85,8 +85,6 @@
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
 		C027ED6D28510977008E4441 /* HalfSheetMediumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C027ED6C28510977008E4441 /* HalfSheetMediumButton.swift */; };
 		C027ED6F28510983008E4441 /* HalfSheetSmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C027ED6E28510983008E4441 /* HalfSheetSmallButton.swift */; };
-		C04CB5B52851010000621101 /* TakerDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */; };
-		C04CB5B72851012600621101 /* GiverDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */; };
 		C07ECB392849919C000C42C1 /* SpaceChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ECB382849919C000C42C1 /* SpaceChipsView.swift */; };
 		C0936BFD284876800064CEFA /* ParticipateDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFC284876800064CEFA /* ParticipateDonCard.swift */; };
 		C0936BFF28487FFC0064CEFA /* GiverDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */; };
@@ -191,8 +189,6 @@
 		C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleProgressBar.swift; sourceTree = "<group>"; };
 		C027ED6C28510977008E4441 /* HalfSheetMediumButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetMediumButton.swift; sourceTree = "<group>"; };
 		C027ED6E28510983008E4441 /* HalfSheetSmallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetSmallButton.swift; sourceTree = "<group>"; };
-		C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCardSheetView.swift; sourceTree = "<group>"; };
-		C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverDonCardSheetView.swift; sourceTree = "<group>"; };
 		C07ECB382849919C000C42C1 /* SpaceChipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceChipsView.swift; sourceTree = "<group>"; };
 		C0936BFC284876800064CEFA /* ParticipateDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateDonCard.swift; sourceTree = "<group>"; };
 		C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverDonCard.swift; sourceTree = "<group>"; };
@@ -421,8 +417,6 @@
 				C09C89702849101700E2A929 /* TakerDonCard.swift */,
 				C0DBFADC28525D6C004650F1 /* GIverDonCardDetail.swift */,
 				C0DBFADE28525D95004650F1 /* TakerDonCardDetail.swift */,
-				C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */,
-				C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */,
 			);
 			path = DonCard;
 			sourceTree = "<group>";
@@ -794,7 +788,6 @@
 				A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */,
 				4D6229CA2849295300A8E24C /* ImageManager.swift in Sources */,
 				3E208738284F6C98003A4CFD /* AppleLoginViewModel.swift in Sources */,
-				C04CB5B52851010000621101 /* TakerDonCardSheetView.swift in Sources */,
 				A74479AD2847A0580083BBF4 /* LargeButton.swift in Sources */,
 				2CF61B412849B1A0004C3768 /* AddCardPriceView.swift in Sources */,
 				A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */,
@@ -811,7 +804,6 @@
 				2CC211AE284BBE960009F785 /* ChooseBankSheet.swift in Sources */,
 				A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */,
 				4D6229C32849277500A8E24C /* Fonts.swift in Sources */,
-				C04CB5B72851012600621101 /* GiverDonCardSheetView.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				C027ED6F28510983008E4441 /* HalfSheetSmallButton.swift in Sources */,
 				C0DBFAE328546886004650F1 /* TakerDonCardSheet.swift in Sources */,

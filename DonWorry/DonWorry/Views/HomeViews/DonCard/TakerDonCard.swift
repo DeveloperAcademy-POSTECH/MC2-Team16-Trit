@@ -23,7 +23,6 @@ struct TakerCard_Previews: PreviewProvider {
     }
 }
 
-
 func makeGiverList(users: [User], contentUser: User) -> [User] {
     var giverlist: [User] = []
     users.forEach {

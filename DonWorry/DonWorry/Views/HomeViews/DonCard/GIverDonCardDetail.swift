@@ -42,4 +42,3 @@ struct GiverDonCardDetail: View {
         .foregroundColor(.white)
     }
 }
-
