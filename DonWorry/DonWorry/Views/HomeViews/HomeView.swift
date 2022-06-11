@@ -32,6 +32,9 @@ struct HomeView: View {
                                 } label: {
                                     GiverDonCard(currentUser: currentUser)
                                 }
+                                .sheet(isPresented: $showGiverSheet, content: {
+                                    GiverDonCardSheet()
+                                })
                             }
                             if currentUser.giveMoney != nil {
                                 Button {
@@ -39,6 +42,9 @@ struct HomeView: View {
                                 } label: {
                                     TakerDonCard(currentUser: currentUser)
                                 }
+                                .sheet(isPresented: $showTakerSheet, content: {
+                                    TakerDonCardSheet()
+                                })
                             }
                         }
                     }
@@ -58,8 +64,6 @@ struct HomeView: View {
                 
                 Spacer().frame(height: 120)
             }
-            TakerDonCardSheetView(isShowing: $showTakerSheet, currentUser: currentUser)
-            GiverDonCardSheetView(isShowing: $showGiverSheet, currentUser: currentUser)
         }
         .slideOverCard(isPresented: $isPresented, onDismiss: {
             isPresented = false

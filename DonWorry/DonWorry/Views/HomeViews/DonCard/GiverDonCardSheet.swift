@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct GiverDonCardSheet: View {
-    var percentage: Double = 81.5
+//    var percentage: Double = 81.5
+    
+    @Environment(\.presentationMode) var presentationmode
+    
     let screenSize = UIScreen.main.bounds
     var body: some View {
         ZStack {
@@ -17,7 +20,7 @@ struct GiverDonCardSheet: View {
             VStack(spacing: 10) {
                 RoundedRectangle(cornerRadius: 5)
                     .frame(width: 40, height: 5)
-                    .padding(.bottom, 30)
+                    .padding(.vertical, 30)
                     .padding(.horizontal)
                 
                 HStack {
@@ -34,22 +37,19 @@ struct GiverDonCardSheet: View {
                 }
                 .padding(.horizontal)
                 .font(.system(size: 20, weight: .heavy))
-                ZStack {
-//                    RoundedRectangle(cornerRadius: 4)
-//                        .frame(width: screenSize.width*0.92, height: 8)
-//                        .foregroundColor(.grayF6)
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 4)
+                        .frame(width: screenSize.width*0.92, height: 8)
+                        .foregroundColor(.grayF6)
                     HStack {
-                        ProgressView(value: percentage, total: 100)
-                            .progressViewStyle(LinearProgressViewStyle(tint: .blueMain))
-                            .padding(.horizontal, 15)
-//                        RoundedRectangle(cornerRadius: 4)
-//                            .frame(width: screenSize.width*0.92 * (98000/120000), height: 8)
-//                            .foregroundColor(.blueMain)
-//                        Spacer().frame(width: 64)
+//                        ProgressView(value: percentage, total: 100)
+//                            .progressViewStyle(LinearProgressViewStyle(tint: .blueMain))
+//                            .padding(.horizontal, 15)
+                        RoundedRectangle(cornerRadius: 4)
+                            .frame(width: screenSize.width*0.92 * (48000/120000), height: 8)
+                            .foregroundColor(.blueMain)
                     }
                 }
-
-                
                 HStack {
                     Text("우리은행 11413-13414-13414134 (임영후)")
                         .font(.system(size: 15, weight: .medium))
@@ -79,13 +79,13 @@ struct GiverDonCardSheet: View {
                 
                 HStack {
                     HalfSheetMediumButton(text: "계좌번호 복사하기", clicked: {})
-                    HalfSheetSmallButton(text: "보냈어요!", clicked: {})
+                    HalfSheetSmallButton(text: "보냈어요!", clicked: {
+                        self.presentationmode.wrappedValue.dismiss()
+                    })
                 }
                 
             }
-            //VStack
         }
-        //ZStack
     }
 }
 

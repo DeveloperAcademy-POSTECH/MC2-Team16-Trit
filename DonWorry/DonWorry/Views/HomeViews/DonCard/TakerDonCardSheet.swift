@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TakerDonCardSheet: View {
+    @Environment(\.presentationMode) var presentationmode
     let screenSize = UIScreen.main.bounds
     var body: some View {
         ZStack {
@@ -16,11 +17,12 @@ struct TakerDonCardSheet: View {
             VStack(spacing: 10) {
                 RoundedRectangle(cornerRadius: 5)
                     .frame(width: 40, height: 5)
-                    .padding(.bottom, 30)
+                    .padding(.vertical, 30)
                     .padding(.horizontal)
                 
                 HStack {
-                    Text("애셔에게 줄 돈")
+                    Text("받을 돈")
+                        .font(.system(size: 20, weight: .bold))
                     Spacer()
                 }
                 .padding(.horizontal)
@@ -36,54 +38,51 @@ struct TakerDonCardSheet: View {
                 }
                 .padding(.horizontal)
                 .font(.system(size: 20, weight: .heavy))
-                ZStack {
+                ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 4)
                         .frame(width: screenSize.width*0.92, height: 8)
                         .foregroundColor(.grayF6)
                     HStack {
                         RoundedRectangle(cornerRadius: 4)
-                            .frame(width: screenSize.width*0.92 * (90/180), height: 8)
+                            .frame(width: screenSize.width*0.92 * (12000/24000), height: 8)
                             .foregroundColor(.blueMain)
                         Spacer().frame(width: 64)
                     }
                 }
-
-                
-                HStack {
-                    Text("우리은행 11413-13414-13414134 (임영후)")
-                        .font(.system(size: 15, weight: .medium))
-                        .foregroundColor(.gray75)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.vertical, 10)
                 
                 GrayLine()
-                    .padding(.bottom, 20)
+                    .padding(.vertical, 20)
                     .padding(.horizontal)
                 
-                HStack {
-                    Text("상세내역")
-                    Spacer()
-                }
-                .font(.system(size: 15, weight: .bold))
-                .padding(0)
-                .padding(.horizontal)
-                
                 ScrollView(.vertical, showsIndicators: false) {
-                    GiverDonCardSheetCell(place: "우디네 당구장", date: "5/25", number: 4, totalPayment: 184000, myPayment: 46000)
-                    GiverDonCardSheetCell(place: "유쓰네 노래연습장", date: "5/25", number: 2, totalPayment: 152000, myPayment: 76000)
+                    HStack {
+                        Text("미정산 내역")
+                        Spacer()
+                    }
+                    .font(.system(size: 15, weight: .bold))
+                    TakerDonCardSheetCell(userName: "유스햄", payment: 6000)
+                    TakerDonCardSheetCell(userName: "임애셔", payment: 6000)
+                    
+                    HStack {
+                        Text("정산 영역")
+                        Spacer()
+                    }
+                    .font(.system(size: 15, weight: .bold))
+                    TakerDonCardSheetCell(userName: "김찰리", payment: 6000)
+                        .opacity(0.3)
+                    TakerDonCardSheetCell(userName: "뀨햄", payment: 6000)
+                        .opacity(0.3)
+                    
                 }
                 .padding(.horizontal)
                 
                 HStack {
-                    HalfSheetMediumButton(text: "계좌번호 복사하기", clicked: {})
+                    LargeButton(text: "재촉하기", clicked: {
+                        self.presentationmode.wrappedValue.dismiss()
+                    })
                 }
-                
             }
-            //VStack
         }
-        //ZStack
     }
 }
 
@@ -94,11 +93,8 @@ struct TakerDonCardSheet_Previews: PreviewProvider {
 }
 
 struct TakerDonCardSheetCell: View {
-    var place: String
-    var date: String
-    var number: Int
-    var totalPayment: Int
-    var myPayment: Int
+    var userName: String
+    var payment: Int
     var body: some View {
         HStack {
             ZStack {
@@ -109,24 +105,12 @@ struct TakerDonCardSheetCell: View {
                     .foregroundColor(.blue)
                     .frame(width: 40, height: 40)
             }
-            VStack {
-                HStack {
-                    Text(place)
-                        .font(.system(size: 16, weight: .bold))
-                    Spacer()
-                    Text("\(totalPayment)원(\(number)명)")
-                        .font(.system(size: 14, weight: .heavy))
-                }
-                HStack {
-                    Text(date)
-                        .font(.system(size: 16, weight: .heavy))
-                        .foregroundColor(.gray75)
-                    Spacer()
-                    Text("내가 내야할 돈 \(myPayment)원")
-                        .font(.system(size: 16, weight: .heavy))
-                }
+            HStack {
+                Text(userName)
+                Spacer()
+                Text("\(payment)원")
             }
         }
-        .padding(.bottom, 30)
+        .padding(.bottom, 10)
     }
 }
