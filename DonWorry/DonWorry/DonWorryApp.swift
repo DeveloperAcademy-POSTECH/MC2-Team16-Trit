@@ -15,10 +15,26 @@ struct DonWorryApp: App {
     //AppDelegate를 연결합니다.
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    @StateObject var userStateViewModel = UserStateViewModel()
+    
     var body: some Scene {
         WindowGroup {
-//            ContentView()
+            NavigationView {
+                ApplicationSwitcher()
+            }
+            .environmentObject(userStateViewModel)
+        }
+    }
+}
+
+struct ApplicationSwitcher: View {
+    @EnvironmentObject var vm: UserStateViewModel
+    
+    var body: some View {
+        if vm.isLoggedIn {
             HomeView(currentUser: user1)
+        } else {
+            SignInView()
         }
     }
 }

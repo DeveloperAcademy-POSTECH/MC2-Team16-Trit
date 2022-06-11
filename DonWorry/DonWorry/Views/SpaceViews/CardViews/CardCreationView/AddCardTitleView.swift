@@ -10,18 +10,19 @@ import SwiftUI
 struct AddCardTitleView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     @State private var paymentTitle: String = ""
-    @State private var naviSelection: String? = nil
+    @State private var naviSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
     
     let maxLength = 15
-     
+    
     var body: some View {
         
         ZStack {
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
-                        Text("정산 내역을")
-                        Text("추가해볼까요?")
+                    Text("정산 내역을")
+                    Text("추가해볼까요?")
                 }
                 .font(.system(size: 25, weight: .bold))
                 .padding(.vertical)
@@ -34,32 +35,32 @@ struct AddCardTitleView: View {
                         .resizable()
                         .frame(width: 250, height: 250)
                         .padding(.top, 30)
-                                               
+                    
                     Spacer()
                     
-// 수정 전
-//                        NavigationLink(destination: AddCardIconView(paymentTitle: paymentTitle)) {
-//                            HStack{
-//                                Text("다음")
-//                                    .frame(width: 135, height: 50)
-//                                    .foregroundColor(.white)
-//                                    .background(paymentTitle.isEmpty ? .blue.opacity(0.3) : .blue)
-//                                    .cornerRadius(29)
-//                            }
-//                        }
-//                        .padding([.leading, .bottom, .trailing], 30)
-//                        .disabled(paymentTitle.isEmpty ? true : false)
+                    // 수정 전
+                    //                        NavigationLink(destination: AddCardIconView(paymentTitle: paymentTitle)) {
+                    //                            HStack{
+                    //                                Text("다음")
+                    //                                    .frame(width: 135, height: 50)
+                    //                                    .foregroundColor(.white)
+                    //                                    .background(paymentTitle.isEmpty ? .blue.opacity(0.3) : .blue)
+                    //                                    .cornerRadius(29)
+                    //                            }
+                    //                        }
+                    //                        .padding([.leading, .bottom, .trailing], 30)
+                    //                        .disabled(paymentTitle.isEmpty ? true : false)
                 }
             }
             VStack {
                 Spacer()
-                NavigationLink(destination: AddCardIconView(paymentTitle: paymentTitle),
-                               tag: "add",
-                               selection: $naviSelection) {EmptyView()}
                 HStack {
                     Spacer()
+                    
+                    NavigationLink(tag: "AddCardIconView", selection: $naviSelection, destination: { AddCardIconView(paymentTitle: paymentTitle, mainSelection: $mainSelection) }) { EmptyView() }
+                        .isDetailLink(false)
                     SmallButton(text: "다음") {
-                        self.naviSelection = "add"
+                        self.naviSelection = "AddCardIconView"
                     }
                 }
                 .padding(.horizontal, 30)
@@ -83,6 +84,6 @@ struct AddCardTitleView: View {
 
 struct NewPayment_Title_Previews: PreviewProvider {
     static var previews: some View {
-        AddCardTitleView()
+        AddCardTitleView(mainSelection: .constant(""))
     }
 }

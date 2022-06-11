@@ -28,6 +28,9 @@ enum DecoCase: String, Identifiable, CaseIterable {
 struct AddCardDecoView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    
+    @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
+    
     //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
     //  @StateObject var vm = AddCardDecoViewModel()
     @State private var decoCase: DecoCase = .색상변경
@@ -36,7 +39,6 @@ struct AddCardDecoView: View {
     @State private var images: [UIImage] = []
     @State private var showPhotoPicker = false
     @State private var bank: String = "은행 선택"
-    @State private var isClicked: Bool = false
     @State private var date = Date()
     @State var clickedIndex = 0
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
@@ -90,7 +92,9 @@ struct AddCardDecoView: View {
                         text: "완료"
                     ) {
                         print("ChipBtn Clicked!")
-                        isClicked.toggle()
+                        print("전 : \(mainSelection)")
+                        mainSelection = nil
+                        print("후 : \(mainSelection)")
                     }
                 }
             }
@@ -298,7 +302,7 @@ struct CustomPicker: View {
 struct AddCardDecoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddCardDecoView()
+            AddCardDecoView(mainSelection: .constant(""))
         }
     }
 }

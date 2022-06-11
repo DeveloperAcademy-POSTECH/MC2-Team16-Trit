@@ -14,17 +14,18 @@ struct AddCardIconView: View {
     
     let paymentTitle: String
     
+    @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     @State private var paymentIcon : Image? = nil
     @State private var selectedItem: String = ""
-    @State private var naviSelection : String? = nil
+    @State private var naviSelection : String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
     private let iconColumns = [GridItem](repeating: GridItem(spacing: 10), count: 3)
     
     var body: some View {
         ZStack {
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
-                        Text("정산 내역을")
-                        Text("추가해볼까요?")
+                    Text("정산 내역을")
+                    Text("추가해볼까요?")
                 }
                 .font(.system(size: 25, weight: .bold))
                 .padding(.horizontal, 30)
@@ -60,19 +61,19 @@ struct AddCardIconView: View {
                 }
             }
             
-                        VStack {
-                            Spacer()
-                            NavigationLink(destination: AddCardPriceView(paymentTitle: paymentTitle, paymentIcon: paymentIcon),
-                                           tag: "price",
-                                           selection: $naviSelection) {EmptyView()}
-                            HStack {
-                                Spacer()
-                                SmallButton(text: "다음") {
-                                    self.naviSelection = "price"
-                                }
-                            }
-                            .padding(.horizontal, 30)
-                        }
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    
+                    NavigationLink(tag: "AddCardPriceView", selection: $naviSelection, destination: { AddCardPriceView(mainSelection: $mainSelection, paymentTitle: paymentTitle, paymentIcon: paymentIcon) }) { EmptyView() }
+                        .isDetailLink(false)
+                    SmallButton(text: "다음") {
+                        self.naviSelection = "AddCardPriceView"
+                    }
+                }
+                .padding(.horizontal, 30)
+            }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -92,6 +93,6 @@ struct AddCardIconView: View {
 
 struct AddCardIconView1_Previews: PreviewProvider {
     static var previews: some View {
-        AddCardIconView(paymentTitle: "땡땡이네 스타벅스")
+        AddCardIconView(paymentTitle: "땡땡이네 스타벅스", mainSelection: .constant(""))
     }
 }
