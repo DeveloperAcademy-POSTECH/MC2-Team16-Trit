@@ -12,12 +12,13 @@ import GoogleSignIn
 @main
 struct DonWorryApp: App {
     
-    //AppDelegate를 연결합니다.
+    // AppDelegate를 연결합니다.
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FireBaseTestView()
+//            ContentView()
             
         }
     }

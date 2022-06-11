@@ -33,6 +33,7 @@
 		3E39E893285374F800D8E44C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3E39E892285374F800D8E44C /* FirebaseFirestore */; };
 		3E39E89528537DB500D8E44C /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89428537DB500D8E44C /* AccountViewModel.swift */; };
 		3E39E89728539A1F00D8E44C /* SpaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89628539A1F00D8E44C /* SpaceViewModel.swift */; };
+		3E39E89A28549A8E00D8E44C /* FIreBaseTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89928549A8E00D8E44C /* FIreBaseTestView.swift */; };
 		3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815A2843522900794955 /* DonWorryApp.swift */; };
 		3EBC815D2843522900794955 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815C2843522900794955 /* ContentView.swift */; };
 		3EBC816C2843522A00794955 /* DonWorryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC816B2843522A00794955 /* DonWorryTests.swift */; };
@@ -139,6 +140,7 @@
 		3E39E88F2853747100D8E44C /* UserVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVIewModel.swift; sourceTree = "<group>"; };
 		3E39E89428537DB500D8E44C /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		3E39E89628539A1F00D8E44C /* SpaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewModel.swift; sourceTree = "<group>"; };
+		3E39E89928549A8E00D8E44C /* FIreBaseTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIreBaseTestView.swift; sourceTree = "<group>"; };
 		3EBC81572843522900794955 /* DonWorry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonWorry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBC815A2843522900794955 /* DonWorryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryApp.swift; sourceTree = "<group>"; };
 		3EBC815C2843522900794955 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -254,6 +256,14 @@
 				4D6229CC284929C000A8E24C /* AddCardDecoView.swift */,
 			);
 			path = CardCreationView;
+			sourceTree = "<group>";
+		};
+		3E39E89828549A6B00D8E44C /* TestView */ = {
+			isa = PBXGroup;
+			children = (
+				3E39E89928549A8E00D8E44C /* FIreBaseTestView.swift */,
+			);
+			path = TestView;
 			sourceTree = "<group>";
 		};
 		3EBC814E2843522900794955 = {
@@ -482,6 +492,7 @@
 		A7447993284759B50083BBF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E39E89828549A6B00D8E44C /* TestView */,
 				A744799B28476A350083BBF4 /* CommonViews */,
 				C0936BFB284876410064CEFA /* HomeViews */,
 				A7133C312850375B006ED054 /* SpaceViews */,
@@ -793,6 +804,7 @@
 				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
 				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
 				A704FC38284DE22C00AC9736 /* AlertRow.swift in Sources */,
+				3E39E89A28549A8E00D8E44C /* FIreBaseTestView.swift in Sources */,
 				A74479B12847A8190083BBF4 /* SmallButton.swift in Sources */,
 				79BF17B3284D977C003A2A68 /* EditSpaceNameView.swift in Sources */,
 				A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */,
