@@ -18,8 +18,8 @@ struct AddSpaceView: View {
         VStack(alignment: .leading, spacing: 20) {
             
             VStack(alignment: .leading) {
-                Text("정산 내역을")
-                Text("추가해볼까요?")
+                Text("스페이스를")
+                Text("생성해볼까요?")
             }
             .font(.system(size: 25, weight: .bold))
             .padding(.horizontal, 30)
@@ -34,13 +34,17 @@ struct AddSpaceView: View {
                 HStack {
                     Spacer()
                     
-                    NavigationLink(tag: "SpaceMainView", selection: $pageSelection, destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID")) }) {
+                    NavigationLink(tag: "SpaceMainView",
+                                   selection: $pageSelection,
+                                   destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID"))
+                        
+                    }) { EmptyView() }
+                        .isDetailLink(false)
                         SmallButton(text: "완료") {
-                            isCompleted = true
+                            self.pageSelection = "SpaceMainView"
                         }
                         .padding(.horizontal)
                         .disabled(spaceName.isEmpty ? true : false)
-                    }
                    
                 }
                 

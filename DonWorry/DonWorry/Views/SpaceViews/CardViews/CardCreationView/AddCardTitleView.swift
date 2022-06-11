@@ -31,11 +31,6 @@ struct AddCardTitleView: View {
                     
                     UnderlineTextField(placeholder: "정산하고자 하는 항목을 입력하세요", charLimit: 20, text: $paymentTitle)
                     
-                    Image("smartphone-with-bills")
-                        .resizable()
-                        .frame(width: 250, height: 250)
-                        .padding(.top, 30)
-                    
                     Spacer()
                     
                     // 수정 전
@@ -52,12 +47,26 @@ struct AddCardTitleView: View {
                     //                        .disabled(paymentTitle.isEmpty ? true : false)
                 }
             }
+            VStack{
+                Spacer()
+                Image("smartphone-with-bills")
+                    .resizable()
+                    .frame(width: 250, height: 250)
+                    .padding(.top, 30)
+                Spacer()
+            }
+            .ignoresSafeArea(.keyboard)
+            
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
                     
-                    NavigationLink(tag: "AddCardIconView", selection: $naviSelection, destination: { AddCardIconView(paymentTitle: paymentTitle, mainSelection: $mainSelection) }) { EmptyView() }
+                    NavigationLink(tag: "AddCardIconView",
+                                   selection: $naviSelection,
+                                   destination: { AddCardIconView(paymentTitle: paymentTitle, mainSelection: $mainSelection)
+                        
+                    }) { EmptyView() }
                         .isDetailLink(false)
                     SmallButton(text: "다음") {
                         self.naviSelection = "AddCardIconView"

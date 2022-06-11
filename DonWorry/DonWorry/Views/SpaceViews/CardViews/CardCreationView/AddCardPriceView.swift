@@ -77,6 +77,7 @@ struct AddCardPriceView: View {
                 }
             }
             .padding(.horizontal, 30)
+            .padding(.bottom)
             
             // 숫자 자판
             VStack {

@@ -92,6 +92,7 @@ struct TermView: View {
             }
             .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
         }
+        .ignoresSafeArea(.keyboard)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {

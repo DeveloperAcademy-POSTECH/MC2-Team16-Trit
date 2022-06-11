@@ -71,6 +71,7 @@ struct UserInfoView: View {
                     .cornerRadius(50)
             }
         }
+        .ignoresSafeArea(.keyboard)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
