@@ -29,7 +29,6 @@ struct SpaceMainView: View {
         if isHomeView == true {
             HomeView(currentUser: currentUser)
         } else {
-            NavigationView {
                 ZStack(alignment: .bottom) {
                     VStack {
                         ScrollView {
@@ -140,7 +139,6 @@ struct SpaceMainView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
-            }
         }
     }
 }

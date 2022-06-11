@@ -17,19 +17,18 @@ struct AddSpaceView: View {
         
         if isCompleted == true {
             SpaceMainView(spaceID: $spaceName)
-        } else {
+        }
+        else {
             
-            VStack(alignment: .leading, spacing: 30) {
+            VStack(alignment: .leading, spacing: 20) {
                 
-                VStack(alignment: .leading, spacing: 10) {
-                    
-                    Group {
-                        Text("스페이스를")
-                        Text("생성해볼까요?")
-                    }
-                    .font(.system(size: 30, weight: .bold))
-                    
+                VStack(alignment: .leading) {
+                        Text("정산 내역을")
+                        Text("추가해볼까요?")
                 }
+                .font(.system(size: 25, weight: .bold))
+                .padding(.horizontal, 30)
+                .padding(.vertical)
                 
                 VStack(spacing: 20) {
                     
@@ -43,27 +42,26 @@ struct AddSpaceView: View {
                         SmallButton(text: "완료") {
                             isCompleted = true
                         }
-                        .padding(.bottom, 30)
+                        .padding(.horizontal)
                         .disabled(spaceName.isEmpty ? true : false)
-                               
                     }
                     
                 }
                 
             }
             .navigationBarBackButtonHidden(true)
-            .padding(.top, -20)
-            .padding(.horizontal, 25)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button {
+                    Button(role: .cancel) {
                         self.mode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "chevron.left")
-                            .foregroundColor(.black)
+                            .padding(.horizontal)
                     }
+                    .buttonStyle(.plain)
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
            
         }
         
