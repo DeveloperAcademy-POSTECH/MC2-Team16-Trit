@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GiverDonCardSheet: View {
+    var percentage: Double = 81.5
     let screenSize = UIScreen.main.bounds
     var body: some View {
         ZStack {
@@ -34,14 +35,17 @@ struct GiverDonCardSheet: View {
                 .padding(.horizontal)
                 .font(.system(size: 20, weight: .heavy))
                 ZStack {
-                    RoundedRectangle(cornerRadius: 4)
-                        .frame(width: screenSize.width*0.92, height: 8)
-                        .foregroundColor(.grayF6)
+//                    RoundedRectangle(cornerRadius: 4)
+//                        .frame(width: screenSize.width*0.92, height: 8)
+//                        .foregroundColor(.grayF6)
                     HStack {
-                        RoundedRectangle(cornerRadius: 4)
-                            .frame(width: screenSize.width*0.92 * (98000/120000), height: 8)
-                            .foregroundColor(.blueMain)
-                        Spacer().frame(width: 64)
+                        ProgressView(value: percentage, total: 100)
+                            .progressViewStyle(LinearProgressViewStyle(tint: .blueMain))
+                            .padding(.horizontal, 15)
+//                        RoundedRectangle(cornerRadius: 4)
+//                            .frame(width: screenSize.width*0.92 * (98000/120000), height: 8)
+//                            .foregroundColor(.blueMain)
+//                        Spacer().frame(width: 64)
                     }
                 }
 

@@ -22,14 +22,17 @@ struct TakerDonCardSheet: View {
                 HStack {
                     Text("애셔에게 줄 돈")
                     Spacer()
-                    Text("내가 내야할 돈")
                 }
                 .padding(.horizontal)
                 .font(.system(size: 15, weight: .bold))
-                HStack {
-                    Text("98000원")
+                
+                HStack(alignment: .bottom) {
+                    Text("12000원")
+                        .font(.system(size: 30, weight: .heavy))
+                    Text("/ 240000원")
+                        .font(.system(size: 20, weight: .bold))
+                        .padding(.bottom, 2)
                     Spacer()
-                    Text("120000원")
                 }
                 .padding(.horizontal)
                 .font(.system(size: 20, weight: .heavy))
@@ -39,7 +42,7 @@ struct TakerDonCardSheet: View {
                         .foregroundColor(.grayF6)
                     HStack {
                         RoundedRectangle(cornerRadius: 4)
-                            .frame(width: screenSize.width*0.92 * (98000/120000), height: 8)
+                            .frame(width: screenSize.width*0.92 * (90/180), height: 8)
                             .foregroundColor(.blueMain)
                         Spacer().frame(width: 64)
                     }
@@ -75,7 +78,6 @@ struct TakerDonCardSheet: View {
                 
                 HStack {
                     HalfSheetMediumButton(text: "계좌번호 복사하기", clicked: {})
-                    HalfSheetSmallButton(text: "보냈어요!", clicked: {})
                 }
                 
             }
@@ -87,7 +89,7 @@ struct TakerDonCardSheet: View {
 
 struct TakerDonCardSheet_Previews: PreviewProvider {
     static var previews: some View {
-        GiverDonCardSheet()
+        TakerDonCardSheet()
     }
 }
 
