@@ -27,6 +27,8 @@ struct HomeView: View {
                         NavigationLink(destination: ProfileView(),
                                        tag: "ProfileView",
                                        selection: $naviSelection) { EmptyView() }
+                            .isDetailLink(false)
+
                         
                         Button {
                             self.naviSelection = "ProfileView"
@@ -50,6 +52,8 @@ struct HomeView: View {
                     NavigationLink(destination: AlertView(),
                                    tag: "AlertView",
                                    selection: $naviSelection) { EmptyView() }
+                        .isDetailLink(false)
+
                     Button {
                         self.naviSelection = "AlertView"
                     } label: {
@@ -87,6 +91,8 @@ struct HomeView: View {
                     NavigationLink(destination: AddSpaceView(naviSelection: $naviSelection),
                                    tag: "AddSpaceView",
                                    selection: $naviSelection) { EmptyView() }
+                        .isDetailLink(false)
+
                     MediumButton(text: "스페이스 만들기") {
                         self.naviSelection = "AddSpaceView"
                     }
@@ -97,6 +103,8 @@ struct HomeView: View {
             }
             
             NavigationLink(tag: "SpaceMainView", selection: $naviSelection, destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID")) }, label: { EmptyView() })
+                .isDetailLink(false)
+
         }
         .navigationBarHidden(true)
         .slideOverCard(isPresented: $isPresented, onDismiss: {

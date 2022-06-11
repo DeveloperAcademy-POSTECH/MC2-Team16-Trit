@@ -45,6 +45,8 @@ struct ParticipateDonCard: View {
                 }
             }
         }
+        .isDetailLink(false)
+
     }
 }
 

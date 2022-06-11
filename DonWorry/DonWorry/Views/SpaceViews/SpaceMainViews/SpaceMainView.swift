@@ -33,6 +33,7 @@ struct SpaceMainView: View {
                 ScrollView {
                     SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID)
                         .padding(.vertical, 21)
+
                     LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                         ForEach(0..<5) { index in
                             if index == 4 {
@@ -150,4 +151,3 @@ struct SpaceMainView_Previews: PreviewProvider {
         
     }
 }
-
