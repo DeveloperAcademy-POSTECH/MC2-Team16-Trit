@@ -93,6 +93,8 @@
 		C09C89712849101700E2A929 /* TakerDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C89702849101700E2A929 /* TakerDonCard.swift */; };
 		C0DBFADD28525D6C004650F1 /* GIverDonCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBFADC28525D6C004650F1 /* GIverDonCardDetail.swift */; };
 		C0DBFADF28525D95004650F1 /* TakerDonCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBFADE28525D95004650F1 /* TakerDonCardDetail.swift */; };
+		C0DBFAE128546877004650F1 /* GiverDonCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBFAE028546877004650F1 /* GiverDonCardSheet.swift */; };
+		C0DBFAE328546886004650F1 /* TakerDonCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBFAE228546886004650F1 /* TakerDonCardSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +199,8 @@
 		C09C89702849101700E2A929 /* TakerDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCard.swift; sourceTree = "<group>"; };
 		C0DBFADC28525D6C004650F1 /* GIverDonCardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIverDonCardDetail.swift; sourceTree = "<group>"; };
 		C0DBFADE28525D95004650F1 /* TakerDonCardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCardDetail.swift; sourceTree = "<group>"; };
+		C0DBFAE028546877004650F1 /* GiverDonCardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverDonCardSheet.swift; sourceTree = "<group>"; };
+		C0DBFAE228546886004650F1 /* TakerDonCardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCardSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,12 +415,14 @@
 			isa = PBXGroup;
 			children = (
 				C0936BFC284876800064CEFA /* ParticipateDonCard.swift */,
+				C0DBFAE028546877004650F1 /* GiverDonCardSheet.swift */,
+				C0DBFAE228546886004650F1 /* TakerDonCardSheet.swift */,
 				C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */,
+				C09C89702849101700E2A929 /* TakerDonCard.swift */,
 				C0DBFADC28525D6C004650F1 /* GIverDonCardDetail.swift */,
 				C0DBFADE28525D95004650F1 /* TakerDonCardDetail.swift */,
-				C09C89702849101700E2A929 /* TakerDonCard.swift */,
-				C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */,
 				C04CB5B62851012600621101 /* GiverDonCardSheetView.swift */,
+				C04CB5B42851010000621101 /* TakerDonCardSheetView.swift */,
 			);
 			path = DonCard;
 			sourceTree = "<group>";
@@ -808,6 +814,7 @@
 				C04CB5B72851012600621101 /* GiverDonCardSheetView.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				C027ED6F28510983008E4441 /* HalfSheetSmallButton.swift in Sources */,
+				C0DBFAE328546886004650F1 /* TakerDonCardSheet.swift in Sources */,
 				4D6229BD284925B900A8E24C /* PreviewCardView.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
 				4D6229CD284929C000A8E24C /* AddCardDecoView.swift in Sources */,
@@ -841,6 +848,7 @@
 				C0DBFADF28525D95004650F1 /* TakerDonCardDetail.swift in Sources */,
 				79BF17B0284D953B003A2A68 /* CardDetailView.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
+				C0DBFAE128546877004650F1 /* GiverDonCardSheet.swift in Sources */,
 				2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */,
 				2CC211822849F0FA0009F785 /* SignInView.swift in Sources */,
 				2CF61B3F2849B18A004C3768 /* AddCardIconView.swift in Sources */,
