@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TermView: View {
+    @EnvironmentObject var vm: UserStateViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State private var showSheet = false
@@ -108,6 +109,7 @@ struct TermView: View {
         }
         .halfSheet(showSheet: $showSheet) {
             TermSheetView(agreedTerms: termsOfService.filter { $0.isChecked }, showSheet: $showSheet)
+                .environmentObject(vm)
         } onEnd: {
             showSheet = false
         }

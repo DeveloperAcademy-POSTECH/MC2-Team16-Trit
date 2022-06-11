@@ -17,8 +17,9 @@ let rows = [
 struct AddCardPriceView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     @State private var price = ""
-    @State private var naviSelection: String? = nil
+    @State private var naviSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
     
     var numberPrice: Int {
         Int(price) ?? 0
@@ -37,66 +38,66 @@ struct AddCardPriceView: View {
     }
     
     var body: some View {
-            VStack {
-                HStack {
-                    paymentIcon?
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 37, height: 37)
-                        .background(Color.grayEE)
-                        .cornerRadius(5)
-                    
-                    Text(paymentTitle)
-                        .font(.system(size: 24))
-                        .fontWeight(.bold)
-                    
-                    Spacer()
-                }
-                .padding(.horizontal, 30)
-                .padding(.vertical)
+        VStack {
+            HStack {
+                paymentIcon?
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 37, height: 37)
+                    .background(Color.grayEE)
+                    .cornerRadius(5)
                 
-                HStack(alignment: .bottom) {
-                    Text(price.isEmpty ? "0" : numberFormatter.string(for: numberPrice) ?? "")
-                        .font(.system(size: 50))
-                        .fontWeight(.heavy)
-                    
-                    Text("원")
-                        .font(.system(size: 17))
-                }
+                Text(paymentTitle)
+                    .font(.system(size: 24))
+                    .fontWeight(.bold)
                 
                 Spacer()
-                
-                NavigationLink(destination: AddCardDecoView(paymentIcon: paymentIcon),
-                               tag: "deco",
-                               selection: $naviSelection) {EmptyView()}
-                HStack {
-                    Spacer()
-                    SmallButton(text: "다음") {
-                        self.naviSelection = "deco"
-                    }
-                }
-                .padding(.horizontal, 30)
-                
-                // 숫자 자판
-                VStack {
-                    ForEach(rows, id: \.self) { row in
-                        HStack {
-                            ForEach(row, id: \.self) { column in
-                                Button {
-                                    pressNumber(price, column)
-                                } label: {
-                                    Text(column)
-                                        .font(.system(size: 20, weight: .bold))
-                                        .frame(width: 125, height: 50)
-                                }
-                            }
-                            .padding(.vertical, 17)
-                        }
-                    }
-                }
-                .frame(height: 360, alignment: .top)
-                .background(RoundedRectangle(cornerRadius: 38).stroke(Color.grayF5))
             }
+            .padding(.horizontal, 30)
+            .padding(.vertical)
+            
+            HStack(alignment: .bottom) {
+                Text(price.isEmpty ? "0" : numberFormatter.string(for: numberPrice) ?? "")
+                    .font(.system(size: 50))
+                    .fontWeight(.heavy)
+                
+                Text("원")
+                    .font(.system(size: 17))
+            }
+            
+            Spacer()
+            
+            HStack {
+                Spacer()
+                
+                NavigationLink(tag: "AddCardDecoView", selection: $naviSelection, destination: { AddCardDecoView(mainSelection: $mainSelection) }) { EmptyView() }
+                    .isDetailLink(false)
+                SmallButton(text: "다음") {
+                    self.naviSelection = "AddCardDecoView"
+                }
+            }
+            .padding(.horizontal, 30)
+            
+            // 숫자 자판
+            VStack {
+                ForEach(rows, id: \.self) { row in
+                    HStack {
+                        ForEach(row, id: \.self) { column in
+                            Button {
+                                pressNumber(price, column)
+                            } label: {
+                                Text(column)
+                                    .font(.system(size: 20, weight: .bold))
+                                    .frame(width: 125, height: 50)
+                            }
+                        }
+                        .padding(.vertical, 17)
+                    }
+                }
+            }
+            .frame(height: 360, alignment: .top)
+            .background(RoundedRectangle(cornerRadius: 38).stroke(Color.grayF5))
+        }
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
@@ -140,6 +141,6 @@ struct AddCardPriceView: View {
 
 struct AddCardPriceView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCardPriceView(paymentTitle: "땡땡이네 스타벅스", paymentIcon: Image("chicken-leg"))
+        AddCardPriceView(mainSelection: .constant(""), paymentTitle: "땡땡이네 스타벅스", paymentIcon: Image("chicken-leg"))
     }
 }

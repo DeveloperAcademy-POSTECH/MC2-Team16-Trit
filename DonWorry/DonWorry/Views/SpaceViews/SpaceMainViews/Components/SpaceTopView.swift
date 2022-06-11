@@ -10,8 +10,8 @@ import SwiftUI
 struct SpaceTopView: View {
     
     let leftPaddingSize = 25.0
+    @Binding var mainSelection: String?
     @Binding var spaceID: String
-    @State var isAddCardTitleViewShown = false
     
     var body: some View {
         HStack {
@@ -27,19 +27,17 @@ struct SpaceTopView: View {
                     .applyButtonCustomModifier(backgroundColor: .grayC5, width: 47, height: 19, padding: 3)
             }
             Spacer()
+            
+            NavigationLink(tag: "AddCardTitleView", selection: $mainSelection, destination: { AddCardTitleView(mainSelection: $mainSelection) }) { EmptyView() }
+            .isDetailLink(false)
+            
             Button {
-                print("정산추가")
-                isAddCardTitleViewShown = true
+                mainSelection = "AddCardTitleView"
             } label: {
                 Text("정산추가")
                     .applyTextWithLineLimitModifier(size: 16.0, weight: .bold, color: .blueMain)
                     .applyButtonCustomModifier(backgroundColor: .paleBlue, width: 92, height: 26, padding: 4, cornerRadius: 16, strokeLineWith: 0)
                     .padding(.trailing, leftPaddingSize)
-            }
-            NavigationLink(isActive: $isAddCardTitleViewShown) {
-                AddCardTitleView()
-            } label: {
-                EmptyView()
             }
         }
     }
@@ -47,7 +45,6 @@ struct SpaceTopView: View {
 
 struct SpaceTopView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceTopView(spaceID: .constant("asdvasdvasdvas"))
+        SpaceTopView(mainSelection: .constant(""), spaceID: .constant("asdvasdvasdvas"))
     }
 }
- 

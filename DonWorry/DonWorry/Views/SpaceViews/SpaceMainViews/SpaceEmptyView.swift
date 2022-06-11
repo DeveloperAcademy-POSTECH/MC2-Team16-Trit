@@ -33,7 +33,7 @@ struct SpaceEmptyView: View {
                 ZStack(alignment: .bottom) {
                     VStack {
                         ScrollView {
-                            SpaceTopView(spaceID: $spaceID)
+                            SpaceTopView(mainSelection: .constant(""), spaceID: $spaceID)
                                 .padding(.vertical, 21)
                         }
                     }

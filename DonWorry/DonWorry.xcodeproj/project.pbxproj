@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C3C3EA32854946700B29181 /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C3EA22854946700B29181 /* UserStateViewModel.swift */; };
 		2CC211822849F0FA0009F785 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211812849F0FA0009F785 /* SignInView.swift */; };
 		2CC211842849F1160009F785 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211832849F1160009F785 /* UserInfoView.swift */; };
 		2CC211862849F1230009F785 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211852849F1230009F785 /* TermView.swift */; };
@@ -108,6 +109,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C3C3EA22854946700B29181 /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
 		2CC211812849F0FA0009F785 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2CC211832849F1160009F785 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		2CC211852849F1230009F785 /* TermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				A74479A028476ADA0083BBF4 /* User.swift */,
 				2CC2118B2849F1CF0009F785 /* Term.swift */,
 				A704FC39284DF28900AC9736 /* Alert.swift */,
+				2C3C3EA22854946700B29181 /* UserStateViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				A704FC3A284DF28900AC9736 /* Alert.swift in Sources */,
 				A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */,
 				4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */,
+				2C3C3EA32854946700B29181 /* UserStateViewModel.swift in Sources */,
 				A704FC44284F6B5200AC9736 /* ShareSheet.swift in Sources */,
 				C09C89712849101700E2A929 /* TakerDonCard.swift in Sources */,
 				A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */,
