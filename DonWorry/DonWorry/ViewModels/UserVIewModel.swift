@@ -13,6 +13,7 @@ class FireStoreViewModel: ObservableObject {
 
     @Published var userList = [User]()
     @Published var accountList = [Account]()
+    @Published var spaceList = [Space]()
 
     // 유저 삭제하기 함수
     func deleteUserData(userToDelete: User) {
