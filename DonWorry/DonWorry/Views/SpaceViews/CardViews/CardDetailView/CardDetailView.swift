@@ -12,8 +12,8 @@ struct CardDetailView: View {
     
     @State var isShowingDialog = false
     @State var isShowingAlert = false
-    @State private var images: [UIImage] = [UIImage(named: "chicken-leg")!]
-    @State private var showPhotoPicker = false
+    @State private var images: [UIImage] = [UIImage(named: "user1")!]
+    @State private var isPhotoPickerShow = false
     @State private var clickedIndex = 0
     @State private var isEditMode = false
     
@@ -113,14 +113,6 @@ struct CardDetailView: View {
                     .applyTextWithLineLimitModifier(size: 17, weight: .heavy, color: .black)
                     .padding(.top, 50)
                     .padding(.bottom, 15)
-//                LazyHGrid(rows: [GridItem(.fixed(102.0))], spacing: 13) {
-//                    ForEach(0..<3, id: \.self) { _ in
-                        
-//                        Image("chicken-leg")
-//                            .applyRectangleImageModifier(width: 90, height: 90, background: Color.grayEE.opacity(0.51), innerPadding: 3, cornerRadius: 15)
-//                    }
-//                }
-//                .frame(height: 90)
                 imageBox
             }
             Spacer()
@@ -148,129 +140,79 @@ struct CardDetailView: View {
                 
         }
         .padding([.leading, .trailing], 25)
+        .sheet(isPresented: $isPhotoPickerShow) {
+            let configuration = PHPickerConfiguration.config
+            PhotoPicker(index: $clickedIndex, configuration: configuration,
+                        images: $images,
+                        isPresented: $isPhotoPickerShow)
+        }
     }
     
     private var imageBox: some View {
+        
             VStack(spacing: 30) {
                 HStack {
-//                    Button(action: { print("alloha") }) {
-//                                HStack {
-//                                    Button(action: { print("hello") }) {
-//                                        Image(systemName: "circle.fill")
-//                                            .padding(30) // << more space !!
-//                                            .border(Color.red) // << for testing
-//                                    }
-//                                    Text("world")
-//                                    Spacer()
-//                                }
-//                            }
-//                    .background(.cyan)
                     LazyHGrid(rows: [GridItem(.fixed(340.0))], spacing: 20) {
                         ForEach(0..<3) { index in
-                            if images.count >= index { // count = 1
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.grayBC)
-                                .frame(width: 100, height: 100)
-                                .onTapGesture {
-                                        if isEditMode {
-                                            print("g")
-                                            clickedIndex = index
-                                            showPhotoPicker = true
-                                        }
-                                }
-                                .overlay(
-                                        ZStack {
-                                            if index < images.count {//사진이 있으면 보여줘라
-                                                Image(uiImage: images[index])
-                                                    .resizable()
-                                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            }
-                                            if isEditMode {//수정중일때만 보여라
-                                                
-                                                    
-                                                if index < images.count {//사진이 있으면 보여줘라
-//                                                    Image(uiImage: images[index])
-//                                                        .resizable()
-//                                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                    Button {
-                                                        print("removess")
-                                                        removeImage(index: index)
-                                                    } label: {
-                                                        Image(systemName: "xmark")
-                                                            .font(.headline)
-                                                            .padding(5)
-                                                            .foregroundColor(.white)
-                                                            .background(Color.black.opacity(0.5))
+                            if images.count >= index {
+                                Button {
+                                    showPhotoPicker(index: index)
+                                } label: {
+                                        RoundedRectangle(cornerRadius: 10)
+                                        
+                                        .fill(index >= images.count && isEditMode ? Color.grayBC : Color.clear)
+                                        .frame(width: 100, height: 100)
+                                        
+                                        
+                                    // 사진 하나 있어도 두개보여준다. 에딧 모드일때만.
+                                        .overlay(
+                                            ZStack(alignment: .topTrailing) {
+                                                    if index < images.count { // 사진이 있으면 보여준다.
+                                                        Image(uiImage: images[index])
+                                                            .resizable()
                                                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                            .frame(width: 80, height: 80, alignment: .topTrailing)
-                                                            .padding(5)
-                                                            .background(.red)
+                                                            
+                                                            .overlay(
+                                                                RoundedRectangle(cornerRadius: 10)
+                                                                    .stroke(Color.grayBC, lineWidth: 1)
+                                                            )
                                                             
                                                     }
-                                                } else {
-                                                    Image(systemName: "plus")
-                                                        .font(.largeTitle.weight(.light))
-                                                        .foregroundColor(Color.white)
+                                                    if isEditMode { // 수정중일때만 보여준다.
+                                                        if index < images.count { // 사진이 있으면 보여준다.
+                                                            Button {
+                                                                removeImage(index: index)
+                                                            } label: {
+                                                                Image(systemName: "xmark")
+                                                                    .font(.headline)
+                                                                    .padding(5)
+                                                                    .foregroundColor(.white)
+                                                                    .background(Color.black.opacity(0.5))
+                                                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                                    .padding(5)
+                                                            }
+                                                        } else { // 사진없으면
+                                                            Image(systemName: "plus")
+                                                                .font(.largeTitle.weight(.light))
+                                                                .foregroundColor(Color.white)
+                                                                
+                                                        }
+                                                    }
                                                 }
-                                                
-                                            }
-                                        }
-                                )
-                                
+                                        )
+                                }
+                                .disabled(!isEditMode)
+                            } else {
+                                EmptyView()
                             }
-//                               if images.count >= index {
-//                                Button {
-//                                    clickedIndex = index
-//                                    if isEditMode {
-//                                        showPhotoPicker = true
-//                                    }
-//                                } label: {
-//                                    RoundedRectangle(cornerRadius: 10)
-//                                        .fill(Color.grayBC)
-//                                        .frame(width: 100, height: 100)
-//                                        .overlay(
-//                                                ZStack {
-//                                                    if isEditMode {
-//                                                        Image(systemName: "plus")
-//                                                            .font(.largeTitle.weight(.light))
-//                                                            .foregroundColor(Color.white)
-//
-//                                                        if index < images.count {
-//                                                            Image(uiImage: images[index])
-//                                                                .resizable()
-//                                                                .clipShape(RoundedRectangle(cornerRadius: 10))
-//                                                            Button {
-//                                                                print("remove")
-//                                                                removeImage(index: index)
-//                                                            } label: {
-//                                                                Image(systemName: "xmark")
-//                                                                    .font(.headline)
-//                                                                    .padding(5)
-//                                                                    .foregroundColor(.white)
-//                                                                    .background(Color.black.opacity(0.5))
-//                                                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-//                                                                    .frame(width: 80, height: 80, alignment: .topTrailing)
-//                                                                    .padding(5)
-//                                                            }
-//                                                        }
-//                                                    }
-//                                                }
-//                                        )
-//                                }
-//                            }
                         }
                     }
                     Spacer()
                 }
                 .padding(.top, 15.0)
-            }.frame(width: 340, height: 80)
-            .contentShape(Rectangle())
-            .sheet(isPresented: $showPhotoPicker) {
-                let configuration = PHPickerConfiguration.config
-                PhotoPicker(index: $clickedIndex, configuration: configuration,
-                            images: $images,
-                            isPresented: $showPhotoPicker)
             }
+            .frame(width: 340, height: 80)
+            .contentShape(Rectangle())
         }
 }
 
@@ -281,7 +223,12 @@ struct CardDetailView_Previews: PreviewProvider {
 }
 
 extension CardDetailView {
+    
     private func removeImage(index: Int) {
         images.remove(at: index)
+    }
+    private func showPhotoPicker(index: Int) {
+        clickedIndex = index
+        isPhotoPickerShow = true
     }
 }
