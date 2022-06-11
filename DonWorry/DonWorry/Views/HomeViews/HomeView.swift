@@ -9,7 +9,7 @@ import SwiftUI
 import SlideOverCard
 
 struct HomeView: View {
-    @State var selection: String = "떱떱해"
+    @State var selection: String = "밤샘코딩"
     @State var isPresented: Bool = false
     @State private var showGiverSheet = false
     @State private var showTakerSheet = false
@@ -18,8 +18,10 @@ struct HomeView: View {
     var currentUser: User
     var body: some View {
         ZStack {
+            MainProfileView(currentUser: currentUser)
+                .padding(.bottom, 660)
             VStack {
-                MainProfileView(currentUser: currentUser)
+                Spacer().frame(height: 50)
                 SpaceChipsView(selection: $selection)
                 Spacer().frame(height: 120)
                 if currentUser.participant == selection {
@@ -52,18 +54,17 @@ struct HomeView: View {
                     ParticipateDonCard(isParticipateIn: true)
                 }
                 /* Bottom Buttons */
-                HStack {
-                    XSmallButton(icon: "magnifyingglass") {
-                        isPresented.toggle()
-                    }
-                    MediumButton(text: "스페이스 만들기") {
-                        // Create Space
-                    }
-                }
-                .offset(y: 160)
-                
-                Spacer().frame(height: 120)
+                Spacer().frame(height: 200)
             }
+            HStack {
+                XSmallButton(icon: "magnifyingglass") {
+                    isPresented.toggle()
+                }
+                MediumButton(text: "스페이스 만들기") {
+                    // Create Space
+                }
+            }
+            .padding(.top, 700)
         }
         .slideOverCard(isPresented: $isPresented, onDismiss: {
             isPresented = false
@@ -79,11 +80,10 @@ struct HomeView: View {
                     Text("스페이스ID로 정산에 참가하기").font(.system(size: 20, weight: .bold))
                     UnderlineTextField(placeholder: "스페이스 ID를 입력해주세요", charLimit: 20, text: $spaceID)
                 }
-                
                 LargeButton(text: "스페이스 참가하기") {
                     isPresented = false
                     spaceID = ""
-                }.padding(.bottom, 30)
+                }
             }
             .frame(width: 315, height: 350)
         }
@@ -123,9 +123,9 @@ struct MainProfileView: View {
             Button {
                 // TO DO - 알림창으로 넘어갈 버튼
             } label: {
-                Image(systemName: "bell.circle.fill")
-                    .foregroundColor(.blue)
-                    .font(.system(size: 40))
+                Image("alerticon")
+                    .resizable()
+                    .frame(width: 44, height: 44)
             }
         }
         .padding(.bottom, 25)
