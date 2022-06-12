@@ -11,32 +11,6 @@ import FirebaseFirestore
 
 extension FireStoreViewModel {
        
-    
-    
-//    func getAccountDatas() {
-//        // get a reference to the database
-//        let db = Firestore.firestore()
-//        db.collection("Account").getDocuments { snapshot, error in
-//
-//            if error == nil {
-//                if let snapshot = snapshot {
-//
-//                    DispatchQueue.main.async {
-//                        self.accountList = snapshot.documents.map { d in
-//                            return Account(id: d.documentID,
-//                                           accountHolder: d["accountHolder"] as! String,
-//                                           accountBank: d["accountBank"] as! String,
-//                                           accountNumber: d["accountNumber"] as! String)
-//                        }
-//                    }
-//                }
-//            } else {
-//                print("계좌 불러오기 실패")
-//            }
-//        }
-//    }
-    
-    
     // 전체 스페이스 불러오기
     func getSpaceDatas() {
         // get a reference to the database
@@ -124,21 +98,6 @@ extension FireStoreViewModel {
             }
         }
     }
-    
-    
-//    func updateAccount(AccountToUpdate: Account, newBank: String?) {
-//
-//        let db = Firestore.firestore()
-//
-//        db.collection("Account").document(AccountToUpdate.id).setData(["accountBank" : newBank ?? ""], merge: true) { error in
-//
-//            if error == nil {
-//                self.getAccountDatas()
-//            } else {
-//                print("계좌 정보 업데이트 실패(은행)")
-//            }
-//        }
-//    }
     
     func updateSpace(SpaceToUpdate: Space, newSpaceName: String?) {
         
