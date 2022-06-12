@@ -16,8 +16,7 @@ struct UserInfoView: View {
     var body: some View {
         VStack {
             Text("돈.워리")
-                .font(.system(size: 30))
-                .fontWeight(.bold)
+                .scaledFont(name: CustomFont.GmarketSansBold, size: 30)
             
             Spacer()
             
