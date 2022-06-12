@@ -8,7 +8,7 @@
 import Foundation
 
 // 커스텀 타입 - 계좌정보
-struct Account: Identifiable {
+struct Account: Identifiable, Codable {
     var id = UUID().uuidString
     var accountHolder: String // 예금주
     var accountBank: String // 은행명

@@ -17,8 +17,9 @@ struct DonWorryApp: App {
     
     var body: some Scene {
         WindowGroup {
-            FireBaseTestView()
+        // FireBaseTestView()
 //            ContentView()
+            AccountTestView()
             
         }
     }

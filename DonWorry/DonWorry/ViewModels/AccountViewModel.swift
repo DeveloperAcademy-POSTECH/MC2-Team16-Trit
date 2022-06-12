@@ -69,33 +69,33 @@ extension FireStoreViewModel {
     
     // Delete Account
     // Account 삭제 함수
-    func deleteAccountData(userToDelete: User) {
+    func deleteAccountData(accountToDelete: Account) {
 
         let db = Firestore.firestore() // FireBase 데이터 베이스를 reference
         
         // collection에 접근
-        db.collection("User").document(userToDelete.id).delete { error in
+        db.collection("Account").document(accountToDelete.id).delete { error in
             if error == nil {
 
                 DispatchQueue.main.async {
-                    self.userList.removeAll { user in
-                        return user.id == userToDelete.id
+                    self.accountList.removeAll { account in
+                        return account.id == accountToDelete.id
                     }
                 }
 
             } else {
-                print("유저 삭제하기 실패")
+                print("계좌 삭제하기 실패")
             }
         }
     }
 
     // Update Account
     // 예금주명 수정 함수
-    func updateAccount(AccountToUpdate: Account, newHolder: String) {
+    func updateAccount(AccountToUpdate: Account, newHolder: String?) {
 
         let db = Firestore.firestore()
 
-        db.collection("Account").document(AccountToUpdate.id).setData(["accountHolder" : newHolder], merge: true) { error in
+        db.collection("Account").document(AccountToUpdate.id).setData(["accountHolder" : newHolder ?? ""], merge: true) { error in
 
             if error == nil {
                 self.getAccountDatas()
@@ -106,11 +106,11 @@ extension FireStoreViewModel {
     }
     
     // 은행 수정 함수
-    func updateAccount(AccountToUpdate: Account, newBank: String) {
+    func updateAccount(AccountToUpdate: Account, newBank: String?) {
         
         let db = Firestore.firestore()
 
-        db.collection("Account").document(AccountToUpdate.id).setData(["accountBank" : newBank], merge: true) { error in
+        db.collection("Account").document(AccountToUpdate.id).setData(["accountBank" : newBank ?? ""], merge: true) { error in
 
             if error == nil {
                 self.getAccountDatas()
@@ -121,7 +121,7 @@ extension FireStoreViewModel {
     }
     
     // 계좌번호 수정 함수
-    func updateAccount(AccountToUpdate: Account, newNumber: String) {
+    func updateAccount(AccountToUpdate: Account, newNumber: String?) {
         
         let db = Firestore.firestore()
 
