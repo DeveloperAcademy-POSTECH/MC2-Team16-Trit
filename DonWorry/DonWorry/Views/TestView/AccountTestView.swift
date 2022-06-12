@@ -4,11 +4,13 @@
 //
 //  Created by YeongJin Jeong on 2022/06/12.
 //
+// TODO: 삭제예정 View
+
 import SwiftUI
 
 struct AccountTestView: View {
 
-    var testAccount = Account(accountHolder: "김승창", accountBank: "기업", accountNumber: "1234-456-3256")
+    var testAccount = Account(accountHolder: "김의성", accountBank: "기업", accountNumber: "1234-456-3256")
 
     @ObservedObject var fireBaseModel = FireStoreViewModel()
 
@@ -46,11 +48,8 @@ struct AccountTestView: View {
     }
 
     init() {
-        print("hello")
-        print(fireBaseModel.accountList)
         fireBaseModel.getAccountDatas()
     }
-
 }
 
 struct AccountTestView_Previews: PreviewProvider {

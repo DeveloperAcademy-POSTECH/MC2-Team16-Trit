@@ -12,8 +12,32 @@ import FirebaseFirestore
 extension FireStoreViewModel {
        
     
+    
+//    func getAccountDatas() {
+//        // get a reference to the database
+//        let db = Firestore.firestore()
+//        db.collection("Account").getDocuments { snapshot, error in
+//
+//            if error == nil {
+//                if let snapshot = snapshot {
+//
+//                    DispatchQueue.main.async {
+//                        self.accountList = snapshot.documents.map { d in
+//                            return Account(id: d.documentID,
+//                                           accountHolder: d["accountHolder"] as! String,
+//                                           accountBank: d["accountBank"] as! String,
+//                                           accountNumber: d["accountNumber"] as! String)
+//                        }
+//                    }
+//                }
+//            } else {
+//                print("계좌 불러오기 실패")
+//            }
+//        }
+//    }
+    
+    
     // 전체 스페이스 불러오기
-    // Read Account
     func getSpaceDatas() {
         // get a reference to the database
         let db = Firestore.firestore()
@@ -24,12 +48,12 @@ extension FireStoreViewModel {
                     
                     DispatchQueue.main.async {
                         self.spaceList = snapshot.documents.map { d in
-                            return Space(id: d["id"] as! String,
+                            return Space(id: d.documentID,
                                          spaceID: d["spaceID"] as! String,
                                          spaceName: d["spaceName"] as! String,
                                          payment: d["payment"] as! [String],
                                          status: (d["status"] != nil),
-                                         transfer: d["trasfer"] as! [String],
+                                         transfer: d["transfer"] as! [String],
                                          userList: d["userList"] as! [String],
                                          admin: d["admin"] as! String)
                         }
@@ -42,6 +66,7 @@ extension FireStoreViewModel {
     }
     
     // 스페이스 하나 불러오기
+    // Space Document Id를 parameter로 받습니다.
     func getSpaceData(SpaceID: String) {
         let db = Firestore.firestore()
         let spaceRef = db.collection("Space").document(SpaceID)
@@ -56,35 +81,23 @@ extension FireStoreViewModel {
         }
     }
     
-    //    struct Space: Identifiable { // Hashable
-    //        var id = UUID().uuidString
-    //        var spaceID: String // 간소화된 참가용 스페이스 ID
-    //        var spaceName: String // 스페이스 이름
-    //        var payment: [String] // 정산내역 (CARD) 리스트 *Payment참조해야함*
-    //        var status: Bool // 참석완료여부
-    //        var transfer: [String] // 송금필요내역 *Transfer 참조해야함*
-    //        var userList: [String] // 참가자 리스트 *User 참조해야함*
-    //        var admin: String // Space 주인 *User 참조해야함*
-    //    }
-     
-    
-    // Create Account
     // space 추가함수
     func addSpaceData(spaceName: String) {
         // get a reference to the database
         let db = Firestore.firestore()
 
         db.collection("Space").addDocument(data: [
+                                                  "spaceID" : "",
                                                   "spaceName" : spaceName,
                                                   "payment" : [],
                                                   "status" : false,
                                                   "transfer" : [],
                                                   "userList" : [],
-                                                  "admin" : [],
+                                                  "admin" : ""
                                                  ]) { error in
             
             if error == nil {
-                self.getAccountDatas()
+                self.getSpaceDatas()
             } else {
                 print("스페이스 추가하기 실패")
             }
@@ -108,6 +121,35 @@ extension FireStoreViewModel {
 
             } else {
                 print("스페이스 삭제하기 실패")
+            }
+        }
+    }
+    
+    
+//    func updateAccount(AccountToUpdate: Account, newBank: String?) {
+//
+//        let db = Firestore.firestore()
+//
+//        db.collection("Account").document(AccountToUpdate.id).setData(["accountBank" : newBank ?? ""], merge: true) { error in
+//
+//            if error == nil {
+//                self.getAccountDatas()
+//            } else {
+//                print("계좌 정보 업데이트 실패(은행)")
+//            }
+//        }
+//    }
+    
+    func updateSpace(SpaceToUpdate: Space, newSpaceName: String?) {
+        
+        let db = Firestore.firestore()
+
+        db.collection("Space").document(SpaceToUpdate.id).setData(["spaceName" : newSpaceName ?? ""], merge: true) { error in
+
+            if error == nil {
+                self.getSpaceDatas()
+            } else {
+                print("space이름 수정 실패")
             }
         }
     }

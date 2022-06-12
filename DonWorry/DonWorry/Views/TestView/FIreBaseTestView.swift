@@ -4,6 +4,7 @@
 //
 //  Created by YeongJin Jeong on 2022/06/11.
 //
+// TODO: 삭제예정 View
 
 import SwiftUI
 

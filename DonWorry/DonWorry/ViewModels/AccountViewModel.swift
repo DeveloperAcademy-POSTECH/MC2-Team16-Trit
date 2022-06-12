@@ -125,7 +125,7 @@ extension FireStoreViewModel {
         
         let db = Firestore.firestore()
 
-        db.collection("Account").document(AccountToUpdate.id).setData(["accounNumber" : newNumber], merge: true) { error in
+        db.collection("Account").document(AccountToUpdate.id).setData(["accounNumber" : newNumber ?? ""], merge: true) { error in
 
             if error == nil {
                 self.getAccountDatas()
