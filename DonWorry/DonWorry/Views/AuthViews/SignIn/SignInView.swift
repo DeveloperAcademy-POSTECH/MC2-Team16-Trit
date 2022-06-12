@@ -27,17 +27,14 @@ struct SignInView: View {
             VStack {
                 VStack(spacing: 15) {
                     Text("돈.워리")
+                        .scaledFont(name: CustomFont.GmarketSansBold, size: 30)
                         .foregroundColor(Color.blueMain)
-                        .font(.system(size: 30))
-                        .fontWeight(.bold)
                     
                     VStack {
                         Text("때인돈 받아드립니다.")
-                            .fontWeight(.light)
                         Text("걱정마세요.")
-                            .fontWeight(.light)
                     }
-                    .font(.system(size: 15))
+                    .scaledFont(name: CustomFont.GmarketSansLight, size: 15)
                     
                 }
                 

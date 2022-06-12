@@ -37,8 +37,10 @@ struct SpaceMainView: View {
                     LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                         ForEach(0..<5) { index in
                             if index == 4 {
-                                SpaceMainCalculateStartButton(clicked: {
-                                    print("calculate start FUNCTION")
+                                AddCardTitleViewButton(clicked: {
+                                    NavigationLink(tag: "AddCardTitleView", selection: $naviSelection, destination: { AddCardTitleView(mainSelection: $mainSelection) }) { EmptyView() }
+                                    .isDetailLink(false)
+                                    self.naviSelection = "AddCardTitleView"
                                 }) .padding(.bottom, 70)
                             } else {
                                 SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "42910090307", index: index, clicked: {
@@ -53,7 +55,7 @@ struct SpaceMainView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             
-            HStack(spacing: 25) {
+            HStack {
                 SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
                     isShareSheetPresented.toggle()
                     print("링크 공유 FUNCTION")
@@ -63,6 +65,7 @@ struct SpaceMainView: View {
                     print("참석 확인 FUNCTION")
                 }
             }
+//            .padding(.horizontal, 30.0)
             
             NavigationLink(isActive: $isCheckOutAttendanceViewOpened) {
                 CheckAttendanceView()

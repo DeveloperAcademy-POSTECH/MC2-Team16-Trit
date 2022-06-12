@@ -10,7 +10,6 @@ import SwiftUI
 struct AddSpaceView: View {
     @Binding var naviSelection: String?
     @State var spaceName: String = ""
-    @State var isCompleted: Bool = false
     @State private var pageSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     

@@ -48,7 +48,7 @@
 		79BF1799284CFF40003A2A68 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF1798284CFF40003A2A68 /* Modifiers.swift */; };
 		79BF179D284CFF83003A2A68 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF179C284CFF83003A2A68 /* ImageExtension.swift */; };
 		79BF17A2284D002B003A2A68 /* SpaceMainBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF179F284D002B003A2A68 /* SpaceMainBottomButton.swift */; };
-		79BF17A3284D002B003A2A68 /* SpaceMainCalculateStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A0284D002B003A2A68 /* SpaceMainCalculateStartButton.swift */; };
+		79BF17A3284D002B003A2A68 /* AddCardTitleViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A0284D002B003A2A68 /* AddCardTitleViewButton.swift */; };
 		79BF17A4284D002B003A2A68 /* SpaceMainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A1284D002B003A2A68 /* SpaceMainCardView.swift */; };
 		79BF17A6284D0034003A2A68 /* SpaceTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A5284D0034003A2A68 /* SpaceTopView.swift */; };
 		79BF17A8284D0209003A2A68 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A7284D0209003A2A68 /* TextExtension.swift */; };
@@ -151,7 +151,7 @@
 		79BF1798284CFF40003A2A68 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		79BF179C284CFF83003A2A68 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		79BF179F284D002B003A2A68 /* SpaceMainBottomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceMainBottomButton.swift; sourceTree = "<group>"; };
-		79BF17A0284D002B003A2A68 /* SpaceMainCalculateStartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceMainCalculateStartButton.swift; sourceTree = "<group>"; };
+		79BF17A0284D002B003A2A68 /* AddCardTitleViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardTitleViewButton.swift; sourceTree = "<group>"; };
 		79BF17A1284D002B003A2A68 /* SpaceMainCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceMainCardView.swift; sourceTree = "<group>"; };
 		79BF17A5284D0034003A2A68 /* SpaceTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceTopView.swift; sourceTree = "<group>"; };
 		79BF17A7284D0209003A2A68 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 				79BF17A1284D002B003A2A68 /* SpaceMainCardView.swift */,
 				79BF179F284D002B003A2A68 /* SpaceMainBottomButton.swift */,
 				79BF17A5284D0034003A2A68 /* SpaceTopView.swift */,
-				79BF17A0284D002B003A2A68 /* SpaceMainCalculateStartButton.swift */,
+				79BF17A0284D002B003A2A68 /* AddCardTitleViewButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -786,7 +786,7 @@
 				2CC211862849F1230009F785 /* TermView.swift in Sources */,
 				79BF1799284CFF40003A2A68 /* Modifiers.swift in Sources */,
 				A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */,
-				79BF17A3284D002B003A2A68 /* SpaceMainCalculateStartButton.swift in Sources */,
+				79BF17A3284D002B003A2A68 /* AddCardTitleViewButton.swift in Sources */,
 				7991F9FE28487E2B00DCAFB8 /* SpaceMainView.swift in Sources */,
 				2CC211862849F1230009F785 /* TermView.swift in Sources */,
 				2CC211AE284BBE960009F785 /* ChooseBankSheet.swift in Sources */,

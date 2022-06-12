@@ -75,8 +75,7 @@ enum CardColor: String, Identifiable, CaseIterable {
     case purple
     case red
     case black
-    
-    
+        
     var id: String {
         self.rawValue
     }

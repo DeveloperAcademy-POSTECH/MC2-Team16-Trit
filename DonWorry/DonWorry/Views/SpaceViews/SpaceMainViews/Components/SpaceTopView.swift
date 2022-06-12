@@ -12,6 +12,7 @@ struct SpaceTopView: View {
     let leftPaddingSize = 25.0
     @Binding var mainSelection: String?
     @Binding var spaceID: String
+    @State private var naviSelection: String? = nil
     
     var body: some View {
         HStack {
@@ -28,13 +29,13 @@ struct SpaceTopView: View {
             }
             Spacer()
             
-            NavigationLink(tag: "AddCardTitleView", selection: $mainSelection, destination: { AddCardTitleView(mainSelection: $mainSelection) }) { EmptyView() }
+            NavigationLink(tag: "CalculateStartView", selection: $naviSelection, destination: { HomeView(currentUser: user1) }) { EmptyView() }
             .isDetailLink(false)
             
             Button {
-                mainSelection = "AddCardTitleView"
+                self.naviSelection = "CalculateStartView"
             } label: {
-                Text("정산추가")
+                Text("정산시작")
                     .applyTextWithLineLimitModifier(size: 16.0, weight: .bold, color: .blueMain)
                     .applyButtonCustomModifier(backgroundColor: .paleBlue, width: 92, height: 26, padding: 4, cornerRadius: 16, strokeLineWith: 0)
                     .padding(.trailing, leftPaddingSize)
