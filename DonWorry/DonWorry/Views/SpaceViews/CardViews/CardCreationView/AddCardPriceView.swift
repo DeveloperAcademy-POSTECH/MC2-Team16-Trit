@@ -70,7 +70,7 @@ struct AddCardPriceView: View {
             HStack {
                 Spacer()
                 
-                NavigationLink(tag: "AddCardDecoView", selection: $naviSelection, destination: { AddCardDecoView(mainSelection: $mainSelection) }) { EmptyView() }
+                NavigationLink(tag: "AddCardDecoView", selection: $naviSelection, destination: { AddCardDecoView(mainSelection: $mainSelection, paymentIcon: paymentIcon) }) { EmptyView() }
                     .isDetailLink(false)
                 SmallButton(text: "다음") {
                     self.naviSelection = "AddCardDecoView"

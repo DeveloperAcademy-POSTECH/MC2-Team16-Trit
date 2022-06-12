@@ -42,7 +42,7 @@ struct AddCardDecoView: View {
     @State private var date = Date()
     @State var clickedIndex = 0
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
-    @State var paymentIcon: Image?
+    var paymentIcon: Image?
     
     var body: some View {
         
@@ -302,7 +302,7 @@ struct CustomPicker: View {
 struct AddCardDecoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddCardDecoView(mainSelection: .constant(""))
+            AddCardDecoView(mainSelection: .constant(""), paymentIcon: Image("chicken-leg"))
         }
     }
 }
