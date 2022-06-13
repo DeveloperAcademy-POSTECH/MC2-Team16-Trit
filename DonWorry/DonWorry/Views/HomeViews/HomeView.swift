@@ -13,6 +13,8 @@ struct HomeView: View {
     @State var selection: String = "밤샘코딩"
     @State var spaceID: String = ""
     @State var isPresented : Bool = false // Space 입장 ID 입력 Sheet
+    @State private var giverDonCardSheetState = false
+    @State private var takerDonCardSheetState = false
     
     @State private var naviSelection: String? = nil // SpaceMainView에서 HomeView로 한번에 dismiss시키기 위한 변수
     
@@ -73,10 +75,28 @@ struct HomeView: View {
                             ParticipateDonCard(isParticipateIn: false, naviSelection: $naviSelection)
                             
                             if currentUser.takeMoney != nil {
-                                TakerDonCard(currentUser: currentUser)
+                                
+                                Button {
+                                    takerDonCardSheetState.toggle()
+                                } label: {
+                                    TakerDonCard(currentUser: currentUser)
+                                }
+                                .sheet(isPresented: $takerDonCardSheetState, content: {
+                                    TakerDonCardSheet()
+                                })
+
+
                             }
                             if currentUser.giveMoney != nil {
-                                GiverDonCard(currentUser: currentUser)
+                                
+                                Button {
+                                    giverDonCardSheetState.toggle()
+                                } label: {
+                                    GiverDonCard(currentUser: currentUser)
+                                }
+                                .sheet(isPresented: $giverDonCardSheetState, content: {
+                                    GiverDonCardSheet()
+                                })
                             }
                         }
                     }
@@ -127,6 +147,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(currentUser: user2)
+        HomeView(currentUser: user4)
     }
 }
