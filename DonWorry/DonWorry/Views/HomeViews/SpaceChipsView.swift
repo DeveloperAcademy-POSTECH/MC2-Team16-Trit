@@ -17,7 +17,7 @@ struct SpaceChipsView: View {
     @Binding var selection: String
     let screen = UIScreen.main.bounds
     var al = 23
-    let switches = ["MC2 트라잇 모임", "MC2 번개모임", "MC2 번개모임 엘리베이터 야야야1", "떱떱해모임", "MC2 그룹회식"]
+    let switches = ["MC2 트라잇 모임", "MC2 번개모임", "밤샘코딩", "떱떱해모임", "MC2 그룹회식"]
     var body: some View {
         VStack {
             VStack {

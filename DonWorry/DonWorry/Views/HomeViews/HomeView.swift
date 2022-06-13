@@ -10,7 +10,7 @@ import SlideOverCard
 
 struct HomeView: View {
     
-    @State var selection: String = "떱떱해"
+    @State var selection: String = "밤샘코딩"
     @State var spaceID: String = ""
     @State var isPresented : Bool = false // Space 입장 ID 입력 Sheet
     
@@ -137,6 +137,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(currentUser: user1)
+        HomeView(currentUser: user2)
     }
 }
