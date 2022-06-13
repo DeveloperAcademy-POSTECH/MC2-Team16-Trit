@@ -58,7 +58,7 @@ struct SpaceMainView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             
-            HStack(spacing: 20) {
+            HStack(spacing: 23) {
                 SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
                     isShareSheetPresented.toggle()
                     print("링크 공유 FUNCTION")
@@ -68,7 +68,7 @@ struct SpaceMainView: View {
                     print("참석 확인 FUNCTION")
                 }
             }
-            
+            .padding(.bottom)
             .padding(.horizontal, 30.0)
             
             NavigationLink(isActive: $isCheckOutAttendanceViewOpened) {

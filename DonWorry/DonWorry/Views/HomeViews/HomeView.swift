@@ -46,9 +46,9 @@ struct HomeView: View {
                                 .font(.system(size: 17))
                         }
                     }
-                    
+
                     Spacer()
-                    
+
                     NavigationLink(destination: AlertView(),
                                    tag: "AlertView",
                                    selection: $naviSelection) { EmptyView() }
@@ -63,15 +63,15 @@ struct HomeView: View {
                     }
                 }
                 .padding(.bottom, 25)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 30)
+
                 //profileView
                 SpaceChipsView(selection: $selection)
-                Spacer().frame(height: 120)
                 if currentUser.participant == selection {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ParticipateDonCard(isParticipateIn: false, naviSelection: $naviSelection)
-                            
+
                             if currentUser.takeMoney != nil {
                                 TakerDonCard(currentUser: currentUser)
                             }
@@ -79,25 +79,34 @@ struct HomeView: View {
                                 GiverDonCard(currentUser: currentUser)
                             }
                         }
+                        .padding(.top,80)
                     }
                 } else {
                     ParticipateDonCard(isParticipateIn: true, naviSelection: $naviSelection)
                 }
-                Spacer().frame(height: 220)
+                Spacer()
             }
+            .padding(.top)
+            
             NavigationLink(tag: "SpaceMainView", selection: $naviSelection, destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID")) }, label: { EmptyView() })
                 .isDetailLink(false)
             
-            HStack {
-                XSmallButton(icon: "magnifyingglass", clicked: {})
-                
-                NavigationLink(destination: AddSpaceView(naviSelection: $naviSelection),
-                               tag: "AddSpaceView",
-                               selection: $naviSelection) { MediumButton(text: "스페이스 만들기", clicked: { self.naviSelection = "AddSpaceView" }) }
-                    .isDetailLink(false)
+            VStack {
+                Spacer()
+                HStack {
+                    XSmallButton(icon: "magnifyingglass", clicked: {
+                        isPresented = true
+                    })
+                    
+                    NavigationLink(destination: AddSpaceView(naviSelection: $naviSelection),
+                                   tag: "AddSpaceView",
+                                   selection: $naviSelection) { MediumButton(text: "스페이스 만들기", clicked: { self.naviSelection = "AddSpaceView" }) }
+                        .isDetailLink(false)
+                }
+                .padding(.bottom)
             }
-            .padding(.top, 700)
         }
+        .ignoresSafeArea(.keyboard)
         .navigationBarHidden(true)
         .slideOverCard(isPresented: $isPresented, onDismiss: {
             isPresented = false
@@ -117,8 +126,8 @@ struct HomeView: View {
                 LargeButton(text: "스페이스 참가하기") {
                     isPresented = false
                     naviSelection = "SpaceMainView"
-                    
-                }.padding(.bottom, 30)
+                }
+                .padding(.bottom, 30)
             }
             .frame(width: 315, height: 350)
         }
