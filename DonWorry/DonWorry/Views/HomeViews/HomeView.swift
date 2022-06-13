@@ -82,45 +82,24 @@ struct HomeView: View {
                 } else {
                     ParticipateDonCard(isParticipateIn: true, naviSelection: $naviSelection)
                 }
-                
-                /* Bottom Buttons */
-//                HStack {
-//                    XSmallButton(icon: "magnifyingglass") {
-//                        isPresented.toggle()
-//                    }
-//                    NavigationLink(destination: AddSpaceView(naviSelection: $naviSelection),
-//                                   tag: "AddSpaceView",
-//                                   selection: $naviSelection) { EmptyView() }
-//                        .isDetailLink(false)
-
-//                    MediumButton(text: "스페이스 만들기") {
-//                        self.naviSelection = "AddSpaceView"
-//                    }
-//                }
-//                .offset(y: 160)
-                HStack {
-                    XSmallButton(icon: "magnifyingglass", clicked: {})
-                    
-                    NavigationLink(destination: AddSpaceView(naviSelection: $naviSelection),
-                                   tag: "AddSpaceView",
-                                   selection: $naviSelection) { MediumButton(text: "스페이스 만들기", clicked: { self.naviSelection = "AddSpaceView" }) }
-                        .isDetailLink(false)
-
-                    
-                }
-                
-                Spacer().frame(height: 120)
+                Spacer().frame(height: 220)
             }
-            
             NavigationLink(tag: "SpaceMainView", selection: $naviSelection, destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID")) }, label: { EmptyView() })
                 .isDetailLink(false)
-
+            
+            HStack {
+                XSmallButton(icon: "magnifyingglass", clicked: {})
+                
+                NavigationLink(destination: AddSpaceView(naviSelection: $naviSelection),
+                               tag: "AddSpaceView",
+                               selection: $naviSelection) { MediumButton(text: "스페이스 만들기", clicked: { self.naviSelection = "AddSpaceView" }) }
+                    .isDetailLink(false)
+            }
+            .padding(.top, 700)
         }
         .navigationBarHidden(true)
         .slideOverCard(isPresented: $isPresented, onDismiss: {
-            
             isPresented = false
-            
         }) {
             VStack(alignment: .center, spacing: 25) {
                 
