@@ -60,7 +60,6 @@ struct AddCardTitleView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
                     
                     NavigationLink(tag: "AddCardIconView",
                                    selection: $naviSelection,
