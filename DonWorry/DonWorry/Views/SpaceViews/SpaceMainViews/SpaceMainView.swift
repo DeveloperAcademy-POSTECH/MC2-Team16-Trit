@@ -30,10 +30,11 @@ struct SpaceMainView: View {
         
         ZStack(alignment: .bottom) {
             VStack {
+                
+                SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID)
+                    .padding(.vertical, 21)
+                
                 ScrollView {
-                    SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID)
-                        .padding(.vertical, 21)
-
                     LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                         ForEach(0..<5) { index in
                             if index == 4 {
@@ -57,7 +58,7 @@ struct SpaceMainView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             
-            HStack {
+            HStack(spacing: 20) {
                 SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
                     isShareSheetPresented.toggle()
                     print("링크 공유 FUNCTION")
@@ -67,7 +68,8 @@ struct SpaceMainView: View {
                     print("참석 확인 FUNCTION")
                 }
             }
-//            .padding(.horizontal, 30.0)
+            
+            .padding(.horizontal, 30.0)
             
             NavigationLink(isActive: $isCheckOutAttendanceViewOpened) {
                 CheckAttendanceView()

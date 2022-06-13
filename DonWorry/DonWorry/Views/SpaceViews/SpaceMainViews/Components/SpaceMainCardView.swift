@@ -46,7 +46,7 @@ struct SpaceMainCardView: View {
                             Spacer()
                             HStack(spacing: 8) {
                                 paymentIcon.map {
-                                    $0.applyRectangleImageModifier(width: 27, height: 23, background: .grayEE, innerPadding: 8)
+                                    $0.applyRectangleImageModifier(width: 27, height: 27, background: .grayEE, innerPadding: 8)
                                         .padding(.leading, 25)
                                 }
                                 Text("총 135,800원(4명)")

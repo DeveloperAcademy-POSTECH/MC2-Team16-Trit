@@ -13,6 +13,7 @@ struct AddCardTitleView: View {
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     @State private var paymentTitle: String = ""
     @State private var naviSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
+    @State var value:CGFloat = 0
     
     let maxLength = 15
     
@@ -73,8 +74,11 @@ struct AddCardTitleView: View {
                     }
                 }
                 .padding(.horizontal, 30)
+                .padding(.bottom)
             }
+            
         }
+        
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
