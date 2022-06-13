@@ -16,7 +16,7 @@ struct AddCardIconView: View {
     
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     @State private var paymentIcon : Image? = nil
-    @State private var selectedItem: String = ""
+    @State private var selectedItem: String = iconsArray.randomElement() ?? iconsArray[0]
     @State private var naviSelection : String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
     private let iconColumns = [GridItem](repeating: GridItem(spacing: 10), count: 3)
     
