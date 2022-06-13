@@ -61,7 +61,7 @@ struct SignInView: View {
                 // MARK: Test용 Button (추후에 UI Design이 수정될 것 같아 임시로 기능 확인을 위해 만들었습니다.)
                 VStack {
                     ZStack {
-                        RoundedRectangle(cornerRadius: 5)
+                        RoundedRectangle(cornerRadius: 25)
                             .frame(width: 280, height: 45)
                             .foregroundColor(.white)
                         Button {
@@ -85,7 +85,7 @@ struct SignInView: View {
                     // Apple SignIn Butoon 입니다.
                     // Xcode에서 SignInWithAppleButton이라는 컴포넌트를 지원합니다.
                     SignInWithAppleButtonView()
-                        .cornerRadius(5)
+                        .cornerRadius(25)
                         .font(.system(size: 30, weight: .medium))
                         .frame(width: 280, height: 50)
                         .onTapGesture {
