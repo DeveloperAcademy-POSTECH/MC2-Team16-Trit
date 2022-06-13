@@ -33,7 +33,7 @@ struct TermView: View {
                     Spacer()
                 }
             }
-            .font(.system(size: 17, weight: .heavy))
+            .font(.system(size: 23, weight: .heavy))
             .padding()
             
             ScrollView {
@@ -92,6 +92,7 @@ struct TermView: View {
             }
 //            .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
         }
+        .padding(.horizontal, 15)
         .ignoresSafeArea(.keyboard)
         .navigationBarBackButtonHidden(true)
         .toolbar {
