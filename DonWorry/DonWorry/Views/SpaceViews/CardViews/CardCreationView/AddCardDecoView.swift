@@ -35,6 +35,7 @@ struct AddCardDecoView: View {
     //  @StateObject var vm = AddCardDecoViewModel()
     @State private var decoCase: DecoCase = .색상변경
     @State private var account: String = "1002-034-1234"
+    @State private var holder: String = "김예금"
     @State private var color: CardColor = CardColor.blue
     @State private var images: [UIImage] = []
     @State private var showPhotoPicker = false
@@ -160,8 +161,10 @@ struct AddCardDecoView: View {
     // MARK: 계좌번호 입력 칸
     @ViewBuilder private var accountBox: some View {
         VStack {
-            UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: .constant("김예금"))
+            UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: $holder)
+                .keyboardType(.default)
             AccountTextField(account: $account, bank: $bank)
+                .keyboardType(.decimalPad)
         }
         
 //        TextField("계좌번호를 입력해주세요.", text: $account)

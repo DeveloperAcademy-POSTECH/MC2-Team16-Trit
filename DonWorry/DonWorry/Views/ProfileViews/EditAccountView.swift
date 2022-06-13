@@ -10,8 +10,10 @@ import SwiftUI
 struct EditAccountView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    @State var selectedTag: String?
-        
+    @State private var holder = ""
+    @State private var bank = ""
+    @State private var account = ""
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -27,9 +29,10 @@ struct EditAccountView: View {
             
             .padding(.bottom, 30)
             
-//            UnderlineTextField(placeholder: "예금주명을 입력해 주세요.", charLimit: 20)
-//            
-//            UnderlineTextField(placeholder: "계좌번호를 입력해주세요", charLimit: 20)
+            UnderlineTextField(placeholder: "예금주명을 입력해 주세요.", charLimit: 20, text: $holder)
+                .keyboardType(.default)
+
+            AccountTextField(account: $account, bank: $bank)
             
             Spacer()
             VStack {

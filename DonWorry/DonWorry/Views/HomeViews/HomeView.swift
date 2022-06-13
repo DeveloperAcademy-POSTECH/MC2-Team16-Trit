@@ -112,6 +112,7 @@ struct HomeView: View {
                 VStack(spacing: 25) {
                     Text("스페이스ID로 정산에 참가하기").font(.system(size: 20, weight: .bold))
                     UnderlineTextField(placeholder: "스페이스 ID를 입력해주세요", charLimit: 20, text: $spaceID)
+                        .keyboardType(.asciiCapable)
                 }
                 
                 LargeButton(text: "스페이스 참가하기") {

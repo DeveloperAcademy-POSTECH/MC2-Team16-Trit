@@ -11,6 +11,8 @@ struct UserInfoView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State private var nickName = ""
+    @State private var account = ""
+    @State private var bank = ""
     @State private var holder = ""
     
     var body: some View {
@@ -30,7 +32,7 @@ struct UserInfoView: View {
                         
                     }
                     UnderlineTextField(placeholder: "친구들이 나를 찾을 닉네임을 입력해주세요.", charLimit: 20, text: $nickName)
-                    
+                        .keyboardType(.default)
                 }
                 
                 VStack(alignment: .leading) {
@@ -38,7 +40,7 @@ struct UserInfoView: View {
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                     
-//                    AccountTextField()
+                    AccountTextField(account: $account, bank: $bank)
                     
                     Text("정산을 받으실 계좌번호입니다.(추후 변경 가능)")
                         .font(.system(size: 13))

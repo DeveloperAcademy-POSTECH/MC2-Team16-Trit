@@ -21,7 +21,7 @@ struct AccountTextField: View {
             HStack {
                 TextField("계좌번호를 입력해주세요.", text: $account)
                     .padding(.leading, 110)
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                     .onReceive(Just(account), perform: { _ in
                         if charLimit < account.count {
                             account = String(account.prefix(charLimit))

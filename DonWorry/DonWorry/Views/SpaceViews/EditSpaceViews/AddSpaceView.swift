@@ -27,6 +27,7 @@ struct AddSpaceView: View {
             VStack(spacing: 20) {
                 
                 UnderlineTextField(placeholder: "스페이스 이름을 입력하세요", charLimit: 20, text: $spaceName)
+                    .keyboardType(.default)
                 
                 Spacer()
                 
