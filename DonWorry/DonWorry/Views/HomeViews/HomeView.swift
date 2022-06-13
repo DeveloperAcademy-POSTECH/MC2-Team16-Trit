@@ -34,6 +34,7 @@ struct HomeView: View {
                         } label: {
                             Image(currentUser.profileImage)
                                 .resizable()
+                                .scaledToFill()
                                 .frame(width: 50, height: 50)
                                 .background(.black)
                                 .clipShape(Circle())
@@ -56,9 +57,9 @@ struct HomeView: View {
                     Button {
                         self.naviSelection = "AlertView"
                     } label: {
-                        Image(systemName: "bell.circle.fill")
-                            .foregroundColor(.blue)
-                            .font(.system(size: 40))
+                        Image("alerticon")
+                            .resizable()
+                            .frame(width: 42, height: 42)
                     }
                 }
                 .padding(.bottom, 25)
