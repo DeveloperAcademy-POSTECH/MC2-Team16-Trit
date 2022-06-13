@@ -185,7 +185,7 @@ struct AddCardDecoView: View {
                                         .fill(Color.grayBC)
                                         .frame(width: 100, height: 100)
                                         .overlay(
-                                                ZStack {
+                                            ZStack(alignment: .topTrailing) {
                                                     Image(systemName: "plus")
                                                         .font(.largeTitle.weight(.light))
                                                         .foregroundColor(Color.white)
@@ -204,7 +204,6 @@ struct AddCardDecoView: View {
                                                                 .foregroundColor(.white)
                                                                 .background(Color.black.opacity(0.5))
                                                                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                                .frame(width: 80, height: 80, alignment: .topTrailing)
                                                                 .padding(5)
                                                         }
                                                     }
