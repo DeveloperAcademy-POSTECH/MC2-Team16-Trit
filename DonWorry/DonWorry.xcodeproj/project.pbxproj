@@ -36,6 +36,7 @@
 		3E39E89A28549A8E00D8E44C /* FIreBaseTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89928549A8E00D8E44C /* FIreBaseTestView.swift */; };
 		3E39E89C2855980900D8E44C /* AccountTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89B2855980900D8E44C /* AccountTestView.swift */; };
 		3E39E89E285600D000D8E44C /* SpaceTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89D285600D000D8E44C /* SpaceTestView.swift */; };
+		3E39E8A028562E1F00D8E44C /* AdditionUserInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89F28562E1F00D8E44C /* AdditionUserInfoTest.swift */; };
 		3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815A2843522900794955 /* DonWorryApp.swift */; };
 		3EBC815D2843522900794955 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC815C2843522900794955 /* ContentView.swift */; };
 		3EBC816C2843522A00794955 /* DonWorryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC816B2843522A00794955 /* DonWorryTests.swift */; };
@@ -145,6 +146,7 @@
 		3E39E89928549A8E00D8E44C /* FIreBaseTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIreBaseTestView.swift; sourceTree = "<group>"; };
 		3E39E89B2855980900D8E44C /* AccountTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTestView.swift; sourceTree = "<group>"; };
 		3E39E89D285600D000D8E44C /* SpaceTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceTestView.swift; sourceTree = "<group>"; };
+		3E39E89F28562E1F00D8E44C /* AdditionUserInfoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionUserInfoTest.swift; sourceTree = "<group>"; };
 		3EBC81572843522900794955 /* DonWorry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonWorry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBC815A2843522900794955 /* DonWorryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonWorryApp.swift; sourceTree = "<group>"; };
 		3EBC815C2843522900794955 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				3E39E89928549A8E00D8E44C /* FIreBaseTestView.swift */,
 				3E39E89B2855980900D8E44C /* AccountTestView.swift */,
 				3E39E89D285600D000D8E44C /* SpaceTestView.swift */,
+				3E39E89F28562E1F00D8E44C /* AdditionUserInfoTest.swift */,
 			);
 			path = TestView;
 			sourceTree = "<group>";
@@ -862,6 +865,7 @@
 				A704FC3A284DF28900AC9736 /* Alert.swift in Sources */,
 				A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */,
 				A7133C3F2850CD8D006ED054 /* Payment.swift in Sources */,
+				3E39E8A028562E1F00D8E44C /* AdditionUserInfoTest.swift in Sources */,
 				4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */,
 				A704FC44284F6B5200AC9736 /* ShareSheet.swift in Sources */,
 				C09C89712849101700E2A929 /* TakerDonCard.swift in Sources */,

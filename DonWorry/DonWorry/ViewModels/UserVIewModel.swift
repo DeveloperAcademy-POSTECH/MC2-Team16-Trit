@@ -42,6 +42,23 @@ class FireStoreViewModel: ObservableObject {
             }
         }
     }
+    
+    func getUserData(AccountID: String) -> User {
+        let db = Firestore.firestore()
+        let accountRef = db.collection("Account").document(AccountID)
+        
+        accountRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                return User(userName: document["userName"] as! String,
+                            nickName: document["nickName"] as! String,
+                            account: document["account"] as! String,
+                            spaceList: [])
+            } else {
+                print("계좌 불러오기 실패")
+            }
+        }
+    }
+    
 
     // 유저 추가하기 함수
     // 사용방법
@@ -98,5 +115,23 @@ class FireStoreViewModel: ObservableObject {
                 print("유저 정보 업데이트 실패")
             }
         }
+    }
+    
+    // MARK: 실제 사용할 함수
+    func addUserInfo(user: User, nickname: String, accountHolder: String, accountNumber: String, accountBank: String) {
+        
+        let db = Firestore.firestore()
+        
+        //Account 추가
+        self.addAccountData(accountHolder: accountHolder, accountBank: accountName, accountNumber: accountNumber)
+        
+        let AccountRef = db.collection("Account").document().documentID
+        
+        // User nickname Update
+        db.collection("User").document(user.id).setData(["nickName" : nickname], merge: true)
+        // User에 Account Reference 추가하기
+        db.collection("User").document(user.id).setData(["account" : AccountRef] , merge: true)
+        
+        
     }
 }
