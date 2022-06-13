@@ -31,12 +31,11 @@ struct ApplicationSwitcher: View {
     @EnvironmentObject var vm: UserStateViewModel
     
     var body: some View {
-        AddCardTitleView(mainSelection: .constant("false"))
-//        if vm.isLoggedIn {
-//            HomeView(currentUser: user1)
-//        } else {
-//            SignInView()
-//        }
+        if vm.isLoggedIn {
+            HomeView(currentUser: user1)
+        } else {
+            SignInView()
+        }
     }
 }
 
