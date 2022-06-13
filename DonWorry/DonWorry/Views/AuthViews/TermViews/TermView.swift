@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TermView: View {
+    @EnvironmentObject var vm: UserStateViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State private var showSheet = false
@@ -91,6 +92,7 @@ struct TermView: View {
             }
 //            .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
         }
+        .ignoresSafeArea(.keyboard)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
@@ -108,6 +110,7 @@ struct TermView: View {
         }
         .halfSheet(showSheet: $showSheet) {
             TermSheetView(agreedTerms: termsOfService.filter { $0.isChecked }, showSheet: $showSheet)
+                .environmentObject(vm)
         } onEnd: {
             showSheet = false
         }

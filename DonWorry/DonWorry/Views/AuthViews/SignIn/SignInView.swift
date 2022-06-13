@@ -17,95 +17,84 @@ struct SignInView: View {
     
     // SignIn을 위해 선언하였습니다.
     @State var isLoading: Bool = true // 추후 ProgressView를 넣을 것으로 예상하여, 변수를 생성
-    @AppStorage("SignIn Status") var log_status = false // SignIn상태 저장
     @StateObject var appleloginData = AppleLoginViewModel() // Firebase 공식 문서의 가이드라인을 따랐습니다.
     
     var body: some View {
-        
-        if log_status == false { // 이미 로그인된 상태라면 홈뷰로 가도록 했습니다.
-            HomeView(currentUser: user1)
-        } else {
-            NavigationView {
-                ZStack {
-                    LinearGradient(gradient: Gradient(colors: [.white, Color.blueMain]), startPoint: .init(x: 0, y: 0.47), endPoint: .init(x: 0, y: 1))
-                        .ignoresSafeArea()
-
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [.white, Color.blueMain]), startPoint: .init(x: 0, y: 0.47), endPoint: .init(x: 0, y: 1))
+                .ignoresSafeArea()
+            
+            VStack {
+                VStack(spacing: 15) {
+                    Text("돈.워리")
+                        .scaledFont(name: CustomFont.GmarketSansBold, size: 30)
+                        .foregroundColor(Color.blueMain)
+                    
                     VStack {
-                        VStack(spacing: 15) {
-                            Text("돈.워리")
-                                .foregroundColor(Color.blueMain)
-                                .font(.system(size: 30))
-                                .fontWeight(.bold)
-
-                            VStack {
-                                Text("때인돈 받아드립니다.")
-                                    .fontWeight(.light)
-                                Text("걱정마세요.")
-                                    .fontWeight(.light)
-                            }
-                            .font(.system(size: 15))
-
-                        }
-
-                        Text("")
-                            .frame(height: 120)
-
-                        // 임시로 이미지 클릭하면 다음 페이지로
-                        NavigationLink(destination: UserInfoView()) {
-                            Image("SignInViewImage")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 263)
-
-                        }
-
-                        Text("")
-                            .frame(height: 52)
-
-    //                    VStack(spacing: 10) {
-    //                        ForEach(companies, id: \.self) { company in
-    //                            LoginButtonView(company: company)
-    //                        }
-    //                    }
-                        // MARK: Test용 Button (추후에 UI Design이 수정될 것 같아 임시로 기능 확인을 위해 만들었습니다.)
-                        VStack {
-                            Button {
-                                googleHandleLogin() // Google Social Login function
-                            } label: {
-                                HStack(spacing: 20) {
-                                    Image("Google")
-                                    Text("구글로 로그인하기")
-                                }
-                            }
+                        Text("때인돈 받아드립니다.")
+                        Text("걱정마세요.")
+                    }
+                    .scaledFont(name: CustomFont.GmarketSansLight, size: 15)
+                    
+                }
                 
-                            // Apple SignIn Butoon 입니다.
-                            // Xcode에서 SignInWithAppleButton이라는 컴포넌트를 지원합니다.
-                            SignInWithAppleButton { (request) in
-                                appleloginData.nonce = randomNonceString()
-                                request.requestedScopes = [.email, .fullName]
-                                request.nonce = sha256(appleloginData.nonce)
-                            } onCompletion: { (result) in
-                                
-                                switch result {
-                                case .success(let user): // 로그인에 성공한 경우
-                                    print("성공")
-                                    guard let credential = user.credential as?
-                                            ASAuthorizationAppleIDCredential else {
-                                        print("Firebase 오류") // credential 생성 성공여부
-                                        return
-                                    }
-                                    appleloginData.authenticate(credential: credential)
-                                    log_status = true
-                                case .failure(let error): // 로그인에 실패한 경우
-                                    print(error.localizedDescription)
-                                }
-                            }.frame(width: 325, height: 70)
-                                .clipShape(Capsule())
+                Text("")
+                    .frame(height: 120)
+                
+                // 임시로 이미지 클릭하면 다음 페이지로
+                NavigationLink(destination: UserInfoView()) {
+                    Image("SignInViewImage")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 263)
+                    
+                }
+                
+                Text("")
+                    .frame(height: 52)
+                
+                //                    VStack(spacing: 10) {
+                //                        ForEach(companies, id: \.self) { company in
+                //                            LoginButtonView(company: company)
+                //                        }
+                //                    }
+                // MARK: Test용 Button (추후에 UI Design이 수정될 것 같아 임시로 기능 확인을 위해 만들었습니다.)
+                VStack {
+                    Button {
+                        googleHandleLogin() // Google Social Login function
+                    } label: {
+                        HStack(spacing: 20) {
+                            Image("Google")
+                            Text("구글로 로그인하기")
                         }
                     }
+                    
+                    // Apple SignIn Butoon 입니다.
+                    // Xcode에서 SignInWithAppleButton이라는 컴포넌트를 지원합니다.
+                    SignInWithAppleButton { (request) in
+                        appleloginData.nonce = randomNonceString()
+                        request.requestedScopes = [.email, .fullName]
+                        request.nonce = sha256(appleloginData.nonce)
+                    } onCompletion: { (result) in
+                        
+                        switch result {
+                        case .success(let user): // 로그인에 성공한 경우
+                            print("성공")
+                            guard let credential = user.credential as?
+                                    ASAuthorizationAppleIDCredential else {
+                                print("Firebase 오류") // credential 생성 성공여부
+                                return
+                            }
+                            appleloginData.authenticate(credential: credential)
+                        case .failure(let error): // 로그인에 실패한 경우
+                            print(error.localizedDescription)
+                        }
+                    }.frame(width: 325, height: 70)
+                        .clipShape(Capsule())
                 }
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

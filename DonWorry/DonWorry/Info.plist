@@ -13,5 +13,10 @@
 			</array>
 		</dict>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GmarketSansTTFBold.ttf</string>
+		<string>GmarketSansTTFLight.ttf</string>
+	</array>
 </dict>
 </plist>

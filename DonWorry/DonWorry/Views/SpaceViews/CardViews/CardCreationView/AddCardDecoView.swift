@@ -11,10 +11,10 @@ import PhotosUI
 /* 카드 디자인 변경 케이스 */
 enum DecoCase: String, Identifiable, CaseIterable {
     
-    case color
-    case date
-    case account
-    case image
+    case 색상변경
+    case 날짜선택
+    case 계좌번호
+    case 첨부파일
     
     var id: String {
         self.rawValue
@@ -28,17 +28,19 @@ enum DecoCase: String, Identifiable, CaseIterable {
 struct AddCardDecoView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    
+    @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
+    
     //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
     //  @StateObject var vm = AddCardDecoViewModel()
-    @State private var decoCase: DecoCase = .account
+    @State private var decoCase: DecoCase = .색상변경
     @State private var account: String = "1002-034-1234"
     @State private var color: CardColor = CardColor.blue
     @State private var images: [UIImage] = []
     @State private var showPhotoPicker = false
     @State private var bank: String = "은행 선택"
-    @State private var isClicked: Bool = false
     @State private var date = Date()
-    
+    @State var clickedIndex = 0
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     var paymentIcon: Image?
     
@@ -58,28 +60,29 @@ struct AddCardDecoView: View {
                         CustomPicker(selected: $decoCase)
                             .padding(.horizontal, 20)
                         Divider()
-                            .frame(height: 1)
-                            .padding(.horizontal, 40)
+                            .padding(.horizontal, 20)
+                            .frame(height: 0)
                             .background(Color.grayEE)
                         ZStack {
                             switch decoCase {
-                            case .color:
+                            case .색상변경:
                                 colorBox
                                     .padding(.horizontal, 30)
-                            case .date:
+                            case .날짜선택:
                                 dateBox
                                     .padding(.horizontal, 30)
-                            case .account:
+                            case .계좌번호:
                                 accountBox
-                            case .image:
+                                    .padding(.horizontal, 30)
+                            case .첨부파일:
                                 imageBox
-                                    .padding(.horizontal, 40)
+                                    .padding(.horizontal, 30)
                             }
                         }
                         Spacer()
                     }
                     .frame(maxWidth: 380)
-                    .frame(maxHeight: 400)
+                    .frame(maxHeight: 410)
 //                    .padding(.bottom, 20)
                     Spacer()
                 }
@@ -89,7 +92,9 @@ struct AddCardDecoView: View {
                         text: "완료"
                     ) {
                         print("ChipBtn Clicked!")
-                        isClicked.toggle()
+                        print("전 : \(mainSelection)")
+                        mainSelection = nil
+                        print("후 : \(mainSelection)")
                     }
                 }
             }
@@ -100,6 +105,7 @@ struct AddCardDecoView: View {
                         self.mode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "chevron.left")
+                            .padding(.horizontal)
                     }
                     .buttonStyle(.plain)
                 }
@@ -124,7 +130,7 @@ struct AddCardDecoView: View {
             ForEach(CardColor.allCases) { CardColor in
                 Circle()
                     .fill(CardColor.color)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 35, height: 35)
                     .overlay(
                         Circle()
                             .strokeBorder(.white,
@@ -146,8 +152,8 @@ struct AddCardDecoView: View {
             DatePicker("결제한 날짜를 선택해 주세요.", selection: $date, displayedComponents: [.date])
                 .datePickerStyle(.graphical)
             // 달력과 텍스트의 위치를 지정하는 프레임
-                .frame(width: 350, height: 250)
-                .padding(.top, 30.0)
+                .frame(width: 320, height: 200)
+                .padding(.top, 40.0)
         }
     }
     
@@ -166,35 +172,67 @@ struct AddCardDecoView: View {
     
     // MARK: 이미지 입력 칸
     private var imageBox: some View {
-        VStack(spacing: 40) {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.grayBC)
-                .frame(width: 80, height: 80)
-                .overlay(
-                    ZStack {
-                        Image(systemName: "plus")
-                            .font(.largeTitle.weight(.light))
-                            .foregroundColor(Color.white)
-                        
-                        if let image = images.last {
-                            Image(uiImage: image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+            VStack(spacing: 30) {
+                HStack {
+                    LazyHGrid(rows: [GridItem(.fixed(340.0))], spacing: 20) {
+                        ForEach(0..<3) { index in
+                               if images.count >= index {
+                                Button {
+                                    clickedIndex = index
+                                    showPhotoPicker = true
+                                } label: {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.grayBC)
+                                        .frame(width: 100, height: 100)
+                                        .overlay(
+                                            ZStack(alignment: .topTrailing) {
+                                                    Image(systemName: "plus")
+                                                        .font(.largeTitle.weight(.light))
+                                                        .foregroundColor(Color.white)
+                                                        
+                                                    if index < images.count {
+                                                        Image(uiImage: images[index])
+                                                            .resizable()
+                                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                        Button {
+                                                            print("remove")
+                                                            removeImage(index: index)
+                                                        } label: {
+                                                            Image(systemName: "xmark")
+                                                                .font(.headline)
+                                                                .padding(5)
+                                                                .foregroundColor(.white)
+                                                                .background(Color.black.opacity(0.5))
+                                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                                .padding(5)
+                                                        }
+                                                    }
+                                                }
+                                        )
+                                
+                                }
+                            }
                         }
                     }
-                )
+
+                    Spacer()
+                }
+                .padding(.top, 15.0)
+            }.frame(width: 340, height: 80)
+            .contentShape(Rectangle())
+            .sheet(isPresented: $showPhotoPicker) {
+                let configuration = PHPickerConfiguration.config
+                PhotoPicker(index: $clickedIndex, configuration: configuration,
+                            images: $images,
+                            isPresented: $showPhotoPicker)
+            }
         }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            showPhotoPicker = true
-        }
-        .sheet(isPresented: $showPhotoPicker) {
-            let configuration = PHPickerConfiguration.config
-            PhotoPicker(configuration: configuration,
-                        images: $images,
-                        isPresented: $showPhotoPicker)
-        }
+    }
+
+extension AddCardDecoView {
+    private func removeImage(index: Int) {
+        print("remove")
+        images.remove(at: index)
     }
 }
 
@@ -203,54 +241,68 @@ struct CustomPicker: View {
     @Binding var selected: DecoCase
     
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: 10) {
             
             ForEach(DecoCase.allCases) { decoCase in
-                GeometryReader { _ in
-                    Text(decoCase.name)
-                        .font(.subheadline.bold())
-                        .foregroundColor(decoCase == selected ? .white : .gray)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .contentShape(Capsule())
-                        .onTapGesture {
-                            withAnimation(.spring()) {
-                                selected = decoCase
-                            }
-                        }
+                Text(decoCase.name)
+                    .frame(width: 45, height: 12, alignment: .center)
+                    .foregroundColor(selected == decoCase ? .white : .gray)
+                    .font(.system(size: 13, weight: .bold))
+                    .padding()
+                    .background(selected == decoCase ? .blue : Color(hex: "EFEFEF"))
+                    .cornerRadius(50)
+                    .onTapGesture {
+                        selected = decoCase
+                    }
                 }
-                .frame(height: 40)
-            }
+            
+// 애니매이션 효과있는 커스텀 피커
+//                GeometryReader { _ in
+//                    Text(decoCase.name)
+//                        .font(.subheadline.bold())
+//                        .foregroundColor(decoCase == selected ? .white : .gray)
+//                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                        .contentShape(Capsule())
+//                        .onTapGesture {
+//                            withAnimation(.spring()) {
+//                                selected = decoCase
+//                            }
+//                        }
+//                }
+//                .frame(height: 40)
+//            }
         }
-        .background(
-            GeometryReader { geo in
-                Capsule()
-                    .fill(Color.blueMain)
-                    .frame(width: geo.size.width / 4)
-                    .frame(maxWidth: getCapsuleWidth(width: geo.size.width), alignment: .trailing)
-            }
-                .frame(maxWidth: .infinity)
-        )
+//        .background(
+//            GeometryReader { geo in
+//                Capsule()
+//                    .fill(Color.blueMain)
+//                    .frame(width: geo.size.width / 4)
+//                    .frame(maxWidth: getCapsuleWidth(width: geo.size.width), alignment: .trailing)
+//            }
+//            .frame(maxWidth: .infinity)
+//
+//        )
     }
-    
-    private func getCapsuleWidth(width: CGFloat) -> CGFloat {
-        switch selected {
-        case .color:
-            return width / 4
-        case .date:
-            return width / 2
-        case .account:
-            return width / 4 * 3
-        case .image:
-            return width
-        }
-    }
+
+//    private func getCapsuleWidth(width: CGFloat) -> CGFloat {
+//        switch selected {
+//        case .색상변경:
+//            return width / 4
+//        case .날짜선택:
+//            return width / 2
+//        case .계좌번호:
+//            return width / 4 * 3
+//        case .첨부파일:
+//            return width
+//        }
+//    }
 }
 
 struct AddCardDecoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddCardDecoView()
+            AddCardDecoView(mainSelection: .constant(""), paymentIcon: Image("chicken-leg"))
         }
-        
     }
 }
+
