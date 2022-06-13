@@ -19,7 +19,6 @@ struct DonWorryApp: App {
     
     var body: some Scene {
         WindowGroup {
-          
             NavigationView {
                 ApplicationSwitcher()
             }

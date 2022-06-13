@@ -90,7 +90,7 @@ struct TermView: View {
                 .background(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? Color.blueMain : Color.blueA4C6FF )
                 .cornerRadius(50)
             }
-            .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
+//            .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
         }
         .ignoresSafeArea(.keyboard)
         .navigationBarBackButtonHidden(true)

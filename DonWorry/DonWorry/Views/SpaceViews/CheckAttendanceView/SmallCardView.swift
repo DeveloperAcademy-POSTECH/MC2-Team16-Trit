@@ -10,7 +10,7 @@ import SwiftUI
 struct SmallCardView: View {
     let index: Int
     @State var checked: Bool = false
-    // TO-DO - colors는 사용자가 선택한 colors로 대체 됩니다.
+
     let colors = [Color(hex: "ff5454"), Color.green, Color.purple]
     var body: some View {
         ZStack(alignment: .trailing) {
