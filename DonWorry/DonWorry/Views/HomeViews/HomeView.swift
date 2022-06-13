@@ -15,25 +15,26 @@ struct HomeView: View {
     @State var isPresented: Bool = false // Space 입장 ID 입력 Sheet
     @State var isSpaceView: Bool = false
     @State private var naviSelection: String? = nil // tag - profile: 로 전환, alert: 로 전환, create: 로 전환
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @State var currentUser: User
     
-    var currentUser: User
     var body: some View {
         
-        if isSpaceView == true {
-            
-            SpaceMainView(spaceID: $spaceID)
-            
-        } else {
-            
-            NavigationView {
+//        if isSpaceView == true {
+//            SpaceMainView(spaceID: $spaceID)
+//        }
+//        else {
+//
+//            NavigationView {
+                
                 ZStack {
                     VStack {
                         HStack {
                             HStack {
-
+                                
                                 NavigationLink(destination: ProfileView(),
                                                tag: "profile",
-                                               selection: $naviSelection){ EmptyView()}
+                                               selection: $naviSelection){EmptyView()}
                                 Button {
                                     self.naviSelection = "profile"
                                 } label: {
@@ -57,7 +58,8 @@ struct HomeView: View {
                                            tag: "alert",
                                            selection: $naviSelection){ EmptyView()}
                             Button {
-                                self.naviSelection = "alert"
+                                //                                self.naviSelection = "alert"
+                                authViewModel.signOut()
                             } label: {
                                 Image(systemName: "bell.circle.fill")
                                     .foregroundColor(.blue)
@@ -69,19 +71,19 @@ struct HomeView: View {
                         SpaceChipsView(selection: $selection)
                         Spacer().frame(height: 120)
                         // 지금 현재 사용 유저의 스페이스 이름이 내가선택한 스페이스이름이랑 같을 때
-//                        if currentUser.spaceList[0].spaceName == selection {
-//                            ScrollView(.horizontal, showsIndicators: false) {
-//                                HStack {
-//                                    ParticipateDonCard(isParticipateIn: false, isSpaceView: $isSpaceView)
-//
-//                                    if currentUser.takeMoney != nil {
-//                                        TakerDonCard(currentUser: currentUser)
-//                                    }
-//                                    if currentUser.giveMoney != nil {
-//                                        GiverDonCard(currentUser: currentUser)
-//                                    }
-//                                }
-//                            }
+                        //                        if currentUser.spaceList[0].spaceName == selection {
+                        //                            ScrollView(.horizontal, showsIndicators: false) {
+                        //                                HStack {
+                        //                                    ParticipateDonCard(isParticipateIn: false, isSpaceView: $isSpaceView)
+                        //
+                        //                                    if currentUser.takeMoney != nil {
+                        //                                        TakerDonCard(currentUser: currentUser)
+                        //                                    }
+                        //                                    if currentUser.giveMoney != nil {
+                        //                                        GiverDonCard(currentUser: currentUser)
+                        //                                    }
+                        //                                }
+                        //                            }
                         
                         // MARK: 여기 수정해야합니다! 빌드만 가능하게 돌려놨어요...
                         if currentUser.spaceList[0] == selection {
@@ -89,13 +91,13 @@ struct HomeView: View {
                                 HStack {
                                     ParticipateDonCard(isParticipateIn: false, isSpaceView: $isSpaceView)
                                     
-//                                    if currentUser.takeMoney != nil {
+                                    //                                    if currentUser.takeMoney != nil {
                                     if transfers[0].taker != nil {
                                         TakerDonCard(currentUser: currentUser)
                                     }
-//                                    if currentUser.giveMoney != nil {
+                                    //                                    if currentUser.giveMoney != nil {
                                     if transfers[0].giver != nil {
-//                                        GiverDonCard(currentUser: currentUser)
+                                        //                                        GiverDonCard(currentUser: currentUser)
                                         GiverDonCard(taker: transfers[1], currentUser: currentUser)
                                     }
                                 }
@@ -146,12 +148,13 @@ struct HomeView: View {
                     }
                     .frame(width: 315, height: 350)
                 }
-            }
-            
-        }// else
-        
+//            }
+//
+//        }// else
+
     }
 }
+
 
 //struct HomeView_Previews: PreviewProvider {
 //    static var previews: some View {

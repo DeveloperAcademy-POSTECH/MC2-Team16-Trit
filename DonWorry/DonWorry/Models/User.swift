@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import FirebaseFirestoreSwift
 
 // 사용자
-struct User: Identifiable {// , Hashable
-    var id = UUID().uuidString
+struct User: Identifiable, Decodable {// , Hashable
+    @DocumentID var id: String?
+//    var id = UUID().uuidString
+    var uid = UUID().uuidString
     var userName: String // 사용자이름 - 간편로그인 연계
     var nickName: String // 닉네임
-    var account: String // 계좌정보 Account 참조해야함.
+    var account: String // 계좌정보 Account 참조해야함. -> ID
     var image: String = "default" // 우선 Default 로 하나로 통일 - "default"
     var profileImage: Image {
         Image(image)

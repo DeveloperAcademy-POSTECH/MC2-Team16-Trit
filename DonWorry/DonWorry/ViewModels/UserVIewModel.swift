@@ -15,13 +15,14 @@ class FireStoreViewModel: ObservableObject {
     @Published var accountList = [Account]()
     @Published var spaceList = [Space]()
 
-    // 유저 삭제하기 함수
+//    // 유저 삭제하기 함수
+    // 회원 탈퇴! / firestore 삭제 , autehnticate 삭제
     func deleteUserData(userToDelete: User) {
 
         let db = Firestore.firestore() // FireBase 데이터 베이스를 reference
-        
+
         // collection에 접근
-        db.collection("User").document(userToDelete.id).delete { error in
+        db.collection("User").document(userToDelete.uid).delete { error in
             if error == nil {
 
                 DispatchQueue.main.async {
@@ -40,6 +41,7 @@ class FireStoreViewModel: ObservableObject {
     // 사용방법
     // 1. User 구조체를 만들어 준다.
     // 2. addUserData(구조체변수) -> db에 데이터가 추가 됩니다.
+    // 중복 -> 삭제
     func addUserData(user: User) {
         let db = Firestore.firestore()
 
@@ -58,6 +60,8 @@ class FireStoreViewModel: ObservableObject {
     }
 
     // 현재 유저 불러오기 함수
+    // 전체유저불러옴
+    // getUsers
     func getUserData() {
         // get a reference to the database
         let db = Firestore.firestore()
@@ -90,7 +94,7 @@ class FireStoreViewModel: ObservableObject {
 
         let db = Firestore.firestore()
 
-        db.collection("User").document(userToUpdate.id).setData(["userName" : newName ?? ""], merge: true) { error in
+        db.collection("User").document(userToUpdate.uid).setData(["userName" : newName ?? ""], merge: true) { error in
 
             if error == nil {
                 self.getUserData()

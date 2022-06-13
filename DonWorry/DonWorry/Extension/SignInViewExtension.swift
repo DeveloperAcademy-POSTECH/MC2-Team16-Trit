@@ -11,9 +11,11 @@ import GoogleSignIn
 import AuthenticationServices
 import CryptoKit
 
+// AuthViewModel 의 googleLogin() 
 extension SignInView {
     // 구글 소셜 로그인
     func googleHandleLogin() {
+        
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
         // 1. GoogleLogin configuration을 생성합니다.
@@ -38,8 +40,7 @@ extension SignInView {
                 return
             }
             
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                           accessToken: authentication.accessToken)
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
             // 3. Firebase에 계정 추가
             
             Auth.auth().signIn(with: credential) { result, err in
@@ -59,6 +60,7 @@ extension SignInView {
                 print(log_status)
                 print(user.displayName ?? "Success!")
             }
+            
         }
-    }
+    }//
 }

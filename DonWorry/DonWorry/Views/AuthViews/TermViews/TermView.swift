@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TermView: View {
+
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State private var showSheet = false

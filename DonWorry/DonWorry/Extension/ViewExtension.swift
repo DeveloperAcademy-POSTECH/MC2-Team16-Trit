@@ -10,6 +10,8 @@ extension View {
     func getRect() -> CGRect {
         return UIScreen.main.bounds
     }
+    
+    // =>  UIApplicationExtension으로 사용
     func getRootViewController() -> UIViewController {
         
         guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else {

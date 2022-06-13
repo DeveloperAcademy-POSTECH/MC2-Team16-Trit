@@ -14,11 +14,19 @@ struct DonWorryApp: App {
     
     // AppDelegate를 연결합니다.
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var viewModel = AuthViewModel()
     
     var body: some Scene {
         WindowGroup {
-            FireBaseTestView()
-//            ContentView()
+//            FireBaseTestView()
+//            SignInView()
+//
+//            UserInfoView()
+            NavigationView{
+            ContentView()
+                .environmentObject(viewModel)
+            }
+//
             
         }
     }

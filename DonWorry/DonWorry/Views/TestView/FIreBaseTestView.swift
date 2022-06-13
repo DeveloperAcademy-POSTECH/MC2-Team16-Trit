@@ -19,14 +19,14 @@ struct FireBaseTestView: View {
                 Text(item.userName)
 
                 Button {
-                    fireBaseModel.updateUserName(userToUpdate: item, newName: "김승창")
+//                    fireBaseModel.updateUserName(userToUpdate: item, newName: "김승창")
                     fireBaseModel.getUserData()
                 } label: {
                     Text("이름바꾸기")
                 }.buttonStyle(BorderedButtonStyle())
 
                 Button {
-                    fireBaseModel.deleteUserData(userToDelete: item)
+//                    fireBaseModel.deleteUserData(userToDelete: item)
                 } label: {
                     Text("삭제")
                 }.buttonStyle(BorderedButtonStyle())

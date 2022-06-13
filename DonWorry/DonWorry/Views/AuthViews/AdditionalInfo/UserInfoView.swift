@@ -9,9 +9,11 @@ import SwiftUI
 
 struct UserInfoView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     @State private var nickName = ""
     @State private var holder = ""
+    @State private var naviSelection: String? = nil
     
     var body: some View {
         VStack {
@@ -60,16 +62,18 @@ struct UserInfoView: View {
             
             Spacer()
             
-            NavigationLink(destination: TermView()) {
-                
-                Text("다음")
-                    .frame(width: 100, height: 20, alignment: .center)
-                    .foregroundColor(Color.white)
-                    .font(.system(size: 15, weight: .bold))
-                    .padding()
-                    .background(Color.blueMain)
-                    .cornerRadius(50)
+            
+            /* 다음 -> 텀뷰 */
+            NavigationLink(tag: "TermView", selection: $naviSelection, destination: { TermView() }) {
+                EmptyView()
             }
+            
+            SmallButton(text: "다음") {
+                authViewModel.updateNewUserInfo(userName: "정찬희", nickName: "버리" , account: "1234556")
+                naviSelection = "TermView"
+            }
+
+            
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {

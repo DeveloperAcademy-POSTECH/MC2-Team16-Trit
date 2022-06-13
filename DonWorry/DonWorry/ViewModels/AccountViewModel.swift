@@ -35,6 +35,8 @@ extension FireStoreViewModel {
         }
     }
     
+    // id로 해당 account document만 출력!
+    // 수정중 -> 아직 작업 중
     func getAccountData(AccountID: String) {
         let db = Firestore.firestore()
         let accountRef = db.collection("Account").document(AccountID)
@@ -74,12 +76,12 @@ extension FireStoreViewModel {
         let db = Firestore.firestore() // FireBase 데이터 베이스를 reference
         
         // collection에 접근
-        db.collection("User").document(userToDelete.id).delete { error in
+        db.collection("User").document(userToDelete.uid).delete { error in
             if error == nil {
 
                 DispatchQueue.main.async {
                     self.userList.removeAll { user in
-                        return user.id == userToDelete.id
+                        return user.id == userToDelete.uid
                     }
                 }
 

@@ -11,7 +11,6 @@ import FirebaseFirestore
 
 extension FireStoreViewModel {
        
-    
     // 전체 스페이스 불러오기
     // Read Account
     func getSpaceDatas() {
