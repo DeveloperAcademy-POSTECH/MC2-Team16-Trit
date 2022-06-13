@@ -10,7 +10,7 @@ import SwiftUI
 struct SpaceTopView: View {
     
     let leftPaddingSize = 25.0
-    var spaceID: String = ""
+    @Binding var spaceID: String
     @State var isAddCardTitleViewShown = false
     var body: some View {
         HStack {
@@ -45,8 +45,10 @@ struct SpaceTopView: View {
     }
 }
 
+/*
 struct SpaceTopView_Previews: PreviewProvider {
     static var previews: some View {
         SpaceTopView()
     }
 }
+ */

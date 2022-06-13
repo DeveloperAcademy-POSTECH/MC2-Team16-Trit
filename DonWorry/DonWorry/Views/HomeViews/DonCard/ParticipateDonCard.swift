@@ -10,10 +10,13 @@ import SwiftUI
 struct ParticipateDonCard: View {
     // backend에서 참여자들이 다 참가했으면 "상세정산내역보기" 다 참가하지않았으면 "참석확인중"
     @State var isParticipateIn: Bool
+    @Binding var isSpaceView: Bool
+//    @Binding var spaceID: String
     
-    var body: some View {
+    var body: some View {  
+        
         Button {
-            //
+            isSpaceView.toggle()
         } label: {
             ZStack {
                 BasicRoundRec(color: .blueMain)
@@ -44,11 +47,6 @@ struct ParticipateDonCard: View {
     }
 }
 
-struct ParticipateDonCard_Previews: PreviewProvider {
-    static var previews: some View {
-        ParticipateDonCard(isParticipateIn: false)
-    }
-}
 
 struct BasicRoundRec: View {
     var color: Color
@@ -60,3 +58,11 @@ struct BasicRoundRec: View {
             .foregroundColor(color)
     }
 }
+
+/*
+struct ParticipateDonCard_Previews: PreviewProvider {
+    static var previews: some View {
+        ParticipateDonCard(isParticipateIn: false)
+    }
+}
+*/
