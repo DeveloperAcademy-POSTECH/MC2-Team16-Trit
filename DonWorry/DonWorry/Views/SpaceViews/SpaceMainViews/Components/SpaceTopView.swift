@@ -31,7 +31,6 @@ struct SpaceTopView: View {
             
             NavigationLink(tag: "CalculateStartView", selection: $naviSelection, destination: { HomeView(currentUser: user1) }) { EmptyView() }
             .isDetailLink(false)
-            
             Button {
                 self.naviSelection = "CalculateStartView"
             } label: {
