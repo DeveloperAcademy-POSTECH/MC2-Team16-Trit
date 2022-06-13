@@ -37,10 +37,12 @@ struct SpaceMainView: View {
                     LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                         ForEach(0..<5) { index in
                             if index == 4 {
+                                NavigationLink(tag: "AddCardTitleView", selection: $mainSelection, destination: { AddCardTitleView(mainSelection: $mainSelection) }) {
+                                    EmptyView()
+                                }
+                                .isDetailLink(false)
                                 AddCardTitleViewButton(clicked: {
-                                    NavigationLink(tag: "AddCardTitleView", selection: $naviSelection, destination: { AddCardTitleView(mainSelection: $mainSelection) }) { EmptyView() }
-                                    .isDetailLink(false)
-                                    self.naviSelection = "AddCardTitleView"
+                                    self.mainSelection = "AddCardTitleView"
                                 }) .padding(.bottom, 70)
                             } else {
                                 SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "42910090307", index: index, clicked: {
