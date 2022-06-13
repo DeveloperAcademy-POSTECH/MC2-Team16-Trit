@@ -21,15 +21,14 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             VStack {
+                //profileView
                 HStack {
                     HStack {
-                        
                         NavigationLink(destination: ProfileView(),
                                        tag: "ProfileView",
                                        selection: $naviSelection) { EmptyView() }
                             .isDetailLink(false)
 
-                        
                         Button {
                             self.naviSelection = "ProfileView"
                         } label: {
@@ -64,6 +63,7 @@ struct HomeView: View {
                 }
                 .padding(.bottom, 25)
                 .padding(.horizontal, 20)
+                //profileView
                 SpaceChipsView(selection: $selection)
                 Spacer().frame(height: 120)
                 if currentUser.participant == selection {
@@ -84,20 +84,30 @@ struct HomeView: View {
                 }
                 
                 /* Bottom Buttons */
+//                HStack {
+//                    XSmallButton(icon: "magnifyingglass") {
+//                        isPresented.toggle()
+//                    }
+//                    NavigationLink(destination: AddSpaceView(naviSelection: $naviSelection),
+//                                   tag: "AddSpaceView",
+//                                   selection: $naviSelection) { EmptyView() }
+//                        .isDetailLink(false)
+
+//                    MediumButton(text: "스페이스 만들기") {
+//                        self.naviSelection = "AddSpaceView"
+//                    }
+//                }
+//                .offset(y: 160)
                 HStack {
-                    XSmallButton(icon: "magnifyingglass") {
-                        isPresented.toggle()
-                    }
+                    XSmallButton(icon: "magnifyingglass", clicked: {})
+                    
                     NavigationLink(destination: AddSpaceView(naviSelection: $naviSelection),
                                    tag: "AddSpaceView",
-                                   selection: $naviSelection) { EmptyView() }
+                                   selection: $naviSelection) { MediumButton(text: "스페이스 만들기", clicked: { self.naviSelection = "AddSpaceView" }) }
                         .isDetailLink(false)
 
-                    MediumButton(text: "스페이스 만들기") {
-                        self.naviSelection = "AddSpaceView"
-                    }
+                    
                 }
-                .offset(y: 160)
                 
                 Spacer().frame(height: 120)
             }
