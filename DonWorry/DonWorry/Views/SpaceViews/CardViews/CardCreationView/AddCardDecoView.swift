@@ -28,7 +28,6 @@ enum DecoCase: String, Identifiable, CaseIterable {
 struct AddCardDecoView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     
     //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
@@ -42,87 +41,85 @@ struct AddCardDecoView: View {
     @State private var bank: String = "은행 선택"
     @State private var date = Date()
     @State var clickedIndex = 0
+    @FocusState private var isFocused: Bool
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     var paymentIcon: Image?
     
     var body: some View {
-        
-            ZStack {
+        ZStack {
+            VStack(spacing: 20) {
+                
+                PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
+                                account: $account,
+                                color: $color,
+                                date: $date,
+                                image: $images,
+                                decoCase: $decoCase)
+                .padding(.horizontal, 20)
                 VStack(spacing: 20) {
-                    
-                    PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
-                                    account: $account,
-                                    color: $color,
-                                    date: $date,
-                                    image: $images,
-                                    decoCase: $decoCase)
-                    .padding(.horizontal, 20)
-                    VStack(spacing: 20) {
-                        CustomPicker(selected: $decoCase)
-                            .padding(.horizontal, 20)
-                        Divider()
-                            .padding(.horizontal, 20)
-                            .frame(height: 0)
-                            .background(Color.grayEE)
-                        ZStack {
-                            switch decoCase {
-                            case .색상변경:
-                                colorBox
-                                    .padding(.horizontal, 30)
-                            case .날짜선택:
-                                dateBox
-                                    .padding(.horizontal, 30)
-                            case .계좌번호:
-                                accountBox
-                                    .padding(.horizontal, 30)
-                            case .첨부파일:
-                                imageBox
-                                    .padding(.horizontal, 30)
-                            }
+                    CustomPicker(selected: $decoCase)
+                        .padding(.horizontal, 20)
+                    Divider()
+                        .padding(.horizontal, 20)
+                        .frame(height: 0)
+                        .background(Color.grayEE)
+                    ZStack {
+                        switch decoCase {
+                        case .색상변경:
+                            colorBox
+                                .padding(.horizontal, 30)
+                        case .날짜선택:
+                            dateBox
+                                .padding(.horizontal, 30)
+                        case .계좌번호:
+                            accountBox
+                                .padding(.horizontal, 30)
+                        case .첨부파일:
+                            imageBox
+                                .padding(.horizontal, 30)
                         }
-                        Spacer()
                     }
-                    .frame(maxWidth: 380)
-                    .frame(maxHeight: 410)
-//                    .padding(.bottom, 20)
                     Spacer()
                 }
-                VStack {
-                    Spacer()
-                    SmallButton(
-                        text: "완료"
-                    ) {
-                        print("ChipBtn Clicked!")
-                        print("전 : \(mainSelection)")
-                        mainSelection = nil
-                        print("후 : \(mainSelection)")
-                    }
+                .frame(maxWidth: 380)
+                .frame(maxHeight: 410)
+                //                    .padding(.bottom, 20)
+                Spacer()
+            }
+            VStack {
+                Spacer()
+                SmallButton(text: "완료") {
+                    mainSelection = nil
                 }
             }
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(role: .cancel) {
-                        self.mode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .padding(.horizontal)
-                    }
-                    .buttonStyle(.plain)
+        }
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button(role: .cancel) {
+                    self.mode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .padding(.horizontal)
                 }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(role: .cancel) {
-                        print("클릭 시 스페이스 메인으로 가게 하려고 함")
-                    } label: {
-                        Text("MC2 첫 회식")
-                            .font(.title2.weight(.bold))
-                    }
-                    .buttonStyle(.plain)
-                }
+                .buttonStyle(.plain)
             }
-            .navigationBarTitleDisplayMode(.inline)
+            ToolbarItem(placement: .confirmationAction) {
+                Button(role: .cancel) {
+                    print("클릭 시 스페이스 메인으로 가게 하려고 함")
+                } label: {
+                    Text("MC2 첫 회식")
+                        .font(.title2.weight(.bold))
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
         
-//        .navigationViewStyle(StackNavigationViewStyle())
+        //        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     // MARK: 컬러박스 입력 칸
@@ -167,61 +164,61 @@ struct AddCardDecoView: View {
                 .keyboardType(.decimalPad)
         }
         
-//        TextField("계좌번호를 입력해주세요.", text: $account)
-//            .font(.title3)
-//            .multilineTextAlignment(.center)
-//            .padding(.horizontal, 20)
+        //        TextField("계좌번호를 입력해주세요.", text: $account)
+        //            .font(.title3)
+        //            .multilineTextAlignment(.center)
+        //            .padding(.horizontal, 20)
     }
     
     // MARK: 이미지 입력 칸
     private var imageBox: some View {
-            VStack(spacing: 30) {
-                HStack {
-                    LazyHGrid(rows: [GridItem(.fixed(340.0))], spacing: 20) {
-                        ForEach(0..<3) { index in
-                               if images.count >= index {
-                                Button {
-                                    clickedIndex = index
-                                    showPhotoPicker = true
-                                } label: {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.grayBC)
-                                        .frame(width: 100, height: 100)
-                                        .overlay(
-                                            ZStack(alignment: .topTrailing) {
-                                                    Image(systemName: "plus")
-                                                        .font(.largeTitle.weight(.light))
-                                                        .foregroundColor(Color.white)
-                                                        
-                                                    if index < images.count {
-                                                        Image(uiImage: images[index])
-                                                            .resizable()
-                                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                        Button {
-                                                            print("remove")
-                                                            removeImage(index: index)
-                                                        } label: {
-                                                            Image(systemName: "xmark")
-                                                                .font(.headline)
-                                                                .padding(5)
-                                                                .foregroundColor(.white)
-                                                                .background(Color.black.opacity(0.5))
-                                                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                                .padding(5)
-                                                        }
-                                                    }
+        VStack(spacing: 30) {
+            HStack {
+                LazyHGrid(rows: [GridItem(.fixed(340.0))], spacing: 20) {
+                    ForEach(0..<3) { index in
+                        if images.count >= index {
+                            Button {
+                                clickedIndex = index
+                                showPhotoPicker = true
+                            } label: {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.grayBC)
+                                    .frame(width: 100, height: 100)
+                                    .overlay(
+                                        ZStack(alignment: .topTrailing) {
+                                            Image(systemName: "plus")
+                                                .font(.largeTitle.weight(.light))
+                                                .foregroundColor(Color.white)
+                                            
+                                            if index < images.count {
+                                                Image(uiImage: images[index])
+                                                    .resizable()
+                                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                Button {
+                                                    print("remove")
+                                                    removeImage(index: index)
+                                                } label: {
+                                                    Image(systemName: "xmark")
+                                                        .font(.headline)
+                                                        .padding(5)
+                                                        .foregroundColor(.white)
+                                                        .background(Color.black.opacity(0.5))
+                                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                        .padding(5)
                                                 }
-                                        )
+                                            }
+                                        }
+                                    )
                                 
-                                }
                             }
                         }
                     }
-
-                    Spacer()
                 }
-                .padding(.top, 15.0)
-            }.frame(width: 340, height: 80)
+                
+                Spacer()
+            }
+            .padding(.top, 15.0)
+        }.frame(width: 340, height: 80)
             .contentShape(Rectangle())
             .sheet(isPresented: $showPhotoPicker) {
                 let configuration = PHPickerConfiguration.config
@@ -229,8 +226,8 @@ struct AddCardDecoView: View {
                             images: $images,
                             isPresented: $showPhotoPicker)
             }
-        }
     }
+}
 
 extension AddCardDecoView {
     private func removeImage(index: Int) {
@@ -257,48 +254,48 @@ struct CustomPicker: View {
                     .onTapGesture {
                         selected = decoCase
                     }
-                }
+            }
             
-// 애니매이션 효과있는 커스텀 피커
-//                GeometryReader { _ in
-//                    Text(decoCase.name)
-//                        .font(.subheadline.bold())
-//                        .foregroundColor(decoCase == selected ? .white : .gray)
-//                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                        .contentShape(Capsule())
-//                        .onTapGesture {
-//                            withAnimation(.spring()) {
-//                                selected = decoCase
-//                            }
-//                        }
-//                }
-//                .frame(height: 40)
-//            }
+            // 애니매이션 효과있는 커스텀 피커
+            //                GeometryReader { _ in
+            //                    Text(decoCase.name)
+            //                        .font(.subheadline.bold())
+            //                        .foregroundColor(decoCase == selected ? .white : .gray)
+            //                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+            //                        .contentShape(Capsule())
+            //                        .onTapGesture {
+            //                            withAnimation(.spring()) {
+            //                                selected = decoCase
+            //                            }
+            //                        }
+            //                }
+            //                .frame(height: 40)
+            //            }
         }
-//        .background(
-//            GeometryReader { geo in
-//                Capsule()
-//                    .fill(Color.blueMain)
-//                    .frame(width: geo.size.width / 4)
-//                    .frame(maxWidth: getCapsuleWidth(width: geo.size.width), alignment: .trailing)
-//            }
-//            .frame(maxWidth: .infinity)
-//
-//        )
+        //        .background(
+        //            GeometryReader { geo in
+        //                Capsule()
+        //                    .fill(Color.blueMain)
+        //                    .frame(width: geo.size.width / 4)
+        //                    .frame(maxWidth: getCapsuleWidth(width: geo.size.width), alignment: .trailing)
+        //            }
+        //            .frame(maxWidth: .infinity)
+        //
+        //        )
     }
-
-//    private func getCapsuleWidth(width: CGFloat) -> CGFloat {
-//        switch selected {
-//        case .색상변경:
-//            return width / 4
-//        case .날짜선택:
-//            return width / 2
-//        case .계좌번호:
-//            return width / 4 * 3
-//        case .첨부파일:
-//            return width
-//        }
-//    }
+    
+    //    private func getCapsuleWidth(width: CGFloat) -> CGFloat {
+    //        switch selected {
+    //        case .색상변경:
+    //            return width / 4
+    //        case .날짜선택:
+    //            return width / 2
+    //        case .계좌번호:
+    //            return width / 4 * 3
+    //        case .첨부파일:
+    //            return width
+    //        }
+    //    }
 }
 
 struct AddCardDecoView_Previews: PreviewProvider {

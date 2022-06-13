@@ -13,11 +13,11 @@ struct AddCardTitleView: View {
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     @State private var paymentTitle: String = ""
     @State private var naviSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
+    @FocusState private var isFocused: Bool
     
     let maxLength = 15
     
     var body: some View {
-        
         ZStack {
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
@@ -62,6 +62,9 @@ struct AddCardTitleView: View {
                 }
                 .padding(.horizontal, 30)
             }
+        }
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {

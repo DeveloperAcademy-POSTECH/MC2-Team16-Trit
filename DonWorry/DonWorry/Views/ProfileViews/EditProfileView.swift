@@ -9,8 +9,9 @@ import SwiftUI
 struct EditProfileView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    @State private var name: String
-        
+    @State private var name = ""
+    @FocusState private var isFocused: Bool
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -42,6 +43,9 @@ struct EditProfileView: View {
             }
             
         }
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
         .navigationBarBackButtonHidden(true)
         .padding(.top, -20)
         .padding(.horizontal, 25)
@@ -59,8 +63,8 @@ struct EditProfileView: View {
     }
 }
 
-struct EditProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditProfileView()
-    }
-}
+//struct EditProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditProfileView()
+//    }
+//}

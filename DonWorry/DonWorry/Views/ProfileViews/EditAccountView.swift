@@ -13,6 +13,7 @@ struct EditAccountView: View {
     @State private var holder = ""
     @State private var bank = ""
     @State private var account = ""
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -31,7 +32,7 @@ struct EditAccountView: View {
             
             UnderlineTextField(placeholder: "예금주명을 입력해 주세요.", charLimit: 20, text: $holder)
                 .keyboardType(.default)
-
+            
             AccountTextField(account: $account, bank: $bank)
             
             Spacer()
@@ -47,25 +48,27 @@ struct EditAccountView: View {
             }
             
         }
-        .navigationBarBackButtonHidden(true)
-        .padding(.top, -20)
-        .padding(.horizontal, 25)
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button {
-                    self.mode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }        .navigationBarBackButtonHidden(true)
+            .padding(.top, -20)
+            .padding(.horizontal, 25)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        self.mode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.black)
+                    }
                 }
+                
             }
-            
-        }
     }
 }
 
-struct EditAccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditProfileView()
-    }
-}
+//struct EditAccountView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditProfileView()
+//    }
+//}

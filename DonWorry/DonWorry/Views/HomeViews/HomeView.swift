@@ -15,13 +15,14 @@ struct HomeView: View {
     @State var isPresented : Bool = false // Space 입장 ID 입력 Sheet
     
     @State private var naviSelection: String? = nil // SpaceMainView에서 HomeView로 한번에 dismiss시키기 위한 변수
+    @FocusState private var isFocused: Bool
     
     var currentUser: User
     
     var body: some View {
         ZStack {
             VStack {
-                //profileView
+                // profileView
                 HStack {
                     HStack {
                         NavigationLink(destination: ProfileView(),
@@ -89,7 +90,9 @@ struct HomeView: View {
                 .isDetailLink(false)
             
             HStack {
-                XSmallButton(icon: "magnifyingglass", clicked: {})
+                XSmallButton(icon: "magnifyingglass", clicked: {
+                    isPresented = true
+                })
                 
                 NavigationLink(destination: AddSpaceView(naviSelection: $naviSelection),
                                tag: "AddSpaceView",
@@ -97,6 +100,9 @@ struct HomeView: View {
                     .isDetailLink(false)
             }
             .padding(.top, 700)
+        }
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
         }
         .navigationBarHidden(true)
         .slideOverCard(isPresented: $isPresented, onDismiss: {

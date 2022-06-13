@@ -11,6 +11,7 @@ struct EditSpaceNameView: View {
     
     @Binding var spaceName: String
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack {
@@ -33,6 +34,9 @@ struct EditSpaceNameView: View {
                 .padding(.trailing, 19)
             }
             Spacer()
+        }
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)

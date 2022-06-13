@@ -14,6 +14,8 @@ struct UserInfoView: View {
     @State private var account = ""
     @State private var bank = ""
     @State private var holder = ""
+    @State private var naviSelection: String? = nil
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack {
@@ -33,6 +35,7 @@ struct UserInfoView: View {
                     }
                     UnderlineTextField(placeholder: "친구들이 나를 찾을 닉네임을 입력해주세요.", charLimit: 20, text: $nickName)
                         .keyboardType(.default)
+                        .focused($isFocused)
                 }
                 
                 VStack(alignment: .leading) {
@@ -41,6 +44,7 @@ struct UserInfoView: View {
                         .fontWeight(.semibold)
                     
                     AccountTextField(account: $account, bank: $bank)
+                        .focused($isFocused)
                     
                     Text("정산을 받으실 계좌번호입니다.(추후 변경 가능)")
                         .font(.system(size: 13))
@@ -55,22 +59,30 @@ struct UserInfoView: View {
                         .fontWeight(.semibold)
                     
                     UnderlineTextField(placeholder: "예금주명을 입력해주세요", charLimit: 10, text: $holder)
+                        .focused($isFocused)
                 }
                 
             }
             
             Spacer()
             
-            NavigationLink(destination: TermView()) {
-                
-                Text("다음")
-                    .frame(width: 100, height: 20, alignment: .center)
-                    .foregroundColor(Color.white)
-                    .font(.system(size: 15, weight: .bold))
-                    .padding()
-                    .background(Color.blueMain)
-                    .cornerRadius(50)
-            }
+            NavigationLink(tag: "TermView", selection: $naviSelection, destination: { TermView() }) { SmallButton(text: "다음") {
+                naviSelection = "TermView"
+            } }
+            
+            //                NavigationLink(destination: TermView()) {
+            //
+            //                    Text("다음")
+            //                        .frame(width: 100, height: 20, alignment: .center)
+            //                        .foregroundColor(Color.white)
+            //                        .font(.system(size: 15, weight: .bold))
+            //                        .padding()
+            //                        .background(Color.blueMain)
+            //                        .cornerRadius(50)
+            //                }
+        }
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
         }
         .ignoresSafeArea(.keyboard)
         .navigationBarBackButtonHidden(true)
