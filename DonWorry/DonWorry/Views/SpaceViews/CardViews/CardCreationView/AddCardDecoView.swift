@@ -47,7 +47,7 @@ struct AddCardDecoView: View {
     var paymentIcon: Image?
     
     var body: some View {
-        VStack{
+        VStack {
             ZStack {
                 ScrollViewReader { proxy in
                     ScrollView {
@@ -101,29 +101,15 @@ struct AddCardDecoView: View {
                                             .padding(.horizontal, 30)
                                     }
                                 Spacer()
-                                
-                                
                             }
                             .frame(maxWidth: 380)
                             .frame(maxHeight: 410)
-//                            .background(.red)
-        //                    .padding(.bottom, 20)
-                            
-                            
                             Spacer()
-
-                            
                         }
                         Spacer()
                             .frame(height: focusedClicked ? 100 : nil)
-                    
-//
                     }
-                    
-//                    .background(.blue)
             }
-//                .background(.red)
-                //                    .padding(.bottom, 20)
                 Spacer()
                 
                 VStack {
@@ -201,21 +187,12 @@ struct AddCardDecoView: View {
     @ViewBuilder private var accountBox: some View {
         VStack {
             UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: $holder)
-                .keyboardType(.default)
-                
+                .keyboardType(.default)            
             AccountTextField(account: $account, bank: $bank)
                 .keyboardType(.decimalPad)
-                
         }
-        
-        
-        
-        //        TextField("계좌번호를 입력해주세요.", text: $account)
-        //            .font(.title3)
-        //            .multilineTextAlignment(.center)
-        //            .padding(.horizontal, 20)
     }
-    
+   
     // MARK: 이미지 입력 칸
     private var imageBox: some View {
         VStack(spacing: 30) {
@@ -255,7 +232,6 @@ struct AddCardDecoView: View {
                                             }
                                         }
                                     )
-                                
                             }
                         }
                     }
