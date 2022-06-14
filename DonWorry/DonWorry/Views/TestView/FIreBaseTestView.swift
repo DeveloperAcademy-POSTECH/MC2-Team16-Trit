@@ -11,9 +11,9 @@ import SwiftUI
 struct FireBaseTestView: View {
 
     var testUser = User(userName: "정찬희", nickName: "Lumi", account: "jlGwzhjurMFlAtvyJp0p", spaceList: [])
-
+    
     @ObservedObject var fireBaseModel = FireStoreViewModel()
-
+    
     var body: some View {
         List(fireBaseModel.userList) { item in
             HStack {

@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import FirebaseFirestoreSwift
 
 // 사용자
-struct User: Identifiable {// , Hashable
-    var id = UUID().uuidString
+struct User: Identifiable, Codable {// , Hashable
+    @DocumentID var id: String?
     var userName: String // 사용자이름 - 간편로그인 연계
     var nickName: String // 닉네임
     var account: String // 계좌정보 Account 참조해야함.
@@ -18,6 +19,10 @@ struct User: Identifiable {// , Hashable
         Image(image)
     }
     var spaceList: [String] // 참가한 스페이스 리스트 String 참조해야함
+}
+
+extension User {
+    static let empty = User(id: "7iTrW1fztvFBqRimU9gd" , userName: "임영후", nickName: "Ahser", account: "", spaceList: [])
 }
 
 // assumption: 1차만 간 상황을 고려 참석자는 4명 돈을 받을 taker는 유쓰와 루미 돈을 보낼 giver는 애셔(루미에게) 버리(루미에게) 루미(유쓰에게)

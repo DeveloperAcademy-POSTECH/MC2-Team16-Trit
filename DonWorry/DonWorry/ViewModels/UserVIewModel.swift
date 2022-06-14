@@ -14,7 +14,15 @@ class FireStoreViewModel: ObservableObject {
     @Published var userList = [User]()
     @Published var accountList = [Account]()
     @Published var spaceList = [Space]()
-
+    
+    var spaceContainer = [String]()
+    
+    var resultSpace: Space = .empty
+    var resultSpaces: [Space] = []
+    
+    let db = Firestore.firestore()
+    
+    
     // 현재 유저 불러오기 함수
     func getUserData() {
         // get a reference to the database
@@ -28,7 +36,7 @@ class FireStoreViewModel: ObservableObject {
                         self.userList = snapshot.documents.map { d in
                             return User(id: d.documentID,
                                         userName: d["userName"] as! String,
-                                        nickName: d["nickName"] as! String,
+                                        nickName: d["ni ckName"] as! String,
                                         account: d["account"] as! String, // TODO: reference로 수정해야함
                                         image: d["image"] as! String,
                                         spaceList: d["spaceList"] as! [String]
@@ -43,23 +51,22 @@ class FireStoreViewModel: ObservableObject {
         }
     }
     
-    func getUserData(AccountID: String) -> User {
-        let db = Firestore.firestore()
-        let accountRef = db.collection("Account").document(AccountID)
-        
-        accountRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                return User(userName: document["userName"] as! String,
-                            nickName: document["nickName"] as! String,
-                            account: document["account"] as! String,
-                            spaceList: [])
-            } else {
-                print("계좌 불러오기 실패")
-            }
-        }
-    }
+//    func getUserData(AccountID: String) -> User {
+//        let db = Firestore.firestore()
+//        let accountRef = db.collection("Account").document(AccountID)
+//
+//        accountRef.getDocument { (document, error) in
+//            if let document = document, document.exists {
+//                return User(userName: document["userName"] as! String,
+//                            nickName: document["nickName"] as! String,
+//                            account: document["account"] as! String,
+//                            spaceList: [])
+//            } else {
+//                print("계좌 불러오기 실패")
+//            }
+//        }
+//    }
     
-
     // 유저 추가하기 함수
     // 사용방법
     // 1. User 구조체를 만들어 준다.
@@ -87,7 +94,7 @@ class FireStoreViewModel: ObservableObject {
         let db = Firestore.firestore() // FireBase 데이터 베이스를 reference
         
         // collection에 접근
-        db.collection("User").document(userToDelete.id).delete { error in
+        db.collection("User").document(userToDelete.id ?? "").delete { error in
             if error == nil {
 
                 DispatchQueue.main.async {
@@ -107,7 +114,7 @@ class FireStoreViewModel: ObservableObject {
 
         let db = Firestore.firestore()
 
-        db.collection("User").document(userToUpdate.id).setData(["userName" : newName ?? ""], merge: true) { error in
+        db.collection("User").document(userToUpdate.id ?? "").setData(["userName" : newName ?? ""], merge: true) { error in
 
             if error == nil {
                 self.getUserData()
@@ -123,15 +130,13 @@ class FireStoreViewModel: ObservableObject {
         let db = Firestore.firestore()
         
         //Account 추가
-        self.addAccountData(accountHolder: accountHolder, accountBank: accountName, accountNumber: accountNumber)
+        self.addAccountData(accountHolder: accountHolder, accountBank: accountBank, accountNumber: accountNumber)
         
         let AccountRef = db.collection("Account").document().documentID
         
         // User nickname Update
-        db.collection("User").document(user.id).setData(["nickName" : nickname], merge: true)
+        db.collection("User").document(user.id ?? "").setData(["nickName" : nickname], merge: true)
         // User에 Account Reference 추가하기
-        db.collection("User").document(user.id).setData(["account" : AccountRef] , merge: true)
-        
-        
+        db.collection("User").document(user.id ?? "").setData(["account" : AccountRef] , merge: true)
     }
 }

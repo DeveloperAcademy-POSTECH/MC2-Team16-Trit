@@ -8,9 +8,114 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 extension FireStoreViewModel {
-       
+    
+    // MARK: 유저가 속해있는 스페이스 비동기처리
+    func loadUserSpace(userID: String, completion: @escaping (Result<[String], Error>) -> Void) {
+        
+        let userRef = Firestore.firestore().collection("User").document(userID)
+        var spaceContainer = [String]()
+        
+        userRef.getDocument { (document, error) in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "")
+                completion(.failure(error!))
+                return
+            }
+
+            if let document = document, document.exists {
+                let data = document.data()
+                if let data = data {
+                    spaceContainer = data["spaceList"] as! [String]
+                    completion(.success(spaceContainer))
+                }
+            }
+        }
+    }
+    
+    // MARK: 유저ID(INPUT) -> 해당 유저 스페이스 목록 반환
+    func loadSpace(userID: String) {
+        
+        var tempSpace: Space = .empty
+        var resultSpaces: [Space] = []
+        
+        self.loadUserSpace(userID: userID) {
+            switch $0 {
+            case .success(let spaceContainer):
+                for item in spaceContainer {
+
+                    let spaceRef = Firestore.firestore().collection("Space").document(item)
+
+                    spaceRef.getDocument { (document, error) in
+                        if let error = error as NSError? {
+                            print("Error : \(error.localizedDescription)")
+                        } else {
+                            if let document = document {
+                                do {
+                                    tempSpace = try document.data(as: Space.self)
+                                    DispatchQueue.main.async{
+                                        self.resultSpaces.append(tempSpace)
+                                    }
+
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                        }
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+            print(self.resultSpaces)
+        }
+        
+    }
+    
+    // MARK: 스페이스아이디(INPUT) -> Space구조체 (비동기 처리)
+    func fetchAsyncSpace(documentID: String, completion: @escaping (Result<Space, Error>) -> Void) {
+        let spaceRef = Firestore.firestore().collection("Space").document(documentID)
+        var space: Space = .empty
+        
+        spaceRef.getDocument { (document, error) in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "")
+                completion(.failure(error!))
+                return
+            }
+            
+            if let document = document, document.exists {
+                let data = document.data()
+                if data != nil {
+                    do {
+                        space = try document.data(as: Space.self)
+                        print("1", space)
+                    } catch {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    completion(.success(space))
+                }
+            }
+        }
+    }
+    
+    // MARK: spaceID(INPUT)->비동기처리한 space 불러오기
+    func fetchSpace(documentID: String) {
+        
+        self.fetchAsyncSpace(documentID: documentID) {
+            switch $0 {
+            case .success(let space):
+                print(space)
+                self.resultSpace = space
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     // 전체 스페이스 불러오기
     func getSpaceDatas() {
         // get a reference to the database
@@ -55,6 +160,20 @@ extension FireStoreViewModel {
         }
     }
     
+    // MARK: 장소 만들기
+    func createSpace(spaceName: String, user: User) {
+        
+        let db = Firestore.firestore()
+        
+        let space = Space(spaceID: "", spaceName: spaceName, payment: [], status: false, transfer: [], userList: [user.id ?? "123"], admin: user.id ?? "123")
+
+        do {
+            let _ = try db.collection("Space").addDocument(from: space)
+        } catch {
+            print(error)
+        }
+    }
+    
     // space 추가함수
     func addSpaceData(spaceName: String) {
         // get a reference to the database
@@ -84,7 +203,7 @@ extension FireStoreViewModel {
         let db = Firestore.firestore() // FireBase 데이터 베이스를 reference
         
         // collection에 접근
-        db.collection("Space").document(spaceToDelete.id).delete { error in
+        db.collection("Space").document(spaceToDelete.id ?? "").delete { error in
             if error == nil {
 
                 DispatchQueue.main.async {
@@ -103,7 +222,7 @@ extension FireStoreViewModel {
         
         let db = Firestore.firestore()
 
-        db.collection("Space").document(SpaceToUpdate.id).setData(["spaceName" : newSpaceName ?? ""], merge: true) { error in
+        db.collection("Space").document(SpaceToUpdate.id ?? "").setData(["spaceName" : newSpaceName ?? ""], merge: true) { error in
 
             if error == nil {
                 self.getSpaceDatas()

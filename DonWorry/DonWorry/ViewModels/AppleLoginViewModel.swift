@@ -14,6 +14,7 @@ import Firebase
 // 암호화된 토큰을 사용, CryptoKit이 필요합니다.
 
 class AppleLoginViewModel: ObservableObject {
+    
     @Published var nonce = ""
     
     func authenticate(credential: ASAuthorizationAppleIDCredential) {
