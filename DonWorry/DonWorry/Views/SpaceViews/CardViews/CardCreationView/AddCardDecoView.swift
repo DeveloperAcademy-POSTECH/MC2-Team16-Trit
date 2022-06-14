@@ -42,7 +42,7 @@ struct AddCardDecoView: View {
     @State private var date = Date()
     @State var clickedIndex = 0
     @FocusState private var isFocused: Bool
-    @State var focusedClicked: Bool = false
+//    @State var focusedClicked: Bool = false
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     var paymentIcon: Image?
     
@@ -58,7 +58,7 @@ struct AddCardDecoView: View {
                                             date: $date,
                                             image: $images,
                                             decoCase: $decoCase)
-                            .id(1)
+                            
                             .padding(.horizontal, 20)
                             VStack(spacing: 20) {
                                 CustomPicker(selected: $decoCase)
@@ -82,16 +82,11 @@ struct AddCardDecoView: View {
                                             .focused($isFocused)
                                             .onChange(of: isFocused) { focus in
                                                 if focus {
-                                                    print("in_")
-                                                    
-                                                    withAnimation(.easeInOut(duration: 1)) {
-                                                        focusedClicked = true
+                                                    withAnimation  {
                                                         proxy.scrollTo(2, anchor: .top)
                                                     }
                                                 } else {
-                                                    withAnimation(.easeInOut(duration: 1)) {
-                                                        print("in_out")
-                                                        focusedClicked = false
+                                                    withAnimation {
                                                         proxy.scrollTo(1, anchor: .top)
                                                     }
                                                 }
@@ -106,8 +101,6 @@ struct AddCardDecoView: View {
                             .frame(maxHeight: 410)
                             Spacer()
                         }
-                        Spacer()
-                            .frame(height: focusedClicked ? 100 : nil)
                     }
             }
                 Spacer()
@@ -119,9 +112,9 @@ struct AddCardDecoView: View {
                     }
                     .padding(.bottom)
                 }
-//                .ignoresSafeArea(.keyboard)
+                .ignoresSafeArea(.keyboard)
             }
-        }
+        }.id(1)
         .onAppear {
             UIApplication.shared.hideKeyboard()
         }
@@ -323,7 +316,7 @@ struct CustomPicker: View {
 struct AddCardDecoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddCardDecoView(mainSelection: .constant(""), focusedClicked: false, paymentIcon: Image("chicken-leg"))
+            AddCardDecoView(mainSelection: .constant(""),  paymentIcon: Image("chicken-leg"))
         }
     }
 }
