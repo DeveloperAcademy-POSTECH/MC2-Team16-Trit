@@ -68,6 +68,7 @@ struct AddCardIconView: View {
                         .isDetailLink(false)
                     SmallButton(text: "다음") {
                         self.naviSelection = "AddCardPriceView"
+                        self.paymentIcon = Image(selectedItem)
                     }
                     .padding(.bottom)
                 }
