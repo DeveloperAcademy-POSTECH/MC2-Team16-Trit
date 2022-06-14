@@ -251,4 +251,5 @@ class AuthViewModel: ObservableObject {
         try? Auth.auth().signOut()
     }
     
+    
 }

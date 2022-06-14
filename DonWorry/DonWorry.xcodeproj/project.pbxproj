@@ -87,6 +87,7 @@
 		A74479D4284918270083BBF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		A74479D6284918D60083BBF4 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D5284918D60083BBF4 /* EditProfileView.swift */; };
 		A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D7284918EB0083BBF4 /* EditAccountView.swift */; };
+		A7B08C462858E17100A5D921 /* AccViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B08C452858E17100A5D921 /* AccViewModel.swift */; };
 		A7C0529A28560B3D007072EE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0529928560B3D007072EE /* AuthViewModel.swift */; };
 		A7C0529C28560D45007072EE /* UIApplicationExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0529B28560D45007072EE /* UIApplicationExtention.swift */; };
 		A7C0529E2856185C007072EE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0529D2856185C007072EE /* UserService.swift */; };
@@ -200,6 +201,7 @@
 		A74479D2284917990083BBF4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A74479D5284918D60083BBF4 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A74479D7284918EB0083BBF4 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
+		A7B08C452858E17100A5D921 /* AccViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccViewModel.swift; sourceTree = "<group>"; };
 		A7C0529928560B3D007072EE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		A7C0529B28560D45007072EE /* UIApplicationExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtention.swift; sourceTree = "<group>"; };
 		A7C0529D2856185C007072EE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				3E39E89428537DB500D8E44C /* AccountViewModel.swift */,
 				3E39E89628539A1F00D8E44C /* SpaceViewModel.swift */,
 				A7C0529928560B3D007072EE /* AuthViewModel.swift */,
+				A7B08C452858E17100A5D921 /* AccViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -829,6 +832,7 @@
 				2CC211862849F1230009F785 /* TermView.swift in Sources */,
 				79BF1799284CFF40003A2A68 /* Modifiers.swift in Sources */,
 				79BF17A3284D002B003A2A68 /* SpaceMainCalculateStartButton.swift in Sources */,
+				A7B08C462858E17100A5D921 /* AccViewModel.swift in Sources */,
 				7991F9FE28487E2B00DCAFB8 /* SpaceMainView.swift in Sources */,
 				3E39E89528537DB500D8E44C /* AccountViewModel.swift in Sources */,
 				2CC211862849F1230009F785 /* TermView.swift in Sources */,
