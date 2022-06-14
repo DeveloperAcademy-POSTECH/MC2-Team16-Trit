@@ -60,42 +60,49 @@ struct SignInView: View {
                 //                    }
                 // MARK: Test용 Button (추후에 UI Design이 수정될 것 같아 임시로 기능 확인을 위해 만들었습니다.)
                 VStack {
-                    Button {
-                        googleHandleLogin() // Google Social Login function
-                    } label: {
-                        HStack(spacing: 20) {
-                            Image("Google")
-                            Text("구글로 로그인하기")
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 25)
+                            .frame(width: 280, height: 45)
+                            .foregroundColor(.white)
+                        Button {
+                            googleHandleLogin() // Google Social Login function
+                        } label: {
+                            HStack(alignment: .center) {
+                                
+                                Image("Google")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                Spacer().frame(width: 3)
+                                Text("Sign up with Google")
+                                    .font(.system(size: 18, weight: .medium))
+                                    .foregroundColor(.black)
+                            }
+                            .frame(width: 280, height: 45)
+                            .background(.clear)
                         }
                     }
                     
                     // Apple SignIn Butoon 입니다.
                     // Xcode에서 SignInWithAppleButton이라는 컴포넌트를 지원합니다.
-                    SignInWithAppleButton { (request) in
-                        appleloginData.nonce = randomNonceString()
-                        request.requestedScopes = [.email, .fullName]
-                        request.nonce = sha256(appleloginData.nonce)
-                    } onCompletion: { (result) in
-                        
-                        switch result {
-                        case .success(let user): // 로그인에 성공한 경우
-                            print("성공")
-                            guard let credential = user.credential as?
-                                    ASAuthorizationAppleIDCredential else {
-                                print("Firebase 오류") // credential 생성 성공여부
-                                return
-                            }
-                            appleloginData.authenticate(credential: credential)
-                        case .failure(let error): // 로그인에 실패한 경우
-                            print(error.localizedDescription)
-                        }
-                    }.frame(width: 325, height: 70)
-                        .clipShape(Capsule())
+                    SignInWithAppleButtonView()
+                        .cornerRadius(25)
+                        .font(.system(size: 30, weight: .medium))
+                        .frame(width: 280, height: 50)
+                        .onTapGesture {
+                            showAppleLogin()
+                    }
                 }
             }
         }
         .ignoresSafeArea(.keyboard)
     }
+}
+
+func showAppleLogin() {
+    let request = ASAuthorizationAppleIDProvider().createRequest()
+    request.requestedScopes = [.email, .fullName]
+    let controller = ASAuthorizationController(authorizationRequests: [request])
+    controller.performRequests()
 }
 
 struct SignInView_Previews: PreviewProvider {

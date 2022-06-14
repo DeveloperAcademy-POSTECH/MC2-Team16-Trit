@@ -47,7 +47,6 @@ struct AddCardTitleView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
                     
                     NavigationLink(tag: "AddCardIconView",
                                    selection: $naviSelection,
@@ -60,7 +59,9 @@ struct AddCardTitleView: View {
                     }
                 }
                 .padding(.horizontal, 30)
+                .padding(.bottom)
             }
+            
         }
         .onAppear {
             UIApplication.shared.hideKeyboard()

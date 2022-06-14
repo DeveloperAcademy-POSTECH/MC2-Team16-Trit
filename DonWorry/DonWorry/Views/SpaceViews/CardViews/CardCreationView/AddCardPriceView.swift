@@ -43,7 +43,8 @@ struct AddCardPriceView: View {
                 paymentIcon?
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 37, height: 37)
+                    .padding(10)
+                    .frame(width: 50, height: 50)
                     .background(Color.grayEE)
                     .cornerRadius(5)
                 

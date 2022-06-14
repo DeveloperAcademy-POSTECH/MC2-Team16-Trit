@@ -44,6 +44,7 @@ struct AddSpaceView: View {
                         SmallButton(text: "완료") {
                             self.pageSelection = "SpaceMainView"
                         }
+                        .padding(.bottom)
                         .padding(.horizontal)
                         .disabled(spaceName.isEmpty ? true : false)
                    

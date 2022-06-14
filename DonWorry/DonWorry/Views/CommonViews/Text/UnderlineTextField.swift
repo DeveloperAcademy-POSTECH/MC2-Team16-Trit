@@ -56,3 +56,11 @@ struct UnderlineTextField: View {
         .frame(width: 335)
     }
 }
+
+
+struct UnderlineTextField_Previews: PreviewProvider {
+    static var previews: some View {
+        UnderlineTextField(placeholder: "testPlaceHolder", charLimit: 10, text: .constant("야야얀"))
+    }
+}
+

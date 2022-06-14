@@ -45,41 +45,45 @@ struct AddCardDecoView: View {
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     var paymentIcon: Image?
     
-    var body: some View {
-        ZStack {
-            VStack(spacing: 20) {
-                
-                PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
-                                account: $account,
-                                color: $color,
-                                date: $date,
-                                image: $images,
-                                decoCase: $decoCase)
-                .padding(.horizontal, 20)
-                VStack(spacing: 20) {
-                    CustomPicker(selected: $decoCase)
+    var body: some View {        
+            ZStack {
+                ScrollView {
+                    VStack(spacing: 20) {
+                        PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
+                                        account: $account,
+                                        color: $color,
+                                        date: $date,
+                                        image: $images,
+                                        decoCase: $decoCase)
                         .padding(.horizontal, 20)
-                    Divider()
-                        .padding(.horizontal, 20)
-                        .frame(height: 0)
-                        .background(Color.grayEE)
-                    ZStack {
-                        switch decoCase {
-                        case .색상변경:
-                            colorBox
-                                .padding(.horizontal, 30)
-                        case .날짜선택:
-                            dateBox
-                                .padding(.horizontal, 30)
-                        case .계좌번호:
-                            accountBox
-                                .padding(.horizontal, 30)
-                        case .첨부파일:
-                            imageBox
-                                .padding(.horizontal, 30)
+                        VStack(spacing: 20) {
+                            CustomPicker(selected: $decoCase)
+                                .padding(.horizontal, 20)
+                            Divider()
+                                .padding(.horizontal, 20)
+                                .frame(height: 0)
+                                .background(Color.grayEE)
+                                switch decoCase {
+                                case .색상변경:
+                                    colorBox
+                                        .padding(.horizontal, 30)
+                                case .날짜선택:
+                                    dateBox
+                                        .padding(.horizontal, 30)
+                                case .계좌번호:
+                                    accountBox
+                                        .padding(.horizontal, 30)
+                                case .첨부파일:
+                                    imageBox
+                                        .padding(.horizontal, 30)
+                                }
+                                Spacer()
                         }
+                        .frame(maxWidth: 380)
+                        .frame(maxHeight: 410)
+    //                    .padding(.bottom, 20)
+                        Spacer()
                     }
-                    Spacer()
                 }
                 .frame(maxWidth: 380)
                 .frame(maxHeight: 410)
@@ -91,6 +95,7 @@ struct AddCardDecoView: View {
                 SmallButton(text: "완료") {
                     mainSelection = nil
                 }
+                .padding(.bottom)
             }
         }
         .onAppear {
