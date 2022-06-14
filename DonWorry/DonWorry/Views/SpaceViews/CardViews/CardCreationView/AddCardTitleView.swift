@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddCardTitleView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @GestureState private var dragOffset = false
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     @State private var paymentTitle: String = ""
     @State private var naviSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
@@ -79,6 +80,11 @@ struct AddCardTitleView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
+            if (value.startLocation.x < 30 && value.translation.width > 100) {
+                self.mode.wrappedValue.dismiss()
+            }
+        })
     }
 }
 

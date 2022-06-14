@@ -48,8 +48,7 @@ struct UserInfoView: View {
                         UnderlineTextField(placeholder: "예금주명을 입력해주세요", charLimit: 10, text: $holder)
                             .focused($isFocused)
                     }
-                 
-                    
+                     
                     VStack(alignment: .leading) {
                         Text("계좌번호")
                             .font(.system(size: 17))
@@ -78,17 +77,6 @@ struct UserInfoView: View {
         }
         .ignoresSafeArea(.keyboard)
         .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button {
-                    self.mode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
-                        .padding(.horizontal)
-                }
-            }
-        }
     }
 }
 
