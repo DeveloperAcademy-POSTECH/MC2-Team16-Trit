@@ -86,17 +86,16 @@ struct AddCardDecoView: View {
                         Spacer()
                     }
                 }
-                .frame(maxWidth: 380)
-                .frame(maxHeight: 410)
                 //                    .padding(.bottom, 20)
                 Spacer()
-            }
-            VStack {
-                Spacer()
-                SmallButton(text: "완료") {
-                    mainSelection = nil
+                
+                VStack {
+                    Spacer()
+                    SmallButton(text: "완료") {
+                        mainSelection = nil
+                    }
+                    .padding(.bottom)
                 }
-                .padding(.bottom)
             }
         }
         .onAppear {
