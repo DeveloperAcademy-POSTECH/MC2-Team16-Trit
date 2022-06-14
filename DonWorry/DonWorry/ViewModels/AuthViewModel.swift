@@ -15,7 +15,7 @@ import GoogleSignIn
 import CryptoKit // Apple Login
 import AuthenticationServices // Apple Login
 
-class AccountViewModel: ObservableObject {
+class AuthViewModel: ObservableObject {
     
     // @Published var userSession: FirebaseAuth.User?
     @Published var errorMessage: String?
