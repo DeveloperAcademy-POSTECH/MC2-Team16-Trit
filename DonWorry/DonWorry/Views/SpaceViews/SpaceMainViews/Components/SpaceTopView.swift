@@ -12,6 +12,7 @@ struct SpaceTopView: View {
     let leftPaddingSize = 25.0
     @Binding var mainSelection: String?
     @Binding var spaceID: String
+    @Binding var isIDPopUpPresented: Bool
     @State private var naviSelection: String? = nil
     
     var body: some View {
@@ -21,7 +22,7 @@ struct SpaceTopView: View {
                 .opacity(0.5)
                 .padding(.leading, leftPaddingSize)
             Button {
-                print("")
+                isIDPopUpPresented.toggle()
             } label: {
                 Text("복사하기")
                     .applyTextWithLineLimitModifier(size: 9, weight: .bold, color: .white)
@@ -43,8 +44,8 @@ struct SpaceTopView: View {
     }
 }
 
-struct SpaceTopView_Previews: PreviewProvider {
-    static var previews: some View {
-        SpaceTopView(mainSelection: .constant(""), spaceID: .constant("asdvasdvasdvas"))
-    }
-}
+//struct SpaceTopView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SpaceTopView(mainSelection: .constant(""), spaceID: .constant("asdvasdvasdvas"))
+//    }
+//}

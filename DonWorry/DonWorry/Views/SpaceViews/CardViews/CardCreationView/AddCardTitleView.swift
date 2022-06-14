@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct AddCardTitleView: View {
-    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     @State private var paymentTitle: String = ""
     @State private var naviSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
+    @FocusState private var isFocused: Bool
     
     let maxLength = 15
     
     var body: some View {
-        
         ZStack {
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
@@ -30,21 +29,9 @@ struct AddCardTitleView: View {
                 VStack(spacing: 20) {
                     
                     UnderlineTextField(placeholder: "정산하고자 하는 항목을 입력하세요", charLimit: 20, text: $paymentTitle)
+                        .keyboardType(.default)
                     
                     Spacer()
-                    
-                    // 수정 전
-                    //                        NavigationLink(destination: AddCardIconView(paymentTitle: paymentTitle)) {
-                    //                            HStack{
-                    //                                Text("다음")
-                    //                                    .frame(width: 135, height: 50)
-                    //                                    .foregroundColor(.white)
-                    //                                    .background(paymentTitle.isEmpty ? .blue.opacity(0.3) : .blue)
-                    //                                    .cornerRadius(29)
-                    //                            }
-                    //                        }
-                    //                        .padding([.leading, .bottom, .trailing], 30)
-                    //                        .disabled(paymentTitle.isEmpty ? true : false)
                 }
             }
             VStack{
@@ -60,7 +47,6 @@ struct AddCardTitleView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
                     
                     NavigationLink(tag: "AddCardIconView",
                                    selection: $naviSelection,
@@ -73,7 +59,12 @@ struct AddCardTitleView: View {
                     }
                 }
                 .padding(.horizontal, 30)
+                .padding(.bottom)
             }
+            
+        }
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {

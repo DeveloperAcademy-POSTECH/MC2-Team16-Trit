@@ -11,6 +11,7 @@ struct AddSpaceView: View {
     @Binding var naviSelection: String?
     @State var spaceName: String = ""
     @State private var pageSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
+    @FocusState private var isFocused: Bool
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
@@ -27,6 +28,7 @@ struct AddSpaceView: View {
             VStack(spacing: 20) {
                 
                 UnderlineTextField(placeholder: "스페이스 이름을 입력하세요", charLimit: 20, text: $spaceName)
+                    .keyboardType(.default)
                 
                 Spacer()
                 
@@ -42,6 +44,7 @@ struct AddSpaceView: View {
                         SmallButton(text: "완료") {
                             self.pageSelection = "SpaceMainView"
                         }
+                        .padding(.bottom)
                         .padding(.horizontal)
                         .disabled(spaceName.isEmpty ? true : false)
                    
@@ -50,6 +53,9 @@ struct AddSpaceView: View {
             }
             
         }
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
@@ -57,6 +63,7 @@ struct AddSpaceView: View {
                     self.mode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
+                        .foregroundColor(.black)
                         .padding(.horizontal)
                 }
                 .buttonStyle(.plain)

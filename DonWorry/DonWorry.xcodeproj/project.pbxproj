@@ -19,6 +19,7 @@
 		2CC211B2284C6A9E0009F785 /* KakaoTalkLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B1284C6A9E0009F785 /* KakaoTalkLoginButton.swift */; };
 		2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B3284C6BB60009F785 /* GoogleLoginButton.swift */; };
 		2CC211B7284CE9880009F785 /* TermSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B6284CE9880009F785 /* TermSheetView.swift */; };
+		2CC68CB5285783CE0027DAED /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC68CB4285783CE0027DAED /* UIApplicationExtension.swift */; };
 		2CF61B3A2849AF97004C3768 /* SpaceEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B392849AF97004C3768 /* SpaceEmptyView.swift */; };
 		2CF61B3D2849B00B004C3768 /* AddCardTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B3C2849B00B004C3768 /* AddCardTitleView.swift */; };
 		2CF61B3F2849B18A004C3768 /* AddCardIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B3E2849B18A004C3768 /* AddCardIconView.swift */; };
@@ -127,6 +128,7 @@
 		2CC211B1284C6A9E0009F785 /* KakaoTalkLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoTalkLoginButton.swift; sourceTree = "<group>"; };
 		2CC211B3284C6BB60009F785 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
 		2CC211B6284CE9880009F785 /* TermSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermSheetView.swift; sourceTree = "<group>"; };
+		2CC68CB4285783CE0027DAED /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		2CF61B392849AF97004C3768 /* SpaceEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceEmptyView.swift; sourceTree = "<group>"; };
 		2CF61B3C2849B00B004C3768 /* AddCardTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardTitleView.swift; sourceTree = "<group>"; };
 		2CF61B3E2849B18A004C3768 /* AddCardIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardIconView.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				79BF17A7284D0209003A2A68 /* TextExtension.swift */,
 				3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */,
 				A7133C2F28503674006ED054 /* ViewExtension.swift */,
+				2CC68CB4285783CE0027DAED /* UIApplicationExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -834,6 +837,7 @@
 				2CC211B0284C6A690009F785 /* AppleLoginButton.swift in Sources */,
 				79BF17A2284D002B003A2A68 /* SpaceMainBottomButton.swift in Sources */,
 				A704FC3A284DF28900AC9736 /* Alert.swift in Sources */,
+				2CC68CB5285783CE0027DAED /* UIApplicationExtension.swift in Sources */,
 				A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */,
 				4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */,
 				2C3C3EA32854946700B29181 /* UserStateViewModel.swift in Sources */,
@@ -1020,9 +1024,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-
 				DEVELOPMENT_TEAM = 9QKHF269WJ;
-
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DonWorry/Info.plist;
@@ -1053,7 +1055,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-
 				DEVELOPMENT_TEAM = 9QKHF269WJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

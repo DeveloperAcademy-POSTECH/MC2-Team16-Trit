@@ -9,10 +9,23 @@ import SwiftUI
 
 struct SpaceMainView: View {
     
+    func createTopToastMessage() -> some View {
+        Text("복사했습니다!")
+            .font(.system(size: 12, weight: .bold))
+            .foregroundColor(.white)
+            .multilineTextAlignment(.center)
+            .frame(width: 110, height: 40)
+            .background(Color.grayC5)
+            .cornerRadius(20)
+    }
+    
+    
     let leftPaddingSize: CGFloat = 25.0
     
     @Binding var naviSelection: String? // HomeView로 돌아가기 위한 변수입니다.
     @State private var mainSelection: String? = nil // SpaceMainView로 돌아오기 위한 변수입니다.
+    
+    @State var isPopUpPresented = false
     
     @State var isShowingDialog = false
     @State var isShowingAlert = false
@@ -30,10 +43,11 @@ struct SpaceMainView: View {
         
         ZStack(alignment: .bottom) {
             VStack {
+                
+                SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
+                    .padding(.vertical, 21)
+                
                 ScrollView {
-                    SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID)
-                        .padding(.vertical, 21)
-
                     LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                         ForEach(0..<5) { index in
                             if index == 4 {
@@ -45,11 +59,10 @@ struct SpaceMainView: View {
                                     self.mainSelection = "AddCardTitleView"
                                 }) .padding(.bottom, 70)
                             } else {
-                                SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "42910090307", index: index, clicked: {
-                                    isModalPresented = true
-                                    print("MainCard FUNCTION")
-                                    
-                                }, isParticipated: false, date: "05/05", paymentIcon: Image("chicken-leg"))
+                                SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "42910090307", index: index, isParticipated: false, date: "05/05", paymentIcon: Image("chicken-leg"))
+                                    .onTapGesture {
+                                        isModalPresented = true
+                                    }
                             }
                         }
                     }
@@ -57,7 +70,7 @@ struct SpaceMainView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             
-            HStack {
+            HStack(spacing: 23) {
                 SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
                     isShareSheetPresented.toggle()
                     print("링크 공유 FUNCTION")
@@ -67,7 +80,8 @@ struct SpaceMainView: View {
                     print("참석 확인 FUNCTION")
                 }
             }
-//            .padding(.horizontal, 30.0)
+            .padding(.bottom)
+            .padding(.horizontal, 30.0)
             
             NavigationLink(isActive: $isCheckOutAttendanceViewOpened) {
                 CheckAttendanceView()
@@ -146,6 +160,9 @@ struct SpaceMainView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
+        .popup(isPresented: $isPopUpPresented, type: .floater(verticalPadding: -40), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
+            createTopToastMessage()
+        }).zIndex(0)
     }
 }
 

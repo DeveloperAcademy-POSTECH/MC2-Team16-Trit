@@ -24,14 +24,12 @@ struct SpaceMainBottomButton: View {
               
                 }
             }
-            .applyButtonCustomModifier(backgroundColor: backgroundColor)
-        }
-        )
-        .contentShape(Capsule())
-        .frame(width: 150, height: 20, alignment: .center)
-        .foregroundColor(Color.white)
-        .font(.system(size: 15, weight: .bold))
-        .padding()
+            .frame(height: 20, alignment: .center)
+            .foregroundColor(Color.white)
+            .font(.system(size: 15, weight: .bold))
+            .cornerRadius(50)
+            .applyButtonCustomModifier(backgroundColor: backgroundColor, strokeLineWith: 0)
+        })
     }
 }
 

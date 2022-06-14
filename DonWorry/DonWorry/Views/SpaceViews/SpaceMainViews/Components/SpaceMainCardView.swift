@@ -14,7 +14,6 @@ struct SpaceMainCardView: View {
     var color: Color
     var account: String
     var index: Int = 0
-    var clicked: () -> Void
     var isParticipated = false
     let date: String
     var paymentIcon: Image?
@@ -46,7 +45,7 @@ struct SpaceMainCardView: View {
                             Spacer()
                             HStack(spacing: 8) {
                                 paymentIcon.map {
-                                    $0.applyRectangleImageModifier(width: 27, height: 23, background: .grayEE, innerPadding: 8)
+                                    $0.applyRectangleImageModifier(width: 27, height: 27, background: .grayEE, innerPadding: 8)
                                         .padding(.leading, 25)
                                 }
                                 Text("총 135,800원(4명)")
@@ -102,16 +101,11 @@ struct SpaceMainCardView: View {
                     }
                 }
         }
-        .onTapGesture {
-            clicked()
-        }
     }
 }
 
 struct SpaceMainCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceMainCardView(bank: "qwqwqwqwqwqw", color: .blueMain, account: "sdsd", clicked: {
-            print("f")
-        }, date: "Sdsd",paymentIcon: Image("chicken-leg"))
+        SpaceMainCardView(bank: "qwqwqwqwqwqw", color: .blueMain, account: "sdsd", date: "Sdsd",paymentIcon: Image("chicken-leg"))
     }
 }

@@ -16,7 +16,7 @@ struct SmallButton: View {
             HStack {
                 Text(text)
             }
-            .frame(width: 100, height: 20, alignment: .center)
+            .frame(width: 330, height: 20, alignment: .center)
             .foregroundColor(Color.white)
             .font(.system(size: 15, weight: .bold))
             .padding()
@@ -26,7 +26,6 @@ struct SmallButton: View {
     }
 }
 
-/*
 struct SmallButton_Previews: PreviewProvider {
     static var previews: some View {
         SmallButton(
@@ -36,4 +35,3 @@ struct SmallButton_Previews: PreviewProvider {
         }
     }
 }
- */

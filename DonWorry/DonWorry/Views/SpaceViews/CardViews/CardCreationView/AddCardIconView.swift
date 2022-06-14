@@ -64,15 +64,14 @@ struct AddCardIconView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
-                    
                     NavigationLink(tag: "AddCardPriceView", selection: $naviSelection, destination: { AddCardPriceView(mainSelection: $mainSelection, paymentTitle: paymentTitle, paymentIcon: paymentIcon) }) { EmptyView() }
                         .isDetailLink(false)
                     SmallButton(text: "다음") {
                         self.naviSelection = "AddCardPriceView"
+                        self.paymentIcon = Image(selectedItem)
                     }
+                    .padding(.bottom)
                 }
-                .padding(.horizontal, 30)
             }
         }
         .navigationBarBackButtonHidden(true)
