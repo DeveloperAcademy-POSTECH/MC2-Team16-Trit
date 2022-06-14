@@ -22,7 +22,7 @@ class FireStoreViewModel: ObservableObject {
         let db = Firestore.firestore() // FireBase 데이터 베이스를 reference
 
         // collection에 접근
-        db.collection("User").document(userToDelete.uid).delete { error in
+        db.collection("User").document(userToDelete.id).delete { error in
             if error == nil {
 
                 DispatchQueue.main.async {
@@ -93,14 +93,18 @@ class FireStoreViewModel: ObservableObject {
     func updateUserName(userToUpdate: User, newName: String?) {
 
         let db = Firestore.firestore()
-
-        db.collection("User").document(userToUpdate.uid).setData(["userName" : newName ?? ""], merge: true) { error in
-
-            if error == nil {
-                self.getUserData()
-            } else {
+        
+        if let id = userToUpdate.id {
+            let docRef = db.collection("users").document(id)
+            do {
+              try docRef.setData(["userName" : newName ?? ""], merge: true)
+            }
+            catch {
                 print("유저 정보 업데이트 실패")
             }
         }
     }
+    
+    
+    
 }

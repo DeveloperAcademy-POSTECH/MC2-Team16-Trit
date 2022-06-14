@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 struct UserService {
     
-    func fetchUser(withUid uid: String, completion: @escaping(User) -> Void){
+    func fetchUser(withUid uid: String, completion: @escaping(User) -> Void) {
         print("DEBUG: Fetch user info... ")
         Firestore.firestore().collection("users")
             .document(uid)
@@ -27,5 +27,4 @@ struct UserService {
                 
             }
     }
-     
 }

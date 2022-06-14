@@ -27,7 +27,6 @@
 		3E20872F284DA5F3003A4CFD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 3E20872E284DA5F3003A4CFD /* GoogleSignIn */; };
 		3E208731284DA5F3003A4CFD /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3E208730284DA5F3003A4CFD /* GoogleSignInSwift */; };
 		3E208738284F6C98003A4CFD /* AppleLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */; };
-		3E20873A284F8A9D003A4CFD /* SignInViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */; };
 		3E39E8902853747100D8E44C /* UserVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E88F2853747100D8E44C /* UserVIewModel.swift */; };
 		3E39E89528537DB500D8E44C /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89428537DB500D8E44C /* AccountViewModel.swift */; };
 		3E39E89728539A1F00D8E44C /* SpaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89628539A1F00D8E44C /* SpaceViewModel.swift */; };
@@ -140,7 +139,6 @@
 		3E208734284DC6F5003A4CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3E208736284E65AD003A4CFD /* DonWorry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DonWorry.entitlements; sourceTree = "<group>"; };
 		3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginViewModel.swift; sourceTree = "<group>"; };
-		3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewExtension.swift; sourceTree = "<group>"; };
 		3E39E88F2853747100D8E44C /* UserVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVIewModel.swift; sourceTree = "<group>"; };
 		3E39E89428537DB500D8E44C /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		3E39E89628539A1F00D8E44C /* SpaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewModel.swift; sourceTree = "<group>"; };
@@ -538,7 +536,6 @@
 				A74479A428476AE30083BBF4 /* ColorExtension.swift */,
 				79BF179C284CFF83003A2A68 /* ImageExtension.swift */,
 				79BF17A7284D0209003A2A68 /* TextExtension.swift */,
-				3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */,
 				A7133C2F28503674006ED054 /* ViewExtension.swift */,
 				A7C0529B28560D45007072EE /* UIApplicationExtention.swift */,
 			);
@@ -879,7 +876,6 @@
 				2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */,
 				2CC211822849F0FA0009F785 /* SignInView.swift in Sources */,
 				2CF61B3F2849B18A004C3768 /* AddCardIconView.swift in Sources */,
-				3E20873A284F8A9D003A4CFD /* SignInViewExtension.swift in Sources */,
 				A74479B32847BE170083BBF4 /* XSmallButton.swift in Sources */,
 				2CC21192284AF14C0009F785 /* AccountTextField.swift in Sources */,
 				3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */,

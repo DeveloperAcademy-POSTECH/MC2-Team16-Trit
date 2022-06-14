@@ -40,6 +40,8 @@ extension FireStoreViewModel {
         }
     }
     
+//    db.collection('books').where(firebase.firestore.FieldPath.documentId(), '==', 'fK3ddutEpD2qQqRMXNW5').get()
+    
     // 스페이스 하나 불러오기
     func getSpaceData(SpaceID: String) {
         let db = Firestore.firestore()

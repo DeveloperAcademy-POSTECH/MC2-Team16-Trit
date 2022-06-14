@@ -9,7 +9,20 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
-extension FireStoreViewModel {
+class FirebaseViewModel: ObservableObject {
+    
+    @Published var account: Account
+    @Published var errorMessage: String?
+    
+    private var db = Firestore.firestore()
+    
+    
+    init() {
+        userSession = Auth.auth().currentUser
+        self.fetchUser()
+//        print("현재로그인된 userSession ID\(userSession?.uid)")
+    }
+    
     
     // Read Account
     func getAccountDatas() {
@@ -76,7 +89,7 @@ extension FireStoreViewModel {
         let db = Firestore.firestore() // FireBase 데이터 베이스를 reference
         
         // collection에 접근
-        db.collection("User").document(userToDelete.uid).delete { error in
+        db.collection("User").document(userToDelete.id).delete { error in
             if error == nil {
 
                 DispatchQueue.main.async {

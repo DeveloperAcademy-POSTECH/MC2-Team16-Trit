@@ -19,14 +19,14 @@ struct SpaceMainView: View {
     @State var isEditSpaceNaveViewOpened = false
     
     // DATA Model 이후
-    @State var currentUser = users[0]
+//    @State var currentUser
     @State var spaceName = "MC2 첫 회식"
     @Binding var spaceID: String
     
     var body: some View {
         
         if isHomeView == true {
-            HomeView(currentUser: currentUser)
+            HomeView()
         } else {
             NavigationView {
                 ZStack(alignment: .bottom) {

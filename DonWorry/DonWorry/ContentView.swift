@@ -10,20 +10,18 @@ import SwiftUI
 struct ContentView: View {
     @State var isClicked: Bool = false
     @State var selectedTag: String?
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var viewModel : BaseViewModel
     
     var body: some View {
-        
-        Group {
-            // no user logged in
-            if authViewModel.userSession == nil {
-                SignInView()
-            } else {
-                // have a logged in user
-                HomeView(currentUser: authViewModel.currentUser ?? users[0])
-            }
+
+        // no user logged in
+        if viewModel.authViewModel.userSession == nil {
+            SignInView()
+        } else {
+            // have a logged in user
+            HomeView()
         }
-        
+
     }
 }
 
