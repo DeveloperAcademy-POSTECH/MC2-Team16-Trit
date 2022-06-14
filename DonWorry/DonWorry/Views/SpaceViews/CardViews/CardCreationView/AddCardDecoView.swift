@@ -42,50 +42,87 @@ struct AddCardDecoView: View {
     @State private var date = Date()
     @State var clickedIndex = 0
     @FocusState private var isFocused: Bool
+    @State var focusedClicked: Bool = false
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     var paymentIcon: Image?
     
     var body: some View {
         VStack{
             ZStack {
-                ScrollView {
-                    VStack(spacing: 20) {
-                        PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
-                                        account: $account,
-                                        color: $color,
-                                        date: $date,
-                                        image: $images,
-                                        decoCase: $decoCase)
-                        .padding(.horizontal, 20)
+                ScrollViewReader { proxy in
+                    ScrollView {
                         VStack(spacing: 20) {
-                            CustomPicker(selected: $decoCase)
-                                .padding(.horizontal, 20)
-                            Divider()
-                                .padding(.horizontal, 20)
-                                .frame(height: 0)
-                                .background(Color.grayEE)
-                                switch decoCase {
-                                case .색상변경:
-                                    colorBox
-                                        .padding(.horizontal, 30)
-                                case .날짜선택:
-                                    dateBox
-                                        .padding(.horizontal, 30)
-                                case .계좌번호:
-                                    accountBox
-                                        .padding(.horizontal, 30)
-                                case .첨부파일:
-                                    imageBox
-                                        .padding(.horizontal, 30)
-                                }
+                            PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
+                                            account: $account,
+                                            color: $color,
+                                            date: $date,
+                                            image: $images,
+                                            decoCase: $decoCase)
+                            .id(1)
+                            .padding(.horizontal, 20)
+                            VStack(spacing: 20) {
+                                CustomPicker(selected: $decoCase)
+                                    .padding(.horizontal, 20)
+                                    .id(2)
+                                Divider()
+                                    .padding(.horizontal, 20)
+                                    .frame(height: 0)
+                                    .background(Color.grayEE)
+                                    
+                                    switch decoCase {
+                                    case .색상변경:
+                                        colorBox
+                                            .padding(.horizontal, 30)
+                                    case .날짜선택:
+                                        dateBox
+                                            .padding(.horizontal, 30)
+                                    case .계좌번호:
+                                        accountBox
+                                            .padding(.horizontal, 30)
+                                            .focused($isFocused)
+                                            .onChange(of: isFocused) { focus in
+                                                if focus {
+                                                    print("in_")
+                                                    
+                                                    withAnimation(.easeInOut(duration: 1)) {
+                                                        focusedClicked = true
+                                                        proxy.scrollTo(2, anchor: .top)
+                                                    }
+                                                } else {
+                                                    withAnimation(.easeInOut(duration: 1)) {
+                                                        print("in_out")
+                                                        focusedClicked = false
+                                                        proxy.scrollTo(1, anchor: .top)
+                                                    }
+                                                }
+                                            }
+                                    case .첨부파일:
+                                        imageBox
+                                            .padding(.horizontal, 30)
+                                    }
                                 Spacer()
+                                
+                                
+                            }
+                            .frame(maxWidth: 380)
+                            .frame(maxHeight: 410)
+//                            .background(.red)
+        //                    .padding(.bottom, 20)
+                            
+                            
+                            Spacer()
+
+                            
                         }
-                        .frame(maxWidth: 380)
-                        .frame(maxHeight: 410)
-    //                    .padding(.bottom, 20)
                         Spacer()
+                            .frame(height: focusedClicked ? 100 : nil)
+                    
+//
                     }
-                }
+                    
+//                    .background(.blue)
+            }
+//                .background(.red)
                 //                    .padding(.bottom, 20)
                 Spacer()
                 
@@ -96,6 +133,7 @@ struct AddCardDecoView: View {
                     }
                     .padding(.bottom)
                 }
+//                .ignoresSafeArea(.keyboard)
             }
         }
         .onAppear {
@@ -164,9 +202,13 @@ struct AddCardDecoView: View {
         VStack {
             UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: $holder)
                 .keyboardType(.default)
+                
             AccountTextField(account: $account, bank: $bank)
                 .keyboardType(.decimalPad)
+                
         }
+        
+        
         
         //        TextField("계좌번호를 입력해주세요.", text: $account)
         //            .font(.title3)
@@ -305,7 +347,7 @@ struct CustomPicker: View {
 struct AddCardDecoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddCardDecoView(mainSelection: .constant(""), paymentIcon: Image("chicken-leg"))
+            AddCardDecoView(mainSelection: .constant(""), focusedClicked: false, paymentIcon: Image("chicken-leg"))
         }
     }
 }

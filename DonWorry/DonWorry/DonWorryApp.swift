@@ -20,9 +20,12 @@ struct DonWorryApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ApplicationSwitcher()
+                AddCardDecoView(mainSelection: .constant(""))
             }
-            .environmentObject(userStateViewModel)
+//            NavigationView {
+//                ApplicationSwitcher()
+//            }
+//            .environmentObject(userStateViewModel)
         }
     }
 }
