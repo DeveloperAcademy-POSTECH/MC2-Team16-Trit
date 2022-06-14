@@ -74,23 +74,13 @@ struct TermView: View {
                 }
             }
             
-            Button {
+            SmallButton(text: "확인") {
                 showSheet = true
-                
-                // Todo : 회원가입 완료 후 메인 페이지로 넘어가기
-                
-            } label: {
-                HStack {
-                    Text("확인")
-                }
-                .frame(width: 100, height: 20, alignment: .center)
-                .foregroundColor(.white)
-                .font(.system(size: 15, weight: .bold))
-                .padding()
-                .background(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? Color.blueMain : Color.blueA4C6FF )
-                .cornerRadius(50)
+                    
+//                Todo : 회원가입 완료 후 메인 페이지로 넘어가기
             }
-//            .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
+            .padding(.bottom)
+            .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
         }
         .padding(.horizontal, 15)
         .ignoresSafeArea(.keyboard)
@@ -102,6 +92,7 @@ struct TermView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.black)
+                        .padding(.horizontal)
                 }
             }
             ToolbarItem(placement: .confirmationAction) {

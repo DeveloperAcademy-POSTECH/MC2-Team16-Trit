@@ -62,6 +62,7 @@ struct AddSpaceView: View {
                     self.mode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
+                        .foregroundColor(.black)
                         .padding(.horizontal)
                 }
                 .buttonStyle(.plain)

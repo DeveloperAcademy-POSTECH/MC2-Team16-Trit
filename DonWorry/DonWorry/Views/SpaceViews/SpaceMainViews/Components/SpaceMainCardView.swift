@@ -14,7 +14,6 @@ struct SpaceMainCardView: View {
     var color: Color
     var account: String
     var index: Int = 0
-//    var clicked: () -> Void
     var isParticipated = false
     let date: String
     var paymentIcon: Image?
@@ -102,9 +101,6 @@ struct SpaceMainCardView: View {
                     }
                 }
         }
-//        .onTapGesture {
-//            clicked()
-//        }
     }
 }
 

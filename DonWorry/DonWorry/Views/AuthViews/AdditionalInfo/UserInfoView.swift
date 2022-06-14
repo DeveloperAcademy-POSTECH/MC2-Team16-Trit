@@ -39,6 +39,17 @@ struct UserInfoView: View {
                             .focused($isFocused)
                     }
                     
+                    // 공통 텍스트필드 입력 컴포넌트(예금주명)
+                    VStack(alignment: .leading) {
+                        Text("예금주명")
+                            .font(.system(size: 17))
+                            .fontWeight(.semibold)
+                        
+                        UnderlineTextField(placeholder: "예금주명을 입력해주세요", charLimit: 10, text: $holder)
+                            .focused($isFocused)
+                    }
+                 
+                    
                     VStack(alignment: .leading) {
                         Text("계좌번호")
                             .font(.system(size: 17))
@@ -52,17 +63,6 @@ struct UserInfoView: View {
                             .foregroundColor(Color.grayC5)
                         
                     }
-                    
-                    // 공통 텍스트필드 입력 컴포넌트(예금주명)
-                    VStack(alignment: .leading) {
-                        Text("예금주명")
-                            .font(.system(size: 17))
-                            .fontWeight(.semibold)
-                        
-                        UnderlineTextField(placeholder: "예금주명을 입력해주세요", charLimit: 10, text: $holder)
-                            .focused($isFocused)
-                    }
-                    
                 }
             }
             
@@ -85,6 +85,7 @@ struct UserInfoView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.black)
+                        .padding(.horizontal)
                 }
             }
         }

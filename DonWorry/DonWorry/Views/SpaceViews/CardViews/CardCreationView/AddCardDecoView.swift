@@ -118,7 +118,6 @@ struct AddCardDecoView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        
         //        .navigationViewStyle(StackNavigationViewStyle())
     }
     

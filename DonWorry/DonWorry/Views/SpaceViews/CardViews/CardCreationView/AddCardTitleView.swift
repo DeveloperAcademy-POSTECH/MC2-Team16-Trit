@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddCardTitleView: View {
-    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     @State private var paymentTitle: String = ""

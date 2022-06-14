@@ -47,8 +47,8 @@ struct EditSpaceNameView: View {
                         mode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "chevron.backward")
-                            .font(.system(size: 25, weight: .bold))
                             .foregroundColor(.black)
+                            .padding(.horizontal)
                         
                     }
                 }
