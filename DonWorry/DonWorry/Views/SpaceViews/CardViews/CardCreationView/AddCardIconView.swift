@@ -69,8 +69,8 @@ struct AddCardIconView: View {
                     SmallButton(text: "다음") {
                         self.naviSelection = "AddCardPriceView"
                     }
+                    .padding(.bottom)
                 }
-//                .padding(.horizontal, 30)
             }
         }
         .navigationBarBackButtonHidden(true)

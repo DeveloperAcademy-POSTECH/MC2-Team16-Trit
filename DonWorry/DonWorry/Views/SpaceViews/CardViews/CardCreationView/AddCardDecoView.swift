@@ -28,7 +28,6 @@ enum DecoCase: String, Identifiable, CaseIterable {
 struct AddCardDecoView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     
     //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
@@ -47,44 +46,43 @@ struct AddCardDecoView: View {
     var body: some View {
         
             ZStack {
-                VStack(spacing: 20) {
-                    
-                    PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
-                                    account: $account,
-                                    color: $color,
-                                    date: $date,
-                                    image: $images,
-                                    decoCase: $decoCase)
-                    .padding(.horizontal, 20)
+                ScrollView {
                     VStack(spacing: 20) {
-                        CustomPicker(selected: $decoCase)
-                            .padding(.horizontal, 20)
-                        Divider()
-                            .padding(.horizontal, 20)
-                            .frame(height: 0)
-                            .background(Color.grayEE)
-                        ZStack {
-                            switch decoCase {
-                            case .색상변경:
-                                colorBox
-                                    .padding(.horizontal, 30)
-                            case .날짜선택:
-                                dateBox
-                                    .padding(.horizontal, 30)
-                            case .계좌번호:
-                                accountBox
-                                    .padding(.horizontal, 30)
-                            case .첨부파일:
-                                imageBox
-                                    .padding(.horizontal, 30)
-                            }
+                        PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
+                                        account: $account,
+                                        color: $color,
+                                        date: $date,
+                                        image: $images,
+                                        decoCase: $decoCase)
+                        .padding(.horizontal, 20)
+                        VStack(spacing: 20) {
+                            CustomPicker(selected: $decoCase)
+                                .padding(.horizontal, 20)
+                            Divider()
+                                .padding(.horizontal, 20)
+                                .frame(height: 0)
+                                .background(Color.grayEE)
+                                switch decoCase {
+                                case .색상변경:
+                                    colorBox
+                                        .padding(.horizontal, 30)
+                                case .날짜선택:
+                                    dateBox
+                                        .padding(.horizontal, 30)
+                                case .계좌번호:
+                                    accountBox
+                                        .padding(.horizontal, 30)
+                                case .첨부파일:
+                                    imageBox
+                                        .padding(.horizontal, 30)
+                                }
+                                Spacer()
                         }
+                        .frame(maxWidth: 380)
+                        .frame(maxHeight: 410)
+    //                    .padding(.bottom, 20)
                         Spacer()
                     }
-                    .frame(maxWidth: 380)
-                    .frame(maxHeight: 410)
-//                    .padding(.bottom, 20)
-                    Spacer()
                 }
                 VStack {
                     Spacer()
@@ -97,6 +95,7 @@ struct AddCardDecoView: View {
                         print("후 : \(mainSelection)")
                     }
                 }
+                .padding(.bottom)
             }
             .navigationBarBackButtonHidden(true)
             .toolbar {
