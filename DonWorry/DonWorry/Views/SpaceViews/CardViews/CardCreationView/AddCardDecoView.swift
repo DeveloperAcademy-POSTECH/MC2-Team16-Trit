@@ -82,7 +82,7 @@ struct AddCardDecoView: View {
                                             .focused($isFocused)
                                             .onChange(of: isFocused) { focus in
                                                 if focus {
-                                                    withAnimation  {
+                                                    withAnimation {
                                                         proxy.scrollTo(2, anchor: .top)
                                                     }
                                                 } else {
@@ -316,8 +316,7 @@ struct CustomPicker: View {
 struct AddCardDecoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddCardDecoView(mainSelection: .constant(""),  paymentIcon: Image("chicken-leg"))
+            AddCardDecoView(mainSelection: .constant(""), paymentIcon: Image("chicken-leg"))
         }
     }
 }
-
