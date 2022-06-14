@@ -23,6 +23,7 @@ struct SpaceEmptyView: View {
     @State var currentUser = user4
     @State var spaceName = "MC2 첫 회식"
     @Binding var spaceID: String
+    @Binding var isPopUpPresented: Bool
     
     var body: some View {
         
@@ -33,7 +34,7 @@ struct SpaceEmptyView: View {
                 ZStack(alignment: .bottom) {
                     VStack {
                         ScrollView {
-                            SpaceTopView(mainSelection: .constant(""), spaceID: $spaceID)
+                            SpaceTopView(mainSelection: .constant(""), spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
                                 .padding(.vertical, 21)
                         }
                     }
@@ -242,8 +243,8 @@ struct SpaceEmptyView: View {
 //    }
 }
 
-struct SpaceEmptyView_Previews: PreviewProvider {
-    static var previews: some View {
-        SpaceEmptyView(spaceID: .constant("asdasd"))
-    }
-}
+//struct SpaceEmptyView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SpaceEmptyView(spaceID: .constant("asdasd"))
+//    }
+//}

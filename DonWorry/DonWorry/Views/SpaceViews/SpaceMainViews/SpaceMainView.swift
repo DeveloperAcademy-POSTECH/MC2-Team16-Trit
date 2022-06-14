@@ -9,10 +9,23 @@ import SwiftUI
 
 struct SpaceMainView: View {
     
+    func createTopToastMessage() -> some View {
+        Text("복사했습니다!")
+            .font(.system(size: 12, weight: .bold))
+            .foregroundColor(.white)
+            .multilineTextAlignment(.center)
+            .frame(width: 110, height: 40)
+            .background(Color.grayC5)
+            .cornerRadius(20)
+    }
+    
+    
     let leftPaddingSize: CGFloat = 25.0
     
     @Binding var naviSelection: String? // HomeView로 돌아가기 위한 변수입니다.
     @State private var mainSelection: String? = nil // SpaceMainView로 돌아오기 위한 변수입니다.
+    
+    @State var isPopUpPresented = false
     
     @State var isShowingDialog = false
     @State var isShowingAlert = false
@@ -31,13 +44,10 @@ struct SpaceMainView: View {
         ZStack(alignment: .bottom) {
             VStack {
                 
-                SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID)
+                SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
                     .padding(.vertical, 21)
                 
                 ScrollView {
-                    SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID)
-                        .padding(.vertical, 21)
-                    
                     LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                         ForEach(0..<5) { index in
                             if index == 4 {
@@ -150,6 +160,9 @@ struct SpaceMainView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
+        .popup(isPresented: $isPopUpPresented, type: .floater(verticalPadding: -40), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
+            createTopToastMessage()
+        }).zIndex(0)
     }
 }
 
