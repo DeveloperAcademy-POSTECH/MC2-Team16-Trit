@@ -45,7 +45,8 @@ struct AddCardDecoView: View {
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     var paymentIcon: Image?
     
-    var body: some View {        
+    var body: some View {
+        VStack {
             ZStack {
                 ScrollView {
                     VStack(spacing: 20) {
@@ -63,25 +64,25 @@ struct AddCardDecoView: View {
                                 .padding(.horizontal, 20)
                                 .frame(height: 0)
                                 .background(Color.grayEE)
-                                switch decoCase {
-                                case .색상변경:
-                                    colorBox
-                                        .padding(.horizontal, 30)
-                                case .날짜선택:
-                                    dateBox
-                                        .padding(.horizontal, 30)
-                                case .계좌번호:
-                                    accountBox
-                                        .padding(.horizontal, 30)
-                                case .첨부파일:
-                                    imageBox
-                                        .padding(.horizontal, 30)
-                                }
-                                Spacer()
+                            switch decoCase {
+                            case .색상변경:
+                                colorBox
+                                    .padding(.horizontal, 30)
+                            case .날짜선택:
+                                dateBox
+                                    .padding(.horizontal, 30)
+                            case .계좌번호:
+                                accountBox
+                                    .padding(.horizontal, 30)
+                            case .첨부파일:
+                                imageBox
+                                    .padding(.horizontal, 30)
+                            }
+                            Spacer()
                         }
                         .frame(maxWidth: 380)
                         .frame(maxHeight: 410)
-    //                    .padding(.bottom, 20)
+                        //                    .padding(.bottom, 20)
                         Spacer()
                     }
                 }
@@ -231,6 +232,7 @@ struct AddCardDecoView: View {
                             isPresented: $showPhotoPicker)
             }
     }
+    
 }
 
 extension AddCardDecoView {
@@ -309,4 +311,3 @@ struct AddCardDecoView_Previews: PreviewProvider {
         }
     }
 }
-
