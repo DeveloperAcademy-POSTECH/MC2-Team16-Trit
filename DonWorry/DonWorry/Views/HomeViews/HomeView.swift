@@ -17,13 +17,14 @@ struct HomeView: View {
     @State private var takerDonCardSheetState = false
     
     @State private var naviSelection: String? = nil // SpaceMainView에서 HomeView로 한번에 dismiss시키기 위한 변수
+    @FocusState private var isFocused: Bool
     
     var currentUser: User
     
     var body: some View {
         ZStack {
             VStack {
-                //profileView
+                // profileView
                 HStack {
                     HStack {
                         NavigationLink(destination: ProfileView(),
@@ -126,6 +127,9 @@ struct HomeView: View {
                 .padding(.bottom)
             }
         }
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
         .ignoresSafeArea(.keyboard)
         .navigationBarHidden(true)
         .slideOverCard(isPresented: $isPresented, onDismiss: {
@@ -141,6 +145,7 @@ struct HomeView: View {
                 VStack(spacing: 25) {
                     Text("스페이스ID로 정산에 참가하기").font(.system(size: 20, weight: .bold))
                     UnderlineTextField(placeholder: "스페이스 ID를 입력해주세요", charLimit: 20, text: $spaceID)
+                        .keyboardType(.asciiCapable)
                 }
                 
                 LargeButton(text: "스페이스 참가하기") {

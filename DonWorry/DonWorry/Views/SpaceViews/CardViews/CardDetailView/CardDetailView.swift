@@ -163,7 +163,6 @@ struct CardDetailView: View {
                                         .fill(index >= images.count && isEditMode ? Color.grayBC : Color.clear)
                                         .frame(width: 100, height: 100)
                                         
-                                        
                                     // 사진 하나 있어도 두개보여준다. 에딧 모드일때만.
                                         .overlay(
                                             ZStack(alignment: .topTrailing) {

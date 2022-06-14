@@ -35,6 +35,9 @@ struct SpaceMainView: View {
                     .padding(.vertical, 21)
                 
                 ScrollView {
+                    SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID)
+                        .padding(.vertical, 21)
+                    
                     LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                         ForEach(0..<5) { index in
                             if index == 4 {
@@ -46,11 +49,10 @@ struct SpaceMainView: View {
                                     self.mainSelection = "AddCardTitleView"
                                 }) .padding(.bottom, 70)
                             } else {
-                                SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "42910090307", index: index, clicked: {
-                                    isModalPresented = true
-                                    print("MainCard FUNCTION")
-                                    
-                                }, isParticipated: false, date: "05/05", paymentIcon: Image("chicken-leg"))
+                                SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "42910090307", index: index, isParticipated: false, date: "05/05", paymentIcon: Image("chicken-leg"))
+                                    .onTapGesture {
+                                        isModalPresented = true
+                                    }
                             }
                         }
                     }

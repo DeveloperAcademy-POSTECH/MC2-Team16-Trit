@@ -14,7 +14,6 @@ struct SpaceMainCardView: View {
     var color: Color
     var account: String
     var index: Int = 0
-    var clicked: () -> Void
     var isParticipated = false
     let date: String
     var paymentIcon: Image?
@@ -102,16 +101,11 @@ struct SpaceMainCardView: View {
                     }
                 }
         }
-        .onTapGesture {
-            clicked()
-        }
     }
 }
 
 struct SpaceMainCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceMainCardView(bank: "qwqwqwqwqwqw", color: .blueMain, account: "sdsd", clicked: {
-            print("f")
-        }, date: "Sdsd",paymentIcon: Image("chicken-leg"))
+        SpaceMainCardView(bank: "qwqwqwqwqwqw", color: .blueMain, account: "sdsd", date: "Sdsd",paymentIcon: Image("chicken-leg"))
     }
 }
