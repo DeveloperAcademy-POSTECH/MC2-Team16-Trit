@@ -20,6 +20,8 @@ struct GiverDonCardSheet: View {
             .cornerRadius(20)
     }
     
+    @State var isAccountPopupPresented = false
+    
     @Environment(\.presentationMode) var presentationmode
     
     let screenSize = UIScreen.main.bounds
@@ -88,7 +90,9 @@ struct GiverDonCardSheet: View {
                 .padding(.horizontal)
                 
                 HStack {
-                    HalfSheetMediumButton(text: "계좌번호 복사하기", clicked: {})
+                    HalfSheetMediumButton(text: "계좌번호 복사하기", clicked: {
+                        isAccountPopupPresented.toggle()
+                    })
                     HalfSheetSmallButton(text: "보냈어요!", clicked: {
                         self.presentationmode.wrappedValue.dismiss()
                     })
@@ -96,6 +100,10 @@ struct GiverDonCardSheet: View {
                 
             }
         }
+        //
+        .popup(isPresented: $isAccountPopupPresented, type: .floater(verticalPadding: 20), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
+            createTopToastMessage()
+        })
     }
 }
 
