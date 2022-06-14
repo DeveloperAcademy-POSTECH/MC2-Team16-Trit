@@ -45,7 +45,8 @@ struct AddCardDecoView: View {
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     var paymentIcon: Image?
     
-    var body: some View {        
+    var body: some View {
+        VStack{
             ZStack {
                 ScrollView {
                     VStack(spacing: 20) {
