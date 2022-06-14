@@ -10,6 +10,16 @@ import SwiftUI
 struct GiverDonCardSheet: View {
 //    var percentage: Double = 81.5
     
+    func createTopToastMessage() -> some View {
+        Text("복사했습니다!")
+            .font(.system(size: 12, weight: .bold))
+            .foregroundColor(.white)
+            .multilineTextAlignment(.center)
+            .frame(width: 110, height: 40)
+            .background(Color.grayC5)
+            .cornerRadius(20)
+    }
+    
     @Environment(\.presentationMode) var presentationmode
     
     let screenSize = UIScreen.main.bounds
