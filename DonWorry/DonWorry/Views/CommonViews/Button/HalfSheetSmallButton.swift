@@ -1,13 +1,13 @@
 //
-//  SmallButton.swift
+//  HalfSheetSmallButton.swift
 //  DonWorry
 //
-//  Created by Chanhee Jeong on 2022/06/01.
+//  Created by uiskim on 2022/06/09.
 //
 
 import SwiftUI
 
-struct SmallButton: View {
+struct HalfSheetSmallButton: View {
     var text: String
     var clicked: (() -> Void) /// use closure for callback
     
@@ -16,7 +16,7 @@ struct SmallButton: View {
             HStack {
                 Text(text)
             }
-            .frame(width: 330, height: 20, alignment: .center)
+            .frame(width: 100, height: 20, alignment: .center)
             .foregroundColor(Color.white)
             .font(.system(size: 15, weight: .bold))
             .padding()
@@ -26,12 +26,10 @@ struct SmallButton: View {
     }
 }
 
-struct SmallButton_Previews: PreviewProvider {
+/*
+struct HalfSheetSmallButton_Previews: PreviewProvider {
     static var previews: some View {
-        SmallButton(
-            text: "Small Button"
-        ) {
-            print("Clicked!")
-        }
+        HalfSheetSmallButton()
     }
 }
+*/

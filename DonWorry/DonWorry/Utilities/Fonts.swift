@@ -9,7 +9,7 @@ import SwiftUI
 
 // 사용예시
 // Text("sssd")
-//    .scaledFont(name: CustomFont.GmarketSansTTFBold, size: 17)
+//    .scaledFont(name: CustomFont.GmarketSansBold, size: 17)
 
 struct CustomFont {
     static let GmarketSansBold = "GmarketSansTTFBold"
