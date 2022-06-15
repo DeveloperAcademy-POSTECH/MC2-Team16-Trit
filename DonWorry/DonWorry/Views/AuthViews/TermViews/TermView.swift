@@ -109,8 +109,8 @@ struct TermView: View {
     }
 }
 
-struct TermView_Previews: PreviewProvider {
-    static var previews: some View {
-        TermView()
-    }
-}
+// struct TermView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         TermView()
+//     }
+// }

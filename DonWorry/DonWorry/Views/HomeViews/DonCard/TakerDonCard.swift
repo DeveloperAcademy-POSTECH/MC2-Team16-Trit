@@ -17,11 +17,11 @@ struct TakerDonCard: View {
     }
 }
 
-struct TakerCard_Previews: PreviewProvider {
-    static var previews: some View {
-        TakerDonCard(currentUser: user4)
-    }
-}
+// struct TakerCard_Previews: PreviewProvider {
+//     static var previews: some View {
+//         TakerDonCard(currentUser: user4)
+//     }
+// }
 
 func makeGiverList(users: [User], contentUser: User) -> [User] {
     var giverlist: [User] = []

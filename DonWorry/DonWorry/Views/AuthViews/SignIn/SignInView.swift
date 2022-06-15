@@ -105,8 +105,8 @@ func showAppleLogin() {
     controller.performRequests()
 }
 
-struct SignInView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInView()
-    }
-}
+// struct SignInView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         SignInView()
+//     }
+// }

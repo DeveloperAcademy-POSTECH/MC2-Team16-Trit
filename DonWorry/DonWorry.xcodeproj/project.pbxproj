@@ -67,6 +67,10 @@
 		A7133C2C285032DE006ED054 /* GrayLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C2B285032DE006ED054 /* GrayLine.swift */; };
 		A7133C3028503674006ED054 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C2F28503674006ED054 /* ViewExtension.swift */; };
 		A7133C3B2850B22C006ED054 /* AddSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C3A2850B22C006ED054 /* AddSpaceView.swift */; };
+		A7133C3D2850CD2F006ED054 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C3C2850CD2E006ED054 /* Space.swift */; };
+		A7133C3F2850CD8D006ED054 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C3E2850CD8D006ED054 /* Payment.swift */; };
+		A7133C422850D443006ED054 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C412850D443006ED054 /* Account.swift */; };
+		A7133C442850D456006ED054 /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C432850D456006ED054 /* Transfer.swift */; };
 		A744799D28476AC80083BBF4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744799C28476AC80083BBF4 /* HomeView.swift */; };
 		A74479A128476ADA0083BBF4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A028476ADA0083BBF4 /* User.swift */; };
 		A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A228476ADE0083BBF4 /* FileServices.swift */; };
@@ -176,6 +180,10 @@
 		A7133C2B285032DE006ED054 /* GrayLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLine.swift; sourceTree = "<group>"; };
 		A7133C2F28503674006ED054 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A7133C3A2850B22C006ED054 /* AddSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpaceView.swift; sourceTree = "<group>"; };
+		A7133C3C2850CD2E006ED054 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
+		A7133C3E2850CD8D006ED054 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		A7133C412850D443006ED054 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		A7133C432850D456006ED054 /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		A744799C28476AC80083BBF4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A74479A028476ADA0083BBF4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A74479A228476ADE0083BBF4 /* FileServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServices.swift; sourceTree = "<group>"; };
@@ -473,9 +481,13 @@
 			isa = PBXGroup;
 			children = (
 				A74479A028476ADA0083BBF4 /* User.swift */,
-				2CC2118B2849F1CF0009F785 /* Term.swift */,
+				A7133C3C2850CD2E006ED054 /* Space.swift */,
+				A7133C3E2850CD8D006ED054 /* Payment.swift */,
 				A704FC39284DF28900AC9736 /* Alert.swift */,
 				2C3C3EA22854946700B29181 /* UserStateViewModel.swift */,
+				2CC2118B2849F1CF0009F785 /* Term.swift */,
+				A7133C412850D443006ED054 /* Account.swift */,
+				A7133C432850D456006ED054 /* Transfer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -819,6 +831,7 @@
 				4D6229BD284925B900A8E24C /* PreviewCardView.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
 				4D6229CD284929C000A8E24C /* AddCardDecoView.swift in Sources */,
+				A7133C422850D443006ED054 /* Account.swift in Sources */,
 				A7133C3028503674006ED054 /* ViewExtension.swift in Sources */,
 				A704FC3C284DF62F00AC9736 /* Date.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
@@ -835,10 +848,12 @@
 				79BF17A4284D002B003A2A68 /* SpaceMainCardView.swift in Sources */,
 				2CC2118C2849F1CF0009F785 /* Term.swift in Sources */,
 				2CC211B0284C6A690009F785 /* AppleLoginButton.swift in Sources */,
+				A7133C3D2850CD2F006ED054 /* Space.swift in Sources */,
 				79BF17A2284D002B003A2A68 /* SpaceMainBottomButton.swift in Sources */,
 				A704FC3A284DF28900AC9736 /* Alert.swift in Sources */,
 				2CC68CB5285783CE0027DAED /* UIApplicationExtension.swift in Sources */,
 				A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */,
+				A7133C3F2850CD8D006ED054 /* Payment.swift in Sources */,
 				4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */,
 				2C3C3EA32854946700B29181 /* UserStateViewModel.swift in Sources */,
 				A704FC44284F6B5200AC9736 /* ShareSheet.swift in Sources */,
@@ -852,6 +867,7 @@
 				79BF17B0284D953B003A2A68 /* CardDetailView.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				C0DBFAE128546877004650F1 /* GiverDonCardSheet.swift in Sources */,
+				A7133C442850D456006ED054 /* Transfer.swift in Sources */,
 				2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */,
 				2CC211822849F0FA0009F785 /* SignInView.swift in Sources */,
 				2CF61B3F2849B18A004C3768 /* AddCardIconView.swift in Sources */,

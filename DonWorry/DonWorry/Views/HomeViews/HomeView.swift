@@ -159,8 +159,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(currentUser: user4)
-    }
-}
+// struct HomeView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         HomeView(currentUser: user4)
+//     }
+// }
