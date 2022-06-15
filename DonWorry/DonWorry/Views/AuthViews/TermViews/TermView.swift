@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TermView: View {
-    @GestureState private var dragOffset = false
     @EnvironmentObject var vm: UserStateViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
@@ -107,11 +106,6 @@ struct TermView: View {
         } onEnd: {
             showSheet = false
         }
-        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
-            if (value.startLocation.x < 30 && value.translation.width > 100) {
-                self.mode.wrappedValue.dismiss()
-            }
-        })
     }
 }
 

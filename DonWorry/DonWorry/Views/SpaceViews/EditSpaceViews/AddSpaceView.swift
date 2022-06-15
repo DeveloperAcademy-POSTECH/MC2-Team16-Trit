@@ -13,7 +13,6 @@ struct AddSpaceView: View {
     @State private var pageSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
     @FocusState private var isFocused: Bool
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @GestureState private var dragOffset = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -71,10 +70,5 @@ struct AddSpaceView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
-                    if (value.startLocation.x < 30 && value.translation.width > 100) {
-                        self.mode.wrappedValue.dismiss()
-                    }
-                })
     }
 }
