@@ -85,13 +85,29 @@ class TransferViewModel: ObservableObject {
         }
     }
     
-    /* TODO: 구현하기 ( parma 없이 이름 겹쳐서 주석)
     // MARK: 내가 받을 돈 목록 (스페이스 상관X)
-    func fetchTakingList() {
-        // 1. fetch 해서
-        // 2. transferList 설정
+    func fetchTakingList(userID: String) {
+        let transferRef = db.collection("Transfer")
+            .whereField("taker", isEqualTo: userID)
+        
+        transferRef.getDocuments { snapshot, error in
+            if let snapshot = snapshot {
+                DispatchQueue.main.async {
+                    self.transferList = snapshot.documents.map { d in
+                        print(d.documentID)
+                        return TransferModel(id: d.documentID,
+                                             giver: d["giver"] as! String,
+                                             taker: d["taker"] as! String,
+                                             amount: d["amount"] as! Int,
+                                             spaceID: d["spaceID"] as! String,
+                                             isCompleted: (d["isCompleted"] != nil))
+                    }
+                    print(self.transferList)
+                }
+            }
+        }
     }
-     */
+    
     
     
     // MARK: 내가 속한 특정 스페이스에 대한 줄 돈 목록
