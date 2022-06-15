@@ -14,6 +14,7 @@ struct SpaceMainCardView: View {
     var color: Color
     var account: String
     var index: Int = 0
+    var clicked: () -> Void
     var isParticipated = false
     let date: String
     var paymentIcon: Image?
@@ -40,14 +41,13 @@ struct SpaceMainCardView: View {
                         VStack(alignment: .leading, spacing: 0) {
                             Text(spaceName)
                                 .applyTextWithLineLimitModifier(size: 15, weight: .heavy, color: .white)
-                                .padding(.leading, 25)
+                                .padding(.horizontal, 25)
                                 .padding(.vertical, 25)
                             Spacer()
                             HStack(spacing: 8) {
-                                paymentIcon.map {
-                                    $0.applyRectangleImageModifier(width: 27, height: 27, background: .grayEE, innerPadding: 8)
-                                        .padding(.leading, 25)
-                                }
+                                (paymentIcon ?? Image("chicken-leg"))
+                                    .applyRectangleImageModifier(width: 27, height: 23, background: .grayEE, innerPadding: 8)
+                                    .padding(.leading, 25)
                                 Text("총 135,800원(4명)")
                                     .applyTextWithLineLimitModifier(size: 18.0, weight: .heavy)
                             }
@@ -59,14 +59,16 @@ struct SpaceMainCardView: View {
                             HStack(alignment: .firstTextBaseline) {
                                 Text(account)
                                     .applyTextWithLineLimitModifier(size: 13, weight: .medium)
+                                Spacer()
                                 Button {
                                     print("copy!")
                                 } label: {
                                     Image(systemName: "doc.on.doc")
                                         .font(Font.system(size: 15, weight: .medium))
                                         .foregroundColor(.white)
+                                        
                                 }
-                                .padding(.trailing, 25)
+                                .padding(.trailing, 50)
                             }
                             .padding(.leading, 25)
                             .padding(.bottom, 16)
@@ -101,11 +103,8 @@ struct SpaceMainCardView: View {
                     }
                 }
         }
-    }
-}
-
-struct SpaceMainCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        SpaceMainCardView(bank: "qwqwqwqwqwqw", color: .blueMain, account: "sdsd", date: "Sdsd",paymentIcon: Image("chicken-leg"))
+        .onTapGesture {
+            clicked()
+        }
     }
 }

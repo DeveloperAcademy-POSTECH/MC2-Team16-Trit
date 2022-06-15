@@ -8,67 +8,64 @@
 import SwiftUI
 
 struct AddSpaceView: View {
-    @Binding var naviSelection: String?
+    
     @State var spaceName: String = ""
-    @State private var pageSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
-    @FocusState private var isFocused: Bool
+    @State var isCompleted: Bool = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        
+        if isCompleted == true {
+            SpaceMainView(spaceID: $spaceName)
+        } else {
             
-            VStack(alignment: .leading) {
-                Text("스페이스를")
-                Text("생성해볼까요?")
-            }
-            .font(.system(size: 25, weight: .bold))
-            .padding(.horizontal, 30)
-            .padding(.vertical)
-            
-            VStack(spacing: 20) {
+            VStack(alignment: .leading, spacing: 30) {
                 
-                UnderlineTextField(placeholder: "스페이스 이름을 입력하세요", charLimit: 20, text: $spaceName)
-                    .keyboardType(.default)
+                VStack(alignment: .leading, spacing: 10) {
+                    
+                    Group {
+                        Text("스페이스를")
+                        Text("생성해볼까요?")
+                    }
+                    .font(.system(size: 30, weight: .bold))
+                    
+                }
                 
-                Spacer()
-                
-                HStack {
+                VStack(spacing: 20) {
+                    
+                    UnderlineTextField(placeholder: "스페이스 이름을 입력하세요", charLimit: 20, text: $spaceName)
+                                               
                     Spacer()
                     
-                    NavigationLink(tag: "SpaceMainView",
-                                   selection: $pageSelection,
-                                   destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID"))
+                    HStack {
+                        Spacer()
                         
-                    }) { EmptyView() }
-                        .isDetailLink(false)
                         SmallButton(text: "완료") {
-                            self.pageSelection = "SpaceMainView"
+                            isCompleted = true
                         }
-                        .padding(.bottom)
-                        .padding(.horizontal)
+                        .padding(.bottom, 30)
                         .disabled(spaceName.isEmpty ? true : false)
-                   
+                               
+                    }
+                    
                 }
                 
             }
-            
-        }
-        .onAppear {
-            UIApplication.shared.hideKeyboard()
-        }
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button(role: .cancel) {
-                    self.mode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
-                        .padding(.horizontal)
+            .navigationBarBackButtonHidden(true)
+            .padding(.top, -20)
+            .padding(.horizontal, 25)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        self.mode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.black)
+                    }
                 }
-                .buttonStyle(.plain)
             }
+           
         }
-        .navigationBarTitleDisplayMode(.inline)
+        
     }
 }

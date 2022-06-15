@@ -14,27 +14,26 @@ struct AddCardIconView: View {
     
     let paymentTitle: String
     
-    @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
-    @State private var paymentIcon : Image? = nil
-    @State private var selectedItem: String = iconsArray.randomElement() ?? iconsArray[0]
-    @State private var naviSelection : String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
-    private let iconColumns = [GridItem](repeating: GridItem(spacing: 10), count: 3)
+    let columns = [
+        GridItem(.adaptive(minimum: 100))
+    ]
+    
+    @State private var paymentIcon: Image? = nil
+    @State private var selectedItem: String = ""
     
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading, spacing: 20) {
-                VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 30) {
+            VStack(alignment: .leading, spacing: 10) {
+                Group {
                     Text("정산 내역을")
                     Text("추가해볼까요?")
                 }
-                .font(.system(size: 25, weight: .bold))
-                .padding(.horizontal, 30)
-                .padding(.vertical)
-                
+                .font(.system(size: 30, weight: .bold))
+            }
+            VStack {
                 VStack {
                     ScrollView(showsIndicators: false) {
-                        
-                        LazyVGrid(columns: iconColumns, spacing: 10) {
+                        LazyVGrid(columns: columns) {
                             ForEach(iconsArray, id: \.self) { iconName in
                                 
                                 Button {
@@ -56,42 +55,43 @@ struct AddCardIconView: View {
                                 }
                             }
                         }
-                        .padding(.horizontal, 30)
+                    }
+                    HStack {
+                        Spacer()
+                        
+                        NavigationLink(destination: AddCardPriceView(paymentTitle: paymentTitle, paymentIcon: paymentIcon)) {
+                            Text("다음")
+                                .frame(width: 135, height: 50)
+                                .foregroundColor(.white)
+                                .background(.blue)
+                                .cornerRadius(29)
+                        }
+                        .padding(.bottom, 30)
                     }
                 }
+                 
             }
             
-            VStack {
-                Spacer()
-                HStack {
-                    NavigationLink(tag: "AddCardPriceView", selection: $naviSelection, destination: { AddCardPriceView(mainSelection: $mainSelection, paymentTitle: paymentTitle, paymentIcon: paymentIcon) }) { EmptyView() }
-                        .isDetailLink(false)
-                    SmallButton(text: "다음") {
-                        self.naviSelection = "AddCardPriceView"
-                        self.paymentIcon = Image(selectedItem)
-                    }
-                    .padding(.bottom)
-                }
-            }
         }
         .navigationBarBackButtonHidden(true)
+        .padding(.top, -20)
+        .padding(.horizontal, 25)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button(role: .cancel) {
+                Button {
                     self.mode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
-                        .padding(.horizontal)
+                        .foregroundColor(.black)
                 }
-                .buttonStyle(.plain)
             }
+            
         }
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct AddCardIconView1_Previews: PreviewProvider {
     static var previews: some View {
-        AddCardIconView(paymentTitle: "땡땡이네 스타벅스", mainSelection: .constant(""))
+        AddCardIconView(paymentTitle: "땡땡이네 스타벅스")
     }
 }

@@ -11,7 +11,6 @@ struct EditSpaceNameView: View {
     
     @Binding var spaceName: String
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack {
@@ -22,7 +21,6 @@ struct EditSpaceNameView: View {
                 .padding(.top, 46)
                 .padding(.leading, 25)
             UnderlineTextField(placeholder: "스페이스 이름", charLimit: 20, text: $spaceName)
-                .keyboardType(.default)
                 .padding(.top, 30)
             HStack {
                 Spacer()
@@ -35,9 +33,6 @@ struct EditSpaceNameView: View {
             }
             Spacer()
         }
-        .onAppear {
-            UIApplication.shared.hideKeyboard()
-        }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -47,8 +42,8 @@ struct EditSpaceNameView: View {
                         mode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "chevron.backward")
+                            .font(.system(size: 25, weight: .bold))
                             .foregroundColor(.black)
-                            .padding(.horizontal)
                         
                     }
                 }

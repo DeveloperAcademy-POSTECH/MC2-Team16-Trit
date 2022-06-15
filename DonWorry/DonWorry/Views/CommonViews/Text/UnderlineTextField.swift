@@ -18,7 +18,6 @@ struct UnderlineTextField: View {
         VStack {
             HStack {
                 TextField(placeholder, text: $text)
-                    .font(.body)
                     .frame(height: 30)
                     .textInputAutocapitalization(.never)
                     .onReceive(Just(text), perform: { _ in
@@ -53,14 +52,6 @@ struct UnderlineTextField: View {
                     .padding(.trailing)
             }
         }
-        .frame(width: 335)
+        .frame(width: 350)
     }
 }
-
-
-struct UnderlineTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        UnderlineTextField(placeholder: "testPlaceHolder", charLimit: 10, text: .constant("야야얀"))
-    }
-}
-

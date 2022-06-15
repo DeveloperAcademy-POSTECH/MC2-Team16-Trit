@@ -55,22 +55,10 @@ extension SignInView {
                    
                     return
                 }
-//                log_status = true
-//                print(log_status)
+                log_status = true
+                print(log_status)
                 print(user.displayName ?? "Success!")
             }
         }
     }
 }
-
-struct SignInWithAppleButtonView: UIViewRepresentable {
-    typealias UIViewType = UIView
-    func makeUIView(context: Context) -> UIView {
-        
-        return ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .black)
-      }
-      func updateUIView(_ uiView: UIView, context: Context) {
-      }
-
-}
-

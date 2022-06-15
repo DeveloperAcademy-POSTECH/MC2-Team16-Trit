@@ -8,16 +8,9 @@
 import SwiftUI
 
 struct SpaceChipsView: View {
-    
-    func widthForText(_ spaceName: String) -> CGFloat {
-        let string = spaceName
-        return string.widthOfString(font: .systemFont(ofSize: 13, weight: .bold))
-    }
-    
     @Binding var selection: String
     let screen = UIScreen.main.bounds
-    var al = 23
-    let switches = ["MC2 트라잇 모임", "MC2 번개모임", "밤샘코딩", "떱떱해모임", "MC2 그룹회식"]
+    let switches = ["MC2 번개모임", "떱떱해", "밤샘코딩", "트라잇", "문샷"]
     var body: some View {
         VStack {
             VStack {
@@ -26,18 +19,13 @@ struct SpaceChipsView: View {
                 // 아래에 2개의 버튼을 가운데에 쌓는식으로 구성
                 HStack {
                 ForEach(0..<3) { index in
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 50)
-                            .frame(width: 112, height: 45)
-                            .foregroundColor(selection == switches[index] ? .blue : Color(hex: "EFEFEF"))
-                        Text(switches[index])
-                            .font(.system(size: widthForText(switches[index]) < 80 ? 13 : 12, weight: .bold))
-                            .frame(width: 80, height: 24, alignment: .center)
-                            .foregroundColor(selection == switches[index] ? .white : .black)
-                            .lineLimit(2)
-                            .multilineTextAlignment(.center)
-                            .minimumScaleFactor(widthForText(switches[index]) < 80 ? 1 : 0.8)
-                        }
+                    Text(switches[index])
+                        .frame(width: 80, height: 12, alignment: .center)
+                        .foregroundColor(selection == switches[index] ? .white : .black)
+                        .font(.system(size: 13, weight: .bold))
+                        .padding()
+                        .background(selection == switches[index] ? .blue : Color(hex: "EFEFEF"))
+                        .cornerRadius(50)
                         .onTapGesture {
                             selection = switches[index]
                         }
@@ -45,18 +33,13 @@ struct SpaceChipsView: View {
                 }
                 HStack {
                     ForEach(3..<5) { index in
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 50)
-                            .frame(width: 112, height: 45)
-                            .foregroundColor(selection == switches[index] ? .blue : Color(hex: "EFEFEF"))
-                        Text(switches[index])
-                            .font(.system(size: widthForText(switches[index]) < 80 ? 13 : 12, weight: .bold))
-                            .frame(width: 80, height: 24, alignment: .center)
-                            .foregroundColor(selection == switches[index] ? .white : .black)
-                            .lineLimit(2)
-                            .multilineTextAlignment(.center)
-                            .minimumScaleFactor(widthForText(switches[index]) < 80 ? 1 : 0.8)
-                        }
+                    Text(switches[index])
+                        .frame(width: 80, height: 12, alignment: .center)
+                        .foregroundColor(selection == switches[index] ? .white : .black)
+                        .font(.system(size: 13, weight: .bold))
+                        .padding()
+                        .background(selection == switches[index] ? .blue : Color(hex: "EFEFEF"))
+                        .cornerRadius(50)
                         .onTapGesture {
                             selection = switches[index]
                         }
@@ -67,9 +50,10 @@ struct SpaceChipsView: View {
     }
 }
 
-
+/*
 struct SpaceChipsView_Previews: PreviewProvider {
     static var previews: some View {
         SpaceChipsView(selection: .constant("떱떱해"))
     }
 }
+*/

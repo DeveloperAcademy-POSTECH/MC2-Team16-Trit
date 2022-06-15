@@ -10,6 +10,7 @@ import SwiftUI
 struct SpaceMainBottomButton: View {
     
     var text: String
+    var textSize: CGFloat = 17.0
     var systemImageString: String? 
     var backgroundColor: Color
     var textColor: Color
@@ -19,23 +20,21 @@ struct SpaceMainBottomButton: View {
         Button(action: clicked, label: {
             HStack {
                 Text(text)
+                    .applyTextWithLineLimitModifier(size: textSize, weight: .bold, color: textColor)
                 systemImageString.map {
                     Image(systemName: $0)
-              
+                        .font(Font.system(size: textSize, weight: .light))
+                        .foregroundColor(Color.white)
                 }
             }
-            .frame(height: 20, alignment: .center)
-            .foregroundColor(Color.white)
-            .font(.system(size: 15, weight: .bold))
-            .cornerRadius(50)
-            .applyButtonCustomModifier(backgroundColor: backgroundColor, strokeLineWith: 0)
+            .applyButtonCustomModifier(backgroundColor: backgroundColor)
         })
     }
 }
 
 struct SpaceMainBottomButton_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: Color.blueMain, textColor: Color.white) {
+        SpaceMainBottomButton(text: "링크 공유", textSize: 17.0, systemImageString: "square.and.arrow.up", backgroundColor: Color.blueMain, textColor: Color.white) {
             print("hi")
         }
     }

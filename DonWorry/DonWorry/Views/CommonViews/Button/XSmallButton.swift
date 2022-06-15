@@ -15,7 +15,7 @@ struct XSmallButton: View {
         Button(action: clicked) {
             Image(systemName: icon)
             .font(.system(size: 15, weight: .bold))
-            .frame(width: 55, height: 20, alignment: .center)
+            .frame(width: 55, height: 26, alignment: .center)
             .foregroundColor(Color.white)
             .padding()
             .background(Color.grayBC)
