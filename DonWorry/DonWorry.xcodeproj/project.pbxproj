@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C1A09FC285826B700AA193B /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A09FB285826B700AA193B /* UINavigationControllerExtension.swift */; };
+		2C3C3EA32854946700B29181 /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C3EA22854946700B29181 /* UserStateViewModel.swift */; };
 		2CC211822849F0FA0009F785 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211812849F0FA0009F785 /* SignInView.swift */; };
 		2CC211842849F1160009F785 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211832849F1160009F785 /* UserInfoView.swift */; };
 		2CC211862849F1230009F785 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211852849F1230009F785 /* TermView.swift */; };
@@ -112,6 +114,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C1A09FB285826B700AA193B /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
+		2C3C3EA22854946700B29181 /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
 		2CC211812849F0FA0009F785 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2CC211832849F1160009F785 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		2CC211852849F1230009F785 /* TermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
@@ -509,6 +513,8 @@
 				79BF17A7284D0209003A2A68 /* TextExtension.swift */,
 				3E208739284F8A9D003A4CFD /* SignInViewExtension.swift */,
 				A7133C2F28503674006ED054 /* ViewExtension.swift */,
+				2CC68CB4285783CE0027DAED /* UIApplicationExtension.swift */,
+				2C1A09FB285826B700AA193B /* UINavigationControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -847,6 +853,7 @@
 				C07ECB392849919C000C42C1 /* SpaceChipsView.swift in Sources */,
 				A704FC3F284E01A300AC9736 /* SlideOverCard.swift in Sources */,
 				C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */,
+				2C1A09FC285826B700AA193B /* UINavigationControllerExtension.swift in Sources */,
 				A744799D28476AC80083BBF4 /* HomeView.swift in Sources */,
 				A7133C3B2850B22C006ED054 /* AddSpaceView.swift in Sources */,
 			);

@@ -62,3 +62,15 @@ extension SignInView {
         }
     }
 }
+
+struct SignInWithAppleButtonView: UIViewRepresentable {
+    typealias UIViewType = UIView
+    func makeUIView(context: Context) -> UIView {
+        
+        return ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .black)
+      }
+      func updateUIView(_ uiView: UIView, context: Context) {
+      }
+
+}
+

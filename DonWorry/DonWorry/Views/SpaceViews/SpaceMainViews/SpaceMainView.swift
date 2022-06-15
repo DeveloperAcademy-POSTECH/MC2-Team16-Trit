@@ -9,6 +9,16 @@ import SwiftUI
 
 struct SpaceMainView: View {
     
+    func createTopToastMessage() -> some View {
+        Text("복사했습니다!")
+            .font(.system(size: 12, weight: .bold))
+            .foregroundColor(.white)
+            .multilineTextAlignment(.center)
+            .frame(width: 110, height: 40)
+            .background(Color.grayC5)
+            .cornerRadius(20)
+    }
+    
     let leftPaddingSize: CGFloat = 25.0
     
     @State var isHomeView: Bool = false

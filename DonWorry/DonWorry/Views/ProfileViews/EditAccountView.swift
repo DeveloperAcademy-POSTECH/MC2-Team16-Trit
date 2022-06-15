@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditAccountView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @GestureState private var dragOffset = false
     
     @State var selectedTag: String?
         
@@ -56,8 +57,11 @@ struct EditAccountView: View {
                         .foregroundColor(.black)
                 }
             }
-            
-        }
+            .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
+                if (value.startLocation.x < 30 && value.translation.width > 100) {
+                    self.mode.wrappedValue.dismiss()
+                }
+            })
     }
 }
 

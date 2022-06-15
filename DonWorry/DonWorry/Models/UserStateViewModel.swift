@@ -7,6 +7,20 @@
 
 import Foundation
 
+// @MainActor
+// class UserStateViewModel: ObservableObject {
+
+//     @Published var isLoggedIn = false
+    
+//     func signIn() {
+//         isLoggedIn = true
+//     }
+
+//     func signOut() {
+//         isLoggedIn = false
+//     }
+// }
+
 @MainActor
 class UserStateViewModel: ObservableObject {
 
@@ -20,3 +34,4 @@ class UserStateViewModel: ObservableObject {
         isLoggedIn = false
     }
 }
+

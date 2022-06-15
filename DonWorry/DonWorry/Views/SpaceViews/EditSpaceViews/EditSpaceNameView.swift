@@ -11,6 +11,8 @@ struct EditSpaceNameView: View {
     
     @Binding var spaceName: String
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @GestureState private var dragOffset = false
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack {
@@ -35,28 +37,33 @@ struct EditSpaceNameView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Button {
-                        print("참석확인")
-                        mode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "chevron.backward")
-                            .font(.system(size: 25, weight: .bold))
-                            .foregroundColor(.black)
-                        
-                    }
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                Button {
+                    print("참석확인")
+                    mode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.black)
+                        .padding(.horizontal)
+               
                 }
             }
+        }
+        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
+            if (value.startLocation.x < 30 && value.translation.width > 100) {
+                self.mode.wrappedValue.dismiss()
+            }
+        })
     }
 }
 
 /*
-struct EditSpaceNameViews_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            EditSpaceNameView(spaceName: "MC2 아자")
-        }
-    }
-}
-*/
+ struct EditSpaceNameViews_Previews: PreviewProvider {
+ static var previews: some View {
+ NavigationView {
+ EditSpaceNameView(spaceName: "MC2 아자")
+ }
+ }
+ }
+ */

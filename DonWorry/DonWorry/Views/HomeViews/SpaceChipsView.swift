@@ -50,7 +50,9 @@ struct SpaceChipsView: View {
     }
 }
 
+
 /*
+
 struct SpaceChipsView_Previews: PreviewProvider {
     static var previews: some View {
         SpaceChipsView(selection: .constant("떱떱해"))

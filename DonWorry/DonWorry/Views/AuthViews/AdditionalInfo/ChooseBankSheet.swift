@@ -91,8 +91,11 @@ struct ChooseBankSheet: View {
                             HStack {
                                 Image(bank)
                                     .resizable()
-                                    .frame(width: 20, height: 20)
+                                    .scaledToFit()
                                     .cornerRadius(5)
+                                    .frame(width: 30, height: 30)
+                                    .background(RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color.grayC5))
                                 Text(bank)
                                 Spacer()
                             }

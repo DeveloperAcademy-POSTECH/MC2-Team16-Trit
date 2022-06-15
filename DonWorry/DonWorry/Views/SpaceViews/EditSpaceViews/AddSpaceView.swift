@@ -12,6 +12,7 @@ struct AddSpaceView: View {
     @State var spaceName: String = ""
     @State var isCompleted: Bool = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @GestureState private var dragOffset = false
     
     var body: some View {
         
@@ -66,6 +67,11 @@ struct AddSpaceView: View {
             }
            
         }
-        
+        .navigationBarTitleDisplayMode(.inline)
+        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
+                    if (value.startLocation.x < 30 && value.translation.width > 100) {
+                        self.mode.wrappedValue.dismiss()
+                    }
+                })
     }
 }

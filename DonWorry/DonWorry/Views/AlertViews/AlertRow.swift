@@ -47,7 +47,7 @@ struct AlertRow: View {
                 HStack {
                     Button(action: {
                         print("정산하기 버튼이 눌렸다")
-                    }){
+                    }) {
                         Text("정산하기")
                             .font(.system(size: 10, weight: .heavy))
                             .foregroundColor(Color.white)
