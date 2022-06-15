@@ -52,26 +52,6 @@ class FireStoreViewModel: ObservableObject {
         }
     }
     
-//    func getUserData(AccountID: String) -> User {
-//        let db = Firestore.firestore()
-//        let accountRef = db.collection("Account").document(AccountID)
-//
-//        accountRef.getDocument { (document, error) in
-//            if let document = document, document.exists {
-//                return User(userName: document["userName"] as! String,
-//                            nickName: document["nickName"] as! String,
-//                            account: document["account"] as! String,
-//                            spaceList: [])
-//            } else {
-//                print("계좌 불러오기 실패")
-//            }
-//        }
-//    }
-    
-    // 유저 추가하기 함수
-    // 사용방법
-    // 1. User 구조체를 만들어 준다.
-    // 2. addUserData(구조체변수) -> db에 데이터가 추가 됩니다.
     func addUserData(user: User) {
         let db = Firestore.firestore()
 

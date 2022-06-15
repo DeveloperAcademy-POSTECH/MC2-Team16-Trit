@@ -153,7 +153,8 @@ struct HomeView: View {
     }
 }
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SwiftUIView(currentUser: user1)
-//    }
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView(currentUser: User.empty)
+    }
+}

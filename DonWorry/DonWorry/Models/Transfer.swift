@@ -6,13 +6,26 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 // 커스텀 타입
-struct Transfer {
-    var giver: User // 보내는 사람
-    var taker: User // 받는 사람
+struct Transfers : Identifiable, Codable{
+    @DocumentID var id : String?
+    var giver: String // 보내는 사람
+    var taker: String // 받는 사람
     var amount: Int // 금액
     var isCompleted: Bool = false // 송금완료 여부
+}
+
+extension Transfers {
+    static let empty = Transfers(id: "", giver: "", taker: "", amount: 30000)
+}
+
+struct Transfer {
+    var giver: User
+    var taker: User
+    var amount: Int
+    var isCompleted: Bool = false
 }
 
 var transfers: [Transfer] = [
