@@ -11,8 +11,11 @@ struct EditAccountView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @GestureState private var dragOffset = false
     
-    @State var selectedTag: String?
-        
+    @State private var holder = ""
+    @State private var bank = ""
+    @State private var account = ""
+    @FocusState private var isFocused: Bool
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -28,9 +31,10 @@ struct EditAccountView: View {
             
             .padding(.bottom, 30)
             
-//            UnderlineTextField(placeholder: "예금주명을 입력해 주세요.", charLimit: 20)
-//            
-//            UnderlineTextField(placeholder: "계좌번호를 입력해주세요", charLimit: 20)
+            UnderlineTextField(placeholder: "예금주명을 입력해 주세요.", charLimit: 20, text: $holder)
+                .keyboardType(.default)
+            
+            AccountTextField(account: $account, bank: $bank)
             
             Spacer()
             VStack {
@@ -45,17 +49,22 @@ struct EditAccountView: View {
             }
             
         }
-        .navigationBarBackButtonHidden(true)
-        .padding(.top, -20)
-        .padding(.horizontal, 25)
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button {
-                    self.mode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }        .navigationBarBackButtonHidden(true)
+            .padding(.top, -20)
+            .padding(.horizontal, 25)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        self.mode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.black)
+                            .padding(.horizontal)
+                    }
                 }
+                
             }
             .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
                 if (value.startLocation.x < 30 && value.translation.width > 100) {
@@ -65,8 +74,8 @@ struct EditAccountView: View {
     }
 }
 
-struct EditAccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditProfileView()
-    }
-}
+//struct EditAccountView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditProfileView()
+//    }
+//}

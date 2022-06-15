@@ -85,4 +85,3 @@ struct UserInfoView_Previews: PreviewProvider {
         UserInfoView()
     }
 }
-

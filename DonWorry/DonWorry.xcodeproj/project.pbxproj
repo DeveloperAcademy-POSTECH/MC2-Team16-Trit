@@ -20,6 +20,7 @@
 		2CC211B2284C6A9E0009F785 /* KakaoTalkLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B1284C6A9E0009F785 /* KakaoTalkLoginButton.swift */; };
 		2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B3284C6BB60009F785 /* GoogleLoginButton.swift */; };
 		2CC211B7284CE9880009F785 /* TermSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211B6284CE9880009F785 /* TermSheetView.swift */; };
+		2CC68CB5285783CE0027DAED /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC68CB4285783CE0027DAED /* UIApplicationExtension.swift */; };
 		2CF61B3A2849AF97004C3768 /* SpaceEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B392849AF97004C3768 /* SpaceEmptyView.swift */; };
 		2CF61B3D2849B00B004C3768 /* AddCardTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B3C2849B00B004C3768 /* AddCardTitleView.swift */; };
 		2CF61B3F2849B18A004C3768 /* AddCardIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF61B3E2849B18A004C3768 /* AddCardIconView.swift */; };
@@ -49,7 +50,7 @@
 		79BF1799284CFF40003A2A68 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF1798284CFF40003A2A68 /* Modifiers.swift */; };
 		79BF179D284CFF83003A2A68 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF179C284CFF83003A2A68 /* ImageExtension.swift */; };
 		79BF17A2284D002B003A2A68 /* SpaceMainBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF179F284D002B003A2A68 /* SpaceMainBottomButton.swift */; };
-		79BF17A3284D002B003A2A68 /* SpaceMainCalculateStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A0284D002B003A2A68 /* SpaceMainCalculateStartButton.swift */; };
+		79BF17A3284D002B003A2A68 /* AddCardTitleViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A0284D002B003A2A68 /* AddCardTitleViewButton.swift */; };
 		79BF17A4284D002B003A2A68 /* SpaceMainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A1284D002B003A2A68 /* SpaceMainCardView.swift */; };
 		79BF17A6284D0034003A2A68 /* SpaceTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A5284D0034003A2A68 /* SpaceTopView.swift */; };
 		79BF17A8284D0209003A2A68 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF17A7284D0209003A2A68 /* TextExtension.swift */; };
@@ -67,10 +68,6 @@
 		A7133C2C285032DE006ED054 /* GrayLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C2B285032DE006ED054 /* GrayLine.swift */; };
 		A7133C3028503674006ED054 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C2F28503674006ED054 /* ViewExtension.swift */; };
 		A7133C3B2850B22C006ED054 /* AddSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C3A2850B22C006ED054 /* AddSpaceView.swift */; };
-		A7133C3D2850CD2F006ED054 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C3C2850CD2E006ED054 /* Space.swift */; };
-		A7133C3F2850CD8D006ED054 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C3E2850CD8D006ED054 /* Payment.swift */; };
-		A7133C422850D443006ED054 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C412850D443006ED054 /* Account.swift */; };
-		A7133C442850D456006ED054 /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7133C432850D456006ED054 /* Transfer.swift */; };
 		A744799D28476AC80083BBF4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744799C28476AC80083BBF4 /* HomeView.swift */; };
 		A74479A128476ADA0083BBF4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A028476ADA0083BBF4 /* User.swift */; };
 		A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479A228476ADE0083BBF4 /* FileServices.swift */; };
@@ -90,10 +87,16 @@
 		A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74479D7284918EB0083BBF4 /* EditAccountView.swift */; };
 		C0030EE32848C7880017125A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
+		C027ED6D28510977008E4441 /* HalfSheetMediumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C027ED6C28510977008E4441 /* HalfSheetMediumButton.swift */; };
+		C027ED6F28510983008E4441 /* HalfSheetSmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C027ED6E28510983008E4441 /* HalfSheetSmallButton.swift */; };
 		C07ECB392849919C000C42C1 /* SpaceChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ECB382849919C000C42C1 /* SpaceChipsView.swift */; };
 		C0936BFD284876800064CEFA /* ParticipateDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFC284876800064CEFA /* ParticipateDonCard.swift */; };
 		C0936BFF28487FFC0064CEFA /* GiverDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */; };
 		C09C89712849101700E2A929 /* TakerDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C89702849101700E2A929 /* TakerDonCard.swift */; };
+		C0DBFADD28525D6C004650F1 /* GIverDonCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBFADC28525D6C004650F1 /* GIverDonCardDetail.swift */; };
+		C0DBFADF28525D95004650F1 /* TakerDonCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBFADE28525D95004650F1 /* TakerDonCardDetail.swift */; };
+		C0DBFAE128546877004650F1 /* GiverDonCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBFAE028546877004650F1 /* GiverDonCardSheet.swift */; };
+		C0DBFAE328546886004650F1 /* TakerDonCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DBFAE228546886004650F1 /* TakerDonCardSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +130,7 @@
 		2CC211B1284C6A9E0009F785 /* KakaoTalkLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoTalkLoginButton.swift; sourceTree = "<group>"; };
 		2CC211B3284C6BB60009F785 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
 		2CC211B6284CE9880009F785 /* TermSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermSheetView.swift; sourceTree = "<group>"; };
+		2CC68CB4285783CE0027DAED /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		2CF61B392849AF97004C3768 /* SpaceEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceEmptyView.swift; sourceTree = "<group>"; };
 		2CF61B3C2849B00B004C3768 /* AddCardTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardTitleView.swift; sourceTree = "<group>"; };
 		2CF61B3E2849B18A004C3768 /* AddCardIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardIconView.swift; sourceTree = "<group>"; };
@@ -157,7 +161,7 @@
 		79BF1798284CFF40003A2A68 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		79BF179C284CFF83003A2A68 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		79BF179F284D002B003A2A68 /* SpaceMainBottomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceMainBottomButton.swift; sourceTree = "<group>"; };
-		79BF17A0284D002B003A2A68 /* SpaceMainCalculateStartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceMainCalculateStartButton.swift; sourceTree = "<group>"; };
+		79BF17A0284D002B003A2A68 /* AddCardTitleViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardTitleViewButton.swift; sourceTree = "<group>"; };
 		79BF17A1284D002B003A2A68 /* SpaceMainCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceMainCardView.swift; sourceTree = "<group>"; };
 		79BF17A5284D0034003A2A68 /* SpaceTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceTopView.swift; sourceTree = "<group>"; };
 		79BF17A7284D0209003A2A68 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
@@ -174,10 +178,6 @@
 		A7133C2B285032DE006ED054 /* GrayLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLine.swift; sourceTree = "<group>"; };
 		A7133C2F28503674006ED054 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A7133C3A2850B22C006ED054 /* AddSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpaceView.swift; sourceTree = "<group>"; };
-		A7133C3C2850CD2E006ED054 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
-		A7133C3E2850CD8D006ED054 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
-		A7133C412850D443006ED054 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		A7133C432850D456006ED054 /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		A744799C28476AC80083BBF4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A74479A028476ADA0083BBF4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A74479A228476ADE0083BBF4 /* FileServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServices.swift; sourceTree = "<group>"; };
@@ -195,10 +195,16 @@
 		A74479D5284918D60083BBF4 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A74479D7284918EB0083BBF4 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 		C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleProgressBar.swift; sourceTree = "<group>"; };
+		C027ED6C28510977008E4441 /* HalfSheetMediumButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetMediumButton.swift; sourceTree = "<group>"; };
+		C027ED6E28510983008E4441 /* HalfSheetSmallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetSmallButton.swift; sourceTree = "<group>"; };
 		C07ECB382849919C000C42C1 /* SpaceChipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceChipsView.swift; sourceTree = "<group>"; };
 		C0936BFC284876800064CEFA /* ParticipateDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateDonCard.swift; sourceTree = "<group>"; };
 		C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverDonCard.swift; sourceTree = "<group>"; };
 		C09C89702849101700E2A929 /* TakerDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCard.swift; sourceTree = "<group>"; };
+		C0DBFADC28525D6C004650F1 /* GIverDonCardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIverDonCardDetail.swift; sourceTree = "<group>"; };
+		C0DBFADE28525D95004650F1 /* TakerDonCardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCardDetail.swift; sourceTree = "<group>"; };
+		C0DBFAE028546877004650F1 /* GiverDonCardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiverDonCardSheet.swift; sourceTree = "<group>"; };
+		C0DBFAE228546886004650F1 /* TakerDonCardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakerDonCardSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,8 +420,12 @@
 			isa = PBXGroup;
 			children = (
 				C0936BFC284876800064CEFA /* ParticipateDonCard.swift */,
+				C0DBFAE028546877004650F1 /* GiverDonCardSheet.swift */,
+				C0DBFAE228546886004650F1 /* TakerDonCardSheet.swift */,
 				C0936BFE28487FFC0064CEFA /* GiverDonCard.swift */,
 				C09C89702849101700E2A929 /* TakerDonCard.swift */,
+				C0DBFADC28525D6C004650F1 /* GIverDonCardDetail.swift */,
+				C0DBFADE28525D95004650F1 /* TakerDonCardDetail.swift */,
 			);
 			path = DonCard;
 			sourceTree = "<group>";
@@ -426,7 +436,7 @@
 				79BF17A1284D002B003A2A68 /* SpaceMainCardView.swift */,
 				79BF179F284D002B003A2A68 /* SpaceMainBottomButton.swift */,
 				79BF17A5284D0034003A2A68 /* SpaceTopView.swift */,
-				79BF17A0284D002B003A2A68 /* SpaceMainCalculateStartButton.swift */,
+				79BF17A0284D002B003A2A68 /* AddCardTitleViewButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -465,12 +475,9 @@
 			isa = PBXGroup;
 			children = (
 				A74479A028476ADA0083BBF4 /* User.swift */,
-				A7133C3C2850CD2E006ED054 /* Space.swift */,
-				A7133C3E2850CD8D006ED054 /* Payment.swift */,
-				A704FC39284DF28900AC9736 /* Alert.swift */,
 				2CC2118B2849F1CF0009F785 /* Term.swift */,
-				A7133C412850D443006ED054 /* Account.swift */,
-				A7133C432850D456006ED054 /* Transfer.swift */,
+				A704FC39284DF28900AC9736 /* Alert.swift */,
+				2C3C3EA22854946700B29181 /* UserStateViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -564,6 +571,8 @@
 				A74479B02847A8190083BBF4 /* SmallButton.swift */,
 				A74479B22847BE170083BBF4 /* XSmallButton.swift */,
 				A74479C12847E3760083BBF4 /* ChipButton.swift */,
+				C027ED6E28510983008E4441 /* HalfSheetSmallButton.swift */,
+				C027ED6C28510977008E4441 /* HalfSheetMediumButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -801,17 +810,18 @@
 				2CC211862849F1230009F785 /* TermView.swift in Sources */,
 				79BF1799284CFF40003A2A68 /* Modifiers.swift in Sources */,
 				A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */,
-				79BF17A3284D002B003A2A68 /* SpaceMainCalculateStartButton.swift in Sources */,
+				79BF17A3284D002B003A2A68 /* AddCardTitleViewButton.swift in Sources */,
 				7991F9FE28487E2B00DCAFB8 /* SpaceMainView.swift in Sources */,
 				2CC211862849F1230009F785 /* TermView.swift in Sources */,
 				2CC211AE284BBE960009F785 /* ChooseBankSheet.swift in Sources */,
 				A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */,
 				4D6229C32849277500A8E24C /* Fonts.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
+				C027ED6F28510983008E4441 /* HalfSheetSmallButton.swift in Sources */,
+				C0DBFAE328546886004650F1 /* TakerDonCardSheet.swift in Sources */,
 				4D6229BD284925B900A8E24C /* PreviewCardView.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
 				4D6229CD284929C000A8E24C /* AddCardDecoView.swift in Sources */,
-				A7133C422850D443006ED054 /* Account.swift in Sources */,
 				A7133C3028503674006ED054 /* ViewExtension.swift in Sources */,
 				A704FC3C284DF62F00AC9736 /* Date.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
@@ -828,20 +838,23 @@
 				79BF17A4284D002B003A2A68 /* SpaceMainCardView.swift in Sources */,
 				2CC2118C2849F1CF0009F785 /* Term.swift in Sources */,
 				2CC211B0284C6A690009F785 /* AppleLoginButton.swift in Sources */,
-				A7133C3D2850CD2F006ED054 /* Space.swift in Sources */,
 				79BF17A2284D002B003A2A68 /* SpaceMainBottomButton.swift in Sources */,
 				A704FC3A284DF28900AC9736 /* Alert.swift in Sources */,
+				2CC68CB5285783CE0027DAED /* UIApplicationExtension.swift in Sources */,
 				A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */,
-				A7133C3F2850CD8D006ED054 /* Payment.swift in Sources */,
 				4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */,
+				2C3C3EA32854946700B29181 /* UserStateViewModel.swift in Sources */,
 				A704FC44284F6B5200AC9736 /* ShareSheet.swift in Sources */,
+				C0DBFADD28525D6C004650F1 /* GIverDonCardDetail.swift in Sources */,
 				C09C89712849101700E2A929 /* TakerDonCard.swift in Sources */,
 				A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */,
+				C027ED6D28510977008E4441 /* HalfSheetMediumButton.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				A74479D3284917990083BBF4 /* ProfileView.swift in Sources */,
+				C0DBFADF28525D95004650F1 /* TakerDonCardDetail.swift in Sources */,
 				79BF17B0284D953B003A2A68 /* CardDetailView.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
-				A7133C442850D456006ED054 /* Transfer.swift in Sources */,
+				C0DBFAE128546877004650F1 /* GiverDonCardSheet.swift in Sources */,
 				2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */,
 				2CC211822849F0FA0009F785 /* SignInView.swift in Sources */,
 				2CF61B3F2849B18A004C3768 /* AddCardIconView.swift in Sources */,
@@ -1015,7 +1028,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = 562Z37RH3N;
+				DEVELOPMENT_TEAM = 9QKHF269WJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DonWorry/Info.plist;
@@ -1029,7 +1042,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-0220301.DonWorry";
+				PRODUCT_BUNDLE_IDENTIFIER = "-220301.DonWorry";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1046,7 +1059,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = 562Z37RH3N;
+				DEVELOPMENT_TEAM = 9QKHF269WJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DonWorry/Info.plist;
@@ -1060,7 +1073,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-0220301.DonWorry";
+				PRODUCT_BUNDLE_IDENTIFIER = "-220301.DonWorry";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

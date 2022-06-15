@@ -10,8 +10,9 @@ struct EditProfileView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @GestureState private var dragOffset = false
     
-    @State var selectedTag: String?
-        
+    @State private var name = ""
+    @FocusState private var isFocused: Bool
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -27,7 +28,8 @@ struct EditProfileView: View {
             
             .padding(.bottom, 30)
             
-//            UnderlineTextField(placeholder: "수정할 이름을 입력해주세요", charLimit: 20)
+            UnderlineTextField(placeholder: "수정할 이름을 입력해주세요", charLimit: 20, text: $name)
+                .keyboardType(.default)
             
             Spacer()
             VStack {
@@ -42,6 +44,9 @@ struct EditProfileView: View {
             }
             
         }
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
         .navigationBarBackButtonHidden(true)
         .padding(.top, -20)
         .padding(.horizontal, 25)
@@ -52,6 +57,7 @@ struct EditProfileView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.black)
+                        .padding(.horizontal)
                 }
             }
             
@@ -64,8 +70,8 @@ struct EditProfileView: View {
     }
 }
 
-struct EditProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditProfileView()
-    }
-}
+//struct EditProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditProfileView()
+//    }
+//}
