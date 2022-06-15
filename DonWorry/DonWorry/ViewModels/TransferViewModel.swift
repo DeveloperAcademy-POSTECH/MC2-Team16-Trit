@@ -20,9 +20,6 @@ class TransferViewModel: ObservableObject {
     
     private var db = Firestore.firestore()
     
-    private func fetchT(userId: String) {
-        
-    }
     
     // MARK: 내가 속한 스페이스의 transfer 목록 부르기
     // params

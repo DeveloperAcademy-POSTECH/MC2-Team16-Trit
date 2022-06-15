@@ -5,11 +5,12 @@
 //  Created by Chanhee Jeong on 2022/06/08.
 //
 
+import FirebaseFirestoreSwift
 import Foundation
 
 // 각 정산 내역 (Card)
 struct Payment: Identifiable { // Hashable
-    var id = UUID().uuidString
+    @DocumentID var id : String?
     var paymentTitle: String // 정산내역이름
     var category: String // icon
     var amount: Int // 정산 금액
@@ -18,8 +19,13 @@ struct Payment: Identifiable { // Hashable
     var attachedFile: [String] // 첨부파일 - URL 배열
     var givers: [String] // 보내는 사람 리스트 *User 참조해야함*
     var taker: String // 받는 사람 *User 참조해야함*
-    var account: [String] // 계좌정보 *Account 참조해야함*
+    var account: String // 계좌정보 *Account 참조해야함*
 }
+
+extension Payment {
+    static let empty = Payment(paymentTitle: "", category: "", amount: 0, color: "", date: "", attachedFile: [], givers: [], taker: "", account: "")
+}
+
 
 var mockUsers = ["Lumi", "Asher", "charlie"]
 
@@ -32,7 +38,7 @@ var payments: [Payment] = [
             attachedFile: [],
             givers: mockUsers,
             taker: mockUsers[0],
-            account: [users[0].account]),
+            account: "accountRef"),
     
     Payment(paymentTitle: "2차 횟집",
             category: "fish",
@@ -42,7 +48,7 @@ var payments: [Payment] = [
             attachedFile: [],
             givers: mockUsers,
             taker: mockUsers[0],
-            account: [users[1].account]),
+            account:  "accountRef"),
     
     Payment(paymentTitle: "3차 뼈찜",
             category: "bone",
@@ -52,5 +58,5 @@ var payments: [Payment] = [
             attachedFile: [],
             givers: mockUsers,
             taker: mockUsers[0],
-            account: [users[2].account])
+            account: "accountRef")
 ]

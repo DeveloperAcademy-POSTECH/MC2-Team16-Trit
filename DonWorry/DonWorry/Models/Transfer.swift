@@ -19,7 +19,7 @@ struct TransferModel : Identifiable, Codable{
 }
 
 extension TransferModel {
-    static let empty = Transfers(id: "", giver: "", taker: "", amount: 0, spaceID: "")
+    static let empty = TransferModel(giver: "", taker: "", amount: 0, spaceID: "")
 }
 
 
