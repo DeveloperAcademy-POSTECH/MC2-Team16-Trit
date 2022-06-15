@@ -10,9 +10,22 @@ import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-extension FireStoreViewModel {
+class SpaceViewModel: ObservableObject {
+      
+//    @Published var userList = [User]()
+//    @Published var accountList = [Account]()
+    @Published var spaceList = [Space]()
+    @Published var space = Space.empty
     
-    // MARK: 유저가 속해있는 스페이스 비동기처리
+    var spaceContainer = [String]()
+    
+    var resultSpace: Space = .empty
+    var resultSpaces: [Space] = []
+    
+    private var db = Firestore.firestore()
+   
+    
+    // MARK: 유저가 속한 스페이스 불러오기 (비동기)
     func loadUserSpace(userID: String, completion: @escaping (Result<[String], Error>) -> Void) {
         
         let userRef = Firestore.firestore().collection("User").document(userID)
@@ -35,7 +48,8 @@ extension FireStoreViewModel {
         }
     }
     
-    // MARK: 유저ID(INPUT) -> 해당 유저 스페이스 목록 반환
+    // MARK: 유저가 속한 스페이스 불러오기
+    // 유저ID(INPUT) -> 해당 유저 스페이스 목록 반환
     func loadSpace(userID: String) {
         
         var tempSpace: Space = .empty
@@ -74,7 +88,8 @@ extension FireStoreViewModel {
         
     }
     
-    // MARK: 스페이스아이디(INPUT) -> Space구조체 (비동기 처리)
+    // MARK: 특정 스페이스 불러오기 (비동기)
+    // 스페이스아이디(INPUT) -> Space구조체 (비동기 처리)
     func fetchAsyncSpace(documentID: String, completion: @escaping (Result<Space, Error>) -> Void) {
         let spaceRef = Firestore.firestore().collection("Space").document(documentID)
         var space: Space = .empty
@@ -102,7 +117,9 @@ extension FireStoreViewModel {
         }
     }
     
-    // MARK: spaceID(INPUT)->비동기처리한 space 불러오기
+    
+    // MARK: 스페이스 불러오기
+    // spaceID(INPUT)->비동기처리한 space 불러오기
     func fetchSpace(documentID: String) {
         
         self.fetchAsyncSpace(documentID: documentID) {
@@ -116,7 +133,8 @@ extension FireStoreViewModel {
         }
     }
     
-    // MARK: 장소 만들기
+    // MARK: 스페이스 만들기
+    // ???: addSpaceData랑 차이?
     func createSpace(withName: String, user: User) {
         
         let db = Firestore.firestore()
@@ -165,7 +183,7 @@ extension FireStoreViewModel {
         }
     }
     
-    // 전체 스페이스 불러오기
+    // MARK: 전체 스페이스 불러오기
     func getSpaceDatas() {
         // get a reference to the database
         let db = Firestore.firestore()
@@ -193,7 +211,7 @@ extension FireStoreViewModel {
         }
     }
     
-    // spaceData 삭제
+    // MARK: spaceData 삭제
     func deleteSpaceData(spaceToDelete: Space) {
 
         let db = Firestore.firestore() // FireBase 데이터 베이스를 reference
@@ -214,6 +232,7 @@ extension FireStoreViewModel {
         }
     }
     
+    // MARK: space 참가
     func updateSpace(SpaceToUpdate: Space, newSpaceName: String?) {
         
         let db = Firestore.firestore()
@@ -228,7 +247,7 @@ extension FireStoreViewModel {
         }
     }
     
-    // 스페이스 하나 불러오기
+    // MARK: 특정 Space 정보 가져오기
     // Space Document Id를 parameter로 받습니다.
     func getSpaceData(SpaceID: String) {
         let db = Firestore.firestore()
@@ -244,20 +263,21 @@ extension FireStoreViewModel {
         }
     }
     
-    // space 추가함수
+    // MARK: Space에 데이터 더하기
+    // ???: createSpace랑 차이?
     func addSpaceData(spaceName: String) {
         // get a reference to the database
         let db = Firestore.firestore()
 
-        db.collection("Space").addDocument(data: [
-                                                  "spaceID" : "",
-                                                  "spaceName" : spaceName,
-                                                  "payment" : [],
-                                                  "status" : false,
-                                                  "transfer" : [],
-                                                  "userList" : [],
-                                                  "admin" : ""
-                                                 ]) { error in
+        let data = ["spaceID" : "",
+                    "spaceName" : spaceName,
+                    "payment" : [],
+                    "status" : false,
+                    "transfer" : [],
+                    "userList" : [],
+                    "admin" : ""] as [String : Any]
+        
+        db.collection("Space").addDocument(data: data) { error in
             
             if error == nil {
                 self.getSpaceDatas()

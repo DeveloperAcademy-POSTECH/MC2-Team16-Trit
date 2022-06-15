@@ -4,7 +4,7 @@
 //
 //  Created by YeongJin Jeong on 2022/06/07.
 //
-// MARK: Apple SignIn을 위한 코드들입니다.
+// MARK: (삭제예정) AuthViewMode -> appleLogin() 으로 이전
 
 import Foundation
 import SwiftUI

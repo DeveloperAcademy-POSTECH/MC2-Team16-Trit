@@ -27,7 +27,6 @@
 		3E20872F284DA5F3003A4CFD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 3E20872E284DA5F3003A4CFD /* GoogleSignIn */; };
 		3E208731284DA5F3003A4CFD /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3E208730284DA5F3003A4CFD /* GoogleSignInSwift */; };
 		3E208738284F6C98003A4CFD /* AppleLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */; };
-		3E39E8902853747100D8E44C /* UserVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E88F2853747100D8E44C /* UserVIewModel.swift */; };
 		3E39E89728539A1F00D8E44C /* SpaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89628539A1F00D8E44C /* SpaceViewModel.swift */; };
 		3E39E89A28549A8E00D8E44C /* FIreBaseTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89928549A8E00D8E44C /* FIreBaseTestView.swift */; };
 		3E39E89C2855980900D8E44C /* AccountTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39E89B2855980900D8E44C /* AccountTestView.swift */; };
@@ -98,6 +97,7 @@
 		A7C052A328561A66007072EE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A7C052A228561A66007072EE /* FirebaseFirestore */; };
 		A7C052A528561A66007072EE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7C052A428561A66007072EE /* FirebaseFirestoreSwift */; };
 		A7C052A728561A66007072EE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A7C052A628561A66007072EE /* FirebaseStorage */; };
+		A7F363382859738A00012CD3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3E39E892285374F800D8E44C /* FirebaseFirestore */; };
 		C0030EE32848C7880017125A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
 		C07ECB392849919C000C42C1 /* SpaceChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ECB382849919C000C42C1 /* SpaceChipsView.swift */; };
@@ -143,7 +143,6 @@
 		3E208734284DC6F5003A4CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3E208736284E65AD003A4CFD /* DonWorry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DonWorry.entitlements; sourceTree = "<group>"; };
 		3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginViewModel.swift; sourceTree = "<group>"; };
-		3E39E88F2853747100D8E44C /* UserVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVIewModel.swift; sourceTree = "<group>"; };
 		3E39E89628539A1F00D8E44C /* SpaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewModel.swift; sourceTree = "<group>"; };
 		3E39E89928549A8E00D8E44C /* FIreBaseTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIreBaseTestView.swift; sourceTree = "<group>"; };
 		3E39E89B2855980900D8E44C /* AccountTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTestView.swift; sourceTree = "<group>"; };
@@ -227,6 +226,7 @@
 				3E208731284DA5F3003A4CFD /* GoogleSignInSwift in Frameworks */,
 				3E3C10B4285752A700FAF79A /* FirebaseFirestoreSwift in Frameworks */,
 				A7C052A328561A66007072EE /* FirebaseFirestore in Frameworks */,
+				A7F363382859738A00012CD3 /* FirebaseFirestore in Frameworks */,
 				A7C052A728561A66007072EE /* FirebaseStorage in Frameworks */,
 				A7C052A128561A66007072EE /* FirebaseAuth in Frameworks */,
 				A7C052A528561A66007072EE /* FirebaseFirestoreSwift in Frameworks */,
@@ -524,7 +524,6 @@
 			isa = PBXGroup;
 			children = (
 				3E208737284F6C98003A4CFD /* AppleLoginViewModel.swift */,
-				3E39E88F2853747100D8E44C /* UserVIewModel.swift */,
 				3E39E89628539A1F00D8E44C /* SpaceViewModel.swift */,
 				A7C0529928560B3D007072EE /* AuthViewModel.swift */,
 				A7B08C452858E17100A5D921 /* AccountViewModel.swift */,
@@ -847,7 +846,6 @@
 				A7B08C462858E17100A5D921 /* AccountViewModel.swift in Sources */,
 				7991F9FE28487E2B00DCAFB8 /* SpaceMainView.swift in Sources */,
 				2CC211862849F1230009F785 /* TermView.swift in Sources */,
-				3E39E8902853747100D8E44C /* UserVIewModel.swift in Sources */,
 				2CC211AE284BBE960009F785 /* ChooseBankSheet.swift in Sources */,
 				4D6229C32849277500A8E24C /* Fonts.swift in Sources */,
 				3E39E89E285600D000D8E44C /* SpaceTestView.swift in Sources */,
@@ -1289,7 +1287,6 @@
 		};
 		3E3C10B3285752A700FAF79A /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
 		};
 		A704FC41284E01E400AC9736 /* SlideOverCard */ = {
