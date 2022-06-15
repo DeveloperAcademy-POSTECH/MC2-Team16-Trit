@@ -14,6 +14,7 @@ class FireStoreViewModel: ObservableObject {
     @Published var userList = [User]()
     @Published var accountList = [Account]()
     @Published var spaceList = [Space]()
+    @Published var space = Space.empty
     
     var spaceContainer = [String]()
     

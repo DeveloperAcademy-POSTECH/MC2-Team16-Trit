@@ -55,7 +55,7 @@ extension FireStoreViewModel {
                             if let document = document {
                                 do {
                                     tempSpace = try document.data(as: Space.self)
-                                    DispatchQueue.main.async{
+                                    DispatchQueue.main.async {
                                         self.resultSpaces.append(tempSpace)
                                     }
 
@@ -116,6 +116,55 @@ extension FireStoreViewModel {
         }
     }
     
+    // MARK: 장소 만들기
+    func createSpace(withName: String, user: User) {
+        
+        let db = Firestore.firestore()
+        
+        let space = Space(spaceID: "", spaceName: withName, payment: [], status: false, transfer: [], userList: [user.id ?? "123"], admin: user.id ?? "123")
+
+        do {
+            let _ = try db.collection("Space").addDocument(from: space)
+        } catch {
+            print(error)
+        }
+    }
+    
+    // MARK: 스페이스 상세정보 불러오기
+    func fetchSpaceDetail(of: String) {
+        let spaceRef = db.collection("Space").document(of)
+        
+        spaceRef.getDocument(as: Space.self) { result in
+            switch result {
+            case .success(let space):
+                self.space = space
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: 스페이스 데이터 삭제
+    func deleteSpace(spaceID: String) {
+        
+        let spaceRef = Firestore.firestore().collection("Space").document(spaceID)
+        
+        spaceRef.delete()
+        
+    }
+    
+    // MARK: 특정 스페이스에 참가자 추가
+    func addParticipant(spaceID: String, user: User) {
+        
+        let spaceRef = Firestore.firestore().collection("Space").document(spaceID)
+        
+        spaceRef.updateData(["userList" : FieldValue.arrayUnion([user.id])]) { error in
+            if error != nil {
+                print(error?.localizedDescription ?? "")
+            }
+        }
+    }
+    
     // 전체 스페이스 불러오기
     func getSpaceDatas() {
         // get a reference to the database
@@ -140,59 +189,6 @@ extension FireStoreViewModel {
                 }
             } else {
                 print("스페이스 불러오기 실패")
-            }
-        }
-    }
-    
-    // 스페이스 하나 불러오기
-    // Space Document Id를 parameter로 받습니다.
-    func getSpaceData(SpaceID: String) {
-        let db = Firestore.firestore()
-        let spaceRef = db.collection("Space").document(SpaceID)
-        
-        spaceRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
-                print("계좌 불러오기 실패")
-            }
-        }
-    }
-    
-    // MARK: 장소 만들기
-    func createSpace(spaceName: String, user: User) {
-        
-        let db = Firestore.firestore()
-        
-        let space = Space(spaceID: "", spaceName: spaceName, payment: [], status: false, transfer: [], userList: [user.id ?? "123"], admin: user.id ?? "123")
-
-        do {
-            let _ = try db.collection("Space").addDocument(from: space)
-        } catch {
-            print(error)
-        }
-    }
-    
-    // space 추가함수
-    func addSpaceData(spaceName: String) {
-        // get a reference to the database
-        let db = Firestore.firestore()
-
-        db.collection("Space").addDocument(data: [
-                                                  "spaceID" : "",
-                                                  "spaceName" : spaceName,
-                                                  "payment" : [],
-                                                  "status" : false,
-                                                  "transfer" : [],
-                                                  "userList" : [],
-                                                  "admin" : ""
-                                                 ]) { error in
-            
-            if error == nil {
-                self.getSpaceDatas()
-            } else {
-                print("스페이스 추가하기 실패")
             }
         }
     }
@@ -228,6 +224,45 @@ extension FireStoreViewModel {
                 self.getSpaceDatas()
             } else {
                 print("space이름 수정 실패")
+            }
+        }
+    }
+    
+    // 스페이스 하나 불러오기
+    // Space Document Id를 parameter로 받습니다.
+    func getSpaceData(SpaceID: String) {
+        let db = Firestore.firestore()
+        let spaceRef = db.collection("Space").document(SpaceID)
+        
+        spaceRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("계좌 불러오기 실패")
+            }
+        }
+    }
+    
+    // space 추가함수
+    func addSpaceData(spaceName: String) {
+        // get a reference to the database
+        let db = Firestore.firestore()
+
+        db.collection("Space").addDocument(data: [
+                                                  "spaceID" : "",
+                                                  "spaceName" : spaceName,
+                                                  "payment" : [],
+                                                  "status" : false,
+                                                  "transfer" : [],
+                                                  "userList" : [],
+                                                  "admin" : ""
+                                                 ]) { error in
+            
+            if error == nil {
+                self.getSpaceDatas()
+            } else {
+                print("스페이스 추가하기 실패")
             }
         }
     }

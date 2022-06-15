@@ -22,7 +22,7 @@ struct User: Identifiable, Codable {// , Hashable
 }
 
 extension User {
-    static let empty = User(id: "7iTrW1fztvFBqRimU9gd" , userName: "임영후", nickName: "Ahser", account: "", spaceList: [])
+    static let empty = User(id: "yCCYTZSpXQzDGv4p4JMG" , userName: "임영후", nickName: "Ahser", account: "", spaceList: [])
 }
 
 // assumption: 1차만 간 상황을 고려 참석자는 4명 돈을 받을 taker는 유쓰와 루미 돈을 보낼 giver는 애셔(루미에게) 버리(루미에게) 루미(유쓰에게)
