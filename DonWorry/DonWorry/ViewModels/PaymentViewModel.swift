@@ -44,14 +44,29 @@ class PaymentViewModel: ObservableObject {
     
     // MARK: payment 이름 변경
     // [param] with:name , paymentID:
-    func updatePaymentTitle() {
+    func updatePaymentTitle(with: String, paymentID: String) {
         
+        let paymentRef = db.collection("Payment").document(paymentID)
+        
+        paymentRef.setData(["paymentTitle" : with], merge: true) { error in
+            if error != nil {
+                self.errorMessage = error?.localizedDescription
+                print(self.errorMessage)
+            }
+        }
     }
     
     // MARK: 정산금액변경
     // [param] with: amount
-    func updatePaymentAmount() {
+    func updatePaymentAmount(with: Int, paymentID: String) {
+        let paymentRef = db.collection("Payment").document(paymentID)
         
+        paymentRef.setData(["amount" : with], merge: true) { error in
+            if error != nil {
+                self.errorMessage = error?.localizedDescription
+                print(self.errorMessage)
+            }
+        }
     }
     
     // MARK: 정산첨부파일변경
