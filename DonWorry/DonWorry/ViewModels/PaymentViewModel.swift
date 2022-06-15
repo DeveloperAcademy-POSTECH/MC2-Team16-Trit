@@ -93,8 +93,15 @@ class PaymentViewModel: ObservableObject {
     
     // MARK: 정산 삭제
     // [param] paymentID
-    func deletePayment() {
+    func deletePayment(paymentID: String) {
         
+        let paymentRef = db.collection("Payment").document(paymentID)
+        
+        paymentRef.delete { error in
+            if error != nil {
+                print("payment 삭제에 실패했습니다.")
+            }
+        }
     }
     
     // MARK: 특정 스페이스에 대한 모든 정산 내역 fetch (실시간)

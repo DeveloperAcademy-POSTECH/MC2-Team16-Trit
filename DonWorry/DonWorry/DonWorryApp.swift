@@ -30,6 +30,7 @@ struct DonWorryApp: App {
                 ContentView()
                     .environmentObject(viewModel)
             }
+                .environmentObject(viewModel)
         }
     }
 }
