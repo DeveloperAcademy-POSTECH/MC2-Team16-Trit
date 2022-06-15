@@ -9,18 +9,27 @@ import SwiftUI
 import Firebase
 import GoogleSignIn
 
+class BaseViewModel: ObservableObject {
+    @Published var authViewModel = AuthViewModel()
+    @Published var accountViewModel = AccountViewModel()
+//    @Published var authViewModel = AuthViewModel()
+//    @Published var authViewModel = AuthViewModel()
+    
+}
+
 @main
 struct DonWorryApp: App {
     
     // AppDelegate를 연결합니다.
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var viewModel = BaseViewModel()
     
     var body: some Scene {
         WindowGroup {
-        // FireBaseTestView()
-//            ContentView()
-            AccountTestView()
-            
+            NavigationView{
+                ContentView()
+                    .environmentObject(viewModel)
+            }
         }
     }
 }
@@ -31,7 +40,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey:Any]? = nil) -> Bool {
         // initializing FireBase
         FirebaseApp.configure()
-        
         return true
     }
     

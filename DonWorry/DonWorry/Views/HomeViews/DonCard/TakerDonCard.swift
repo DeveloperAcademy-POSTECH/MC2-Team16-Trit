@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TakerDonCard: View {
     @State var takersheetStateModel = false
+    
     var currentUser: User
     var body: some View {
         Button {
@@ -26,17 +27,20 @@ struct TakerDonCard: View {
     }
 }
 
+/*
 struct TakerDonCard_Previews: PreviewProvider {
     static var previews: some View {
         TakerDonCard(takersheetStateModel: true, currentUser: users[0])
     }
 }
+ */
 
 struct TakerSheetView: View {
     var currentUser: User
+    @EnvironmentObject var viewModel: BaseViewModel
     var body: some View {
         // 현재사용자가 돈을 받아야할사람일때 어떤사람에게 돈을 받아야할지를 List로 반환해주는 함수(makegiverList)
-        let givers = makeGiverList(trnasfers: transfers, currentUser: users[0])
+        let givers = makeGiverList(trnasfers: transfers, currentUser: viewModel.authViewModel.currentUser)
         ZStack {
             HStack {
                 ScrollView {
@@ -104,8 +108,9 @@ struct TakerSheetView: View {
 
 struct TakerDonCardDetail: View {
     var currentUser: User
+    @EnvironmentObject var viewModel: BaseViewModel
     var body: some View {
-        let givers = makeGiverList(trnasfers: transfers, currentUser: users[0])
+        let givers = makeGiverList(trnasfers: transfers, currentUser: viewModel.authViewModel.currentUser)
         // 정산받아야할사람들(givers: [User])을 전부 보여주면 사람이 많아지면 카드 밖으로 이미지가 삐져나감
         // 그래서 최대 4명만 TakerDonCard에 보여주고 나머지 리스트는 옆의 점세개를 누르면 나오게끔
         let displayGivers = makeDisplayGiverList(makeGiverList: givers)

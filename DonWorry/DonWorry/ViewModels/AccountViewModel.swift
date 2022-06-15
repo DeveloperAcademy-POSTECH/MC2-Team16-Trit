@@ -1,137 +1,110 @@
 //
-//  AccountViewModel.swift
+//  AccViewModel.swift
 //  DonWorry
 //
-//  Created by YeongJin Jeong on 2022/06/10.
+//  Created by Chanhee Jeong on 2022/06/15.
 //
 
-import Foundation
+import SwiftUI
 import Firebase
+import FirebaseAuth
+import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-extension FireStoreViewModel {
+class AccountViewModel: ObservableObject {
     
-    // Read Account
-    func getAccountDatas() {
-        // get a reference to the database
-        let db = Firestore.firestore()
-        db.collection("Account").getDocuments { snapshot, error in
-            
-            if error == nil {
-                if let snapshot = snapshot {
-                    
-                    DispatchQueue.main.async {
-                        self.accountList = snapshot.documents.map { d in
-                            return Account(id: d.documentID,
-                                           accountHolder: d["accountHolder"] as! String,
-                                           accountBank: d["accountBank"] as! String,
-                                           accountNumber: d["accountNumber"] as! String)
-                        }
-                    }
+    @Published var account: Account = .empty
+    @Published var errorMessage: String?
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
+    private var db = Firestore.firestore()
+    
+    private func fetchAccount(userId: String) {
+        
+        let docRef = db.collection("accounts").document(userId)
+        
+        docRef.getDocument(as: Account.self) { result in
+            switch result {
+            case .success(let account):
+                self.account = account
+                self.errorMessage = nil
+            case .failure(let error):
+                switch error {
+                case DecodingError.typeMismatch(_, let context):
+                    self.errorMessage = "\(error.localizedDescription): \(context.debugDescription)"
+                case DecodingError.valueNotFound(_, let context):
+                    self.errorMessage = "\(error.localizedDescription): \(context.debugDescription)"
+                case DecodingError.keyNotFound(_, let context):
+                    self.errorMessage = "\(error.localizedDescription): \(context.debugDescription)"
+                case DecodingError.dataCorrupted(let key):
+                    self.errorMessage = "\(error.localizedDescription): \(key)"
+                default:
+                    self.errorMessage = "DEBUG: Error decoding document: \(error.localizedDescription)"
                 }
-            } else {
-                print("계좌 불러오기 실패")
             }
-        }
+        }   
     }
     
-    func getAccountData(AccountID: String) {
-        let db = Firestore.firestore()
-        let accountRef = db.collection("Account").document(AccountID)
+    // MARK: 계좌정보 추가
+    // - "" : 기존회원인경우 현재 유저의 uid 로 추가
+    // - userId : 새로운 유저는 tempuser의 uid를 받아와 추가 
+    func addAccount(account: Account, to userId: String = "") {
         
-        accountRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
-                print("계좌 불러오기 실패")
-            }
-        }
-    }
-    
-    // Create Account
-    // Account 추가함수
-    func addAccountData(accountHolder: String, accountBank: String, accountNumber: String) {
-        // get a reference to the database
-        let db = Firestore.firestore()
-
-        db.collection("Account").addDocument(data: ["accountHolder": accountHolder,
-                                                    "accountBank": accountBank,
-                                                    "accountNumber": accountNumber]) { error in
-            
-            if error == nil {
-                self.getAccountDatas()
-            } else {
-                print("계좌 추가하기 실패")
-            }
-        }
-    }
-    
-    // Delete Account
-    // Account 삭제 함수
-    func deleteAccountData(accountToDelete: Account) {
-
-        let db = Firestore.firestore() // FireBase 데이터 베이스를 reference
+        guard let user = Auth.auth().currentUser else { return }
+        let uid = (userId != "") ? userId : user.uid
+        let collectionRef = db.collection("accounts")
         
-        // collection에 접근
-        db.collection("Account").document(accountToDelete.id).delete { error in
-            if error == nil {
-
-                DispatchQueue.main.async {
-                    self.accountList.removeAll { account in
-                        return account.id == accountToDelete.id
-                    }
-                }
-
-            } else {
-                print("계좌 삭제하기 실패")
+        let data = ["uid": uid,
+                    "accountHolder": account.accountHolder,
+                    "accountBank": account.accountBank,
+                    "accountNumber": account.accountNumber]
+        
+        let newDocReference = try collectionRef.document(user.uid).setData(data, merge: true)
+        print("DEBUG: 새로운 계좌정보가 생성되었습니다. \(newDocReference)")
+        
+    }
+    
+    // MARK: 계좌상세정보 불러오기
+    // - () 현재 사용자의 계좌정보
+    // - (of userid:) 특정 사용자의 계좌번호
+    func getAccountDetail(of userId: String = "") {
+        if userId == "" {
+            if let currentUser = authViewModel.currentUser.id {
+                fetchAccount(userId: currentUser)
+            }else{
+                print("DEBUG: 현재유저를 알수없습니다. USER - \(userId)")
             }
         }
+        else {
+            fetchAccount(userId: userId)
+        }
     }
-
-    // Update Account
-    // 예금주명 수정 함수
-    func updateAccount(AccountToUpdate: Account, newHolder: String?) {
-
-        let db = Firestore.firestore()
-
-        db.collection("Account").document(AccountToUpdate.id).setData(["accountHolder" : newHolder ?? ""], merge: true) { error in
-
-            if error == nil {
-                self.getAccountDatas()
-            } else {
-                print("계좌 정보 업데이트 실패(예금주)")
+    
+    // MARK: 계좌정보 수정
+    func updateAccount(account: Account) {
+        if let id = account.id {
+            let docRef = db.collection("accounts").document(id)
+            do {
+                try docRef.setData(from: account)
+            }
+            catch {
+                print(error)
             }
         }
     }
     
-    // 은행 수정 함수
-    func updateAccount(AccountToUpdate: Account, newBank: String?) {
+    // MARK: 계좌정보 삭제
+    func deleteAccount(account: Account) {
         
-        let db = Firestore.firestore()
-
-        db.collection("Account").document(AccountToUpdate.id).setData(["accountBank" : newBank ?? ""], merge: true) { error in
-
-            if error == nil {
-                self.getAccountDatas()
-            } else {
-                print("계좌 정보 업데이트 실패(은행)")
+        if let id = account.id {
+            let docRef = db.collection("accounts").document(id)
+            do {
+                try docRef.delete()
+            }
+            catch {
+                print(error)
             }
         }
     }
     
-    // 계좌번호 수정 함수
-    func updateAccount(AccountToUpdate: Account, newNumber: String?) {
-        
-        let db = Firestore.firestore()
-
-        db.collection("Account").document(AccountToUpdate.id).setData(["accounNumber" : newNumber ?? ""], merge: true) { error in
-
-            if error == nil {
-                self.getAccountDatas()
-            } else {
-                print("계좌 정보 업데이트 실패(계좌번호)")
-            }
-        }
-    }
 }

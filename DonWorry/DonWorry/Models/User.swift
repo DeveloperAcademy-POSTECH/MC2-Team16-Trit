@@ -13,7 +13,7 @@ struct User: Identifiable, Codable {// , Hashable
     @DocumentID var id: String?
     var userName: String // 사용자이름 - 간편로그인 연계
     var nickName: String // 닉네임
-    var account: String // 계좌정보 Account 참조해야함.
+    var account: String // 계좌정보 Account 참조해야함. -> ID
     var image: String = "default" // 우선 Default 로 하나로 통일 - "default"
     var profileImage: Image {
         Image(image)
@@ -22,15 +22,8 @@ struct User: Identifiable, Codable {// , Hashable
 }
 
 extension User {
-    static let empty = User(id: "yCCYTZSpXQzDGv4p4JMG" , userName: "임영후", nickName: "Ahser", account: "", spaceList: [])
+  static let empty = User(userName: "", nickName: "", account: "", image: "", spaceList: [])
 }
-
-// assumption: 1차만 간 상황을 고려 참석자는 4명 돈을 받을 taker는 유쓰와 루미 돈을 보낼 giver는 애셔(루미에게) 버리(루미에게) 루미(유쓰에게)
-// let user1: User = User(userName: "애셔", profileImage: "user1", giveMoney: 12000, giveTo: "루미", participant: "밤샘코딩")
-// let user2: User = User(userName: "유쓰", profileImage: "user2", takeMoney: 12000, userAccount: "2346128947294우리은행", participant: "밤샘코딩")
-// let user3: User = User(userName: "버리", profileImage: "user3", giveMoney: 18000, giveTo: "루미", participant: "밤샘코딩")
-// let user4: User = User(userName: "루미", profileImage: "user4", takeMoney: 30000, giveMoney: 12000, giveTo: "유쓰", userAccount: "61630204093436국민", participant: "밤샘코딩")
-// let users: [User] = [user1, user2, user3, user4]
 
 var mockspaces: [String] = ["123455", "23444", "32133"]
 
