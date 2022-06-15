@@ -71,7 +71,16 @@ class PaymentViewModel: ObservableObject {
     
     // MARK: 정산첨부파일변경
     // [param] with: AttachedFile리스트
-    func updatePaymentAttached() {
+    func updatePaymentAttached(with: [String], paymentID: String) {
+        
+        let paymentRef = db.collection("Payment").document(paymentID)
+        
+        paymentRef.setData(["attachment" : with], merge: true) { error in
+            if error != nil {
+                self.errorMessage = error?.localizedDescription
+                print(self.errorMessage)
+            }
+        }
         
     }
     
