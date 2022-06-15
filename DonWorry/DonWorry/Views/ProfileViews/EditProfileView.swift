@@ -13,16 +13,19 @@ struct EditProfileView: View {
     @FocusState private var isFocused: Bool
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack {
             
             /* Title */
-            VStack(alignment: .leading, spacing: 10) {
-                Group {
-                    Text("이름을")
-                    Text("수정해볼까요?")
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    Group {
+                        Text("이름을")
+                        Text("수정해볼까요?")
+                    }
+                    .font(.system(size: 30, weight: .heavy))
+                    
                 }
-                .font(.system(size: 30, weight: .heavy))
-                
+                Spacer()
             }
             
             .padding(.bottom, 30)
@@ -36,6 +39,7 @@ struct EditProfileView: View {
                     Spacer()
                     SmallButton(text: "확인") {
                         /* 닉네임 저장 및 profile 페이지로 back */
+                        self.mode.wrappedValue.dismiss()
                     }
                     .padding(.bottom, 30)
                 }
@@ -64,8 +68,8 @@ struct EditProfileView: View {
     }
 }
 
-//struct EditProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EditProfileView()
-//    }
-//}
+struct EditProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditProfileView()
+    }
+}
