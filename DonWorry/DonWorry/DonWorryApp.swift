@@ -11,11 +11,12 @@ import GoogleSignIn
 
 class BaseViewModel: ObservableObject {
     @Published var authViewModel = AuthViewModel()
-//    @Published var authViewModel = AuthViewModel()
+    @Published var accountViewModel = AccountViewModel()
 //    @Published var authViewModel = AuthViewModel()
 //    @Published var authViewModel = AuthViewModel()
     
 }
+
 @main
 struct DonWorryApp: App {
     
@@ -25,16 +26,10 @@ struct DonWorryApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //            FireBaseTestView()
-            //           SignInView()
-            //
-            //            UserInfoView()
             NavigationView{
                 ContentView()
                     .environmentObject(viewModel)
             }
-//
-            
         }
     }
 }
@@ -45,7 +40,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey:Any]? = nil) -> Bool {
         // initializing FireBase
         FirebaseApp.configure()
-        
         return true
     }
     

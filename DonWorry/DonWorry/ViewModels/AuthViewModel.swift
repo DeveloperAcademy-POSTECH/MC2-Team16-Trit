@@ -24,9 +24,12 @@ class AuthViewModel: ObservableObject {
     @Published var didAuthenticateUser = false // 처음로그인하는 유저인지 아닌지 체크하는 변수
     @Published var currentUser: User = .empty
     
+    @EnvironmentObject var accountViewModel: AccountViewModel
+    
     private var tempUserSession = Auth.auth().currentUser // 회원가입시, 추가정보 받기 위해서 존재
     private var db = Firestore.firestore()
     private let service = UserService()
+    
     
     init() {
         userSession = Auth.auth().currentUser
@@ -40,39 +43,11 @@ class AuthViewModel: ObservableObject {
         
         service.fetchUser(withUid: uid) { user in
             self.currentUser = user
-            print("현재유저\(user.id)")
+//            print("현재유저 \(user.id)")
         }
          
     }
     
-    /*
-    private func fetchUser(uid: String) {
-      let docRef = db.collection("users").document(uid)
-      
-      docRef.getDocument(as: User.self) { result in
-        switch result {
-        case .success(let user):
-          // A Book value was successfully initialized from the DocumentSnapshot.
-          self.user = user
-          self.errorMessage = nil
-        case .failure(let error):
-          // A Book value could not be initialized from the DocumentSnapshot.
-          switch error {
-          case DecodingError.typeMismatch(_, let context):
-            self.errorMessage = "\(error.localizedDescription): \(context.debugDescription)"
-          case DecodingError.valueNotFound(_, let context):
-            self.errorMessage = "\(error.localizedDescription): \(context.debugDescription)"
-          case DecodingError.keyNotFound(_, let context):
-            self.errorMessage = "\(error.localizedDescription): \(context.debugDescription)"
-          case DecodingError.dataCorrupted(let key):
-            self.errorMessage = "\(error.localizedDescription): \(key)"
-          default:
-            self.errorMessage = "Error decoding document: \(error.localizedDescription)"
-          }
-        }
-      }
-    }
-     */
     // MARK: fetchUser(uid)
     func fetchUser(uid: String) {
         
@@ -87,13 +62,13 @@ class AuthViewModel: ObservableObject {
                 
                 guard let user = snapshot?.data() else { return }
                 
-                print("snapshot\(user)")
+                print("DEBUG: 현재 유저의 snapshot\(user)")
                 
             }
         
     }
     
-    // MARK: apple signin
+    // MARK: 애플로그인
     func appleLogin(credential: ASAuthorizationAppleIDCredential) {
         guard let token = credential.identityToken else {
             print("Firebase Error")
@@ -115,7 +90,7 @@ class AuthViewModel: ObservableObject {
             
             /* firestore에 유저 정보추가 */
             guard let user = result?.user else { return }
-            self.userSession = user
+            
             print("로그인된 유저 \(self.userSession?.uid)")
             
             Firestore.firestore().collection("users")
@@ -124,18 +99,21 @@ class AuthViewModel: ObservableObject {
                     if document != nil {
                         // 신규회원이면 user detail 추가
 //                                self.didAuthenticateUser = true
-                        self.addNewUserToFirestore(userID: user.uid, loginWith: "apple", user: user)
+                        self.addNewUserToFirestore(userID: user.uid,
+                                                   loginWith: "apple",
+                                                   user: user)
                     }
-//                            else {
-//                                // 기존회원이면 login
+                    else {
+                        // 기존회원이면 login 후 홈으로 이동
 //                                self.didAuthenticateUser = true
-//                            }
+                        self.userSession = user
+                    }
                 }
 
         }
     }
     
-    // MARK: google signin
+    // MARK: 구글로그인
     func googleLogin() {
         
         do {
@@ -199,7 +177,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    // MARK: addNewUserToDB
+    // MARK: 신규유저DB추가
     // 새로 가입한 user의 UID 를 firestore에 등록하여 해당 정보를 db로 관리
     func addNewUserToFirestore(userID: String, loginWith: String, user: Firebase.User?) {
         
@@ -217,32 +195,57 @@ class AuthViewModel: ObservableObject {
             }
     }
     
-    // MARK: updateNewUserInfo
+    // MARK: 신규유저추가정보업데이트
     // https://designcode.io/swiftui-advanced-handbook-write-to-firestore
-    func updateNewUserInfo(userName: String?, nickName: String?, account: String?) {
+    func updateNewUserInfo(user: User, account: Account) {
         
         guard let uid = tempUserSession?.uid else { return }
         
-        let data = ["uid": uid,
-                    "userName": userName,
-                    "nickName": nickName,
-                    "acount": account] 
+        let data = ["uid": user.id,
+                    "userName": user.userName,
+                    "nickName": user.nickName,
+                    "acount": user.account]
         
-        print("업데이트 하려는 데이터 \(data)")
+        print("DEBUG: 업데이트 하려는 데이터 \(data)")
+             
+        // 1. 계좌정보 업데이트
+        // TODO: 계좌번호 받아와 data update
+        if let uid = user.id {
+            accountViewModel.addAccount(account: account, to: uid )
+        }else{
+            print("DEBUG: 올바르지않은 유저ID가 입력되었습니다.")
+        }
         
-        Firestore.firestore().collection("users")
+    }
+    
+    /*
+     // TODO: 닉네임 업데이트 오류 수정 
+    // MARK: 닉네임 업데이트
+    // - "" : 기존회원인경우 현재 유저의 uid 로 업데이트
+    // - userId : 새로운 유저는 tempuser의 uid를 받아와 추가
+    func updateUserNickName(with nickName: String, for userId: String = "") {
+        
+        guard let user = Auth.auth().currentUser else { return }
+        let uid = (userId != "") ? userId : user.uid
+        let collectionRef = db.collection("users")
+        
+        
+        // 2. 닉네임 업데이트
+        collectionRef.collection("users")
             .document(uid)
             .setData(data, merge: true){ error in
                             if let error = error {
-                                print("다음 이유로 사용자 추가 정보 입력에 에러가 발생했습니다 : \(error)")
+                                print("DEBUG: 다음 이유로 사용자 추가 정보 입력에 에러가 발생했습니다 : \(error)")
                             } else {
-                                print("사용자 추가 정보 입력이 성공적으로 ")
+                                print("DEBUG: 사용자 추가 정보 입력이 성공적으로 ")
                                 self.userSession = self.tempUserSession // main 페이지도 이동
                             }
                         }
     }
+    */
     
-    // MARK: signOut
+    
+    // MARK: 로그아웃
     func signOut() {
         // sets user session to nil so we show login view (only client side)
         userSession = nil
@@ -251,5 +254,22 @@ class AuthViewModel: ObservableObject {
         try? Auth.auth().signOut()
     }
     
-    
+    // MARK: 회원탈퇴
+    func delete() {
+
+        let user = Auth.auth().currentUser
+        
+        signOut()
+     
+        try? user?.delete { error in
+          if let error = error {
+            // An error happened.
+              print("DEBUG: 회원탈퇴에 실패했습니다.\(error)")
+          } else {
+            // Account deleted.
+              print("DEBUG: 성공적으로 탈퇴되었습니다.")
+          }
+        }
+    }
+
 }

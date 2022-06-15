@@ -69,7 +69,7 @@ struct UserInfoView: View {
             }
             
             SmallButton(text: "다음") {
-                authViewModel.updateNewUserInfo(userName: "정찬희", nickName: "버리" , account: "1234556")
+//                authViewModel.updateNewUserInfo(userName: "정찬희", nickName: "버리" , account: "1234556")
                 naviSelection = "TermView"
             }
 

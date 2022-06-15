@@ -38,7 +38,7 @@ struct HomeView: View {
                                                selection: $naviSelection){EmptyView()}
                                 Button {
 //                                    self.naviSelection = "profile"
-                                    viewModel.authViewModel.getUser(uid: "XJFF6PCZ47UTpZCtVpRm2VDbwWz1")
+//                                    viewModel.authViewModel.getUser(uid: "XJFF6PCZ47UTpZCtVpRm2VDbwWz1")
                                     
                                 } label: {
                                     viewModel.authViewModel.currentUser.profileImage
@@ -89,7 +89,8 @@ struct HomeView: View {
                         //                            }
                         
                         // MARK: 여기 수정해야합니다! 빌드만 가능하게 돌려놨어요...
-                        if viewModel.authViewModel.currentUser.spaceList[0] == selection {
+//                        if viewModel.authViewModel.currentUser.spaceList[0] == selection {
+                        if mockspaces[0] == selection {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     ParticipateDonCard(isParticipateIn: false, isSpaceView: $isSpaceView)

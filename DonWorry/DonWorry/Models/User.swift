@@ -25,37 +25,36 @@ extension User {
   static let empty = User(userName: "", nickName: "", account: "", image: "", spaceList: [])
 }
 
-
 var mockspaces: [String] = ["123455", "23444", "32133"]
 
 //
-//var users: [User] = [
-//    User(userName: "의성",
-//         nickName: "Youth",
-//         account: "123",
-//         spaceList: mockspaces ),
-//
-//    User(userName: "영후", nickName: "Asher",
-//         account: "123",
-//         spaceList: mockspaces),
-//
-//    User(userName: "찬희",
-//         nickName: "Avery",
-//         account: "123",
-//         spaceList: mockspaces),
-//
-//    User(userName: "승창",
-//         nickName: "Chalie",
-//         account: "123",
-//         spaceList: mockspaces),
-//
-//    User(userName: "한규",
-//         nickName: "Kyu",
-//         account: "123",
-//         spaceList: mockspaces),
-//
-//    User(userName: "영진",
-//         nickName: "lumi",
-//         account: "123",
-//         spaceList: mockspaces)
-//]
+var users: [User] = [
+    User(userName: "의성",
+         nickName: "Youth",
+         account: "123",
+         spaceList: mockspaces ),
+
+    User(userName: "영후", nickName: "Asher",
+         account: "123",
+         spaceList: mockspaces),
+
+    User(userName: "찬희",
+         nickName: "Avery",
+         account: "123",
+         spaceList: mockspaces),
+
+    User(userName: "승창",
+         nickName: "Chalie",
+         account: "123",
+         spaceList: mockspaces),
+
+    User(userName: "한규",
+         nickName: "Kyu",
+         account: "123",
+         spaceList: mockspaces),
+
+    User(userName: "영진",
+         nickName: "lumi",
+         account: "123",
+         spaceList: mockspaces)
+]
