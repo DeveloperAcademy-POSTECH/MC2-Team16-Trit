@@ -30,7 +30,6 @@ class AuthViewModel: ObservableObject {
     private var db = Firestore.firestore()
     private let service = UserService()
     
-    
     init() {
         userSession = Auth.auth().currentUser
         self.fetchUser()

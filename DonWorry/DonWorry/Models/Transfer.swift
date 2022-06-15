@@ -9,17 +9,19 @@ import Foundation
 import FirebaseFirestoreSwift
 
 // 커스텀 타입
-struct Transfers : Identifiable, Codable{
+struct TransferModel : Identifiable, Codable{
     @DocumentID var id : String?
     var giver: String // 보내는 사람
     var taker: String // 받는 사람
     var amount: Int // 금액
+    var spaceID: String // 어떤 space 에서 나온 transfer 인지 ref 달아주기
     var isCompleted: Bool = false // 송금완료 여부
 }
 
-extension Transfers {
-    static let empty = Transfers(id: "", giver: "", taker: "", amount: 30000)
+extension TransferModel {
+    static let empty = Transfers(id: "", giver: "", taker: "", amount: 0, spaceID: "")
 }
+
 
 struct Transfer {
     var giver: User

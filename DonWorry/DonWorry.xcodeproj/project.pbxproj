@@ -98,6 +98,7 @@
 		A7C052A528561A66007072EE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7C052A428561A66007072EE /* FirebaseFirestoreSwift */; };
 		A7C052A728561A66007072EE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A7C052A628561A66007072EE /* FirebaseStorage */; };
 		A7F363382859738A00012CD3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3E39E892285374F800D8E44C /* FirebaseFirestore */; };
+		A7F3633A2859813200012CD3 /* TransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F363392859813200012CD3 /* TransferViewModel.swift */; };
 		C0030EE32848C7880017125A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */; };
 		C07ECB392849919C000C42C1 /* SpaceChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07ECB382849919C000C42C1 /* SpaceChipsView.swift */; };
@@ -209,6 +210,7 @@
 		A7C0529928560B3D007072EE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		A7C0529B28560D45007072EE /* UIApplicationExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtention.swift; sourceTree = "<group>"; };
 		A7C0529D2856185C007072EE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		A7F363392859813200012CD3 /* TransferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewModel.swift; sourceTree = "<group>"; };
 		C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleProgressBar.swift; sourceTree = "<group>"; };
 		C07ECB382849919C000C42C1 /* SpaceChipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceChipsView.swift; sourceTree = "<group>"; };
 		C0936BFC284876800064CEFA /* ParticipateDonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateDonCard.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				3E39E89628539A1F00D8E44C /* SpaceViewModel.swift */,
 				A7C0529928560B3D007072EE /* AuthViewModel.swift */,
 				A7B08C452858E17100A5D921 /* AccountViewModel.swift */,
+				A7F363392859813200012CD3 /* TransferViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -861,6 +864,7 @@
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				2CF61B3A2849AF97004C3768 /* SpaceEmptyView.swift in Sources */,
 				C0936BFF28487FFC0064CEFA /* GiverDonCard.swift in Sources */,
+				A7F3633A2859813200012CD3 /* TransferViewModel.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
 				79BF179D284CFF83003A2A68 /* ImageExtension.swift in Sources */,
 				C0936BFD284876800064CEFA /* ParticipateDonCard.swift in Sources */,
