@@ -19,35 +19,51 @@ class PaymentViewModel: ObservableObject {
 //    @EnvironmentObject var authViewModel: AuthViewModel -> 다른 뷰모델 불러쓰기
     
     private var db = Firestore.firestore()
-    
+        
     // MARK: 새로운 payment 추가
     // [param] to: spaceID, data: Payment
-    func addPayment(){
+    func addPayment(spaceID: String, data: Payment ,user: User) {
         
+        let spaceRef = db.collection("Space").document(spaceID)
+        
+        do {
+            let result = try db.collection("Payment").addDocument(from: data) { error in
+                if error != nil {
+                    self.errorMessage = error?.localizedDescription
+                    return
+                }
+            }
+            
+            let paymentID = result.documentID
+            spaceRef.setData(["payment" : FieldValue.arrayUnion([paymentID])], merge: true)
+            
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     // MARK: payment 이름 변경
     // [param] with:name , paymentID:
-    func updatePaymentTitle(){
+    func updatePaymentTitle() {
         
     }
     
     // MARK: 정산금액변경
     // [param] with: amount
-    func updatePaymentAmount(){
+    func updatePaymentAmount() {
         
     }
     
     // MARK: 정산첨부파일변경
     // [param] with: AttachedFile리스트
-    func updatePaymentAttached(){
+    func updatePaymentAttached() {
         
     }
     
     // MARK: 현재유저가 정산들에 참가할때
     // [param] payment list 를 받아야함
     // 참석버튼 -> 참석할 카드 여러개 선택 -> 확인누르면 이 함수 실행
-    func participateInPayment(){
+    func participateInPayment() {
         
     }
     
