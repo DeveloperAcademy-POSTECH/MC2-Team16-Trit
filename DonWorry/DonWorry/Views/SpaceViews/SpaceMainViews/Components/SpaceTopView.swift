@@ -23,6 +23,7 @@ struct SpaceTopView: View {
                 .padding(.leading, leftPaddingSize)
             Button {
                 isIDPopUpPresented.toggle()
+                copyToPasteboard(spaceID)
             } label: {
                 Text("복사하기")
                     .applyTextWithLineLimitModifier(size: 9, weight: .bold, color: .white)
