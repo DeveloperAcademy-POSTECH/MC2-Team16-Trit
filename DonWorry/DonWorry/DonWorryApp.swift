@@ -9,30 +9,19 @@ import SwiftUI
 import Firebase
 import GoogleSignIn
 
-class BaseViewModel: ObservableObject {
-    @Published var authViewModel = AuthViewModel()
-    @Published var accountViewModel = AccountViewModel()
-    @Published var transferViewModel = TransferViewModel()
-    @Published var paymentViewModel = PaymentViewModel()
-    @Published var spaceViewModel = SpaceViewModel()
-}
 
 @main
 struct DonWorryApp: App {
     
     // AppDelegate를 연결합니다.
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-//    @StateObject var viewModel = BaseViewModel()
-    @StateObject var authViewModel = AuthViewModel()
-    @StateObject var accountViewModel = AccountViewModel()
-    
+
     var body: some Scene {
         WindowGroup {
             NavigationView{
                 ContentView()
-//                    .environmentObject(viewModel)
-                    .environmentObject(authViewModel)
-                    .environmentObject(accountViewModel)
+                    .environmentObject(AuthViewModel())
+                    .environmentObject(AccountViewModel())
             }
         }
     }

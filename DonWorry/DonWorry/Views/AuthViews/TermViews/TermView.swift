@@ -13,6 +13,7 @@ struct TermView: View {
     
     @State private var showSheet = false
     @State private var termsOfService = terms
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack(spacing: 30) {
@@ -69,12 +70,14 @@ struct TermView: View {
             
             Button {
                 showSheet = true
+                print("시트를 누른다.")
                 
-                // Todo : 회원가입 완료 후 메인 페이지로 넘어가기
+                authViewModel.updateNewUserData(data: User(userName: "김승창", nickName: "Charlie", loginWith: "", accountHolder: "김승창", accountBank: "카카오뱅크", accountNumber: "123342342", spaceList: [], isAgreed: [true,true,true]))
                 
             } label: {
                 HStack {
                     Text("확인")
+                    // Todo : 회원가입 완료 후 메인 페이지로 넘어가기
                 }
                 .frame(width: 100, height: 20, alignment: .center)
                 .foregroundColor(.white)
@@ -101,7 +104,8 @@ struct TermView: View {
             }
         }
 //        .halfSheet(showSheet: $showSheet) {
-//            TermSheetView(agreedtermsOfService: termsOfService.filter { $0.isAgreed }, showSheet: $showSheet)
+//            TermSheetView(agreedTerms: termsOfService.filter { $0.isAgreed }, showSheet: $showSheet)
+//
 //        } onEnd: {
 //            showSheet = false
 //        }

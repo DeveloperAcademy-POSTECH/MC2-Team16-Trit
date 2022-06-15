@@ -14,10 +14,16 @@ import FirebaseFirestore
 class AccountViewModel: ObservableObject {
     
     @Published var account: Account = .empty
+    @Published var accountRef: String?
     @Published var errorMessage: String?
     @EnvironmentObject var authViewModel: AuthViewModel
     
     private var db = Firestore.firestore()
+    
+    init() {
+//        account = self.fetchAccount(userId: Auth.auth().currentUser)
+
+    }
     
     private func fetchAccount(userId: String) {
         
@@ -48,21 +54,25 @@ class AccountViewModel: ObservableObject {
     // MARK: 계좌정보 추가
     // - "" : 기존회원인경우 현재 유저의 uid 로 추가
     // - userId : 새로운 유저는 tempuser의 uid를 받아와 추가 
-    func addAccount(account: Account, to userId: String = "") {
-        
-        guard let user = Auth.auth().currentUser else { return }
-        let uid = (userId != "") ? userId : user.uid
-        let collectionRef = db.collection("accounts")
-        
-        let data = ["uid": uid,
-                    "accountHolder": account.accountHolder,
-                    "accountBank": account.accountBank,
-                    "accountNumber": account.accountNumber]
-        
-        let newDocReference = try collectionRef.document(user.uid).setData(data, merge: true)
-        print("DEBUG: 새로운 계좌정보가 생성되었습니다. \(newDocReference)")
-        
-    }
+//    func addAccount(account: Account, to userId: String = "") {
+//
+//        guard let user = Auth.auth().currentUser else { return }
+//        let uid = (userId != "") ? userId : user.uid
+//        let collectionRef = db.collection("accounts")
+//
+//        let data = ["uid": uid,
+//                    "accountHolder": account.accountHolder,
+//                    "accountBank": account.accountBank,
+//                    "accountNumber": account.accountNumber]
+//
+//        let newDocReference = try collectionRef.document(user.uid).setData(data, merge: true)
+//
+//        print("DEBUG: 새로운 계좌정보가 생성되었습니다. \(newDocReference)")
+//
+//        // account 정보 return
+//        accountRef = newDocReference
+//
+//    }
     
     // MARK: 계좌상세정보 불러오기
     // - () 현재 사용자의 계좌정보

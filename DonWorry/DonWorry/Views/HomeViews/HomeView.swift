@@ -8,7 +8,6 @@
 import SwiftUI
 import SlideOverCard
 
-
 struct HomeView: View {
     
     @State var selection: String = "떱떱해"
@@ -17,7 +16,7 @@ struct HomeView: View {
     @State var isSpaceView: Bool = false
     @State private var naviSelection: String? = nil // tag - profile: 로 전환, alert: 로 전환, create: 로 전환
     @State var currentUser: User = .empty
-    @EnvironmentObject var viewModel: BaseViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         
@@ -38,17 +37,17 @@ struct HomeView: View {
                                                selection: $naviSelection){EmptyView()}
                                 Button {
 //                                    self.naviSelection = "profile"
-//                                    viewModel.authViewModel.getUser(uid: "XJFF6PCZ47UTpZCtVpRm2VDbwWz1")
+//                                    authViewModel.getUser(uid: "XJFF6PCZ47UTpZCtVpRm2VDbwWz1")
                                     
                                 } label: {
-                                    viewModel.authViewModel.currentUser.profileImage
+                                    authViewModel.currentUser.profileImage
                                         .resizable()
                                         .frame(width: 50, height: 50)
                                         .background(.black)
                                         .clipShape(Circle())
                                 }
                                 VStack(alignment: .leading) {
-                                    Text(viewModel.authViewModel.currentUser.userName + "님")
+                                    Text(authViewModel.currentUser.userName + "님")
                                         .font(.system(size: 20, weight: .bold))
                                     Text("안녕하세요")
                                         .font(.system(size: 17))
@@ -62,7 +61,8 @@ struct HomeView: View {
                                            selection: $naviSelection){ EmptyView()}
                             Button {
                                 //                                self.naviSelection = "alert"
-                                viewModel.authViewModel.signOut()
+                                authViewModel.signOut()
+                                print("로그아웃")
                             } label: {
                                 Image(systemName: "bell.circle.fill")
                                     .foregroundColor(.blue)
@@ -89,20 +89,20 @@ struct HomeView: View {
                         //                            }
                         
                         // MARK: 여기 수정해야합니다! 빌드만 가능하게 돌려놨어요...
-//                        if viewModel.authViewModel.currentUser.spaceList[0] == selection {
+//                        if authViewModel.currentUser.spaceList[0] == selection {
                         if mockspaces[0] == selection {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     ParticipateDonCard(isParticipateIn: false, isSpaceView: $isSpaceView)
                                     
-                                    //                                    if currentUser.takeMoney != nil {
+                                    //         -                           if currentUser.takeMoney != nil {
                                     if transfers[0].taker != nil {
-                                        TakerDonCard(currentUser: viewModel.authViewModel.currentUser)
+                                        TakerDonCard(currentUser: authViewModel.currentUser)
                                     }
                                     //                                    if currentUser.giveMoney != nil {
                                     if transfers[0].giver != nil {
                                         //                                        GiverDonCard(currentUser: currentUser)
-                                        GiverDonCard(taker: transfers[1], currentUser: viewModel.authViewModel.currentUser)
+                                        GiverDonCard(taker: transfers[1], currentUser: authViewModel.currentUser)
                                     }
                                 }
                             }
@@ -128,8 +128,7 @@ struct HomeView: View {
                     }
                 }
                 .onAppear{
-                    self.viewModel.authViewModel.fetchUser()
-                    print("현재사용자\(currentUser)")
+                    self.authViewModel.fetchUser()
                 }
                 .navigationBarHidden(true)
                 .slideOverCard(isPresented: $isPresented, onDismiss: {

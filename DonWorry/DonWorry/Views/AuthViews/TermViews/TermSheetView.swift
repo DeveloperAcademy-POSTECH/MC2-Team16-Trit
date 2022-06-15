@@ -15,6 +15,7 @@ struct TermSheetView: View {
         return formatter
     }
     @Binding var showSheet: Bool
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack {
@@ -46,7 +47,7 @@ struct TermSheetView: View {
             
             Button {
                 showSheet = false
-                
+                authViewModel.updateNewUserData(data: User(userName: "김승창", nickName: "Charlie", loginWith: "", accountHolder: "김승창", accountBank: "카카오뱅크", accountNumber: "123342342", spaceList: [], isAgreed: [true,true,true]))
             } label: {
                 HStack {
                     Text("확인")
@@ -60,6 +61,7 @@ struct TermSheetView: View {
             }
         }
     }
+        
 }
 /*
 struct TermSheetView_Previews: PreviewProvider {

@@ -23,6 +23,8 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: Firebase.User? = nil// 현재 로그인 된 유저에 대한 정보 user가 login ? value 가지고 : nil
     @Published var didAuthenticateUser = false // 처음로그인하는 유저인지 아닌지 체크하는 변수
     @Published var currentUser: User = .empty
+    @Published var isLoading: Bool = false
+    @Published var tmpUser: User = .empty
     
     @EnvironmentObject var accountViewModel: AccountViewModel
     
@@ -33,7 +35,7 @@ class AuthViewModel: ObservableObject {
     init() {
         userSession = Auth.auth().currentUser
         self.fetchUser()
-//        print("현재로그인된 userSession ID\(userSession?.uid)")
+        print("현재로그인된 userSession ID\(userSession?.uid)")
     }
     
     // MARK: fetchUser()
@@ -79,37 +81,44 @@ class AuthViewModel: ObservableObject {
             return
         }
         
-        let firebaseCredetial = OAuthProvider.credential(withProviderID: "apple.com", idToken: tokenString, rawNonce: nonce)
-        Auth.auth().signIn(with: firebaseCredetial) { (result, err) in
+        let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: tokenString, rawNonce: nonce)
+        // 3. Firebase에 로그인
+        Auth.auth().signIn(with: credential) { result, err in
             
+            self.isLoading = true
+
             if let error = err {
-                print(error.localizedDescription)
+                print("firebase로그인 에러"+error.localizedDescription)
+                self.isLoading = false
                 return
             }
+             
+            // Users 컬렉션에 해당 uid 가 존재하는지 확인하여 신규 회원 여부 판단
+            // - 기존 회원인 경우 : Sign-In -> home
+            // - 신규 회원인 경우 : Sign-In 후 Firestore에 uid 저장 -> 추가정보 수집
             
-            /* firestore에 유저 정보추가 */
             guard let user = result?.user else { return }
             
-            print("로그인된 유저 \(self.userSession?.uid)")
+            print("로그인된 유저 \(user.uid)")
             
-            Firestore.firestore().collection("users")
-                .document(user.uid)
-                .getDocument { document, _ in
-                    if document != nil {
-                        // 신규회원이면 user detail 추가
-//                                self.didAuthenticateUser = true
-                        self.addNewUserToFirestore(userID: user.uid,
-                                                   loginWith: "apple",
-                                                   user: user)
-                    }
-                    else {
-                        // 기존회원이면 login 후 홈으로 이동
-//                                self.didAuthenticateUser = true
-                        self.userSession = user
-                    }
-                }
+            let docRef = Firestore.firestore().collection("users").document(user.uid)
 
+            // Get data
+            docRef.getDocument { (document, error) in
+                guard let document = document, document.exists else {
+                    // 신규회원
+                    self.addNewUserToFirestore(userID: user.uid,loginWith: "google",user: user)
+                    self.isLoading = false
+                    self.didAuthenticateUser = true
+                    return
+                }
+                // 기존회원인경우 바로 홈으로 이동
+                self.userSession = user
+            }
         }
+        
+        
+        
     }
     
     // MARK: 구글로그인
@@ -141,9 +150,12 @@ class AuthViewModel: ObservableObject {
                 
                 // 3. Firebase에 로그인
                 Auth.auth().signIn(with: credential) { result, err in
+                    
+                    self.isLoading = true
 
                     if let error = err {
-                        print(error.localizedDescription)
+                        print("firebase로그인 에러"+error.localizedDescription)
+                        self.isLoading = false
                         return
                     }
                      
@@ -153,22 +165,22 @@ class AuthViewModel: ObservableObject {
                     
                     guard let user = result?.user else { return }
                     
-                    print("로그인된 유저 \(self.userSession?.uid)")
+                    print("로그인된 유저 \(user.uid)")
                     
-                    Firestore.firestore().collection("users")
-                        .document(user.uid)
-                        .getDocument { document, _ in
-                            if document != nil {
-                                // 신규회원이면 user detail 추가
-//                                self.didAuthenticateUser = true
-                                self.addNewUserToFirestore(userID: user.uid, loginWith: "google", user: user)
-                            }
-                            else {
-                                // 기존회원이면 login 후 홈으로 이동
-//                                self.didAuthenticateUser = true
-                                self.userSession = user
-                            }
+                    let docRef = Firestore.firestore().collection("users").document(user.uid)
+
+                    // Get data
+                    docRef.getDocument { (document, error) in
+                        guard let document = document, document.exists else {
+                            // 신규회원
+                            self.addNewUserToFirestore(userID: user.uid,loginWith: "google",user: user)
+                            self.isLoading = false
+                            self.didAuthenticateUser = true
+                            return
                         }
+                        // 기존회원인경우 바로 홈으로 이동
+                        self.userSession = user
+                    }
                 }
             }
         } catch {
@@ -182,62 +194,86 @@ class AuthViewModel: ObservableObject {
         
         // loginWith: Apple or Google
         
-        let data = ["uid": userID, "loginWith": loginWith]
-        
+        let data = User(id: userID, userName: "", nickName: "", loginWith: loginWith, accountHolder: "", accountBank: "", accountNumber: "", spaceList: [], isAgreed: [])
+
         self.tempUserSession = user
         
-        Firestore.firestore().collection("users")
-            .document(userID)
-            .setData(data) { _ in
-                // 신규 회원이면 추가정보 입력 페이지로 이동
-                self.didAuthenticateUser = true
-            }
+        let docRef =  db.collection("users").document(userID)
+
+        do {
+            try docRef.setData(from: data)
+            self.didAuthenticateUser = true
+        }
+        catch {
+          print(error)
+        }
+
     }
     
     // MARK: 신규유저추가정보업데이트
     // https://designcode.io/swiftui-advanced-handbook-write-to-firestore
-    func updateNewUserInfo(user: User, account: Account) {
+    func updateNewUserData( data: User) {
         
-        guard let uid = tempUserSession?.uid else { return }
-        
-        let data = ["uid": user.id,
-                    "userName": user.userName,
-                    "nickName": user.nickName,
-                    "acount": user.account]
-        
-        print("DEBUG: 업데이트 하려는 데이터 \(data)")
+        guard let user = tempUserSession else { return }
              
-        // 1. 계좌정보 업데이트
-        // TODO: 계좌번호 받아와 data update
-        if let uid = user.id {
-            accountViewModel.addAccount(account: account, to: uid )
-        }else{
-            print("DEBUG: 올바르지않은 유저ID가 입력되었습니다.")
+        // user 정보 업데이트
+        let data = User(id: user.uid, userName: data.userName, nickName: data.nickName, loginWith: "google", accountHolder: data.accountHolder, accountBank: "default", accountNumber: data.accountNumber, spaceList: [], isAgreed: data.isAgreed)
+
+        print("DEBUG: 업데이트 하려는 데이터 \(data)")
+        
+        let docRef =  db.collection("users").document(user.uid)
+
+        do {
+            try docRef.setData(from: data, merge: true)
+            print("DEBUG: 사용자 추가 정보 입력이 성공적으로 ")
+        }
+        catch {
+            print("DEBUG: 다음 이유로 사용자 추가 정보 입력에 에러가 발생했습니다 : \(error)")
         }
         
+        self.userSession = Auth.auth().currentUser // main 페이지도 이동
+        
+
     }
     
     /*
-     // TODO: 닉네임 업데이트 오류 수정 
+     // TODO: 닉네임 업데이트 오류 수정
     // MARK: 닉네임 업데이트
-    // - "" : 기존회원인경우 현재 유저의 uid 로 업데이트
+    // - "" : 기존회원인경우 현재 유저의 uid 로 업데이트 (XXX)
     // - userId : 새로운 유저는 tempuser의 uid를 받아와 추가
-    func updateUserNickName(with nickName: String, for userId: String = "") {
-        
+    func updateUserNickName(with newNickName: String) {
+
         guard let user = Auth.auth().currentUser else { return }
-        let uid = (userId != "") ? userId : user.uid
         let collectionRef = db.collection("users")
+
+        // 사용자
+//        struct User: Identifiable, Codable {// , Hashable
+//            @DocumentID var id: String?
+//            var userName: String // 사용자이름 - 간편로그인 연계
+//            var nickName: String // 닉네임
+//            var account: String // 계좌정보 Account 참조해야함. -> ID
+//            var image: String = "default" // 우선 Default 로 하나로 통일 - "default"
+//            var profileImage: Image {
+//                Image(image)
+//            }
+//            var spaceList: [String] // 참가한 스페이스 리스트 String 참조해야함
+//        }
         
         
+        let data = ["id": user.id,
+                    "userName": user.userName,
+                    "nickName": user.newNickName,
+                    "acount": accountViewModel.accountRef]
+
         // 2. 닉네임 업데이트
-        collectionRef.collection("users")
-            .document(uid)
+        collectionRef
+            .document(user.id)
             .setData(data, merge: true){ error in
                             if let error = error {
                                 print("DEBUG: 다음 이유로 사용자 추가 정보 입력에 에러가 발생했습니다 : \(error)")
                             } else {
                                 print("DEBUG: 사용자 추가 정보 입력이 성공적으로 ")
-                                self.userSession = self.tempUserSession // main 페이지도 이동
+                                self.userSession = self.tempUseㅁㄴㅂ rSession // main 페이지도 이동
                             }
                         }
     }

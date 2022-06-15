@@ -64,16 +64,17 @@ struct UserInfoView: View {
             
             
             /* 다음 -> 텀뷰 */
-            NavigationLink(tag: "TermView", selection: $naviSelection, destination: { TermView() }) {
+            NavigationLink(tag: "TermView", selection: $naviSelection, destination: { TermView().environmentObject(authViewModel) }) {
+                
                 EmptyView()
+                
             }
             
             SmallButton(text: "다음") {
 //                authViewModel.updateNewUserInfo(userName: "정찬희", nickName: "버리" , account: "1234556")
                 naviSelection = "TermView"
             }
-
-            
+   
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
