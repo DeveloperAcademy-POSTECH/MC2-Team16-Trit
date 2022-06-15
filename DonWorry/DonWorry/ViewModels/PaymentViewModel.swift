@@ -16,6 +16,7 @@ class PaymentViewModel: ObservableObject {
     @Published var payment: Payment = .empty
     @Published var paymentList = [Payment]()
     @Published var errorMessage: String?
+    @Published var paymentContainer = [String]()
 //    @EnvironmentObject var authViewModel: AuthViewModel -> 다른 뷰모델 불러쓰기
     
     private var db = Firestore.firestore()
@@ -104,15 +105,36 @@ class PaymentViewModel: ObservableObject {
         }
     }
     
-    // MARK: 특정 스페이스에 대한 모든 정산 내역 fetch (실시간)
-    // [param] of: spaceID
-    func fetchPayments() {
+//     MARK: 특정 스페이스에 대한 모든 정산 내역 fetch (실시간)
+//     [param] of: spaceID
+    func fetchPayments(of: String) {
         // snapshotlistener 로 실시간으로 들어야할듯
+        let paymentRef = db.collection("Payment").whereField("spaceID", isEqualTo: of)
+        
+        paymentRef.addSnapshotListener { querySnapshot, error in
+            if let querySnapshot = querySnapshot {
+                DispatchQueue.main.async {
+                    self.paymentList = querySnapshot.documents.map { d in
+                        return Payment(id: d.documentID,
+                                       spaceID: d["spaceID"] as! String,
+                                       paymentTitle: d["paymentTitle"] as! String,
+                                       category: d["category"] as! String,
+                                       amount: d["amount"] as! Int,
+                                       color: d["color"] as! String,
+                                       date: d["date"] as! String,
+                                       attachedFile: d["attachedFile"] as! [String],
+                                       givers: d["givers"] as! [String],
+                                       taker: d["taker"] as! String,
+                                       account: d["account"] as! String)
+                    }
+                }
+            }
+        }
     }
     
     // MARK: 특정 payment 만 fetch (실시간)
     // [param] payment id: payment ID
-    func fetchPayment(){
+    func fetchPayment() {
         // snapshotlistener 로 실시간으로 들어야할듯
     }
     

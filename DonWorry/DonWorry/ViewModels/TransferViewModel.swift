@@ -16,6 +16,7 @@ class TransferViewModel: ObservableObject {
     @Published var transfer: TransferModel = .empty
     @Published var transferList = [TransferModel]()
     @Published var errorMessage: String?
+    
 //    @EnvironmentObject var authViewModel: AuthViewModel -> 다른 뷰 불러쓰기
     
     private var db = Firestore.firestore()
@@ -121,7 +122,6 @@ class TransferViewModel: ObservableObject {
             if let snapshot = snapshot {
                 DispatchQueue.main.async {
                     self.transferList = snapshot.documents.map { d in
-                        print(d.documentID)
                         return TransferModel(id: d.documentID,
                                              giver: d["giver"] as! String,
                                              taker: d["taker"] as! String,
