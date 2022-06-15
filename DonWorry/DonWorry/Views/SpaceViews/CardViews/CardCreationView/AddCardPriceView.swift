@@ -11,7 +11,7 @@ let rows = [
     ["1", "2", "3"],
     ["4", "5", "6"],
     ["7", "8", "9"],
-    ["00", "0", "<"]
+    ["00", "0", "delete.left"]
 ]
 
 struct AddCardPriceView: View {
@@ -87,9 +87,15 @@ struct AddCardPriceView: View {
                             Button {
                                 pressNumber(price, column)
                             } label: {
-                                Text(column)
-                                    .font(.system(size: 20, weight: .bold))
-                                    .frame(width: 125, height: 50)
+                                if column == "delete.left" {
+                                    Image(systemName: "delete.left")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .frame(width: 125, height: 50)
+                                } else {
+                                    Text(column)
+                                        .font(.system(size: 20, weight: .bold))
+                                        .frame(width: 125, height: 50)
+                                }
                             }
                         }
                         .padding(.vertical, 17)
@@ -127,12 +133,12 @@ struct AddCardPriceView: View {
         }
         
         // 금액이 1억원이 넘지 않도록 입력을 제한합니다.
-        if price.count > 7 && input != "<" {
+        if price.count > 7 && input != "delete.left" {
             return
         }
         
         // < 버튼을 눌렀다면 숫자를 하나 지우고, 다른 버튼을 눌렀다면 숫자를 추가합니다.
-        if input == "<" {
+        if input == "delete.left" {
             self.price.popLast()
         } else {
             self.price.append(contentsOf: input)
