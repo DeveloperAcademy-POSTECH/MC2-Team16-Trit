@@ -56,6 +56,7 @@ struct ChooseBankSheet: View {
             ZStack(alignment: .leading) {
                 TextField("직접입력", text: $inputBank)
                     .padding(.leading, 20)
+                    .keyboardType(.default)
                     .onReceive(Just(inputBank), perform: { _ in
                         if charLimit < inputBank.count {
                             inputBank = String(inputBank.prefix(charLimit))

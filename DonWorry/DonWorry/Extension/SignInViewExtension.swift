@@ -55,8 +55,8 @@ extension SignInView {
                    
                     return
                 }
-                log_status = true
-                print(log_status)
+//                log_status = true
+//                print(log_status)
                 print(user.displayName ?? "Success!")
             }
         }
@@ -73,4 +73,3 @@ struct SignInWithAppleButtonView: UIViewRepresentable {
       }
 
 }
-

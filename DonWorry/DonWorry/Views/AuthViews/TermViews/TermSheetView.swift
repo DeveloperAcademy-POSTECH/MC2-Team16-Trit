@@ -14,6 +14,8 @@ struct TermSheetView: View {
         formatter.dateFormat = "YYYY년 M월 d일"
         return formatter
     }
+    
+    @EnvironmentObject var vm: UserStateViewModel
     @Binding var showSheet: Bool
     
     var body: some View {
@@ -46,6 +48,7 @@ struct TermSheetView: View {
             
             Button {
                 showSheet = false
+                vm.signIn()
                 
             } label: {
                 HStack {
@@ -61,7 +64,7 @@ struct TermSheetView: View {
         }
     }
 }
-/*
+
 struct TermSheetView_Previews: PreviewProvider {
     static var previews: some View {
         TermSheetView(agreedTerms: [
@@ -73,4 +76,3 @@ struct TermSheetView_Previews: PreviewProvider {
         ], showSheet: .constant(true))
     }
 }
-*/

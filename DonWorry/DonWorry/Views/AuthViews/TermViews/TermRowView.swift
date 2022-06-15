@@ -16,11 +16,11 @@ struct TermRowView: View {
             HStack {
                 Button {
                     withAnimation {
-                        term.isAgreed.toggle()
+                        term.isChecked.toggle()
                     }
                 } label: {
                     Image(systemName: "circle.fill")
-                        .foregroundColor(term.isAgreed ? Color.blueMain : Color.grayE7)
+                        .foregroundColor(term.isChecked ? Color.blueMain : Color.grayE7)
                         .padding(.trailing, 5)
                 }
                 
