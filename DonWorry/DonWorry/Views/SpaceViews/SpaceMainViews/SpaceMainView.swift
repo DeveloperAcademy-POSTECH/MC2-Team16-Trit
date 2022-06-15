@@ -25,13 +25,13 @@ struct SpaceMainView: View {
     @State private var mainSelection: String? = nil // SpaceMainView로 돌아오기 위한 변수입니다.
     
     @State var isPopUpPresented = false
-    
     @State var isShowingDialog = false
     @State var isShowingAlert = false
     @State var isModalPresented = false
     @State var isCheckOutAttendanceViewOpened = false
     @State var isEditSpaceNaveViewOpened = false
     @State var isShareSheetPresented = false
+    @State var checkedArray: [Int] = []
     
     // DATA Model 이후
     @State var currentUser = user4
@@ -50,15 +50,17 @@ struct SpaceMainView: View {
                     LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                         ForEach(0..<5) { index in
                             if index == 4 {
-                                NavigationLink(tag: "AddCardTitleView", selection: $mainSelection, destination: { AddCardTitleView(mainSelection: $mainSelection) }) {
+                                NavigationLink(tag: "AddCardTitleView", selection: $mainSelection, destination: {
+                                    AddCardTitleView(mainSelection: $mainSelection)
+                                }, label: {
                                     EmptyView()
-                                }
+                                })
                                 .isDetailLink(false)
                                 AddCardTitleViewButton(clicked: {
                                     self.mainSelection = "AddCardTitleView"
                                 }) .padding(.bottom, 70)
                             } else {
-                                SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "42910090307", index: index, isParticipated: false, date: "05/05", paymentIcon: Image("chicken-leg"))
+                                SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "4299101009307", index: index, isParticipated: isCheckIndex(index), date: "05/05", paymentIcon: Image("chicken-leg"))
                                     .onTapGesture {
                                         isModalPresented = true
                                     }
@@ -83,7 +85,7 @@ struct SpaceMainView: View {
             .padding(.horizontal, 30.0)
             
             NavigationLink(isActive: $isCheckOutAttendanceViewOpened) {
-                CheckAttendanceView()
+                CheckAttendanceView(checkedArray: $checkedArray)
             } label: {
                 EmptyView()
             }
@@ -136,7 +138,6 @@ struct SpaceMainView: View {
             }
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 HStack(spacing: 20) {
-                    
                     // Edit Space
                     Button {
                         isShowingDialog = true
@@ -145,7 +146,6 @@ struct SpaceMainView: View {
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.black)
                     }
-                    
                     // Home
                     Button {
                         naviSelection = nil
@@ -162,13 +162,19 @@ struct SpaceMainView: View {
         .popup(isPresented: $isPopUpPresented, type: .floater(verticalPadding: -40), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
             createTopToastMessage()
         }).zIndex(0)
+        
     }
 }
 
 struct SpaceMainView_Previews: PreviewProvider {
     static var previews: some View {
-        //        SpaceMainView(spaceID: .constant("Asdasd"))
         SpaceMainView(naviSelection: .constant(""), spaceID: .constant("asdasd"))
         
+    }
+}
+
+extension SpaceMainView {
+    func isCheckIndex( _ index: Int) -> Bool {
+        checkedArray.contains(index) ? true : false
     }
 }

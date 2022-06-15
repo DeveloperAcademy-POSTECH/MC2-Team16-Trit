@@ -26,7 +26,6 @@ struct AddCardTitleViewButton: View {
                         .background(Color.blueMain)
                         .clipShape(Circle())
                         .foregroundColor(.white)
-                    
                         Text("정산추가")
                             .applyTextWithLineLimitModifier(size: 14, weight: .bold, color: .blueMain)
                 }

@@ -52,7 +52,8 @@ struct SpaceEmptyView: View {
                     }
                     
                     NavigationLink(isActive: $isCheckOutAttendanceViewOpened) {
-                        CheckAttendanceView()
+                        // ToDo: constant 수정
+                        CheckAttendanceView(checkedArray: .constant([]))
                     } label: {
                         EmptyView()
                     }
