@@ -42,60 +42,79 @@ struct AddCardDecoView: View {
     @State private var date = Date()
     @State var clickedIndex = 0
     @FocusState private var isFocused: Bool
+//    @State var focusedClicked: Bool = false
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     var paymentIcon: Image?
     
     var body: some View {
-        ZStack {
-            ScrollView {
-                VStack(spacing: 20) {
-                    PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
-                                    account: $account,
-                                    color: $color,
-                                    date: $date,
-                                    image: $images,
-                                    decoCase: $decoCase)
-                    .padding(.horizontal, 20)
-                    VStack(spacing: 20) {
-                        CustomPicker(selected: $decoCase)
+        VStack {
+            ZStack {
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
+                                            account: $account,
+                                            color: $color,
+                                            date: $date,
+                                            image: $images,
+                                            decoCase: $decoCase)
+                            
                             .padding(.horizontal, 20)
-                        Divider()
-                            .padding(.horizontal, 20)
-                            .frame(height: 0)
-                            .background(Color.grayEE)
-                        switch decoCase {
-                        case .색상변경:
-                            colorBox
-                                .padding(.horizontal, 30)
-                        case .날짜선택:
-                            dateBox
-                                .padding(.horizontal, 30)
-                        case .계좌번호:
-                            accountBox
-                                .padding(.horizontal, 30)
-                        case .첨부파일:
-                            imageBox
-                                .padding(.horizontal, 30)
+                            VStack(spacing: 20) {
+                                CustomPicker(selected: $decoCase)
+                                    .padding(.horizontal, 20)
+                                    .id(2)
+                                Divider()
+                                    .padding(.horizontal, 20)
+                                    .frame(height: 0)
+                                    .background(Color.grayEE)
+                                    
+                                    switch decoCase {
+                                    case .색상변경:
+                                        colorBox
+                                            .padding(.horizontal, 30)
+                                    case .날짜선택:
+                                        dateBox
+                                            .padding(.horizontal, 30)
+                                    case .계좌번호:
+                                        accountBox
+                                            .padding(.horizontal, 30)
+                                            .focused($isFocused)
+                                            .onChange(of: isFocused) { focus in
+                                                if focus {
+                                                    withAnimation {
+                                                        proxy.scrollTo(2, anchor: .top)
+                                                    }
+                                                } else {
+                                                    withAnimation {
+                                                        proxy.scrollTo(1, anchor: .top)
+                                                    }
+                                                }
+                                            }
+                                    case .첨부파일:
+                                        imageBox
+                                            .padding(.horizontal, 30)
+                                    }
+                                Spacer()
+                            }
+                            .frame(maxWidth: 380)
+                            .frame(maxHeight: 410)
+                            Spacer()
                         }
-                        Spacer()
                     }
-                    .frame(maxWidth: 380)
-                    .frame(maxHeight: 410)
-                    //                    .padding(.bottom, 20)
-                    Spacer()
-                }
             }
-            //                    .padding(.bottom, 20)
-            Spacer()
-            
-            VStack {
                 Spacer()
-                SmallButton(text: "완료") {
-                    mainSelection = nil
+                
+                VStack {
+                    Spacer()
+                    SmallButton(text: "완료") {
+                        mainSelection = nil
+                    }
+                    .padding(.bottom)
                 }
-                .padding(.bottom)
+                .ignoresSafeArea(.keyboard)
             }
-        }
+        }.id(1)
         .onAppear {
             UIApplication.shared.hideKeyboard()
         }
@@ -215,7 +234,6 @@ struct AddCardDecoView: View {
                                             }
                                         }
                                     )
-                                
                             }
                         }
                     }
