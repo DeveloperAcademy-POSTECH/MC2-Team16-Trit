@@ -11,7 +11,6 @@ let iconsArray = ["apple-1", "birthday-cake", "blue-car", "camera-icon", "chicke
 
 struct AddCardIconView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @GestureState private var dragOffset = false
     
     let paymentTitle: String
     
@@ -88,11 +87,6 @@ struct AddCardIconView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
-            if (value.startLocation.x < 30 && value.translation.width > 100) {
-                self.mode.wrappedValue.dismiss()
-            }
-        })
     }
 }
 

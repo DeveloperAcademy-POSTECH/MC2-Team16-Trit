@@ -8,7 +8,6 @@ import SwiftUI
 
 struct EditProfileView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @GestureState private var dragOffset = false
     
     @State private var name = ""
     @FocusState private var isFocused: Bool
@@ -62,11 +61,6 @@ struct EditProfileView: View {
             }
             
         }
-        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
-            if (value.startLocation.x < 30 && value.translation.width > 100) {
-                self.mode.wrappedValue.dismiss()
-            }
-        })
     }
 }
 

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct EditAccountView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @GestureState private var dragOffset = false
     
     @State private var holder = ""
     @State private var bank = ""
@@ -66,11 +65,6 @@ struct EditAccountView: View {
                 }
                 
             }
-            .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
-                if (value.startLocation.x < 30 && value.translation.width > 100) {
-                    self.mode.wrappedValue.dismiss()
-                }
-            })
     }
 }
 

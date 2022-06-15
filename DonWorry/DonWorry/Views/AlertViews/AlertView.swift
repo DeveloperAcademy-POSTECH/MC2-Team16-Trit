@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AlertView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @GestureState private var dragOffset = false
     
     var body: some View {
         ScrollView {
@@ -60,14 +59,8 @@ struct AlertView: View {
                 Text("알림")
                     .fontWeight(.bold)
                     .font(.system(size: 25))
-                
             }
         }
-        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
-                    if (value.startLocation.x < 30 && value.translation.width > 100) {
-                        self.mode.wrappedValue.dismiss()
-                    }
-                })
     }
 }
 

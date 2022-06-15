@@ -11,7 +11,6 @@ struct EditSpaceNameView: View {
     
     @Binding var spaceName: String
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @GestureState private var dragOffset = false
     @FocusState private var isFocused: Bool
     
     var body: some View {
@@ -54,11 +53,6 @@ struct EditSpaceNameView: View {
                 }
             }
         }
-        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
-            if (value.startLocation.x < 30 && value.translation.width > 100) {
-                self.mode.wrappedValue.dismiss()
-            }
-        })
     }
 }
 
