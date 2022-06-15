@@ -63,8 +63,8 @@ extension Color {
     static let paleBlue = Color(hex: "#DFEAFF")
     static let grayF5 = Color(hex: "F5F4F4")
     
-    static let gradientTopBlue = Color(hex: "1B86F4")
-    static let gradientBottomBlue = Color(hex: "19B2F2")
+    static let gradientTopBlue = Color(hex: "1485FA")
+    static let gradientBottomBlue = Color(hex: "6ED4FF")
     
 }
 enum CardColor: String, Identifiable, CaseIterable {
