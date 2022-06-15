@@ -5,7 +5,6 @@
 //
 
 import SwiftUI
-import Combine
 
 extension View {
     func getRect() -> CGRect {
@@ -525,3 +524,4 @@ struct FrameGetter: ViewModifier {
             )
     }
 }
+

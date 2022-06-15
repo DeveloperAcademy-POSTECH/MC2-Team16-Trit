@@ -21,7 +21,7 @@ struct AccountTextField: View {
             HStack {
                 TextField("계좌번호를 입력해주세요.", text: $account)
                     .padding(.leading, 110)
-                    .keyboardType(.decimalPad)
+                    .keyboardType(.numberPad)
                     .onReceive(Just(account), perform: { _ in
                         if charLimit < account.count {
                             account = String(account.prefix(charLimit))
@@ -40,7 +40,8 @@ struct AccountTextField: View {
                         }
                 }
             }
-            .frame(width: 335, height: 50)
+            .font(.system(size: 13))
+            .frame(width: 350, height: 50)
             .background(Color.grayF6)
             .cornerRadius(29)
             
@@ -48,6 +49,7 @@ struct AccountTextField: View {
                 Text(bank)
                 Image(systemName: "chevron.down")
             }
+            .font(.system(size: 13))
             .foregroundColor(.white)
             .frame(width: 101, height: 50)
             .background(Color.grayBD)

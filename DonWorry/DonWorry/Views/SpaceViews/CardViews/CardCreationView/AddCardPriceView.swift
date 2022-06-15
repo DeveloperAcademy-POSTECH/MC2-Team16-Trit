@@ -18,8 +18,8 @@ struct AddCardPriceView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @GestureState private var dragOffset = false
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
+
     @State private var price = ""
-    @State private var naviSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
     
     var numberPrice: Int {
         Int(price) ?? 0
@@ -38,13 +38,12 @@ struct AddCardPriceView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 60) {
             HStack {
                 paymentIcon?
                     .resizable()
                     .scaledToFit()
-                    .padding(10)
-                    .frame(width: 50, height: 50)
+                    .frame(width: 37, height: 37)
                     .background(Color.grayEE)
                     .cornerRadius(5)
                 
@@ -54,8 +53,6 @@ struct AddCardPriceView: View {
                 
                 Spacer()
             }
-            .padding(.horizontal, 30)
-            .padding(.vertical)
             
             HStack(alignment: .bottom) {
                 Text(price.isEmpty ? "0" : numberFormatter.string(for: numberPrice) ?? "")
@@ -66,21 +63,20 @@ struct AddCardPriceView: View {
                     .font(.system(size: 17))
             }
             
-            Spacer()
-            
             HStack {
                 Spacer()
                 
-                NavigationLink(tag: "AddCardDecoView", selection: $naviSelection, destination: { AddCardDecoView(mainSelection: $mainSelection, paymentIcon: paymentIcon) }) { EmptyView() }
-                    .isDetailLink(false)
-                SmallButton(text: "다음") {
-                    self.naviSelection = "AddCardDecoView"
+                NavigationLink(destination: AddCardDecoView(paymentIcon: paymentIcon)) {
+                    Text("다음")
+                        .frame(width: 135, height: 50)
+                        .foregroundColor(.white)
+                        .background(.blue)
+                        .cornerRadius(29)
                 }
             }
-            .padding(.horizontal, 30)
-            .padding(.bottom)
             
             // 숫자 자판
+            
             VStack {
                 ForEach(rows, id: \.self) { row in
                     HStack {
@@ -90,26 +86,27 @@ struct AddCardPriceView: View {
                             } label: {
                                 Text(column)
                                     .font(.system(size: 20, weight: .bold))
-                                    .frame(width: 125, height: 50)
+                                    .frame(width: 125, height: 61)
                             }
                         }
                         .padding(.vertical, 17)
                     }
                 }
             }
-            .frame(height: 360, alignment: .top)
-            .background(RoundedRectangle(cornerRadius: 38).stroke(Color.grayF5))
+            .background(RoundedRectangle(cornerRadius: 38)
+                .stroke(Color.gray97))
+            
         }
         .navigationBarBackButtonHidden(true)
+        .padding(.horizontal, 25)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button(role: .cancel) {
+                Button {
                     self.mode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
-                        .padding(.horizontal)
+                        .foregroundColor(.black)
                 }
-                .buttonStyle(.plain)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -148,6 +145,6 @@ struct AddCardPriceView: View {
 
 struct AddCardPriceView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCardPriceView(mainSelection: .constant(""), paymentTitle: "땡땡이네 스타벅스", paymentIcon: Image("chicken-leg"))
+        AddCardPriceView(paymentTitle: "땡땡이네 스타벅스", paymentIcon: Image("chicken-leg"))
     }
 }

@@ -23,7 +23,6 @@ struct EditSpaceNameView: View {
                 .padding(.top, 46)
                 .padding(.leading, 25)
             UnderlineTextField(placeholder: "스페이스 이름", charLimit: 20, text: $spaceName)
-                .keyboardType(.default)
                 .padding(.top, 30)
             HStack {
                 Spacer()
@@ -36,9 +35,6 @@ struct EditSpaceNameView: View {
             }
             Spacer()
         }
-        .onAppear {
-            UIApplication.shared.hideKeyboard()
-        }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -50,7 +46,7 @@ struct EditSpaceNameView: View {
                     Image(systemName: "chevron.backward")
                         .foregroundColor(.black)
                         .padding(.horizontal)
-                    
+               
                 }
             }
         }

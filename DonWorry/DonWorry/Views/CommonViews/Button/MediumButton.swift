@@ -16,7 +16,7 @@ struct MediumButton: View {
             HStack {
                 Text(text)
             }
-            .frame(width: 231, height: 20, alignment: .center)
+            .frame(width: 231, height: 26, alignment: .center)
             .foregroundColor(Color.white)
             .font(.system(size: 15, weight: .bold))
             .padding()

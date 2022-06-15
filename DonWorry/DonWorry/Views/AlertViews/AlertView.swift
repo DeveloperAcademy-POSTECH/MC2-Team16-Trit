@@ -52,7 +52,6 @@ struct AlertView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.black)
-                        .padding(.horizontal)
                 }
                 
             }
