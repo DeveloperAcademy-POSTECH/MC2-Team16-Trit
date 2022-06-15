@@ -19,7 +19,6 @@ struct SpaceMainView: View {
             .cornerRadius(20)
     }
     
-    
     let leftPaddingSize: CGFloat = 25.0
     
     @Binding var naviSelection: String? // HomeView로 돌아가기 위한 변수입니다.

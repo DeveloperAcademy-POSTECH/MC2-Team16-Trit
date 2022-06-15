@@ -41,7 +41,7 @@ struct SmallCardView: View {
                 }
             
             RoundedRectangle(cornerRadius: 20)
-            // TODO - color는 사용자가 선택한 color로 대체 됩니다.
+            // TO-DO - color는 사용자가 선택한 color로 대체 됩니다.
                 .fill(colors[index%3])
                 .frame(width: 281, height: 139)
                 .frame(width: 69, alignment: .trailing)

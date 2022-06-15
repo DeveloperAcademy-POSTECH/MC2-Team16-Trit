@@ -22,7 +22,7 @@ extension View {
         }
         
         return root
-
+        
     }
     
     // 겉에 선이 있는 네모난 버튼을 만듦니다. 배경색, 버튼 크기를 정하고, padding으로 text와 겉의 선과 간격을 조정합니다. cornerRadius로 동그랗게 할 수있고, strokeLineWidth를 통해 겉에 선을 줄 수 있습니다.
@@ -32,7 +32,7 @@ extension View {
 }
 
 extension View {
-
+    
     public func popup<Item: Equatable, PopupContent: View>(
         item: Binding<Item?>,
         type: Popup<Item, PopupContent>.PopupType = .`default`,
@@ -60,7 +60,7 @@ extension View {
                     view: view)
             )
         }
-
+    
     public func popup<PopupContent: View>(
         isPresented: Binding<Bool>,
         type: Popup<Int, PopupContent>.PopupType = .`default`,
@@ -73,22 +73,22 @@ extension View {
         backgroundColor: Color = Color.clear,
         dismissCallback: @escaping () -> () = {},
         @ViewBuilder view: @escaping () -> PopupContent) -> some View {
-        self.modifier(
-            Popup<Int, PopupContent>(
-                isPresented: isPresented,
-                type: type,
-                position: position,
-                animation: animation,
-                autohideIn: autohideIn,
-                dragToDismiss: dragToDismiss,
-                closeOnTap: closeOnTap,
-                closeOnTapOutside: closeOnTapOutside,
-                backgroundColor: backgroundColor,
-                dismissCallback: dismissCallback,
-                view: view)
-        )
-    }
-
+            self.modifier(
+                Popup<Int, PopupContent>(
+                    isPresented: isPresented,
+                    type: type,
+                    position: position,
+                    animation: animation,
+                    autohideIn: autohideIn,
+                    dragToDismiss: dragToDismiss,
+                    closeOnTap: closeOnTap,
+                    closeOnTapOutside: closeOnTapOutside,
+                    backgroundColor: backgroundColor,
+                    dismissCallback: dismissCallback,
+                    view: view)
+            )
+        }
+    
     @ViewBuilder
     func applyIf<T: View>(_ condition: Bool, apply: (Self) -> T) -> some View {
         if condition {
@@ -97,12 +97,12 @@ extension View {
             self
         }
     }
-
+    
     @ViewBuilder
     fileprivate func addTapIfNotTV(if condition: Bool, onTap: @escaping ()->()) -> some View {
-        #if os(tvOS)
+#if os(tvOS)
         self
-        #else
+#else
         if condition {
             self.simultaneousGesture(
                 TapGesture().onEnded {
@@ -112,7 +112,7 @@ extension View {
         } else {
             self
         }
-        #endif
+#endif
     }
 }
 
@@ -144,7 +144,7 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
         self.isPresentedRef = ClassReference(self.$isPresented)
         self.itemRef = ClassReference(self.$item)
     }
-
+    
     init(item: Binding<Item?>,
          type: PopupType,
          position: Position,
@@ -173,11 +173,11 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
     }
     
     public enum PopupType {
-
+        
         case `default`
         case toast
         case floater(verticalPadding: CGFloat = 10, useSafeAreaInset: Bool = true)
-
+        
         func shouldBeCentered() -> Bool {
             switch self {
             case .`default`:
@@ -187,16 +187,16 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
             }
         }
     }
-
+    
     public enum Position {
         case top
         case bottom
     }
-
+    
     private enum DragState {
         case inactive
         case dragging(translation: CGSize)
-
+        
         var translation: CGSize {
             switch self {
             case .inactive:
@@ -205,7 +205,7 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
                 return translation
             }
         }
-
+        
         var isDragging: Bool {
             switch self {
             case .inactive:
@@ -215,61 +215,61 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
             }
         }
     }
-
+    
     // MARK: - Public Properties
     /// Tells if the sheet should be presented or not
     @Binding var isPresented: Bool
     @Binding var item: Item?
-
+    
     var sheetPresented: Bool {
         item != nil || isPresented
     }
-
+    
     var type: PopupType
     var position: Position
-
+    
     var animation: Animation
-
+    
     /// If nil - never hides on its own
     var autohideIn: Double?
-
+    
     /// Should close on tap - default is `true`
     var closeOnTap: Bool
-
+    
     /// Should allow dismiss by dragging
     var dragToDismiss: Bool
-
+    
     /// Should close on tap outside - default is `true`
     var closeOnTapOutside: Bool
     
     /// Background color for outside area - default is `Color.clear`
     var backgroundColor: Color
-
+    
     /// is called on any close action
     var dismissCallback: () -> ()
-
+    
     var view: () -> PopupContent
-
+    
     /// holder for autohiding dispatch work (to be able to cancel it when needed)
     var dispatchWorkHolder = DispatchWorkHolder()
-
+    
     // MARK: - Private Properties
     
     /// Class reference for capturing a weak reference later in dispatch work holder.
     private var isPresentedRef: ClassReference<Binding<Bool>>?
     private var itemRef: ClassReference<Binding<Item?>>?
-
+    
     /// The rect and safe area of the hosting controller
     @State private var presenterContentRect: CGRect = .zero
     @State private var presenterSafeArea: EdgeInsets = EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-
+    
     /// The rect and safe area of popup content
     @State private var sheetContentRect: CGRect = .zero
     @State private var sheetSafeArea: EdgeInsets = EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-
+    
     /// Drag to dismiss gesture state
     @GestureState private var dragState = DragState.inactive
-
+    
     /// Last position for drag gesture
     @State private var lastDragPosition: CGFloat = 0
     
@@ -298,7 +298,7 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
             }
         }
     }
-
+    
     /// The offset when the popup is hidden
     private var hiddenOffset: CGFloat {
         if position == .top {
@@ -313,7 +313,7 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
             return screenHeight - presenterContentRect.midY + sheetContentRect.height/2 + 5
         }
     }
-
+    
     /// The current offset, based on the **presented** property
     private var currentOffset: CGFloat {
         return animatedContentIsPresented ? displayedOffset : hiddenOffset
@@ -323,21 +323,21 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
     private var currentBackgroundOpacity: Double {
         return animatedContentIsPresented ? 1.0 : 0.0
     }
-
+    
     private var screenSize: CGSize {
-        #if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS)
         return UIScreen.main.bounds.size
-        #elseif os(watchOS)
+#elseif os(watchOS)
         return WKInterfaceDevice.current().screenBounds.size
-        #else
+#else
         return NSScreen.main?.frame.size ?? .zero
-        #endif
+#endif
     }
-
+    
     private var screenHeight: CGFloat {
         screenSize.height
     }
-
+    
     // MARK: - Content Builders
     public func body(content: Content) -> some View {
         main(content: content)
@@ -351,12 +351,12 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
                 appearAction(sheetPresented: item != nil)
             }
     }
-
+    
     private func main(content: Content) -> some View {
         ZStack {
             content
                 .frameGetter($presenterContentRect, $presenterSafeArea)
-
+            
             if showContent {
                 popupBackground()
             }
@@ -369,7 +369,7 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
             }
         )
     }
-
+    
     private func popupBackground() -> some View {
         backgroundColor
             .applyIf(closeOnTapOutside) { view in
@@ -381,10 +381,10 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
             .edgesIgnoringSafeArea(.all)
             .opacity(currentBackgroundOpacity)
     }
-
+    
     /// This is the builder for the sheet content
     func sheet() -> some View {
-
+        
         // if needed, dispatch autohide and cancel previous one
         if let autohideIn = autohideIn {
             dispatchWorkHolder.work?.cancel()
@@ -402,7 +402,7 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
                 DispatchQueue.main.asyncAfter(deadline: .now() + autohideIn, execute: work)
             }
         }
-
+        
         let sheet = ZStack {
             self.view()
                 .addTapIfNotTV(if: closeOnTap) {
@@ -412,33 +412,33 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
                 .offset(y: currentOffset)
                 .animation(animation)
         }
-
-        #if !os(tvOS)
+        
+#if !os(tvOS)
         let drag = DragGesture()
             .updating($dragState) { drag, state, _ in
                 state = .dragging(translation: drag.translation)
             }
             .onEnded(onDragEnded)
-
+        
         return sheet
             .applyIf(dragToDismiss) {
                 $0.offset(y: dragOffset())
                     .simultaneousGesture(drag)
             }
-        #else
+#else
         return sheet
-        #endif
+#endif
     }
-
-    #if !os(tvOS)
+    
+#if !os(tvOS)
     func dragOffset() -> CGFloat {
         if (position == .bottom && dragState.translation.height > 0) ||
-           (position == .top && dragState.translation.height < 0) {
+            (position == .top && dragState.translation.height < 0) {
             return dragState.translation.height
         }
         return lastDragPosition
     }
-
+    
     private func onDragEnded(drag: DragGesture.Value) {
         let reference = sheetContentRect.height / 3
         if (position == .bottom && drag.translation.height > reference) ||
@@ -450,7 +450,7 @@ public struct Popup<Item: Equatable, PopupContent: View>: ViewModifier {
             dismiss()
         }
     }
-    #endif
+#endif
     
     private func appearAction(sheetPresented: Bool) {
         if sheetPresented {
@@ -483,9 +483,8 @@ private final class ClassReference<T> {
     }
 }
 
-
 extension View {
-
+    
     @ViewBuilder
     fileprivate func valueChanged<T: Equatable>(value: T, onChange: @escaping (T) -> Void) -> some View {
         if #available(iOS 14.0, tvOS 14.0, macOS 11.0, watchOS 7.0, *) {
@@ -505,10 +504,10 @@ extension View {
 }
 
 struct FrameGetter: ViewModifier {
-
+    
     @Binding var frame: CGRect
     @Binding var safeArea: EdgeInsets
-
+    
     func body(content: Content) -> some View {
         content
             .background(

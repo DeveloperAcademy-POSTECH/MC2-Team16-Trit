@@ -35,7 +35,7 @@ struct AddCardTitleView: View {
                     Spacer()
                 }
             }
-            VStack{
+            VStack {
                 Spacer()
                 Image("smartphone-with-bills")
                     .resizable()

@@ -72,7 +72,7 @@ struct SpaceEmptyView: View {
                 .confirmationDialog("", isPresented: $isShowingDialog, titleVisibility: .hidden) {
                     
                                 Button("스페이스 초기화") {
-                                    //Todo: 스페이스 초기화 기능
+                                    // Todo: 스페이스 초기화 기능
                                 }
                                 Button("스페이스 이름 설정") {
                                     isEditSpaceNaveViewOpened = true
@@ -243,8 +243,8 @@ struct SpaceEmptyView: View {
 //    }
 }
 
-//struct SpaceEmptyView_Previews: PreviewProvider {
+// struct SpaceEmptyView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SpaceEmptyView(spaceID: .constant("asdasd"))
 //    }
-//}
+// }

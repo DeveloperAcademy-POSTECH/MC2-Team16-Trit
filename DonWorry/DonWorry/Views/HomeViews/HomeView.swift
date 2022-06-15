@@ -68,7 +68,7 @@ struct HomeView: View {
                 .padding(.bottom, 25)
                 .padding(.horizontal, 30)
 
-                //profileView
+                // profileView
                 SpaceChipsView(selection: $selection)
                 if currentUser.participant == selection {
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -85,7 +85,6 @@ struct HomeView: View {
                                 .sheet(isPresented: $takerDonCardSheetState, content: {
                                     TakerDonCardSheet()
                                 })
-
 
                             }
                             if currentUser.giveMoney != nil {
