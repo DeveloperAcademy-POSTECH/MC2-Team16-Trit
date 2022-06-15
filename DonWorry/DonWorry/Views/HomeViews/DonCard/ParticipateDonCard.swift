@@ -19,7 +19,7 @@ struct ParticipateDonCard: View {
                 naviSelection = "SpaceMainView"
             } label: {
                 ZStack {
-                    BasicRoundRec(color: .blueMain)
+                    GradientRoundRec()
                     Circle()
                         .frame(width: 83, height: 83)
                         .foregroundColor(Color(hex: "D8D8D8"))
@@ -58,6 +58,15 @@ struct BasicRoundRec: View {
             .opacity(0.8)
             .shadow(color: .black, radius: 3, x: 0, y: 2)
             .foregroundColor(color)
+    }
+}
+
+struct GradientRoundRec : View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 8)
+            .fill(LinearGradient(colors: [.gradientTopBlue, .gradientBottomBlue], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .frame(width: 160, height: 215)
+            .shadow(color: .black, radius: 3, x: 0, y: 2)
     }
 }
 

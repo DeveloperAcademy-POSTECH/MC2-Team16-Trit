@@ -48,9 +48,14 @@ struct AlertRow: View {
                     Button(action: {
                         print("정산하기 버튼이 눌렸다")
                     }) {
-                        Text("정산하기")
-                            .font(.system(size: 10, weight: .heavy))
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(LinearGradient(colors: [.gradientTopBlue, .gradientBottomBlue], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                .frame(width: 70)
+                            Text("정산하기")
+                                .font(.system(size: 10, weight: .heavy))
                             .foregroundColor(Color.white)
+                        }
                     }
                 }
                 .frame(width: 70, height: 30)
@@ -66,6 +71,6 @@ struct AlertRow: View {
 
 struct AlertRow_Previews: PreviewProvider {
     static var previews: some View {
-        AlertRow()
+        AlertRow(isReminder: true)
     }
 }

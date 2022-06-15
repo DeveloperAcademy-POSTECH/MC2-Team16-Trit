@@ -27,9 +27,19 @@ struct SpaceChipsView: View {
                 HStack {
                 ForEach(0..<3) { index in
                     ZStack {
-                        RoundedRectangle(cornerRadius: 50)
-                            .frame(width: 112, height: 45)
-                            .foregroundColor(selection == switches[index] ? .blue : Color(hex: "EFEFEF"))
+                        if selection == switches[index] {
+                            RoundedRectangle(cornerRadius: 50)
+                                .fill(LinearGradient(colors: [.gradientTopBlue, .gradientBottomBlue], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                .frame(width: 112, height: 45)
+                        } else {
+                            RoundedRectangle(cornerRadius: 50)
+                                .frame(width: 112, height: 45)
+                                .foregroundColor(Color(hex: "EFEFEF"))
+                        }
+                       
+                        
+                            
+//                            .foregroundColor(selection == switches[index] ? .blue : Color(hex: "EFEFEF"))
                         Text(switches[index])
                             .font(.system(size: widthForText(switches[index]) < 80 ? 13 : 12, weight: .bold))
                             .frame(width: 80, height: 24, alignment: .center)
@@ -46,9 +56,15 @@ struct SpaceChipsView: View {
                 HStack {
                     ForEach(3..<5) { index in
                     ZStack {
-                        RoundedRectangle(cornerRadius: 50)
-                            .frame(width: 112, height: 45)
-                            .foregroundColor(selection == switches[index] ? .blue : Color(hex: "EFEFEF"))
+                        if selection == switches[index] {
+                            RoundedRectangle(cornerRadius: 50)
+                                .fill(LinearGradient(colors: [.gradientTopBlue, .gradientBottomBlue], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                .frame(width: 112, height: 45)
+                        } else {
+                            RoundedRectangle(cornerRadius: 50)
+                                .frame(width: 112, height: 45)
+                                .foregroundColor(Color(hex: "EFEFEF"))
+                        }
                         Text(switches[index])
                             .font(.system(size: widthForText(switches[index]) < 80 ? 13 : 12, weight: .bold))
                             .frame(width: 80, height: 24, alignment: .center)
