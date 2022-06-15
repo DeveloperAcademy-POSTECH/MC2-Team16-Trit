@@ -27,7 +27,7 @@ enum DecoCase: String, Identifiable, CaseIterable {
 
 struct AddCardDecoView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
+    @GestureState private var dragOffset = false
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     
     //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
@@ -121,7 +121,11 @@ struct AddCardDecoView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        //        .navigationViewStyle(StackNavigationViewStyle())
+        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
+            if (value.startLocation.x < 30 && value.translation.width > 100) {
+                self.mode.wrappedValue.dismiss()
+            }
+        })
     }
     
     // MARK: 컬러박스 입력 칸
@@ -229,6 +233,7 @@ struct AddCardDecoView: View {
                             isPresented: $showPhotoPicker)
             }
     }
+    
 }
 
 extension AddCardDecoView {
@@ -307,4 +312,3 @@ struct AddCardDecoView_Previews: PreviewProvider {
         }
     }
 }
-

@@ -9,6 +9,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @GestureState private var dragOffset = false
     
     var nickName = "동에번쩍"
     var userName = "홍길동"
@@ -168,7 +169,11 @@ struct ProfileView: View {
             }
             
         }
-        
+        .gesture(DragGesture().updating($dragOffset) { (value, state, transaction) in
+            if (value.startLocation.x < 30 && value.translation.width > 100) {
+                self.mode.wrappedValue.dismiss()
+            }
+        })
     }
 }
 
