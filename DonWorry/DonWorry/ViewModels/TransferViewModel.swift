@@ -32,6 +32,7 @@ class TransferViewModel: ObservableObject {
         } catch {
             print(error.localizedDescription)
         }
+        
     }
 
     // params

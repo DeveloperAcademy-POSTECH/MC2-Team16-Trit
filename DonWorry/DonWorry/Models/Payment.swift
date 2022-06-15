@@ -9,7 +9,7 @@ import FirebaseFirestoreSwift
 import Foundation
 
 // 각 정산 내역 (Card)
-struct Payment: Identifiable { // Hashable
+struct Payment: Identifiable, Codable { // Hashable
     @DocumentID var id : String?
     var paymentTitle: String // 정산내역이름
     var category: String // icon
