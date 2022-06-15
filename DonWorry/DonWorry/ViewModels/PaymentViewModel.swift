@@ -20,7 +20,6 @@ class PaymentViewModel: ObservableObject {
     
     private var db = Firestore.firestore()
     
-    
     // MARK: 새로운 payment 추가
     // [param] to: spaceID, data: Payment
     func addPayment(){
@@ -29,17 +28,15 @@ class PaymentViewModel: ObservableObject {
     
     // MARK: payment 이름 변경
     // [param] with:name , paymentID:
-    func updatePaymentTitle( ){
+    func updatePaymentTitle(){
         
     }
-    
     
     // MARK: 정산금액변경
     // [param] with: amount
     func updatePaymentAmount(){
         
     }
-    
     
     // MARK: 정산첨부파일변경
     // [param] with: AttachedFile리스트
@@ -53,7 +50,6 @@ class PaymentViewModel: ObservableObject {
     func participateInPayment(){
         
     }
-    
     
     // MARK: 정산 삭제
     // [param] paymentID

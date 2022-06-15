@@ -12,9 +12,9 @@ import GoogleSignIn
 class BaseViewModel: ObservableObject {
     @Published var authViewModel = AuthViewModel()
     @Published var accountViewModel = AccountViewModel()
-//    @Published var authViewModel = AuthViewModel()
-//    @Published var authViewModel = AuthViewModel()
-    
+    @Published var transferViewModel = TransferViewModel()
+    @Published var paymentViewModel = PaymentViewModel()
+    @Published var spaceViewModel = SpaceViewModel()
 }
 
 @main
