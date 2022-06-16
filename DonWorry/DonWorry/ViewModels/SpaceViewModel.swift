@@ -57,6 +57,7 @@ class SpaceViewModel: ObservableObject {
     func addParticipant(spaceID: String, user: User) {
         
         let spaceRef = Firestore.firestore().collection("Space").document(spaceID)
+        let userRef = Firestore.firestore().collection("users").document(user.id ?? "")
         
         spaceRef.updateData(["userList" : FieldValue.arrayUnion([user.id])]) { error in
             if error != nil {
@@ -64,6 +65,54 @@ class SpaceViewModel: ObservableObject {
             }
         }
     }
+    
+    // MARK: 스페이스 데이터 삭제
+    func deleteSpace(spaceID: String) {
+        
+        let spaceRef = db.collection("Space").document(spaceID)
+        let userRef = db.collection("User").whereField("spaceList", arrayContainsAny: [spaceID])
+        let transferRef = db.collection("Transfer").whereField("spaceID", isEqualTo: spaceID)
+        
+        spaceRef.delete { error in
+            if let error = error {
+                print("스페이스 삭제에 실패했습니다.\(error.localizedDescription)")
+            }
+        }
+        
+        userRef.getDocuments { (querysnapshot, error) in
+            if let error = error {
+                print("유저를 불러오는데 실패했습니다.")
+            } else {
+                for document in querysnapshot!.documents {
+                    document.reference.updateData(["spaceList" : FieldValue.arrayRemove([spaceID])])
+                }
+            }
+        }
+        
+        transferRef.getDocuments { (querysnapshot, error) in
+            if let error = error {
+                print("트랜스퍼를 불러오는데 실패했습니다.")
+            } else {
+                for document in querysnapshot!.documents {
+                    document.reference.delete()
+                }
+            }
+        }
+    }
+    
+    func updateSpaceStatus(spaceID: String) {
+        
+        let spaceRef = db.collection("Space").document(spaceID)
+        
+        spaceRef.setData(["status" : true], merge: true) { error in
+            if let error = error {
+                print("스페이스 상태 바꾸기 실패")
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // 여기서부터 개인적으로 만듬
     
     // MARK: 유저가 속한 스페이스 불러오기 (비동기)
     func loadUserSpace(userID: String, completion: @escaping (Result<[String], Error>) -> Void) {
@@ -157,7 +206,6 @@ class SpaceViewModel: ObservableObject {
         }
     }
     
-    
     // MARK: 스페이스 불러오기
     // spaceID(INPUT)->비동기처리한 space 불러오기
     func fetchSpace(documentID: String) {
@@ -172,17 +220,6 @@ class SpaceViewModel: ObservableObject {
             }
         }
     }
-    
-    // MARK: 스페이스 데이터 삭제
-    func deleteSpace(spaceID: String) {
-        
-        let spaceRef = Firestore.firestore().collection("Space").document(spaceID)
-        
-        spaceRef.delete()
-        
-    }
-    
-    
     
     // MARK: 전체 스페이스 불러오기
     func getSpaceDatas() {
