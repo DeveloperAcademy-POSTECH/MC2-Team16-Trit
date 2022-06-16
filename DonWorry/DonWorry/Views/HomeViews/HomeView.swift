@@ -65,6 +65,8 @@ struct HomeView: View {
 
                     Button {
                         self.naviSelection = "AlertView"
+                        authViewModel.signOut()
+                        
                     } label: {
                         Image("alerticon")
                             .resizable()
