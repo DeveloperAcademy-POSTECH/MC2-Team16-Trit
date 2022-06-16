@@ -108,7 +108,7 @@ struct HomeView: View {
             }
             .padding(.top)
             
-            NavigationLink(tag: "SpaceMainView", selection: $naviSelection, destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID")) }, label: { EmptyView() })
+            NavigationLink(tag: "SpaceMainView", selection: $naviSelection, destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("3jcdsuhceuji2cndjwkskajcnc")) }, label: { EmptyView() })
                 .isDetailLink(false)
             
             VStack {
