@@ -71,6 +71,7 @@ struct UserInfoView: View {
             NavigationLink(tag: "TermView", selection: $naviSelection, destination: { TermView() }) { SmallButton(text: "다음") {
                 naviSelection = "TermView"
             } }
+            .disabled(!(nickName.isEmpty || account.isEmpty || holder.isEmpty || bank.isEmpty) ? false : true)
             .padding(.bottom)
         }
         .onAppear {

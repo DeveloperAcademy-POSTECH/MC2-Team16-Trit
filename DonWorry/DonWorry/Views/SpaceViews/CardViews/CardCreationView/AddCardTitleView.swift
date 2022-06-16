@@ -58,6 +58,7 @@ struct AddCardTitleView: View {
                         self.naviSelection = "AddCardIconView"
                     }
                 }
+                .disabled(paymentTitle.isEmpty ? true : false)
                 .padding(.horizontal, 30)
                 .padding(.bottom)
             }

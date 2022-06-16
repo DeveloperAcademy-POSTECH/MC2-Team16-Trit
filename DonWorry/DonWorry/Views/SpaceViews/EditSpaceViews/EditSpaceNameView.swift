@@ -26,10 +26,10 @@ struct EditSpaceNameView: View {
                 .padding(.top, 30)
             HStack {
                 Spacer()
-                SmallButton(text: "다음") {
+                SmallButton(text: "확인") {
                     mode.wrappedValue.dismiss()
-                    print("Next level")
                 }
+                .disabled(spaceName.isEmpty ? true : false)
                 .padding(.top, 23)
                 .padding(.trailing, 19)
             }

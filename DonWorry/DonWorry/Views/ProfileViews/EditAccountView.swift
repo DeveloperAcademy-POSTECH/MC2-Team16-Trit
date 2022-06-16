@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct EditAccountView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
@@ -47,6 +48,7 @@ struct EditAccountView: View {
                         self.mode.wrappedValue.dismiss()
                     }
                     .padding(.bottom, 30)
+                    .disabled(!(holder.isEmpty || bank.isEmpty || account.isEmpty) ? false : true)
                 }
                 
             }

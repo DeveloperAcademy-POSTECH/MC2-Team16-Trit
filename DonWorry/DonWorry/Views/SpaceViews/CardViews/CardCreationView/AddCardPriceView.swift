@@ -17,7 +17,7 @@ let rows = [
 struct AddCardPriceView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
-    @State private var price = ""
+    @State private var price: String = ""
     @State private var naviSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
     
     var numberPrice: Int {
@@ -75,6 +75,7 @@ struct AddCardPriceView: View {
                 SmallButton(text: "다음") {
                     self.naviSelection = "AddCardDecoView"
                 }
+                .disabled(price == "0" ? true : false)
             }
             .padding(.horizontal, 30)
             .padding(.bottom)
@@ -141,7 +142,8 @@ struct AddCardPriceView: View {
         if input == "delete.left" {
             self.price.popLast()
         } else {
-            self.price.append(contentsOf: input)
+            self.price += input
+//            self.price.append(contentsOf: input)
         }
     }
 }

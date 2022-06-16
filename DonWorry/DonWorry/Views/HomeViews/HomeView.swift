@@ -151,6 +151,7 @@ struct HomeView: View {
                     isPresented = false
                     naviSelection = "SpaceMainView"
                 }
+                .disabled(spaceID.isEmpty ? true : false)
                 .padding(.bottom, 30)
             }
             .frame(width: 315, height: 350)

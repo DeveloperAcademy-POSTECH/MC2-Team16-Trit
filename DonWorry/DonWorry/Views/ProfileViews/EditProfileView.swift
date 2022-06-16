@@ -42,6 +42,7 @@ struct EditProfileView: View {
                         self.mode.wrappedValue.dismiss()
                     }
                     .padding(.bottom, 30)
+                    .disabled(name.isEmpty ? true : false)
                 }
                 
             }
