@@ -67,7 +67,7 @@ struct AddCardIconView: View {
                 HStack {
                     NavigationLink(tag: "AddCardPriceView", selection: $naviSelection, destination: { AddCardPriceView(mainSelection: $mainSelection, paymentTitle: paymentTitle, paymentIcon: paymentIcon) }) { EmptyView() }
                         .isDetailLink(false)
-                    SmallButton(text: "다음") {
+                    SmallButton(text: "다음", isDisable: false) {
                         self.naviSelection = "AddCardPriceView"
                         self.paymentIcon = Image(selectedItem)
                     }

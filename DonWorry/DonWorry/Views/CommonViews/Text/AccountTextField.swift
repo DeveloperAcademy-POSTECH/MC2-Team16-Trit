@@ -36,6 +36,7 @@ struct AccountTextField: View {
                         .onTapGesture {
                             withAnimation {
                                 account.removeAll()
+                                bank.removeAll()
                             }
                         }
                 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SmallButton: View {
     var text: String
+    let isDisable: Bool
     var clicked: (() -> Void) /// use closure for callback
     
     var body: some View {
@@ -20,7 +21,7 @@ struct SmallButton: View {
             .foregroundColor(Color.white)
             .font(.system(size: 15, weight: .bold))
             .padding()
-            .background(Color.blueMain)
+            .background(isDisable ? Color.disableBlue : Color.blueMain)
             .cornerRadius(50)
         }
     }
@@ -28,10 +29,14 @@ struct SmallButton: View {
 
 struct SmallButton_Previews: PreviewProvider {
     static var previews: some View {
-        SmallButton(
-            text: "Small Button"
-        ) {
+        SmallButton(text: "Small Button", isDisable: false) {
             print("Clicked!")
         }
+        
+//        SmallButton(
+//            text: "Small Button"
+//        ) {
+//            print("Clicked!")
+//        }
     }
 }

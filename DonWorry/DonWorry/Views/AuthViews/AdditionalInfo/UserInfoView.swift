@@ -17,6 +17,10 @@ struct UserInfoView: View {
     @State private var naviSelection: String? = nil
     @FocusState private var isFocused: Bool
     
+    var isDisable: Bool {
+        nickName.isEmpty || account.isEmpty || holder.isEmpty || bank.isEmpty
+    }
+    
     var body: some View {
         VStack {
             Text("돈.워리")
@@ -49,7 +53,7 @@ struct UserInfoView: View {
                         UnderlineTextField(placeholder: "성명을 입력해주세요", charLimit: 10, text: $holder)
                             .focused($isFocused)
                     }
-                     
+                    
                     VStack(alignment: .leading) {
                         Text("계좌번호")
                             .font(.system(size: 17))
@@ -68,10 +72,10 @@ struct UserInfoView: View {
             
             Spacer()
             
-            NavigationLink(tag: "TermView", selection: $naviSelection, destination: { TermView() }) { SmallButton(text: "다음") {
+            NavigationLink(tag: "TermView", selection: $naviSelection, destination: { TermView() }) { SmallButton(text: "다음", isDisable: isDisable) {
                 naviSelection = "TermView"
-            } }
-            .disabled(!(nickName.isEmpty || account.isEmpty || holder.isEmpty || bank.isEmpty) ? false : true)
+            }}
+            .disabled(isDisable ? true : false)
             .padding(.bottom)
         }
         .onAppear {

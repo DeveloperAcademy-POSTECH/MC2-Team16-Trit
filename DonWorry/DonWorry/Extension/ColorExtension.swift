@@ -61,6 +61,7 @@ extension Color {
     static let blueA4C6FF = Color(hex: "#A4C6FF")
     static let skyBlue = Color(hex: "#0A84FF")
     static let paleBlue = Color(hex: "#DFEAFF")
+    static let disableBlue = Color(hex: "#ABC8FF")
     static let grayF5 = Color(hex: "F5F4F4")
     
     static let gradientTopBlue = Color(hex: "1485FA")

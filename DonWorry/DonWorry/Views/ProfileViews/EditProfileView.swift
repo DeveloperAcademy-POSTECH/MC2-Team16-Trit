@@ -12,6 +12,10 @@ struct EditProfileView: View {
     @State private var name = ""
     @FocusState private var isFocused: Bool
     
+    var isDisable: Bool {
+        name.isEmpty
+    }
+    
     var body: some View {
         VStack {
             
@@ -37,12 +41,12 @@ struct EditProfileView: View {
             VStack {
                 HStack {
                     Spacer()
-                    SmallButton(text: "확인") {
+                    SmallButton(text: "확인", isDisable: isDisable) {
                         /* 닉네임 저장 및 profile 페이지로 back */
                         self.mode.wrappedValue.dismiss()
                     }
                     .padding(.bottom, 30)
-                    .disabled(name.isEmpty ? true : false)
+                    .disabled(isDisable ? true : false)
                 }
                 
             }
