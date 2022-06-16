@@ -15,43 +15,29 @@ struct ProfileView: View {
     var bankAccountBank: String = "사과은행"
     var bankAccountNumber: String = "0000000000000000"
     var bankAccountHolder: String = "홍길동"
-    var profileImage = "blue-car"
+    var profileImage = "people_ICON"
         
     var body: some View {
         
         VStack {
-            
-            /* Title */
-            HStack {
-                Text("내 정보")
-                    .fontWeight(.bold)
-                    .font(.system(size: 30))
-//                    .padding(.bottom, 10)
-                Spacer()
-            }
-            
-            Spacer()
-            
             /* Main Content */
             VStack {
                 /* Section 1 :  Profile */
                 HStack {
                     Image(profileImage)
                         .resizable()
-                        .background(.gray)
-                        .frame(width: 65, height: 65)
+                        .scaledToFill()
+                        .frame(width: 50, height: 50)
+                        .background(.black)
                         .clipShape(Circle())
                     
                     VStack(alignment: .leading) {
-                        Text("김유쓰")
-                            .bold()
-                            .font(.system(size: 22))
-                            
-                        Text("김의성")
-                            .fontWeight(.light)
-                            .font(.system(size: 16))
+                        Text("김유스 님")
+                            .font(.system(size: 20, weight: .bold))
+                        Text("안녕하세요")
+                            .font(.system(size: 17))
                     }
-                    .padding(.leading, 5)
+                    .padding(.leading, 10)
                     
                     Spacer()
                     
@@ -64,6 +50,7 @@ struct ProfileView: View {
                         
                     }
                 }
+                .padding(.bottom)
                 
                 GrayLine()
                 
@@ -127,21 +114,44 @@ struct ProfileView: View {
                     MoreInfoListItem(title: "공지사항")
                     GrayLine()
                     
-                    MoreInfoListItem(title: "이용약관")
-                    GrayLine()
-                    
                     MoreInfoListItem(title: "1대1문의", subTitle: "불편한점이나 바라는점을 말씀해주세요")
                     GrayLine()
-                                       
-                    MoreInfoListItem(title: "회원탈퇴")
+                                  
+                    MoreInfoListItem(title: "이용약관")
                     GrayLine()
-                    
                 }
                 .padding(.bottom, 15)
                      
             }
-            
+            Spacer()
             /* Footer */
+            HStack {
+                Spacer()
+                Button {
+                    // To-Do: 로그아웃 구현
+                    print("로그아웃 성공")
+                } label: {
+                    Text("로그아웃")
+                        .font(.system(size: 15))
+                        .foregroundColor(Color.gray91)
+                }
+                .padding(.horizontal)
+                
+                Text(" | ")
+                
+                Button {
+                    // To-Do: 회원탈퇴 구현
+                    print("회원탈퇴 성공")
+                } label: {
+                    Text("회원탈퇴")
+                        .font(.system(size: 15))
+                        .foregroundColor(Color.gray91)
+                }
+                .padding(.horizontal)
+                Spacer()
+            }
+            .padding(.bottom)
+            
             HStack {
                 Spacer()
                 Text("돈워리 ver 1.0.0")
@@ -149,8 +159,7 @@ struct ProfileView: View {
                     .foregroundColor(Color.gray91)
                 Spacer()
             }
-            
-            Spacer()
+            .padding(.bottom)
             
         }
         .padding(.top, -20)
@@ -166,14 +175,20 @@ struct ProfileView: View {
                         .padding(.horizontal)
                 }
             }
-            
+            ToolbarItem(placement: .confirmationAction) {
+                    Text("내 정보")
+                        .font(.title2.weight(.bold))
+                        .padding(.trailing)
+            }
         }
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        NavigationView {
+            ProfileView()
+        }
     }
 }
 
