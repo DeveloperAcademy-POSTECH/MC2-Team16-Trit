@@ -14,7 +14,8 @@ struct SampleViewWithSheet: View {
     var body: some View {
         
         LargeButton(
-            text: "Sheet불러오기"
+            text: "Sheet불러오기",
+            isDisable: false
         ) {
             sheetStateModel.showSheet.toggle()
         }

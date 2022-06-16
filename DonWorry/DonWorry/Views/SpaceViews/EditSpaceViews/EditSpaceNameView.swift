@@ -13,6 +13,10 @@ struct EditSpaceNameView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @FocusState private var isFocused: Bool
     
+    var isDisable: Bool {
+        spaceName.isEmpty
+    }
+    
     var body: some View {
         VStack {
             Text("스페이스\n이름을 설정해주세요")
@@ -26,10 +30,10 @@ struct EditSpaceNameView: View {
                 .padding(.top, 30)
             HStack {
                 Spacer()
-                SmallButton(text: "확인") {
+                SmallButton(text: "확인", isDisable: isDisable) {
                     mode.wrappedValue.dismiss()
                 }
-                .disabled(spaceName.isEmpty ? true : false)
+                .disabled(isDisable ? true : false)
                 .padding(.top, 23)
                 .padding(.trailing, 19)
             }

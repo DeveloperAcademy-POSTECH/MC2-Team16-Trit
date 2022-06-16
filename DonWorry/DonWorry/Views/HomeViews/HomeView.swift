@@ -19,6 +19,10 @@ struct HomeView: View {
     @State private var naviSelection: String? = nil // SpaceMainView에서 HomeView로 한번에 dismiss시키기 위한 변수
     @FocusState private var isFocused: Bool
     
+    var isDisable: Bool {
+        spaceID.isEmpty
+    }
+    
     var currentUser: User
     
     var body: some View {
@@ -147,11 +151,11 @@ struct HomeView: View {
                         .keyboardType(.asciiCapable)
                 }
                 
-                LargeButton(text: "스페이스 참가하기") {
+                LargeButton(text: "스페이스 참가하기", isDisable: isDisable) {
                     isPresented = false
                     naviSelection = "SpaceMainView"
                 }
-                .disabled(spaceID.isEmpty ? true : false)
+                .disabled(isDisable ? true : false)
                 .padding(.bottom, 30)
             }
             .frame(width: 315, height: 350)

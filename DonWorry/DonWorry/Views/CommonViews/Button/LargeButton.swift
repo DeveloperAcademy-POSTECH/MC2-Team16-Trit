@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LargeButton: View {
     var text: String
+    let isDisable: Bool
     var clicked: (() -> Void) /// use closure for callback
     
     var body: some View {
@@ -20,7 +21,7 @@ struct LargeButton: View {
             .foregroundColor(Color.white)
             .font(.system(size: 15, weight: .bold))
             .padding()
-            .background(Color.blueMain)
+            .background(isDisable ? Color.disableBlue : Color.blueMain)
             .cornerRadius(50)
         }
     }

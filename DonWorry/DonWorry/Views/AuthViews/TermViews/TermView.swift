@@ -13,6 +13,10 @@ struct TermView: View {
     
     @State private var showSheet = false
     
+    var isDisable: Bool {
+        !termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked }
+    }
+    
     @State private var termsOfService = [
         Term(title: "만 14세 이상입니다.", content: "만 14세 이상입니다. 내용", isEssential: true, isChecked: false, showContent: false),
         Term(title: "돈워리 서비스 이용약관 동의", content: "돈워리 서비스 이용약관 동의 내용", isEssential: true, isChecked: false, showContent: false),
@@ -74,13 +78,13 @@ struct TermView: View {
                 }
             }
             
-            SmallButton(text: "확인") {
+            SmallButton(text: "확인", isDisable: isDisable) {
                 showSheet = true
                     
 //                Todo : 회원가입 완료 후 메인 페이지로 넘어가기
             }
             .padding(.bottom)
-            .disabled(termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked } ? false : true)
+            .disabled(isDisable ? true : false)
         }
         .padding(.horizontal, 15)
         .ignoresSafeArea(.keyboard)

@@ -14,6 +14,10 @@ struct AddCardTitleView: View {
     @State private var naviSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
     @FocusState private var isFocused: Bool
     
+    var isDisable: Bool {
+        paymentTitle.isEmpty
+    }
+    
     let maxLength = 15
     
     var body: some View {
@@ -54,11 +58,11 @@ struct AddCardTitleView: View {
                         
                     }) { EmptyView() }
                         .isDetailLink(false)
-                    SmallButton(text: "다음") {
+                    SmallButton(text: "다음", isDisable: isDisable) {
                         self.naviSelection = "AddCardIconView"
                     }
                 }
-                .disabled(paymentTitle.isEmpty ? true : false)
+                .disabled(isDisable ? true : false)
                 .padding(.horizontal, 30)
                 .padding(.bottom)
             }

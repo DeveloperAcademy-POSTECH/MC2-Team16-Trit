@@ -14,6 +14,10 @@ struct AddSpaceView: View {
     @FocusState private var isFocused: Bool
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    var isDisable: Bool {
+        spaceName.isEmpty
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             
@@ -41,12 +45,12 @@ struct AddSpaceView: View {
                         
                     }) { EmptyView() }
                         .isDetailLink(false)
-                        SmallButton(text: "완료") {
+                        SmallButton(text: "완료", isDisable: isDisable) {
                             self.pageSelection = "SpaceMainView"
                         }
                         .padding(.bottom)
                         .padding(.horizontal)
-                        .disabled(spaceName.isEmpty ? true : false)
+                        .disabled(isDisable ? true : false)
                    
                 }
                 
