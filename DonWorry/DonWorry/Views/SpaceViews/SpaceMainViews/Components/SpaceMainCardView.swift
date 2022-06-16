@@ -14,7 +14,7 @@ struct SpaceMainCardView: View {
     var color: Color
     var account: String
     var index: Int = 0
-    var isParticipated = false
+    var isParticipated = true
     let date: String
     var paymentIcon: Image?
 
@@ -93,7 +93,6 @@ struct SpaceMainCardView: View {
                         }
                         .padding(.trailing, 24)
                     }
-                    .blur(radius: isParticipated ? 3 : 0)
                     if isParticipated {
                         Image(systemName: "checkmark")
                             .foregroundColor(.white)

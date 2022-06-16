@@ -10,13 +10,13 @@ import SwiftUI
 struct CheckAttendanceView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-        @State var checkedArray: [Int] = []
-        
-        let leftPaddingSize: CGFloat = 25
-    // Todo : cards는 카드로 대체
-        let cards = [0, 1, 2, 3, 4]
-        private var numberOfCards: Int { cards.count }
-        private var numberOfcheck: Int { checkedArray.count }
+    @State var originCheckedArray: [Int] = []
+    @Binding var checkedArray: [Int]
+    let leftPaddingSize: CGFloat = 25
+// Todo : cards는 카드로 대체
+    let cards = [0, 1, 2, 3]
+    private var numberOfCards: Int { cards.count }
+    private var numberOfcheck: Int { checkedArray.count }
     
     var body: some View {
             ZStack(alignment: .bottom) {
@@ -42,7 +42,7 @@ struct CheckAttendanceView: View {
                                     Spacer()
                                     SmallCardView(index: index)
                                 }
-                                .padding(.bottom, index == 4 ? 70 : 0)
+                                .padding(.bottom, index == 3 ? 70 : 0)
                                 // Todo: index는 item개수로 대체 됩니다.
                             }
                         }
@@ -62,13 +62,19 @@ struct CheckAttendanceView: View {
                     }
                 }
             }
+            .onAppear(perform: {
+                originCheckedArray = checkedArray
+            })
         .toolbar {
             ToolbarItem(placement: .principal) {
-                            Text("참석확인")
+                
+                Text("참석확인")
                     .applyTextWithLineLimitModifier(size: 20, weight: .medium, color: .black)
-                        }
+                
+            }
             ToolbarItemGroup(placement: .navigationBarLeading) {
                 Button {
+                    checkedArray = originCheckedArray
                     mode.wrappedValue.dismiss()
                     print("참석확인")
                 } label: {
@@ -97,7 +103,7 @@ struct CheckAttendanceView: View {
 struct CheckAttendanceView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CheckAttendanceView()
+            CheckAttendanceView(checkedArray: .constant([]))
         }
     }
 }
