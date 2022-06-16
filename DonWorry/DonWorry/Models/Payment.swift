@@ -9,8 +9,9 @@ import FirebaseFirestoreSwift
 import Foundation
 
 // 각 정산 내역 (Card)
-struct Payment: Identifiable { // Hashable
+struct Payment: Identifiable, Codable { // Hashable
     @DocumentID var id : String?
+    var spaceID: String
     var paymentTitle: String // 정산내역이름
     var category: String // icon
     var amount: Int // 정산 금액
@@ -23,14 +24,15 @@ struct Payment: Identifiable { // Hashable
 }
 
 extension Payment {
-    static let empty = Payment(paymentTitle: "", category: "", amount: 0, color: "", date: "", attachedFile: [], givers: [], taker: "", account: "")
+    static let empty = Payment(spaceID: "" ,paymentTitle: "", category: "", amount: 0, color: "", date: "", attachedFile: [], givers: [], taker: "", account: "")
 }
 
 
 var mockUsers = ["Lumi", "Asher", "charlie"]
 
 var payments: [Payment] = [
-    Payment(paymentTitle: "1차 고기집",
+    Payment(spaceID: "",
+            paymentTitle: "1차 고기집",
             category: "chicken",
             amount: 130000,
             color: "red",
@@ -40,7 +42,8 @@ var payments: [Payment] = [
             taker: mockUsers[0],
             account: "accountRef"),
     
-    Payment(paymentTitle: "2차 횟집",
+    Payment(spaceID: "",
+            paymentTitle: "2차 횟집",
             category: "fish",
             amount: 118000,
             color: "blue",
@@ -50,7 +53,8 @@ var payments: [Payment] = [
             taker: mockUsers[0],
             account:  "accountRef"),
     
-    Payment(paymentTitle: "3차 뼈찜",
+    Payment(spaceID: "",
+            paymentTitle: "3차 뼈찜",
             category: "bone",
             amount: 87000,
             color: "brown",

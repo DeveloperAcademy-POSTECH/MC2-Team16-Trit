@@ -22,6 +22,7 @@ struct DonWorryApp: App {
                 ContentView()
                     .environmentObject(AuthViewModel())
             }
+                .environmentObject(viewModel)
         }
     }
 }

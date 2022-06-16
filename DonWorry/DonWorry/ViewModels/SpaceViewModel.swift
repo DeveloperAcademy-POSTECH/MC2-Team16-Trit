@@ -24,6 +24,46 @@ class SpaceViewModel: ObservableObject {
     
     private var db = Firestore.firestore()
    
+    // MARK: 스페이스 만들기
+    // ???: addSpaceData랑 차이?
+    func createSpace(withName: String, user: User) {
+        
+        let db = Firestore.firestore()
+        
+        let space = Space(spaceID: "", spaceName: withName, payment: [], status: false, transfer: [], userList: [user.id ?? "123"], admin: user.id ?? "123")
+
+        do {
+            let _ = try db.collection("Space").addDocument(from: space)
+        } catch {
+            print(error)
+        }
+    }
+    
+    // MARK: 스페이스 상세정보 불러오기
+    func fetchSpaceDetail(of: String) {
+        let spaceRef = db.collection("Space").document(of)
+        
+        spaceRef.getDocument(as: Space.self) { result in
+            switch result {
+            case .success(let space):
+                self.space = space
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: 특정 스페이스에 참가자 추가
+    func addParticipant(spaceID: String, user: User) {
+        
+        let spaceRef = Firestore.firestore().collection("Space").document(spaceID)
+        
+        spaceRef.updateData(["userList" : FieldValue.arrayUnion([user.id])]) { error in
+            if error != nil {
+                print(error?.localizedDescription ?? "")
+            }
+        }
+    }
     
     // MARK: 유저가 속한 스페이스 불러오기 (비동기)
     func loadUserSpace(userID: String, completion: @escaping (Result<[String], Error>) -> Void) {
@@ -133,35 +173,6 @@ class SpaceViewModel: ObservableObject {
         }
     }
     
-    // MARK: 스페이스 만들기
-    // ???: addSpaceData랑 차이?
-    func createSpace(withName: String, user: User) {
-        
-        let db = Firestore.firestore()
-        
-        let space = Space(spaceID: "", spaceName: withName, payment: [], status: false, transfer: [], userList: [user.id ?? "123"], admin: user.id ?? "123")
-
-        do {
-            let _ = try db.collection("Space").addDocument(from: space)
-        } catch {
-            print(error)
-        }
-    }
-    
-    // MARK: 스페이스 상세정보 불러오기
-    func fetchSpaceDetail(of: String) {
-        let spaceRef = db.collection("Space").document(of)
-        
-        spaceRef.getDocument(as: Space.self) { result in
-            switch result {
-            case .success(let space):
-                self.space = space
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
     // MARK: 스페이스 데이터 삭제
     func deleteSpace(spaceID: String) {
         
@@ -171,17 +182,7 @@ class SpaceViewModel: ObservableObject {
         
     }
     
-    // MARK: 특정 스페이스에 참가자 추가
-    func addParticipant(spaceID: String, user: User) {
-        
-        let spaceRef = Firestore.firestore().collection("Space").document(spaceID)
-        
-        spaceRef.updateData(["userList" : FieldValue.arrayUnion([user.id])]) { error in
-            if error != nil {
-                print(error?.localizedDescription ?? "")
-            }
-        }
-    }
+    
     
     // MARK: 전체 스페이스 불러오기
     func getSpaceDatas() {
