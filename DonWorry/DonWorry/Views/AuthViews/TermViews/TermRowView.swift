@@ -29,7 +29,7 @@ struct TermRowView: View {
                     Text(term.title)
                 }
                 .font(.system(size: 15))
-                .foregroundColor(Color.gray81)
+                .foregroundColor(Color.black)
                 
                 Spacer()
                 
@@ -48,7 +48,14 @@ struct TermRowView: View {
             .padding(.vertical, 5)
             
             if term.showContent {
-                Text(term.content)
+                HStack{
+                    Text(term.content)
+                        .multilineTextAlignment(.leading)
+                        .font(.system(size: 13))
+                        .foregroundColor(Color.gray81)
+                    Spacer()
+                }
+                .padding(.horizontal)
             }
         }
     }
