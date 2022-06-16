@@ -10,16 +10,6 @@ import SwiftUI
 struct GiverDonCardSheet: View {
 //    var percentage: Double = 81.5
     
-    func createTopToastMessage() -> some View {
-        Text("복사했습니다!")
-            .font(.system(size: 12, weight: .bold))
-            .foregroundColor(.white)
-            .multilineTextAlignment(.center)
-            .frame(width: 110, height: 40)
-            .background(Color.grayC5)
-            .cornerRadius(20)
-    }
-    
     @State var isAccountPopupPresented = false
     
     @Environment(\.presentationMode) var presentationmode
@@ -35,17 +25,46 @@ struct GiverDonCardSheet: View {
                     .padding(.vertical, 30)
                     .padding(.horizontal)
                 
-                HStack {
-                    Text("애셔에게 줄 돈")
+                HStack(alignment: .bottom) {
+                    Text("임영후")
+                        .font(.system(size: 30, weight: .heavy))
+                    Text("님께")
+                        .font(.system(size: 18, weight: .bold))
+                        .padding(.bottom, 2)
                     Spacer()
-                    Text("내가 내야할 돈")
+                }
+                .padding(.horizontal, 15)
+                .padding(.bottom, 15)
+                
+                HStack {
+                    Text("송금할 금액")
+                        .font(.system(size: 15, weight: .heavy))
+                    Spacer()
+                    Text("나의 정산 총액")
+                        .font(.system(size: 15, weight: .heavy))
+                        .opacity(0.3)
                 }
                 .padding(.horizontal)
                 .font(.system(size: 15, weight: .bold))
                 HStack {
-                    Text("98000원")
+                    HStack(alignment: .bottom, spacing: 2) {
+                        Text("100000")
+                            .font(.system(size: 25, weight: .heavy))
+                            .foregroundColor(.blueMain)
+                        Text("원")
+                            .font(.system(size: 15, weight: .heavy))
+                            .padding(.bottom, 3)
+                    }
                     Spacer()
-                    Text("120000원")
+                    HStack(alignment: .bottom, spacing: 2) {
+                        Text("120000")
+                            .font(.system(size: 25, weight: .heavy))
+                            .foregroundColor(.blueMain)
+                        Text("원")
+                            .font(.system(size: 15, weight: .heavy))
+                            .padding(.bottom, 3)
+                    }
+                    .opacity(0.3)
                 }
                 .padding(.horizontal)
                 .font(.system(size: 20, weight: .heavy))
@@ -58,19 +77,41 @@ struct GiverDonCardSheet: View {
 //                            .progressViewStyle(LinearProgressViewStyle(tint: .blueMain))
 //                            .padding(.horizontal, 15)
                         RoundedRectangle(cornerRadius: 4)
-                            .frame(width: screenSize.width*0.92 * (48000/120000), height: 8)
+                            .frame(width: screenSize.width*0.92 * (100000/120000), height: 8)
                             .foregroundColor(.blueMain)
                     }
                 }
-                HStack {
-                    Text("우리은행 11413-13414-13414134 (임영후)")
-                        .font(.system(size: 15, weight: .medium))
-                        .foregroundColor(.gray75)
-                    Spacer()
+                         
+                Button {
+
+                    print("계좌번호가 복사되었습니다.")
+                    
+                } label: {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("우리은행")
+                                .padding(.bottom, 5)
+                            
+                            HStack {
+                                Text("1002 - 045 -401235")
+                                Text("(임영후)")
+                            }
+                        }
+                        .font(.system(size: 13, weight: .regular))
+                        .foregroundColor(Color.grayAccount)
+                        
+                        Spacer()
+                        Image(systemName: "doc.on.doc")
+                            .foregroundColor(.grayWithBlue)
+                    }
+                    .padding(20)
+                    .frame(width: 360, height: 90, alignment: .leading)
+                    .background(Color.grayF0)
+                    .cornerRadius(8)
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 10)
-                
+            
+                .padding(.vertical, 15)
+                     
                 GrayLine()
                     .padding(.bottom, 20)
                     .padding(.horizontal)
@@ -89,14 +130,15 @@ struct GiverDonCardSheet: View {
                 }
                 .padding(.horizontal)
                 
-                HStack {
-                    HalfSheetMediumButton(text: "계좌번호 복사하기", clicked: {
-                        isAccountPopupPresented.toggle()
-                    })
-                    HalfSheetSmallButton(text: "보냈어요!", clicked: {
-                        self.presentationmode.wrappedValue.dismiss()
-                    })
-                }
+//                HStack {
+//                    HalfSheetMediumButton(text: "계좌번호 복사하기", clicked: {
+//                        isAccountPopupPresented.toggle()
+//                    })
+//                    HalfSheetSmallButton(text: "보냈어요!", clicked: {
+//                        self.presentationmode.wrappedValue.dismiss()
+//                    })
+//                }
+                SmallButton(text: "임영후님께 돈을 보냈습니다", isDisable: false, clicked: {})
                 
             }
         }
@@ -119,6 +161,7 @@ struct GiverDonCardSheetCell: View {
     var number: Int
     var totalPayment: Int
     var myPayment: Int
+
     var body: some View {
         HStack {
             ZStack {
@@ -129,24 +172,40 @@ struct GiverDonCardSheetCell: View {
                     .foregroundColor(.blue)
                     .frame(width: 40, height: 40)
             }
-            VStack {
+            VStack(spacing: 3) {
                 HStack {
                     Text(place)
                         .font(.system(size: 16, weight: .bold))
                     Spacer()
-                    Text("\(totalPayment)원(\(number)명)")
-                        .font(.system(size: 14, weight: .heavy))
+                    HStack(spacing: 2) {
+                        Text("\(totalPayment)원")
+                            .font(.system(size: 13, weight: .bold))
+                            .foregroundColor(Color(hex: "585656"))
+                        Text("/\(number)명")
+                            .font(.system(size: 13, weight: .bold))
+                            .foregroundColor(Color(hex: "0A84FF"))
+                    }
                 }
                 HStack {
                     Text(date)
-                        .font(.system(size: 16, weight: .heavy))
-                        .foregroundColor(.gray75)
+                        .font(.system(size: 13, weight: .regular))
+                        .foregroundColor(.grayBC)
                     Spacer()
-                    Text("내가 내야할 돈 \(myPayment)원")
+                    Text("\(myPayment)원")
                         .font(.system(size: 16, weight: .heavy))
                 }
             }
         }
-        .padding(.bottom, 30)
+        .padding(.bottom, 15)
     }
+}
+
+func createTopToastMessage() -> some View {
+    Text("복사했습니다!")
+        .font(.system(size: 12, weight: .bold))
+        .foregroundColor(.white)
+        .multilineTextAlignment(.center)
+        .frame(width: 110, height: 40)
+        .background(Color.grayC5)
+        .cornerRadius(20)
 }
