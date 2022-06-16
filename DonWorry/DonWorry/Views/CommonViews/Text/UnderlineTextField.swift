@@ -50,7 +50,6 @@ struct UnderlineTextField: View {
                 Text("\(text.count)/\(charLimit)")
                     .font(.caption)
                     .foregroundColor(.gray)
-                    .padding(.trailing)
             }
         }
         .frame(width: 335)

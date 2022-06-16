@@ -24,7 +24,7 @@ struct AddCardIconView: View {
         ZStack {
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
-                    Text("정산 내역을")
+                    Text("아이콘을")
                     Text("추가해볼까요?")
                 }
                 .font(.system(size: 25, weight: .bold))
@@ -58,6 +58,7 @@ struct AddCardIconView: View {
                         }
                         .padding(.horizontal, 30)
                     }
+                    
                 }
             }
             

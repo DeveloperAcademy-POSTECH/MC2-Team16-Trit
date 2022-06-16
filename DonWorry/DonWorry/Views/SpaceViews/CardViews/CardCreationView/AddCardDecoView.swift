@@ -107,8 +107,10 @@ struct AddCardDecoView: View {
                 VStack {
                     Spacer()
                     SmallButton(text: "완료") {
+                        // TODO: 파이어베이스로 데이터 전송
                         mainSelection = nil
                     }
+                    .disabled(!(account.isEmpty || bank.isEmpty || holder.isEmpty) ? false : true)
                     .padding(.bottom)
                 }
                 .ignoresSafeArea(.keyboard)

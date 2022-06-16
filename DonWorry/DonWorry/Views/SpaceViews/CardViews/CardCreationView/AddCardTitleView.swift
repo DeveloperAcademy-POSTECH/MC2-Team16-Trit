@@ -18,7 +18,7 @@ struct AddCardTitleView: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 50) {
                 VStack(alignment: .leading) {
                     Text("정산 내역을")
                     Text("추가해볼까요?")
@@ -39,7 +39,7 @@ struct AddCardTitleView: View {
                 Image("smartphone-with-bills")
                     .resizable()
                     .frame(width: 250, height: 250)
-                    .padding(.top, 30)
+                    .padding(.top, 170)
                 Spacer()
             }
             .ignoresSafeArea(.keyboard)
@@ -58,6 +58,7 @@ struct AddCardTitleView: View {
                         self.naviSelection = "AddCardIconView"
                     }
                 }
+                .disabled(paymentTitle.isEmpty ? true : false)
                 .padding(.horizontal, 30)
                 .padding(.bottom)
             }
