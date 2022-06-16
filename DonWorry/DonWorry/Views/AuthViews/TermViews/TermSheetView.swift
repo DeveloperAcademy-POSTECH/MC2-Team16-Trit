@@ -19,13 +19,10 @@ struct TermSheetView: View {
     @Binding var showSheet: Bool
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             VStack(alignment: .leading) {
-                Group {
-                    HStack {
-                        Text("\(dateFormatter.string(from: Date())) 알림 수신을")
-                        Spacer()
-                    }
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("\(dateFormatter.string(from: Date())) 알림 수신을")
                     Text("아래와 같이 설정하였습니다.")
                 }
                 .font(.system(size: 17, weight: .bold))
@@ -39,10 +36,8 @@ struct TermSheetView: View {
                     .foregroundColor(Color.grayC5)
                     .padding(.vertical, 10)
                 }
-                
             }
-            .padding(.horizontal, 30)
-            .padding(.top, 40)
+            .padding(.horizontal, 15)
             
             Spacer()
             
@@ -51,6 +46,7 @@ struct TermSheetView: View {
                 vm.signIn()
             }
         }
+        .frame(width: 315, height: 350)
     }
 }
 

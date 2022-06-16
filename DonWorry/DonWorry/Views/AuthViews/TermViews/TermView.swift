@@ -104,11 +104,11 @@ struct TermView: View {
                     .font(.system(size: 20, weight: .heavy))
             }
         }
-        .halfSheet(showSheet: $showSheet) {
+        .slideOverCard(isPresented: $showSheet, onDismiss: {
+            showSheet = false
+        }) {
             TermSheetView(agreedTerms: termsOfService.filter { $0.isChecked }, showSheet: $showSheet)
                 .environmentObject(vm)
-        } onEnd: {
-            showSheet = false
         }
     }
 }

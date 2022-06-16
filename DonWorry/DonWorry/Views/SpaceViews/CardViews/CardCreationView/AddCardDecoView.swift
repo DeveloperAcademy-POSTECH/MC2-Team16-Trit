@@ -137,12 +137,14 @@ struct AddCardDecoView: View {
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button(role: .cancel) {
-                    print("클릭 시 스페이스 메인으로 가게 하려고 함")
+                    // TODO: 데이터 저장을 안하고 그냥 뒤로가기
+                    mainSelection = nil
                 } label: {
-                    Text("MC2 첫 회식")
+                    Text("취소")
                         .font(.title2.weight(.bold))
                 }
                 .buttonStyle(.plain)
+                .padding(.trailing)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
