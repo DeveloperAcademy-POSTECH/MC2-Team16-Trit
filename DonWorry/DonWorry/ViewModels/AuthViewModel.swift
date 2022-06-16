@@ -90,7 +90,7 @@ class AuthViewModel: ObservableObject {
             
             print("로그인된 유저 \(user.uid)")
             
-            let docRef = Firestore.firestore().collection("users").document(user.uid)
+            let docRef = Firestore.firestore().collection("User").document(user.uid)
 
             // Get data
             docRef.getDocument { (document, error) in
@@ -153,7 +153,7 @@ class AuthViewModel: ObservableObject {
                     
                     print("로그인된 유저 \(user.uid)")
                     
-                    let docRef = Firestore.firestore().collection("users").document(user.uid)
+                    let docRef = Firestore.firestore().collection("User").document(user.uid)
 
                     // Get data
                     docRef.getDocument { (document, error) in
@@ -184,7 +184,7 @@ class AuthViewModel: ObservableObject {
 
         self.tempUserSession = user
         
-        let docRef =  db.collection("users").document(userID)
+        let docRef =  db.collection("User").document(userID)
 
         do {
             try docRef.setData(from: data)
@@ -206,7 +206,7 @@ class AuthViewModel: ObservableObject {
 
         print("DEBUG: 업데이트 하려는 데이터 \(data)")
         
-        let docRef =  db.collection("users").document(user.uid)
+        let docRef =  db.collection("User").document(user.uid)
 
         do {
             try docRef.setData(from: data, merge: true)
@@ -225,7 +225,7 @@ class AuthViewModel: ObservableObject {
         
         guard let uid = self.userSession?.uid else { return }
         let data = ["nickName": nickName]
-        let docRef =  db.collection("users").document(uid)
+        let docRef =  db.collection("User").document(uid)
 
         do {
             try docRef.setData(from: data, merge: true)
@@ -246,7 +246,7 @@ class AuthViewModel: ObservableObject {
                     "accountBank": accountBank,
                     "accountNumber": accountNumber]
         
-        let docRef =  db.collection("users").document(uid)
+        let docRef =  db.collection("User").document(uid)
 
         do {
             try docRef.setData(from: data, merge: true)
@@ -267,7 +267,7 @@ class AuthViewModel: ObservableObject {
                     "accountBank": "",
                     "accountNumber": ""]
         
-        let docRef =  db.collection("users").document(uid)
+        let docRef =  db.collection("User").document(uid)
 
         do {
             try docRef.setData(from: data, merge: true)
@@ -302,7 +302,7 @@ class AuthViewModel: ObservableObject {
           } else {
             // Account deleted.
               print("DEBUG: 성공적으로 탈퇴되었습니다.")
-              self.db.collection("users").document(user?.uid ?? "").delete() { err in
+              self.db.collection("User").document(user?.uid ?? "").delete() { err in
                   if let err = err {
                       print("Error removing document: \(err)")
                   } else {
