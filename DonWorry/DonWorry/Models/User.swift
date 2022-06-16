@@ -25,3 +25,5 @@ let user2: User = User(userName: "유쓰", profileImage: "user2", takeMoney: 120
 let user3: User = User(userName: "버리", profileImage: "user3", giveMoney: 18000, giveTo: "루미", participant: "밤샘코딩")
 let user4: User = User(userName: "루미", profileImage: "user4", takeMoney: 30000, giveMoney: 12000, giveTo: "유쓰", userAccount: "61630204093436국민", participant: "밤샘코딩")
 let users: [User] = [user1, user2, user3, user4]
+
+var switches = ["MC2 트라잇 모임", "MC2 번개모임", "밤샘코딩", "떱떱해모임", "MC2 그룹회식"]

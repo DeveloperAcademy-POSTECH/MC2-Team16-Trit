@@ -26,3 +26,23 @@ let alertList: [String: [Alert]] = [
 //    Alert(isReminder: false, spaceTitle: "MC1-문샷", paymentTitle: "", sender: "", timestamp: "2022-06-04 10:00:23".stringToDate())
 ]
 */
+
+func createTopToastMessage() -> some View {
+    Text("복사했습니다!")
+        .font(.system(size: 12, weight: .bold))
+        .foregroundColor(.white)
+        .multilineTextAlignment(.center)
+        .frame(width: 110, height: 40)
+        .background(Color.grayC5)
+        .cornerRadius(20)
+}
+
+func OverMaxSpaceMessage() -> some View {
+    Text("방을 더 이상 만들 수 없습니다!")
+        .font(.system(size: 12, weight: .bold))
+        .foregroundColor(.white)
+        .multilineTextAlignment(.center)
+        .frame(width: 110, height: 40)
+        .background(Color.grayC5)
+        .cornerRadius(20)
+}

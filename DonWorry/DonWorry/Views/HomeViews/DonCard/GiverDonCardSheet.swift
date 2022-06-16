@@ -85,6 +85,7 @@ struct GiverDonCardSheet: View {
                 Button {
 
                     print("계좌번호가 복사되었습니다.")
+                    isAccountPopupPresented.toggle()
                     
                 } label: {
                     HStack {
@@ -198,14 +199,4 @@ struct GiverDonCardSheetCell: View {
         }
         .padding(.bottom, 15)
     }
-}
-
-func createTopToastMessage() -> some View {
-    Text("복사했습니다!")
-        .font(.system(size: 12, weight: .bold))
-        .foregroundColor(.white)
-        .multilineTextAlignment(.center)
-        .frame(width: 110, height: 40)
-        .background(Color.grayC5)
-        .cornerRadius(20)
 }
