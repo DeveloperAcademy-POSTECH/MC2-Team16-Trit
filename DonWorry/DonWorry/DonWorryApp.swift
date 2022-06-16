@@ -12,29 +12,15 @@ import GoogleSignIn
 @main
 struct DonWorryApp: App {
     
-    //AppDelegate를 연결합니다.
+    // AppDelegate를 연결합니다.
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
-    @StateObject var userStateViewModel = UserStateViewModel()
-    
+
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                ApplicationSwitcher()
+            NavigationView{
+                ContentView()
             }
-            .environmentObject(userStateViewModel)
-        }
-    }
-}
-
-struct ApplicationSwitcher: View {
-    @EnvironmentObject var vm: UserStateViewModel
-    
-    var body: some View {
-        if vm.isLoggedIn {
-            HomeView(currentUser: user1)
-        } else {
-            SignInView()
+            .environmentObject(AuthViewModel())
         }
     }
 }
@@ -45,7 +31,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey:Any]? = nil) -> Bool {
         // initializing FireBase
         FirebaseApp.configure()
-        
         return true
     }
     

@@ -14,10 +14,9 @@ struct TermSheetView: View {
         formatter.dateFormat = "YYYY년 M월 d일"
         return formatter
     }
-    
-    @EnvironmentObject var vm: UserStateViewModel
     @Binding var showSheet: Bool
-    
+    @EnvironmentObject var authViewModel: AuthViewModel
+
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
@@ -36,6 +35,7 @@ struct TermSheetView: View {
                     .foregroundColor(Color.grayC5)
                     .padding(.vertical, 10)
                 }
+                
             }
             .padding(.horizontal, 15)
             
@@ -43,11 +43,12 @@ struct TermSheetView: View {
             
             SmallButton(text: "확인", isDisable: false) {
                 showSheet = false
-                vm.signIn()
+                authViewModel.updateNewUserData(data: User(userName: "김승창", nickName: "Charlie", loginWith: "", accountHolder: "김승창", accountBank: "카카오뱅크", accountNumber: "123342342", spaceList: [], isAgreed: [true,true,true]))
             }
         }
         .frame(width: 315, height: 350)
     }
+
 }
 
 struct TermSheetView_Previews: PreviewProvider {

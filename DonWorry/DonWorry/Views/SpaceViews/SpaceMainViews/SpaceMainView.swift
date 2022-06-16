@@ -13,7 +13,7 @@ struct SpaceMainView: View {
     
     @Binding var naviSelection: String? // HomeView로 돌아가기 위한 변수입니다.
     @State private var mainSelection: String? = nil // SpaceMainView로 돌아오기 위한 변수입니다.
-    
+
     @State var isPopUpPresented = false
     @State var isShowingDialog = false
     @State var isShowingAlert = false
@@ -22,8 +22,7 @@ struct SpaceMainView: View {
     @State var isEditSpaceNaveViewOpened = false
     @State var isShareSheetPresented = false
     @State var checkedArray: [Int] = []
-    
-    // DATA Model 이후
+
     @State var currentUser = user4
     @State var spaceName = "MC2 첫 회식"
     @Binding var spaceID: String
@@ -32,10 +31,10 @@ struct SpaceMainView: View {
         
         ZStack(alignment: .bottom) {
             VStack {
-                
+
                 SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
                     .padding(.vertical, 21)
-                
+
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                         ForEach(0..<5) { index in
@@ -60,7 +59,7 @@ struct SpaceMainView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            
+
             HStack(spacing: 23) {
                 SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
                     isShareSheetPresented.toggle()
@@ -73,7 +72,7 @@ struct SpaceMainView: View {
             }
             .padding(.bottom)
             .padding(.horizontal, 30.0)
-            
+
             NavigationLink(isActive: $isCheckOutAttendanceViewOpened) {
                 CheckAttendanceView(checkedArray: $checkedArray)
             } label: {
@@ -87,7 +86,7 @@ struct SpaceMainView: View {
             }
             .isDetailLink(false)
         }
-        
+
         .sheet(isPresented: $isShareSheetPresented, content: {
             ShareSheet(items: ["트라잇에서 정산해요!"])
         })
@@ -95,7 +94,7 @@ struct SpaceMainView: View {
             CardDetailView()
         })
         .confirmationDialog("", isPresented: $isShowingDialog, titleVisibility: .hidden) {
-            
+
             Button("스페이스 초기화") {
                 // Todo: 스페이스 초기화 기능
             }
@@ -106,15 +105,15 @@ struct SpaceMainView: View {
                 isShowingAlert = true
             }
             Button("Cancel", role: .cancel) {
-                
+
             }
         }
         .alert("스페이스를 삭제하시겠어요?", isPresented: $isShowingAlert, actions: {
             Button("삭제", action: {
-                
+
             })
             Button("취소", role: .cancel, action: {
-                
+
             }).keyboardShortcut(.defaultAction)
         }, message: {
             Text("지금 삭제하시면 현재까지\n등록된 내용이 삭제됩니다.")
@@ -152,7 +151,7 @@ struct SpaceMainView: View {
         .popup(isPresented: $isPopUpPresented, type: .floater(verticalPadding: -40), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
             copyTopToastMessage()
         }).zIndex(0)
-        
+
     }
 }
 
