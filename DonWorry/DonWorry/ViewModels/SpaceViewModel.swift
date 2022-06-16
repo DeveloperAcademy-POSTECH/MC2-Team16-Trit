@@ -12,8 +12,7 @@ import FirebaseFirestoreSwift
 
 class SpaceViewModel: ObservableObject {
       
-//    @Published var userList = [User]()
-//    @Published var accountList = [Account]()
+
     @Published var spaceList = [Space]()
     @Published var space = Space.empty
     
@@ -100,6 +99,7 @@ class SpaceViewModel: ObservableObject {
         }
     }
     
+    
     func updateSpaceStatus(spaceID: String) {
         
         let spaceRef = db.collection("Space").document(spaceID)
@@ -108,6 +108,30 @@ class SpaceViewModel: ObservableObject {
             if let error = error {
                 print("스페이스 상태 바꾸기 실패")
                 print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getUserSpace(userID: String) {
+        
+        let spaceRef = db.collection("Space").whereField("userList", arrayContainsAny: [userID])
+        spaceRef.getDocuments { (snapshot, error) in
+            if let snapshot = snapshot {
+                DispatchQueue.main.async {
+                    self.spaceList = snapshot.documents.map { d in
+                        return Space(id: d.documentID,
+                                     spaceID: d["spaceID"] as! String,
+                                     spaceName: d["spaceName"] as! String,
+                                     payment: d["payment"] as! [String],
+                                     status: (d["status"] != nil),
+                                     transfer: d["transfer"] as! [String],
+                                     userList: d["userList"] as! [String],
+                                     admin: d["admin"] as! String)
+                    }
+                }
+            } else {
+                print("스페이스 패치에 실패했습니다.")
+                print(error?.localizedDescription ?? "")
             }
         }
     }
