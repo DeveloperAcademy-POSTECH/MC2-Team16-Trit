@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardDetailImageView: View {
     
-    @EnvironmentObject var cardDetailViewModel: HomeViewModel
+    @EnvironmentObject var cardDetailViewModel: detailImageViewModel
     // since onChnage has a problem in Drag Gesture....
     // @GestureState var draggingOffset: CGSize = .zero
     

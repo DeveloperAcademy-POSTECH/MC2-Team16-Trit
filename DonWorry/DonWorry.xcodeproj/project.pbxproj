@@ -54,6 +54,7 @@
 		4DC4BEBD285ADCF70033665A /* LoadingMoneyLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4BEBC285ADCF70033665A /* LoadingMoneyLottieView.swift */; };
 		4DC4BEC0285ADD6D0033665A /* lf30_editor_0reaa6h1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4BEBF285ADD6D0033665A /* lf30_editor_0reaa6h1.json */; };
 		4DC4BEC2285ADD770033665A /* lf20_wwhhicx3.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4BEC1285ADD770033665A /* lf20_wwhhicx3.json */; };
+		792D00A4285B4EF7001BF686 /* CardDetailAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D00A3285B4EF7001BF686 /* CardDetailAccountView.swift */; };
 		7991F9FE28487E2B00DCAFB8 /* SpaceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9FD28487E2B00DCAFB8 /* SpaceMainView.swift */; };
 		7991F9FF2848C76D00DCAFB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		79B438FC285B20A800D2B892 /* CardDetailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B438FB285B20A800D2B892 /* CardDetailImageView.swift */; };
@@ -189,6 +190,7 @@
 		4DC4BEBC285ADCF70033665A /* LoadingMoneyLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingMoneyLottieView.swift; sourceTree = "<group>"; };
 		4DC4BEBF285ADD6D0033665A /* lf30_editor_0reaa6h1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lf30_editor_0reaa6h1.json; sourceTree = "<group>"; };
 		4DC4BEC1285ADD770033665A /* lf20_wwhhicx3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lf20_wwhhicx3.json; sourceTree = "<group>"; };
+		792D00A3285B4EF7001BF686 /* CardDetailAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailAccountView.swift; sourceTree = "<group>"; };
 		7991F9FD28487E2B00DCAFB8 /* SpaceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceMainView.swift; sourceTree = "<group>"; };
 		79B438FB285B20A800D2B892 /* CardDetailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailImageView.swift; sourceTree = "<group>"; };
 		79BF1798284CFF40003A2A68 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 			children = (
 				79BF17AF284D953B003A2A68 /* CardDetailView.swift */,
 				79B438FB285B20A800D2B892 /* CardDetailImageView.swift */,
+				792D00A3285B4EF7001BF686 /* CardDetailAccountView.swift */,
 			);
 			path = CardDetailView;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 				2CC21192284AF14C0009F785 /* AccountTextField.swift in Sources */,
 				3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */,
 				4DC4BEBD285ADCF70033665A /* LoadingMoneyLottieView.swift in Sources */,
+				792D00A4285B4EF7001BF686 /* CardDetailAccountView.swift in Sources */,
 				A74479AF2847A0600083BBF4 /* MediumButton.swift in Sources */,
 				C07ECB392849919C000C42C1 /* SpaceChipsView.swift in Sources */,
 				A704FC3F284E01A300AC9736 /* SlideOverCard.swift in Sources */,

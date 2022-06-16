@@ -15,32 +15,50 @@ struct CardDetailView: View {
     @State private var isPhotoPickerShow = false
     @State private var clickedIndex = 0
     @State private var isEditMode = false
+    @State private var cantDeleteAlert = false
     
-    @StateObject var homeData = HomeViewModel()
+    @StateObject var imageVM = detailImageViewModel()
+    let admin = true
     
     var body: some View {
         
-            VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
 
                 Group {
-                    HStack(alignment: .center, spacing: 10) {
-                        Image("chicken-leg")
-                            .applyRectangleImageModifier(width: 25, height: 25, background: Color.grayEE.opacity(0.51))
-                        Text("유쓰네 택시")
-                            .applyTextWithLineLimitModifier(size: 20, weight: .heavy, color: .black)
+                    HStack(spacing: 10) {
+                        
                         Spacer()
                         Button {
                             isShowingDialog = true
                         } label: {
+                            
                             Image(systemName: "ellipsis")
+                                .padding(.top, 40)
                                 .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(.black)
                         }
                     }
-                    .padding(.top, 50)
-                    Text("총 102,000원")
-                        .applyTextWithLineLimitModifier(size: 30, weight: .heavy, color: .black)
-                        .padding(.bottom, 6.5)
+                    
+                    HStack(spacing: 8) {
+                        Image("chicken-leg")
+                            .applyRectangleImageModifier(width: 37, height: 37, background: Color.grayEE.opacity(0.51))
+                        Text("유쓰네 택시")
+                            .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
+                    }
+                    .padding(.top, 49)
+                    HStack(alignment: .firstTextBaseline, spacing: 14) {
+                        Text("102,000원")
+                            .applyTextWithLineLimitModifier(size: 26, weight: .heavy, color: .black)
+                        Text("나왔어요!")
+                            .applyTextWithLineLimitModifier(size: 17, weight: .medium, color: .black)
+                        Spacer()
+                        if admin {
+                            Image(systemName: "pencil")
+                                .font(.system(size: 16, weight: .semibold, design: .default))
+                        }
+                    }
+                    .padding(.top, 14)
+                    .padding(.bottom, 19)
                 }
                 
                 Divider()
@@ -48,52 +66,23 @@ struct CardDetailView: View {
                     .background(Color.grayEE)
                 
                 Group {
-                    Text("정산자")
-                        .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
-                        .padding(.top, 20)
                     HStack {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("우리은행")
-                                    .applyTextWithLineLimitModifier(size: 13, weight: .bold, color: .grayAccount)
-                                Button {
-                                    print("copy!")
-                                } label: {
-                                    Image(systemName: "doc.on.doc")
-                                        .foregroundColor(.grayWithBlue)
-                                        .font(Font.system(size: 15, weight: .medium))
-                                }
-                                .padding(.leading, 5)
-                            }
-                            .padding(.bottom, 5)
-                            HStack {
-                                Text("42991010090307")
-                                    .applyTextWithLineLimitModifier(size: 13, weight: .regular, color: .grayAccount)
-                                Text("(이한규)")
-                                    .applyTextWithLineLimitModifier(size: 13, weight: .regular, color: .grayAccount)
-                            }
-                        }
+                        Text("정산자")
+                            .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
                         Spacer()
-                        VStack(spacing: 4) {
-                            Image("chicken-leg")
-                                .applyClipCircleModifier(width: 35, height: 35, background: .black, innerPadding: 5)
-                            Text("김유쓰")
-                                .applyTextWithLineLimitModifier(size: 13, weight: .bold, color: .black)
+                        if admin {
+                            Image(systemName: "pencil")
+                                .font(.system(size: 16, weight: .semibold, design: .default))
                         }
-
-                    }
-                    .padding(20)
-                    .frame(width: 340, height: 90, alignment: .leading)
-                    .background(Color.grayF0)
-                    .cornerRadius(8)
-                    .padding(.top, 10)
+                    }.padding(.top, 39)
+                    CardDetailAccountView(isAdmin: admin)
                 }
                 
                 Group {
                     Text("정산 참가자")
                         .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
-                        .padding(.top, 36)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 25)
+                        .padding(.top, 35)
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: [GridItem(.fixed(30.0))], spacing: 35) {
                             ForEach(0..<4, id: \.self) { _ in
@@ -109,22 +98,44 @@ struct CardDetailView: View {
                     }
                     .frame(maxHeight: 80)
                 }
+
             Group {
-                Text("첨부 사진")
-                    .applyTextWithLineLimitModifier(size: 17, weight: .heavy, color: .black)
-                    .padding(.top, 50)
-                    .padding(.bottom, 15)
+                HStack {
+                    Text("첨부 사진")
+                        .applyTextWithLineLimitModifier(size: 17, weight: .heavy, color: .black)
+                    Spacer()
+                    if admin {
+                        Button {
+                            isEditMode.toggle()
+                        } label: {
+                            Image(systemName: "pencil")
+                                .font(.system(size: 16, weight: .semibold, design: .default))
+                                .foregroundColor(.black)
+                        }
+                    }
+                }
+                .padding(.top, 65)
+                .padding(.bottom, 24)
+                
                 imageBox
             }
             Spacer()
             .confirmationDialog("", isPresented: $isShowingDialog, titleVisibility: .hidden) {
                             Button("카드 수정") {
-                               print("카드 수정")
-                                isEditMode = true
+                                if admin {
+                                    isShowingAlert = true
+                                } else {
+                                    cantDeleteAlert = true
+                                }
                             }
                             Button("카드 삭제") {
-                                isShowingAlert = true
+                                if admin {
+                                    isShowingAlert = true
+                                } else {
+                                    cantDeleteAlert = true
+                                }
                             }
+                            
                             Button("Cancel", role: .cancel) {}
                        }
             .alert("스페이스를 삭제하시겠어요?", isPresented: $isShowingAlert, actions: {
@@ -138,20 +149,24 @@ struct CardDetailView: View {
                 Text("삭제하시겠습니까?")
                     .font(.system(size: 13, weight: .regular))
             })
+            .alert("참가자는 삭제할 수 없습니다.", isPresented: $cantDeleteAlert) {
+                Button("확인") {}
+            } message: {
+                Text("")
+            }
                 
         }
         .padding([.leading, .trailing], 25)
-        .sheet(isPresented: $homeData.showImageViewer, content: {
+        .sheet(isPresented: $imageVM.showImageViewer, content: {
             CardDetailImageView()
-                .environmentObject(homeData)
+                .environmentObject(imageVM)
         })
         .sheet(isPresented: $isPhotoPickerShow) {
             let configuration = PHPickerConfiguration.config
             PhotoPicker(index: $clickedIndex, configuration: configuration,
-                        images: $homeData.allImages,
+                        images: $imageVM.allImages,
                         isPresented: $isPhotoPickerShow)
         }
-        
     }
     
     private var imageBox: some View {
@@ -160,30 +175,28 @@ struct CardDetailView: View {
                 HStack {
                     LazyHGrid(rows: [GridItem(.fixed(340.0))], spacing: 20) {
                         ForEach(0..<3) { index in
-                            if homeData.allImages.count >= index {
+                            if imageVM.allImages.count >= index {
                                 RoundedRectangle(cornerRadius: 10)
                                 
-                                    .fill(index >= homeData.allImages.count && isEditMode ? Color.grayBC : Color.clear)
+                                    .fill(index >= imageVM.allImages.count && isEditMode ? Color.grayBC : Color.clear)
                                 .frame(width: 100, height: 100)
                                 
                             // 사진 하나 있어도 두개보여준다. 에딧 모드일때만.
                                 .overlay(
                                     ZStack(alignment: .topTrailing) {
                                         
-                                        if index < homeData.allImages.count { // 사진이 있으면 보여준다.
+                                        if index < imageVM.allImages.count { // 사진이 있으면 보여준다.
                                                 
-                                                Image(uiImage: homeData.allImages[index])
+                                                Image(uiImage: imageVM.allImages[index])
                                                     .resizable()
                                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                                     .overlay(
                                                         RoundedRectangle(cornerRadius: 10)
                                                             .stroke(Color.grayBC, lineWidth: 1)
                                                     )
-                                                    
                                             }
-                                        
                                             if isEditMode { // 수정중일때만 보여준다.
-                                                if index < homeData.allImages.count { // 사진이 있으면 보여준다.
+                                                if index < imageVM.allImages.count { // 사진이 있으면 보여준다.
                                                     Button {
                                                         removeImage(index: index)
                                                     } label: {
@@ -208,8 +221,8 @@ struct CardDetailView: View {
                                         showPhotoPicker(index: index)
                                     } else {
                                         withAnimation(.easeInOut) {
-                                            homeData.selectedImageID = index
-                                            homeData.showImageViewer.toggle()
+                                            imageVM.selectedImageID = index
+                                            imageVM.showImageViewer.toggle()
                                         }
                                     }
                                 }
@@ -236,7 +249,7 @@ struct CardDetailView_Previews: PreviewProvider {
 extension CardDetailView {
     
     private func removeImage(index: Int) {
-        homeData.allImages.remove(at: index)
+        imageVM.allImages.remove(at: index)
     }
     private func showPhotoPicker(index: Int) {
         clickedIndex = index
@@ -244,8 +257,9 @@ extension CardDetailView {
     }
 }
 
+
 // TODO: 모델 들어오면 없어질 ViewModel
-class HomeViewModel: ObservableObject {
+class detailImageViewModel: ObservableObject {
     
     @Published var allImages: [UIImage] = [UIImage(named: "chicken-leg")!]
     @Published var showImageViewer = false
