@@ -27,7 +27,7 @@ let alertList: [String: [Alert]] = [
 ]
 */
 
-func createTopToastMessage() -> some View {
+func copyTopToastMessage() -> some View {
     Text("복사했습니다!")
         .font(.system(size: 12, weight: .bold))
         .foregroundColor(.white)
@@ -37,12 +37,15 @@ func createTopToastMessage() -> some View {
         .cornerRadius(20)
 }
 
-func OverMaxSpaceMessage() -> some View {
-    Text("방을 더 이상 만들 수 없습니다!")
-        .font(.system(size: 12, weight: .bold))
-        .foregroundColor(.white)
-        .multilineTextAlignment(.center)
-        .frame(width: 110, height: 40)
-        .background(Color.grayC5)
-        .cornerRadius(20)
+func OverMaxSpaceTopToastMessage() -> some View {
+    VStack(alignment:.center) {
+        Text("모임은 5개 까지 생성할 수 있어요!")
+        Text("추후 업데이트 예정")
+            .foregroundColor(Color(hex: "968D81"))
+
+    }
+    .font(.system(size: 13, weight: .bold))
+    .frame(width: 220, height: 60)
+    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30))
+
 }

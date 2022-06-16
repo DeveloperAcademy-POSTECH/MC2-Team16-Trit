@@ -140,8 +140,8 @@ struct HomeView: View {
                 .padding(.bottom)
             }
         }
-        .popup(isPresented: $overMaxSpaceNumber, type: .floater(verticalPadding: 20), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
-            OverMaxSpaceMessage()
+        .popup(isPresented: $overMaxSpaceNumber, type: .floater(verticalPadding: 10), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
+            OverMaxSpaceTopToastMessage()
         })
         .onAppear {
             UIApplication.shared.hideKeyboard()

@@ -145,7 +145,7 @@ struct GiverDonCardSheet: View {
         }
         //
         .popup(isPresented: $isAccountPopupPresented, type: .floater(verticalPadding: 20), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
-            createTopToastMessage()
+            copyTopToastMessage()
         })
     }
 }
