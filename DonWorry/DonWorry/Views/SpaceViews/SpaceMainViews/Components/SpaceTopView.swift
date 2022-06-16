@@ -25,9 +25,13 @@ struct SpaceTopView: View {
                 isIDPopUpPresented.toggle()
                 copyToPasteboard(spaceID)
             } label: {
-                Text("복사하기")
-                    .applyTextWithLineLimitModifier(size: 9, weight: .bold, color: .white)
-                    .applyButtonCustomModifier(backgroundColor: .grayC5, width: 47, height: 19, padding: 3)
+//                Text("복사하기")
+                Image(systemName: "doc.on.doc")
+                    .font(.system(size: 15))
+                    .foregroundColor(.black)
+                    .opacity(0.5)
+//                    .applyTextWithLineLimitModifier(size: 9, weight: .bold, color: .white)
+//                    .applyButtonCustomModifier(backgroundColor: .grayC5, width: 47, height: 19, padding: 3)
             }
             Spacer()
             
