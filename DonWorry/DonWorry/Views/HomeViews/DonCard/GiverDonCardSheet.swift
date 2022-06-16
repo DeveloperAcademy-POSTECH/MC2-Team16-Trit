@@ -87,6 +87,7 @@ struct GiverDonCardSheet: View {
                     
                     // FIXME: 하드코딩한 계좌번호를 복사합니다. 데이터를 받을 때 수정해야합니다.
                     pasteboard.string = hardcodedAccount
+                    isAccountPopupPresented = true
                     
                 } label: {
                     HStack {
