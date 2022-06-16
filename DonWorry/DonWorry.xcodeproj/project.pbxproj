@@ -46,6 +46,10 @@
 		4D6229C7284927E100A8E24C /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D6229C6284927E100A8E24C /* GmarketSansTTFBold.ttf */; };
 		4D6229CA2849295300A8E24C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229C92849295300A8E24C /* ImageManager.swift */; };
 		4D6229CD284929C000A8E24C /* AddCardDecoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6229CC284929C000A8E24C /* AddCardDecoView.swift */; };
+		4DC4BEBB285ADC5C0033665A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4DC4BEBA285ADC5C0033665A /* Lottie */; };
+		4DC4BEBD285ADCF70033665A /* LoadingMoneyLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4BEBC285ADCF70033665A /* LoadingMoneyLottieView.swift */; };
+		4DC4BEC0285ADD6D0033665A /* lf30_editor_0reaa6h1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4BEBF285ADD6D0033665A /* lf30_editor_0reaa6h1.json */; };
+		4DC4BEC2285ADD770033665A /* lf20_wwhhicx3.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4BEC1285ADD770033665A /* lf20_wwhhicx3.json */; };
 		7991F9FE28487E2B00DCAFB8 /* SpaceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991F9FD28487E2B00DCAFB8 /* SpaceMainView.swift */; };
 		7991F9FF2848C76D00DCAFB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC815E2843522A00794955 /* Assets.xcassets */; };
 		79BF1799284CFF40003A2A68 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF1798284CFF40003A2A68 /* Modifiers.swift */; };
@@ -159,6 +163,9 @@
 		4D6229C6284927E100A8E24C /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 		4D6229C92849295300A8E24C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		4D6229CC284929C000A8E24C /* AddCardDecoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardDecoView.swift; sourceTree = "<group>"; };
+		4DC4BEBC285ADCF70033665A /* LoadingMoneyLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingMoneyLottieView.swift; sourceTree = "<group>"; };
+		4DC4BEBF285ADD6D0033665A /* lf30_editor_0reaa6h1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lf30_editor_0reaa6h1.json; sourceTree = "<group>"; };
+		4DC4BEC1285ADD770033665A /* lf20_wwhhicx3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lf20_wwhhicx3.json; sourceTree = "<group>"; };
 		7991F9FD28487E2B00DCAFB8 /* SpaceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceMainView.swift; sourceTree = "<group>"; };
 		79BF1798284CFF40003A2A68 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		79BF179C284CFF83003A2A68 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -214,6 +221,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DC4BEBB285ADC5C0033665A /* Lottie in Frameworks */,
 				A704FC42284E01E400AC9736 /* SlideOverCard in Frameworks */,
 				3E20872C284DA5A5003A4CFD /* FirebaseAuth in Frameworks */,
 				3E20872F284DA5F3003A4CFD /* GoogleSignIn in Frameworks */,
@@ -344,6 +352,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		4DC4BEBE285ADD440033665A /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				4DC4BEC1285ADD770033665A /* lf20_wwhhicx3.json */,
+				4DC4BEBF285ADD6D0033665A /* lf30_editor_0reaa6h1.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		79BF179E284CFFE7003A2A68 /* SpaceMainViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,10 +452,12 @@
 		A7133C3528503CAE006ED054 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4DC4BEBE285ADD440033665A /* Lottie */,
 				79BF17A1284D002B003A2A68 /* SpaceMainCardView.swift */,
 				79BF179F284D002B003A2A68 /* SpaceMainBottomButton.swift */,
 				79BF17A5284D0034003A2A68 /* SpaceTopView.swift */,
 				79BF17A0284D002B003A2A68 /* AddCardTitleViewButton.swift */,
+				4DC4BEBC285ADCF70033665A /* LoadingMoneyLottieView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -643,6 +662,7 @@
 				3E20872B284DA5A5003A4CFD /* FirebaseAuth */,
 				3E20872E284DA5F3003A4CFD /* GoogleSignIn */,
 				3E208730284DA5F3003A4CFD /* GoogleSignInSwift */,
+				4DC4BEBA285ADC5C0033665A /* Lottie */,
 			);
 			productName = DonWorry;
 			productReference = 3EBC81572843522900794955 /* DonWorry.app */;
@@ -720,6 +740,7 @@
 				A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 				3E20872A284DA5A5003A4CFD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				4DC4BEB9285ADC5C0033665A /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 3EBC81582843522900794955 /* Products */;
 			projectDirPath = "";
@@ -738,12 +759,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7991F9FF2848C76D00DCAFB8 /* Assets.xcassets in Resources */,
+				4DC4BEC0285ADD6D0033665A /* lf30_editor_0reaa6h1.json in Resources */,
 				4D6229BB2849075800A8E24C /* Assets.xcassets in Resources */,
 				4D6229C5284927C800A8E24C /* GmarketSansTTFLight.ttf in Resources */,
 				4D6229C7284927E100A8E24C /* GmarketSansTTFBold.ttf in Resources */,
 				C0030EE32848C7880017125A /* Assets.xcassets in Resources */,
 				3E208729284DA4CB003A4CFD /* GoogleService-Info.plist in Resources */,
 				A74479D4284918270083BBF4 /* Assets.xcassets in Resources */,
+				4DC4BEC2285ADD770033665A /* lf20_wwhhicx3.json in Resources */,
 				2CF61B442849B332004C3768 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,6 +889,7 @@
 				A74479B32847BE170083BBF4 /* XSmallButton.swift in Sources */,
 				2CC21192284AF14C0009F785 /* AccountTextField.swift in Sources */,
 				3EBC815B2843522900794955 /* DonWorryApp.swift in Sources */,
+				4DC4BEBD285ADCF70033665A /* LoadingMoneyLottieView.swift in Sources */,
 				A74479AF2847A0600083BBF4 /* MediumButton.swift in Sources */,
 				C07ECB392849919C000C42C1 /* SpaceChipsView.swift in Sources */,
 				A704FC3F284E01A300AC9736 /* SlideOverCard.swift in Sources */,
@@ -1215,6 +1239,14 @@
 				minimumVersion = 6.2.0;
 			};
 		};
+		4DC4BEB9285ADC5C0033665A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		A704FC40284E01E400AC9736 /* XCRemoteSwiftPackageReference "SlideOverCard" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/joogps/SlideOverCard.git";
@@ -1240,6 +1272,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		4DC4BEBA285ADC5C0033665A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC4BEB9285ADC5C0033665A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		A704FC41284E01E400AC9736 /* SlideOverCard */ = {
 			isa = XCSwiftPackageProductDependency;
