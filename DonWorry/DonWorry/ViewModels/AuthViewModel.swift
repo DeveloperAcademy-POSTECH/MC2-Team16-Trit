@@ -216,6 +216,7 @@ class AuthViewModel: ObservableObject {
         }
         
         self.userSession = Auth.auth().currentUser // main 페이지도 이동
+        self.didAuthenticateUser = false
         
     }
     
@@ -292,21 +293,8 @@ class AuthViewModel: ObservableObject {
     func deleteUserAccount() {
 
         let user = Auth.auth().currentUser
-     
-//        try? user?.delete { error in
-//          if let error = error {
-//            // An error happened.
-//              print("DEBUG: 회원탈퇴에 실패했습니다.\(error)")
-//          } else {
-//            // Account deleted.
-//              print("DEBUG: 성공적으로 탈퇴되었습니다.")
-//          }
-//        }
-//
-//        let user = Auth.auth().currentUser
-        
         signOut()
-
+        
         user?.delete { error in
           if let error = error {
             // An error happened.
@@ -314,6 +302,13 @@ class AuthViewModel: ObservableObject {
           } else {
             // Account deleted.
               print("DEBUG: 성공적으로 탈퇴되었습니다.")
+              self.db.collection("users").document(user?.uid ?? "").delete() { err in
+                  if let err = err {
+                      print("Error removing document: \(err)")
+                  } else {
+                      print("Document successfully removed!")
+                  }
+              }
           }
         }
         
