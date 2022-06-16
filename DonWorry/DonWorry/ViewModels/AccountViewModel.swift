@@ -51,44 +51,20 @@ class AccountViewModel: ObservableObject {
         }   
     }
     
-    // MARK: 계좌정보 추가
-    // - "" : 기존회원인경우 현재 유저의 uid 로 추가
-    // - userId : 새로운 유저는 tempuser의 uid를 받아와 추가 
-//    func addAccount(account: Account, to userId: String = "") {
-//
-//        guard let user = Auth.auth().currentUser else { return }
-//        let uid = (userId != "") ? userId : user.uid
-//        let collectionRef = db.collection("accounts")
-//
-//        let data = ["uid": uid,
-//                    "accountHolder": account.accountHolder,
-//                    "accountBank": account.accountBank,
-//                    "accountNumber": account.accountNumber]
-//
-//        let newDocReference = try collectionRef.document(user.uid).setData(data, merge: true)
-//
-//        print("DEBUG: 새로운 계좌정보가 생성되었습니다. \(newDocReference)")
-//
-//        // account 정보 return
-//        accountRef = newDocReference
-//
-//    }
-    
     // MARK: 계좌상세정보 불러오기
     // - () 현재 사용자의 계좌정보
     // - (of userid:) 특정 사용자의 계좌번호
-    func getAccountDetail(of userId: String = "") {
-        if userId == "" {
-            if let currentUser = authViewModel.currentUser.id {
-                fetchAccount(userId: currentUser)
-            }else{
-                print("DEBUG: 현재유저를 알수없습니다. USER - \(userId)")
-            }
-        }
-        else {
-            fetchAccount(userId: userId)
-        }
-    }
+//    func getAccountDetail(of userId: String = "") {
+//        if userId.isEmpty {
+//            if let currentUser = authViewModel.currentUser.id {
+//                fetchAccount(userId: currentUser)
+//            } else{
+//                print("DEBUG: 현재유저를 알수없습니다. USER - \(userId)")
+//            }
+//        } else {
+//            fetchAccount(userId: userId)
+//        }
+//    }
     
     // MARK: 계좌정보 수정
     func updateAccount(account: Account) {
@@ -96,8 +72,7 @@ class AccountViewModel: ObservableObject {
             let docRef = db.collection("accounts").document(id)
             do {
                 try docRef.setData(from: account)
-            }
-            catch {
+            } catch {
                 print(error)
             }
         }

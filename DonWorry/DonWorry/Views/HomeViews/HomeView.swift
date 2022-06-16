@@ -37,7 +37,9 @@ struct HomeView: View {
                                                selection: $naviSelection){EmptyView()}
                                 Button {
 //                                    self.naviSelection = "profile"
-//                                    authViewModel.getUser(uid: "XJFF6PCZ47UTpZCtVpRm2VDbwWz1")
+                                    //!!!: 테스트
+                                    authViewModel.fetchUser(uid: "CSyRbU7FrCYoVHd22Vp12WlvPQp2")
+                                    //!!!: 테스트
                                     
                                 } label: {
                                     authViewModel.currentUser.profileImage
@@ -46,6 +48,7 @@ struct HomeView: View {
                                         .background(.black)
                                         .clipShape(Circle())
                                 }
+                                
                                 VStack(alignment: .leading) {
                                     Text(authViewModel.currentUser.userName + "님")
                                         .font(.system(size: 20, weight: .bold))
@@ -113,13 +116,22 @@ struct HomeView: View {
                         /* Bottom Buttons */
                         HStack {
                             XSmallButton(icon: "magnifyingglass") {
-                                isPresented.toggle()
+//                                isPresented.toggle()
+                                
+                                //!!!: 테스트
+//                                authViewModel.updateBankAccount(accountHolder: "시쥬쥬", accountBank: "쥬쥬은행", accountNumber: "483274189")
+                                authViewModel.deleteBankAccount()
+                                //!!!: 테스트
+                                
                             }
                             NavigationLink(destination: AddSpaceView(),
                                            tag: "create",
                                            selection: $naviSelection) { EmptyView()}
                             MediumButton(text: "스페이스 만들기") {
-                                self.naviSelection = "create"
+//                                self.naviSelection = "create"
+                                //!!!: 테스트
+                                authViewModel.deleteUserAccount()
+                                //!!!: 테스트
                             }
                         }
                         .offset(y: 160)

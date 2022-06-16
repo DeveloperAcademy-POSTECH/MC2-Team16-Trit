@@ -36,8 +36,7 @@ struct SignInView: View {
 
                 VStack {
                     VStack(spacing: 15) {
-//                        Text("돈.워리")
-                        Text(viewModel.didAuthenticateUser ? "true" : "false")
+                        Text("돈.워리")
                             .foregroundColor(Color.blueMain)
                             .font(.system(size: 30))
                             .fontWeight(.bold)

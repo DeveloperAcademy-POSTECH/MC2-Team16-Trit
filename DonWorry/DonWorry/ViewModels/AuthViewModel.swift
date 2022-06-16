@@ -17,56 +17,45 @@ import AuthenticationServices // Apple Login
 
 class AuthViewModel: ObservableObject {
     
-    // @Published var userSession: FirebaseAuth.User?
-    @Published var errorMessage: String?
-    @Published var nonce = "" // apple login
-    @Published var userSession: Firebase.User? = nil// 현재 로그인 된 유저에 대한 정보 user가 login ? value 가지고 : nil
-    @Published var didAuthenticateUser = false // 처음로그인하는 유저인지 아닌지 체크하는 변수
-    @Published var currentUser: User = .empty
+    @Published var nonce = "" // apple login 인증 관련
+    @Published var userSession: Firebase.User? = nil // MARK: 현재 로그인 된 유저 세션 (파베User타입)
+    @Published var currentUser: User = .empty // MARK: 현재 로그인 된 유저 (돈워리User타입)
+    @Published var specificUser: User = .empty
+    @Published var didAuthenticateUser = false // 최초가입회원 체크용
+    
     @Published var isLoading: Bool = false
-    @Published var tmpUser: User = .empty
+    @Published var errorMessage: String?
     
     @EnvironmentObject var accountViewModel: AccountViewModel
     
-    private var tempUserSession = Auth.auth().currentUser // 회원가입시, 추가정보 받기 위해서 존재
+    private var tempUserSession = Auth.auth().currentUser // 회원가입시, 추가정보 이용을 위해 사용
     private var db = Firestore.firestore()
     private let service = UserService()
     
-    init() {
-        userSession = Auth.auth().currentUser
+    init(){
+        self.userSession = Auth.auth().currentUser
         self.fetchUser()
-        print("현재로그인된 userSession ID\(userSession?.uid)")
+        
+//        print("DEBUG:  User session is \(self.userSession?.uid)")
     }
     
-    // MARK: fetchUser()
-    func fetchUser() {
+    // MARK: 현재사용자에 대해 fetch
+    func fetchUser(){
         guard let uid = self.userSession?.uid else { return }
         
-        service.fetchUser(withUid: uid) { user in
+        service.fetchUser(withUid: uid){ user in
             self.currentUser = user
-//            print("현재유저 \(user.id)")
         }
-         
     }
     
-    // MARK: fetchUser(uid)
+    // MARK: 특정사용자(uid)에 대한 정보 fetch
     func fetchUser(uid: String) {
         
-        Firestore.firestore()
-            .collection("users")
-            .document(uid).getDocument { snapshot, error in
-                
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                
-                guard let user = snapshot?.data() else { return }
-                
-                print("DEBUG: 현재 유저의 snapshot\(user)")
-                
-            }
-        
+        service.fetchUser(withUid: uid) { user in
+            self.specificUser = user
+//            print("찾은사용자 \(user.id)")
+//            print("특정유저 \(self.specificUser)")
+        }
     }
     
     // MARK: 애플로그인
@@ -116,9 +105,6 @@ class AuthViewModel: ObservableObject {
                 self.userSession = user
             }
         }
-        
-        
-        
     }
     
     // MARK: 구글로그인
@@ -203,8 +189,7 @@ class AuthViewModel: ObservableObject {
         do {
             try docRef.setData(from: data)
             self.didAuthenticateUser = true
-        }
-        catch {
+        } catch {
           print(error)
         }
 
@@ -226,58 +211,72 @@ class AuthViewModel: ObservableObject {
         do {
             try docRef.setData(from: data, merge: true)
             print("DEBUG: 사용자 추가 정보 입력이 성공적으로 ")
-        }
-        catch {
+        } catch {
             print("DEBUG: 다음 이유로 사용자 추가 정보 입력에 에러가 발생했습니다 : \(error)")
         }
         
         self.userSession = Auth.auth().currentUser // main 페이지도 이동
         
-
     }
     
-    /*
-     // TODO: 닉네임 업데이트 오류 수정
-    // MARK: 닉네임 업데이트
-    // - "" : 기존회원인경우 현재 유저의 uid 로 업데이트 (XXX)
-    // - userId : 새로운 유저는 tempuser의 uid를 받아와 추가
-    func updateUserNickName(with newNickName: String) {
-
-        guard let user = Auth.auth().currentUser else { return }
-        let collectionRef = db.collection("users")
-
-        // 사용자
-//        struct User: Identifiable, Codable {// , Hashable
-//            @DocumentID var id: String?
-//            var userName: String // 사용자이름 - 간편로그인 연계
-//            var nickName: String // 닉네임
-//            var account: String // 계좌정보 Account 참조해야함. -> ID
-//            var image: String = "default" // 우선 Default 로 하나로 통일 - "default"
-//            var profileImage: Image {
-//                Image(image)
-//            }
-//            var spaceList: [String] // 참가한 스페이스 리스트 String 참조해야함
-//        }
+    // MARK: 닉네임변경
+    func updateNickname(nickName: String) {
         
-        
-        let data = ["id": user.id,
-                    "userName": user.userName,
-                    "nickName": user.newNickName,
-                    "acount": accountViewModel.accountRef]
+        guard let uid = self.userSession?.uid else { return }
+        let data = ["nickName": nickName]
+        let docRef =  db.collection("users").document(uid)
 
-        // 2. 닉네임 업데이트
-        collectionRef
-            .document(user.id)
-            .setData(data, merge: true){ error in
-                            if let error = error {
-                                print("DEBUG: 다음 이유로 사용자 추가 정보 입력에 에러가 발생했습니다 : \(error)")
-                            } else {
-                                print("DEBUG: 사용자 추가 정보 입력이 성공적으로 ")
-                                self.userSession = self.tempUseㅁㄴㅂ rSession // main 페이지도 이동
-                            }
-                        }
+        do {
+            try docRef.setData(from: data, merge: true)
+            print("DEBUG: \(uid)의 닉네임을 성공적으로 변경했습니다.")
+        } catch {
+            print("DEBUG: 다음 이유로 사용자 추가 정보 입력에 에러가 발생했습니다 : \(error)")
+        }
+        
     }
-    */
+    
+    
+    // MARK: 계좌정보변경
+    func updateBankAccount(accountHolder: String, accountBank: String, accountNumber: String) {
+        
+        guard let uid = self.userSession?.uid else { return }
+        
+        let data = ["accountHolder": accountHolder,
+                    "accountBank": accountBank,
+                    "accountNumber": accountNumber]
+        
+        let docRef =  db.collection("users").document(uid)
+
+        do {
+            try docRef.setData(from: data, merge: true)
+            print("DEBUG: \(uid)의 계좌정보를 성공적으로 변경했습니다.")
+        } catch {
+            print("DEBUG: 다음 이유로 사용자 추가 정보 입력에 에러가 발생했습니다 : \(error)")
+        }
+        
+    }
+    
+    
+    // MARK: 계좌정보삭제
+    func deleteBankAccount() {
+        
+        guard let uid = self.userSession?.uid else { return }
+        
+        let data = ["accountHolder": "",
+                    "accountBank": "",
+                    "accountNumber": ""]
+        
+        let docRef =  db.collection("users").document(uid)
+
+        do {
+            try docRef.setData(from: data, merge: true)
+            print("DEBUG: \(uid)의 계좌정보를 성공적으로 삭제했습니다.")
+        } catch {
+            print("DEBUG: 다음 이유로 사용자 추가 정보 입력에 에러가 발생했습니다 : \(error)")
+        }
+        
+    }
+    
     
     
     // MARK: 로그아웃
@@ -290,13 +289,25 @@ class AuthViewModel: ObservableObject {
     }
     
     // MARK: 회원탈퇴
-    func delete() {
+    func deleteUserAccount() {
 
         let user = Auth.auth().currentUser
+     
+//        try? user?.delete { error in
+//          if let error = error {
+//            // An error happened.
+//              print("DEBUG: 회원탈퇴에 실패했습니다.\(error)")
+//          } else {
+//            // Account deleted.
+//              print("DEBUG: 성공적으로 탈퇴되었습니다.")
+//          }
+//        }
+//
+//        let user = Auth.auth().currentUser
         
         signOut()
-     
-        try? user?.delete { error in
+
+        user?.delete { error in
           if let error = error {
             // An error happened.
               print("DEBUG: 회원탈퇴에 실패했습니다.\(error)")
@@ -305,6 +316,7 @@ class AuthViewModel: ObservableObject {
               print("DEBUG: 성공적으로 탈퇴되었습니다.")
           }
         }
+        
     }
 
 }
