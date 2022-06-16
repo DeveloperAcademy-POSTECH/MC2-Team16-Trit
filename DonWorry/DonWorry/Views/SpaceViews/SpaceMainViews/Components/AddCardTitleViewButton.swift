@@ -19,12 +19,16 @@ struct AddCardTitleViewButton: View {
                     .frame(height: 127)
                     .shadow(radius: 2)
                     .opacity(0.3)
+                Circle()
+                    .fill(LinearGradient(colors: [.gradientTopBlue, .gradientBottomBlue], startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .frame(width: 35, height: 35)
+                    .padding(.bottom, 25)
                 VStack(spacing: 10) {
                     Image(systemName: "plus")
                         .font(Font.system(size: 16, weight: .regular))
                         .padding(10)
-                        .background(Color.blueMain)
-                        .clipShape(Circle())
+//                        .background(Color.blueMain)
+//                        .clipShape(Circle())
                         .foregroundColor(.white)
                         Text("정산추가")
                             .applyTextWithLineLimitModifier(size: 14, weight: .bold, color: .blueMain)
@@ -35,8 +39,8 @@ struct AddCardTitleViewButton: View {
     }
 }
 
-//struct AddCardTitleViewButtonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SpaceMainCalculateStartButton(clicked: {print("")})
-//    }
-//}
+struct AddCardTitleViewButtonView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddCardTitleViewButton(clicked: {})
+    }
+}
