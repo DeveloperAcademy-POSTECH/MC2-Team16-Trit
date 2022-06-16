@@ -45,7 +45,7 @@ struct UserInfoView: View {
                             .focused($isFocused)
                     }
                     
-                    // 공통 텍스트필드 입력 컴포넌트(예금주명)
+                    // 공통 텍스트필드 입력 컴포넌트(성명)
                     VStack(alignment: .leading) {
                         Text("성명")
                             .font(.system(size: 17))
