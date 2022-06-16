@@ -16,6 +16,7 @@ struct CardDetailView: View {
     @State private var clickedIndex = 0
     @State private var isEditMode = false
     @State private var cantDeleteAlert = false
+    @State private var isEditPrice = false
     @State private var isEditAccount = false
     
     @StateObject var imageVM = detailImageViewModel()
@@ -55,11 +56,12 @@ struct CardDetailView: View {
                         Spacer()
                         if admin {
                             Button {
-                                isEditAccount = true
+                                isEditPrice = true
                             } label: {
                                 Image(systemName: "pencil")
                                     .font(.system(size: 16, weight: .semibold, design: .default))
                                     .foregroundColor(.black)
+                        
                             }
                             
                         }
@@ -74,14 +76,23 @@ struct CardDetailView: View {
                 
                 Group {
                     HStack {
-                        Text("정산자")
-                            .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
-                        Spacer()
-                        if admin {
-                            Image(systemName: "pencil")
-                                .font(.system(size: 16, weight: .semibold, design: .default))
+                        
+                        HStack {
+                            Text("정산자")
+                                .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
+                            Spacer()
+                            Button {
+                                isEditAccount = true
+                            } label: {
+                                if admin {
+                                    Image(systemName: "pencil")
+                                        .font(.system(size: 16, weight: .semibold, design: .default))
+                                        .foregroundColor(.black)
+                                }
+                            }
+                            }.padding(.top, 39)
                         }
-                    }.padding(.top, 39)
+                        Spacer()
                     CardDetailAccountView(isAdmin: admin)
                 }
                 
@@ -136,7 +147,6 @@ struct CardDetailView: View {
                                     cantDeleteAlert = true
                                 }
                             }
-                            
                             Button("Cancel", role: .cancel) {}
                        }
             .alert("스페이스를 삭제하시겠어요?", isPresented: $isShowingAlert, actions: {
