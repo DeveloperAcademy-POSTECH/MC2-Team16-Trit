@@ -8,7 +8,6 @@
 import SwiftUI
 import SlideOverCard
 
-
 struct HomeView: View {
     
     @State var selection: String = "떱떱해"
@@ -17,7 +16,7 @@ struct HomeView: View {
     @State var isSpaceView: Bool = false
     @State private var naviSelection: String? = nil // tag - profile: 로 전환, alert: 로 전환, create: 로 전환
     @State var currentUser: User = .empty
-    @EnvironmentObject var viewModel: BaseViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         
@@ -38,17 +37,20 @@ struct HomeView: View {
                                                selection: $naviSelection){EmptyView()}
                                 Button {
 //                                    self.naviSelection = "profile"
-//                                    viewModel.authViewModel.getUser(uid: "XJFF6PCZ47UTpZCtVpRm2VDbwWz1")
+                                    //!!!: 테스트
+                                    authViewModel.fetchUser(uid: "CSyRbU7FrCYoVHd22Vp12WlvPQp2")
+                                    //!!!: 테스트
                                     
                                 } label: {
-                                    viewModel.authViewModel.currentUser.profileImage
+                                    authViewModel.currentUser.profileImage
                                         .resizable()
                                         .frame(width: 50, height: 50)
                                         .background(.black)
                                         .clipShape(Circle())
                                 }
+                                
                                 VStack(alignment: .leading) {
-                                    Text(viewModel.authViewModel.currentUser.userName + "님")
+                                    Text(authViewModel.currentUser.userName + "님")
                                         .font(.system(size: 20, weight: .bold))
                                     Text("안녕하세요")
                                         .font(.system(size: 17))
@@ -62,7 +64,8 @@ struct HomeView: View {
                                            selection: $naviSelection){ EmptyView()}
                             Button {
                                 //                                self.naviSelection = "alert"
-                                viewModel.authViewModel.signOut()
+                                authViewModel.signOut()
+                                print("로그아웃")
                             } label: {
                                 Image(systemName: "bell.circle.fill")
                                     .foregroundColor(.blue)
@@ -89,20 +92,20 @@ struct HomeView: View {
                         //                            }
                         
                         // MARK: 여기 수정해야합니다! 빌드만 가능하게 돌려놨어요...
-//                        if viewModel.authViewModel.currentUser.spaceList[0] == selection {
+//                        if authViewModel.currentUser.spaceList[0] == selection {
                         if mockspaces[0] == selection {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     ParticipateDonCard(isParticipateIn: false, isSpaceView: $isSpaceView)
                                     
-                                    //                                    if currentUser.takeMoney != nil {
+                                    //         -                           if currentUser.takeMoney != nil {
                                     if transfers[0].taker != nil {
-                                        TakerDonCard(currentUser: viewModel.authViewModel.currentUser)
+                                        TakerDonCard(currentUser: authViewModel.currentUser)
                                     }
                                     //                                    if currentUser.giveMoney != nil {
                                     if transfers[0].giver != nil {
                                         //                                        GiverDonCard(currentUser: currentUser)
-                                        GiverDonCard(taker: transfers[1], currentUser: viewModel.authViewModel.currentUser)
+                                        GiverDonCard(taker: transfers[1], currentUser: authViewModel.currentUser)
                                     }
                                 }
                             }
@@ -113,13 +116,22 @@ struct HomeView: View {
                         /* Bottom Buttons */
                         HStack {
                             XSmallButton(icon: "magnifyingglass") {
-                                isPresented.toggle()
+//                                isPresented.toggle()
+                                
+                                //!!!: 테스트
+//                                authViewModel.updateBankAccount(accountHolder: "시쥬쥬", accountBank: "쥬쥬은행", accountNumber: "483274189")
+                                authViewModel.deleteBankAccount()
+                                //!!!: 테스트
+                                
                             }
                             NavigationLink(destination: AddSpaceView(),
                                            tag: "create",
                                            selection: $naviSelection) { EmptyView()}
                             MediumButton(text: "스페이스 만들기") {
-                                self.naviSelection = "create"
+//                                self.naviSelection = "create"
+                                //!!!: 테스트
+                                authViewModel.deleteUserAccount()
+                                //!!!: 테스트
                             }
                         }
                         .offset(y: 160)
@@ -128,8 +140,7 @@ struct HomeView: View {
                     }
                 }
                 .onAppear{
-                    self.viewModel.authViewModel.fetchUser()
-                    print("현재사용자\(currentUser)")
+                    self.authViewModel.fetchUser()
                 }
                 .navigationBarHidden(true)
                 .slideOverCard(isPresented: $isPresented, onDismiss: {

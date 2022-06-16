@@ -16,15 +16,16 @@ let companies = ["Apple", "KakaoTalk", "Google"]
 struct SignInView: View {
     
     // SignIn을 위해 선언하였습니다.
-    @State var isLoading: Bool = true // 추후 ProgressView를 넣을 것으로 예상하여, 변수를 생성
+    @State var isLoading: Bool = false // 추후 ProgressView를 넣을 것으로 예상하여, 변수를 생성
     @AppStorage("SignIn Status") var log_status = true // SignIn상태 저장
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var viewModel: BaseViewModel
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     
     var body: some View {
         
-        if viewModel.authViewModel.didAuthenticateUser {
+        if viewModel.didAuthenticateUser {
             
             UserInfoView()
             
@@ -74,8 +75,7 @@ struct SignInView: View {
                     VStack {
                         Button {
 //                                googleHandleLogin() // Google Social Login function
-                            viewModel.authViewModel.googleLogin()
-                                
+                            viewModel.googleLogin()
                         } label: {
                             HStack(spacing: 20) {
                                 Image("Google")
@@ -86,10 +86,9 @@ struct SignInView: View {
                         // Apple SignIn Butoon 입니다.
                         // Xcode에서 SignInWithAppleButton이라는 컴포넌트를 지원합니다.
                         SignInWithAppleButton { (request) in
-                            
-                            viewModel.authViewModel.nonce = randomNonceString()
+                            viewModel.nonce = randomNonceString()
                             request.requestedScopes = [.email, .fullName]
-                            request.nonce = sha256(viewModel.authViewModel.nonce)
+                            request.nonce = sha256(viewModel.nonce)
                         } onCompletion: { (result) in
                             
                             switch result {
@@ -100,7 +99,7 @@ struct SignInView: View {
                                     print("Firebase 오류") // credential 생성 성공여부
                                     return
                                 }
-                                viewModel.authViewModel.appleLogin(credential: credential)
+                                viewModel.appleLogin(credential: credential)
                                 log_status = true
                             case .failure(let error): // 로그인에 실패한 경우
                                 print(error.localizedDescription)
@@ -109,7 +108,13 @@ struct SignInView: View {
                             .clipShape(Capsule())
                     }
                 }
-            }.ignoresSafeArea()
+            }
+            .ignoresSafeArea()
+            .overlay(Group {
+                    if isLoading {
+                        ProgressView()
+                    }
+                })
         }
     }
 }

@@ -24,8 +24,8 @@ extension TransferModel {
 
 
 struct Transfer {
-    var giver: User
-    var taker: User
+    var giver: OldUser
+    var taker: OldUser
     var amount: Int
     var isCompleted: Bool = false
 }
