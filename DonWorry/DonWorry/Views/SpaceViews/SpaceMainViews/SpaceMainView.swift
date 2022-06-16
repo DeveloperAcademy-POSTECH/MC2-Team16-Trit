@@ -13,7 +13,7 @@ struct SpaceMainView: View {
     
     @Binding var naviSelection: String? // HomeView로 돌아가기 위한 변수입니다.
     @State private var mainSelection: String? = nil // SpaceMainView로 돌아오기 위한 변수입니다.
-
+    
     @State var isPopUpPresented = false
     @State var isShowingDialog = false
     @State var isShowingAlert = false
@@ -25,14 +25,17 @@ struct SpaceMainView: View {
     @State var spaceName = "MC2 첫 회식"
     @Binding var spaceID: String
     
+    @State private var isStarted = false // 정산시작이 되었는지 확인하는 변수
+    @State private var showExitAlert = false // 스페이스 나가기 시 Alert를 보여주기 위한 변수
+    
     var body: some View {
         
         ZStack(alignment: .bottom) {
             VStack {
-
+                
                 SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
                     .padding(.vertical, 21)
-
+                
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.fixed(340.0))], spacing: 9) {
                         ForEach(0..<5) { index in
@@ -54,23 +57,25 @@ struct SpaceMainView: View {
                             }
                         }
                     }
+                    .padding(.bottom, 40)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-
+            
             HStack(spacing: 23) {
-                SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: .blueMain, textColor: .white) {
+                SpaceMainBottomButton(text: "링크 공유", systemImageString: "square.and.arrow.up", backgroundColor: Color.grayBC, textColor: .white) {
                     isShareSheetPresented.toggle()
                     print("링크 공유 FUNCTION")
                 }
-                SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color(hex: "#A4C6FF"), textColor: .blueMain) {
+                SpaceMainBottomButton(text: "참석 확인", systemImageString: "checkmark", backgroundColor: Color.blueMain, textColor: .blueMain) {
                     isCheckOutAttendanceViewOpened = true
                     print("참석 확인 FUNCTION")
                 }
             }
+            .ignoresSafeArea(.keyboard)
             .padding(.bottom)
             .padding(.horizontal, 30.0)
-
+            
             NavigationLink(isActive: $isCheckOutAttendanceViewOpened) {
                 CheckAttendanceView(checkedArray: $checkedArray)
             } label: {
@@ -84,7 +89,7 @@ struct SpaceMainView: View {
             }
             .isDetailLink(false)
         }
-
+        
         .sheet(isPresented: $isShareSheetPresented, content: {
             ShareSheet(items: ["트라잇에서 정산해요!"])
         })
@@ -92,7 +97,13 @@ struct SpaceMainView: View {
             CardDetailView()
         })
         .confirmationDialog("", isPresented: $isShowingDialog, titleVisibility: .hidden) {
-
+              
+            if !isStarted {
+                Button("스페이스 나가기") {
+                    showExitAlert = true
+                }
+            }
+            
             Button("스페이스 초기화") {
                 // Todo: 스페이스 초기화 기능
             }
@@ -103,9 +114,23 @@ struct SpaceMainView: View {
                 isShowingAlert = true
             }
             Button("Cancel", role: .cancel) {
-
+                
             }
         }
+        .alert("스페이스에서 나가시겠어요?", isPresented: $showExitAlert, actions: {
+            Button("나가기", action: {
+                // TODO: 현재 스페이스에서 현재 유저를 삭제하는 함수 호출
+                
+                naviSelection = nil
+            })
+            
+            Button("취소", role: .cancel, action: {
+                
+            }).keyboardShortcut(.defaultAction)
+        }, message: {
+            Text("스페이스를 나가시면 되돌릴 수 없습니다.")
+                .font(.system(size: 13, weight: .regular))
+        })
         .alert("스페이스를 삭제하시겠어요?", isPresented: $isShowingAlert, actions: {
             Button("삭제", action: {
 
@@ -149,7 +174,7 @@ struct SpaceMainView: View {
         .popup(isPresented: $isPopUpPresented, type: .floater(verticalPadding: -40), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
             copyTopToastMessage()
         }).zIndex(0)
-
+        
     }
 }
 

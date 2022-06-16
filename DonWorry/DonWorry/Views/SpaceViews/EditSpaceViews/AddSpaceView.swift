@@ -41,7 +41,7 @@ struct AddSpaceView: View {
                     
                     NavigationLink(tag: "SpaceMainView",
                                    selection: $pageSelection,
-                                   destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID"))
+                                   destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded123mdk3id2kcjsnj3394jfucr"))
                         
                     }) { EmptyView() }
                         .isDetailLink(false)
