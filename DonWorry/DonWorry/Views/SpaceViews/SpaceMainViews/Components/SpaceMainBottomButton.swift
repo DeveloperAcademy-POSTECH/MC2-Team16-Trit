@@ -26,7 +26,7 @@ struct SpaceMainBottomButton: View {
             }
             .frame(height: 20, alignment: .center)
             .foregroundColor(Color.white)
-            .font(.system(size: 15, weight: .bold))
+            .font(.system(size: 15, weight: .heavy))
             .cornerRadius(50)
             .applyButtonCustomModifier(backgroundColor: backgroundColor, strokeLineWith: 0)
         })

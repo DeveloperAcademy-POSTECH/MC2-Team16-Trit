@@ -57,11 +57,11 @@ struct CheckAttendanceView: View {
                 .navigationBarBackButtonHidden(true)
                 
                 HStack(spacing: leftPaddingSize) {
-                    SpaceMainBottomButton(text: "모두 선택", systemImageString: nil, backgroundColor: .blueMain, textColor: .white) {
+                    SpaceMainBottomButton(text: "모두 선택", systemImageString: nil, backgroundColor: Color.grayBC, textColor: .white) {
                         checkedArray = [Int](0..<numberOfCards)
                         print("링크 공유 FUNCTION")
                     }
-                    SpaceMainBottomButton(text: "참석 확인", systemImageString: nil, backgroundColor: Color(hex: "#A4C6FF"), textColor: .blueMain) {
+                    SpaceMainBottomButton(text: "참석 확인", systemImageString: nil, backgroundColor: Color.blueMain, textColor: .blueMain) {
                         mode.wrappedValue.dismiss()
                         print("참석 확인 FUNCTION")
                     }
