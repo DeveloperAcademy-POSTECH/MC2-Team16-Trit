@@ -53,7 +53,7 @@ struct ParticipateDonCard: View {
 struct BasicRoundRec: View {
     var color: Color
     var body: some View {
-        RoundedRectangle(cornerRadius: 8)
+        RoundedRectangle(cornerRadius: 20)
             .frame(width: 160, height: 215)
             .opacity(0.8)
             .shadow(color: .black, radius: 3, x: 0, y: 2)
@@ -63,7 +63,7 @@ struct BasicRoundRec: View {
 
 struct GradientRoundRec : View {
     var body: some View {
-        RoundedRectangle(cornerRadius: 8)
+        RoundedRectangle(cornerRadius: 20)
             .fill(LinearGradient(colors: [.gradientTopBlue, .gradientBottomBlue], startPoint: .topLeading, endPoint: .bottomTrailing))
             .frame(width: 160, height: 215)
             .shadow(color: .black, radius: 3, x: 0, y: 2)
