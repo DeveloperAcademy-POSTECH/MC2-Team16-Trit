@@ -33,9 +33,14 @@ struct CheckAttendanceView: View {
                                             Circle()
                                                 .frame(width: 42, height: 42, alignment: .leading)
                                             if checkedArray.contains(index) {
-                                                Image(systemName: "checkmark")
-                                                    .font(Font.system(size: 16, weight: .bold))
-                                                    .foregroundColor(Color.blueMain)
+                                                ZStack {
+                                                    Circle()
+                                                        .fill(LinearGradient(colors: [.gradientTopBlue, .gradientBottomBlue], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                                        .frame(width: 42, height: 42, alignment: .leading)
+                                                    Image(systemName: "checkmark")
+                                                        .font(Font.system(size: 16, weight: .bold))
+                                                    .foregroundColor(Color.white)
+                                                }
                                             }
                                         }.foregroundColor(Color.grayEE)
                                     }
