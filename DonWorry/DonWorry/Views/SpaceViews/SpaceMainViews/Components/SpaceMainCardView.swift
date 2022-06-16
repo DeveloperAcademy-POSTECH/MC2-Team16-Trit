@@ -38,6 +38,7 @@ struct SpaceMainCardView: View {
                 .overlay {
                     HStack {
                         VStack(alignment: .leading, spacing: 0) {
+                            
                             Text(spaceName)
                                 .applyTextWithLineLimitModifier(size: 15, weight: .heavy, color: .white)
                                 .padding(.leading, 25)
@@ -66,16 +67,33 @@ struct SpaceMainCardView: View {
                         Spacer()
                         VStack {
                             VStack(spacing: 2) {
-                                Image("chicken-leg")
-                                    .applyClipCircleModifier(width: 30, height: 30, background: .clear, innerPadding: 3)
+                                Image("user1")
+                                    .applyClipCircleModifier(width: 30, height: 30)
                                     .padding(.top, 25)
+                                
                                 Text("한규")
                                     .applyTextWithLineLimitModifier(size: 12, weight: .medium)
                             }
-                            ForEach(0..<4) { _ in
-                                Image("chicken-leg")
-                                    .applyClipCircleModifier(width: 24, height: 25, background: .clear, innerPadding: 0)
-                                    .padding(.bottom, -17)
+                            
+                            
+                            ForEach(0..<4) { index in
+//                                ZStack {
+                                    Image("user2")
+                                        .applyClipCircleModifier(width: 24, height: 24)
+                                        .padding(.bottom, -14)
+                                // TODO: 4명보다 많으면 땡땡땡이 나타나도록.
+                                    if index >= 3 {
+                                        Image(systemName: "ellipsis")
+                                            .font(.system(size: 6, weight: .medium))
+                                            .foregroundColor(color)
+                                            .padding(3.5)
+                                            .background(Color.grayEE.opacity(0.6))
+                                            .clipShape(Circle())
+                                            .offset(y:2)
+                                            
+                                    }
+                                
+                                
                             }
                             Spacer()
                             Text(date)

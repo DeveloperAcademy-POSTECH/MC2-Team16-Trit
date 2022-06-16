@@ -50,7 +50,7 @@ struct SmallCardView: View {
                     VStack {
                         VStack(spacing: 3) {
                             Image("chicken-leg")
-                                .applyClipCircleModifier(width: 30, height: 30, background: .clear)
+                                .applyClipCircleModifier(width: 30, height: 30)
                                 .padding(.top, 19)
                             Text("한규")
                                 .applyTextWithLineLimitModifier(size: 13, weight: .medium)

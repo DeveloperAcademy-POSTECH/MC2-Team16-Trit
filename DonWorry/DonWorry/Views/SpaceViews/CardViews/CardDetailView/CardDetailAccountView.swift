@@ -27,8 +27,8 @@ struct CardDetailAccountView: View {
                 }
                 Spacer()
                 VStack(spacing: 6) {
-                    Image("chicken-leg")
-                        .applyClipCircleModifier(width: 35, height: 35, background: .black, innerPadding: 5)
+                    Image("user1")
+                        .applyClipCircleModifier(width: 35, height: 35)
                     Text("김유쓰")
                         .applyTextWithLineLimitModifier(size: 13, weight: .bold, color: .black)
                 }
@@ -40,8 +40,8 @@ struct CardDetailAccountView: View {
             .padding(.top, 13.5)
         } else {
             VStack(spacing: 6) {
-                Image("chicken-leg")
-                    .applyClipCircleModifier(width: 35, height: 35, background: .black, innerPadding: 5)
+                Image("user1")
+                    .applyClipCircleModifier(width: 30, height: 30)
                 Text("김유쓰")
                     .applyTextWithLineLimitModifier(size: 13, weight: .medium, color: .black)
             }

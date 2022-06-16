@@ -94,8 +94,8 @@ struct CardDetailView: View {
                         LazyHGrid(rows: [GridItem(.fixed(30.0))], spacing: 35) {
                             ForEach(0..<4, id: \.self) { _ in
                                 VStack(spacing: 13) {
-                                    Image("chicken-leg")
-                                        .applyClipCircleModifier(width: 35, height: 35, background: .yellow)
+                                    Image("user1")
+                                        .applyClipCircleModifier(width: 35, height: 35)
                                     Text("정루미")
                                         .applyTextWithLineLimitModifier(size: 17, weight: .regular, color: .black)
                                     // ToDo: 이름을 몇글자 까지 보여줄 것인지 정하기
@@ -260,7 +260,7 @@ extension CardDetailView {
 // TODO: 모델 들어오면 없어질 ViewModel
 class detailImageViewModel: ObservableObject {
     
-    @Published var allImages: [UIImage] = [UIImage(named: "chicken-leg")!]
+    @Published var allImages: [UIImage] = [UIImage(named: "user1")!]
     @Published var showImageViewer = false
     @Published var selectedImageID: Int = 0
     @Published var imageViewerOffset: CGSize = .zero
