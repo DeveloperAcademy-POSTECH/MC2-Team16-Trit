@@ -13,7 +13,7 @@ struct UserService {
     
     func fetchUser(withUid uid: String, completion: @escaping(User) -> Void) {
         print("DEBUG: Fetch user info... ")
-        Firestore.firestore().collection("users")
+        Firestore.firestore().collection("User")
             .document(uid)
             .getDocument { snapshot, _ in
                 guard let snapshot = snapshot else { return }

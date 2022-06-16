@@ -57,7 +57,7 @@ class SpaceViewModel: ObservableObject {
     func addParticipant(spaceID: String, user: User) {
         
         let spaceRef = Firestore.firestore().collection("Space").document(spaceID)
-        let userRef = Firestore.firestore().collection("users").document(user.id ?? "")
+        let userRef = Firestore.firestore().collection("User").document(user.id ?? "")
         
         spaceRef.updateData(["userList" : FieldValue.arrayUnion([user.id])]) { error in
             if error != nil {
