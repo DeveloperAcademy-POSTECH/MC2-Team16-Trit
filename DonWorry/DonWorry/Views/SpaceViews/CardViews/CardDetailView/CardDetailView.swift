@@ -16,6 +16,7 @@ struct CardDetailView: View {
     @State private var clickedIndex = 0
     @State private var isEditMode = false
     @State private var cantDeleteAlert = false
+    @State private var isEditAccount = false
     
     @StateObject var imageVM = detailImageViewModel()
     let admin = true
@@ -53,8 +54,14 @@ struct CardDetailView: View {
                             .applyTextWithLineLimitModifier(size: 17, weight: .medium, color: .black)
                         Spacer()
                         if admin {
-                            Image(systemName: "pencil")
-                                .font(.system(size: 16, weight: .semibold, design: .default))
+                            Button {
+                                isEditAccount = true
+                            } label: {
+                                Image(systemName: "pencil")
+                                    .font(.system(size: 16, weight: .semibold, design: .default))
+                                    .foregroundColor(.black)
+                            }
+                            
                         }
                     }
                     .padding(.top, 14)
@@ -121,13 +128,7 @@ struct CardDetailView: View {
             }
             Spacer()
             .confirmationDialog("", isPresented: $isShowingDialog, titleVisibility: .hidden) {
-                            Button("카드 수정") {
-                                if admin {
-                                    isShowingAlert = true
-                                } else {
-                                    cantDeleteAlert = true
-                                }
-                            }
+
                             Button("카드 삭제") {
                                 if admin {
                                     isShowingAlert = true
