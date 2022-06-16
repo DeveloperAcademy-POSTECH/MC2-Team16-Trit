@@ -23,6 +23,7 @@ struct UserInfoView: View {
                 .scaledFont(name: CustomFont.GmarketSansBold, size: 30)
             
             Spacer()
+                .frame(height: 70)
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 45) {
@@ -41,11 +42,11 @@ struct UserInfoView: View {
                     
                     // 공통 텍스트필드 입력 컴포넌트(예금주명)
                     VStack(alignment: .leading) {
-                        Text("예금주명")
+                        Text("성명")
                             .font(.system(size: 17))
                             .fontWeight(.semibold)
                         
-                        UnderlineTextField(placeholder: "예금주명을 입력해주세요", charLimit: 10, text: $holder)
+                        UnderlineTextField(placeholder: "성명을 입력해주세요", charLimit: 10, text: $holder)
                             .focused($isFocused)
                     }
                      
@@ -70,6 +71,7 @@ struct UserInfoView: View {
             NavigationLink(tag: "TermView", selection: $naviSelection, destination: { TermView() }) { SmallButton(text: "다음") {
                 naviSelection = "TermView"
             } }
+            .disabled(!(nickName.isEmpty || account.isEmpty || holder.isEmpty || bank.isEmpty) ? false : true)
             .padding(.bottom)
         }
         .onAppear {

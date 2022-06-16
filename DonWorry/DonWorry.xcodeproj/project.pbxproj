@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C1A09FC285826B700AA193B /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A09FB285826B700AA193B /* UINavigationControllerExtension.swift */; };
+		2C387A6C285A584F00C47C22 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C387A6B285A584F00C47C22 /* Pasteboard.swift */; };
 		2C3C3EA32854946700B29181 /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C3EA22854946700B29181 /* UserStateViewModel.swift */; };
 		2CC211822849F0FA0009F785 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211812849F0FA0009F785 /* SignInView.swift */; };
 		2CC211842849F1160009F785 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC211832849F1160009F785 /* UserInfoView.swift */; };
@@ -118,6 +119,7 @@
 
 /* Begin PBXFileReference section */
 		2C1A09FB285826B700AA193B /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
+		2C387A6B285A584F00C47C22 /* Pasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
 		2C3C3EA22854946700B29181 /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
 		2CC211812849F0FA0009F785 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2CC211832849F1160009F785 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
@@ -548,6 +550,7 @@
 			children = (
 				4D6229C22849277500A8E24C /* Fonts.swift */,
 				A704FC3B284DF62F00AC9736 /* Date.swift */,
+				2C387A6B285A584F00C47C22 /* Pasteboard.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				4D6229C32849277500A8E24C /* Fonts.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				C027ED6F28510983008E4441 /* HalfSheetSmallButton.swift in Sources */,
+				2C387A6C285A584F00C47C22 /* Pasteboard.swift in Sources */,
 				C0DBFAE328546886004650F1 /* TakerDonCardSheet.swift in Sources */,
 				4D6229BD284925B900A8E24C /* PreviewCardView.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,

@@ -103,8 +103,8 @@ struct SpaceMainCardView: View {
     }
 }
 
-struct SpaceMainCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        SpaceMainCardView(bank: "qwqwqwqwqwqw", color: .blueMain, account: "sdsd", date: "Sdsd",paymentIcon: Image("chicken-leg"))
-    }
-}
+//struct SpaceMainCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SpaceMainCardView(bank: "qwqwqwqwqwqw", color: .blueMain, account: "sdsd", date: "Sdsd",paymentIcon: Image("chicken-leg"))
+//    }
+//}

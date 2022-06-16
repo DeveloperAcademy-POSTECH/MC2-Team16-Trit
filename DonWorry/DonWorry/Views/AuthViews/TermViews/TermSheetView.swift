@@ -41,25 +41,14 @@ struct TermSheetView: View {
                 }
                 
             }
-            .padding()
+            .padding(.horizontal, 30)
             .padding(.top, 40)
             
             Spacer()
             
-            Button {
+            SmallButton(text: "확인") {
                 showSheet = false
                 vm.signIn()
-                
-            } label: {
-                HStack {
-                    Text("확인")
-                }
-                .frame(width: 100, height: 20, alignment: .center)
-                .foregroundColor(.white)
-                .font(.system(size: 15, weight: .bold))
-                .padding()
-                .background(Color.blueMain)
-                .cornerRadius(50)
             }
         }
     }
