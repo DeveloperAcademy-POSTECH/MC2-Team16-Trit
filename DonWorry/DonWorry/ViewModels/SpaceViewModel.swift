@@ -100,10 +100,17 @@ class SpaceViewModel: ObservableObject {
         }
     }
     
-    
-    
-    
-    
+    func updateSpaceStatus(spaceID: String) {
+        
+        let spaceRef = db.collection("Space").document(spaceID)
+        
+        spaceRef.setData(["status" : true], merge: true) { error in
+            if let error = error {
+                print("스페이스 상태 바꾸기 실패")
+                print(error.localizedDescription)
+            }
+        }
+    }
     
     // 여기서부터 개인적으로 만듬
     
@@ -199,7 +206,6 @@ class SpaceViewModel: ObservableObject {
         }
     }
     
-    
     // MARK: 스페이스 불러오기
     // spaceID(INPUT)->비동기처리한 space 불러오기
     func fetchSpace(documentID: String) {
@@ -214,7 +220,6 @@ class SpaceViewModel: ObservableObject {
             }
         }
     }
-    
     
     // MARK: 전체 스페이스 불러오기
     func getSpaceDatas() {
