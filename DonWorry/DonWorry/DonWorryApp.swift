@@ -9,7 +9,6 @@ import SwiftUI
 import Firebase
 import GoogleSignIn
 
-
 @main
 struct DonWorryApp: App {
     
@@ -20,9 +19,8 @@ struct DonWorryApp: App {
         WindowGroup {
             NavigationView{
                 ContentView()
-                    .environmentObject(AuthViewModel())
             }
-                .environmentObject(viewModel)
+            .environmentObject(AuthViewModel())
         }
     }
 }
