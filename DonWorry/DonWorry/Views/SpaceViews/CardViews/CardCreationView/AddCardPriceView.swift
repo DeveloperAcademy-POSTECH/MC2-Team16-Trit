@@ -24,6 +24,10 @@ struct AddCardPriceView: View {
         Int(price) ?? 0
     }
     
+    var isDisable: Bool {
+        price.isEmpty
+    }
+    
     let paymentTitle: String
     let paymentIcon: Image?
     
@@ -72,11 +76,11 @@ struct AddCardPriceView: View {
                 
                 NavigationLink(tag: "AddCardDecoView", selection: $naviSelection, destination: { AddCardDecoView(mainSelection: $mainSelection, paymentIcon: paymentIcon) }) { EmptyView() }
                     .isDetailLink(false)
-                SmallButton(text: "다음") {
+                SmallButton(text: "다음", isDisable: isDisable) {
                     self.naviSelection = "AddCardDecoView"
                 }
-                .disabled(price == "0" ? true : false)
             }
+            .disabled(isDisable ? true : false)
             .padding(.horizontal, 30)
             .padding(.bottom)
             
@@ -143,7 +147,6 @@ struct AddCardPriceView: View {
             self.price.popLast()
         } else {
             self.price += input
-//            self.price.append(contentsOf: input)
         }
     }
 }

@@ -46,7 +46,7 @@ struct TermSheetView: View {
             
             Spacer()
             
-            SmallButton(text: "확인") {
+            SmallButton(text: "확인", isDisable: false) {
                 showSheet = false
                 vm.signIn()
             }

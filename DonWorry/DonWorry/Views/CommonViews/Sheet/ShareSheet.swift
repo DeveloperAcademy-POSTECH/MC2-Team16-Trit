@@ -35,7 +35,7 @@ struct SampleShareSheetView: View {
     var body: some View {
         ZStack {
                 
-            LargeButton(text: "Large Button") {
+            LargeButton(text: "Large Button", isDisable: false) {
                 isSheetPresented.toggle()
             }
             .sheet(isPresented: $isSheetPresented, content: {

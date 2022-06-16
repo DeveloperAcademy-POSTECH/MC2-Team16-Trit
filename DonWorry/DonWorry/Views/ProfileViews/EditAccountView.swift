@@ -16,6 +16,10 @@ struct EditAccountView: View {
     @State private var account = ""
     @FocusState private var isFocused: Bool
     
+    var isDisable: Bool {
+        holder.isEmpty || bank.isEmpty || account.isEmpty
+    }
+    
     var body: some View {
         VStack {
             
@@ -43,12 +47,12 @@ struct EditAccountView: View {
             VStack {
                 HStack {
                     Spacer()
-                    SmallButton(text: "확인") {
+                    SmallButton(text: "확인", isDisable: isDisable) {
                         /* 닉네임 저장 및 profile 페이지로 back */
                         self.mode.wrappedValue.dismiss()
                     }
                     .padding(.bottom, 30)
-                    .disabled(!(holder.isEmpty || bank.isEmpty || account.isEmpty) ? false : true)
+                    .disabled(isDisable ? true : false)
                 }
                 
             }

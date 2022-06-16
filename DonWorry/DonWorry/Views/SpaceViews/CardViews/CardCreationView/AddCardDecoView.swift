@@ -42,6 +42,11 @@ struct AddCardDecoView: View {
     @State var clickedIndex = 0
     @FocusState private var isFocused: Bool
 //    @State var focusedClicked: Bool = false
+    
+    var isDisable: Bool {
+        account.isEmpty || bank.isEmpty || holder.isEmpty
+    }
+    
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
     var paymentIcon: Image?
     
@@ -106,11 +111,11 @@ struct AddCardDecoView: View {
                 
                 VStack {
                     Spacer()
-                    SmallButton(text: "완료") {
+                    SmallButton(text: "완료", isDisable: isDisable) {
                         // TODO: 파이어베이스로 데이터 전송
                         mainSelection = nil
                     }
-                    .disabled(!(account.isEmpty || bank.isEmpty || holder.isEmpty) ? false : true)
+                    .disabled(isDisable ? true : false)
                     .padding(.bottom)
                 }
                 .ignoresSafeArea(.keyboard)
