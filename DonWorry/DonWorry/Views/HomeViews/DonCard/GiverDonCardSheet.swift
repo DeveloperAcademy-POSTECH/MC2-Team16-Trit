@@ -29,23 +29,42 @@ struct GiverDonCardSheet: View {
                     Text("임영후")
                         .font(.system(size: 30, weight: .heavy))
                     Text("님께")
-                        .font(.system(size: 15, weight: .bold))
-                        .padding(.bottom, 3)
+                        .font(.system(size: 18, weight: .bold))
+                        .padding(.bottom, 2)
                     Spacer()
                 }
                 .padding(.horizontal, 15)
+                .padding(.bottom, 15)
                 
                 HStack {
-                    Text("애셔에게 줄 돈")
+                    Text("송금할 금액")
+                        .font(.system(size: 15, weight: .heavy))
                     Spacer()
-                    Text("내가 내야할 돈")
+                    Text("나의 정산 총액")
+                        .font(.system(size: 15, weight: .heavy))
+                        .opacity(0.3)
                 }
                 .padding(.horizontal)
                 .font(.system(size: 15, weight: .bold))
                 HStack {
-                    Text("98000원")
+                    HStack(alignment: .bottom, spacing: 2) {
+                        Text("100000")
+                            .font(.system(size: 25, weight: .heavy))
+                            .foregroundColor(.blueMain)
+                        Text("원")
+                            .font(.system(size: 15, weight: .heavy))
+                            .padding(.bottom, 3)
+                    }
                     Spacer()
-                    Text("120000원")
+                    HStack(alignment: .bottom, spacing: 2) {
+                        Text("120000")
+                            .font(.system(size: 25, weight: .heavy))
+                            .foregroundColor(.blueMain)
+                        Text("원")
+                            .font(.system(size: 15, weight: .heavy))
+                            .padding(.bottom, 3)
+                    }
+                    .opacity(0.3)
                 }
                 .padding(.horizontal)
                 .font(.system(size: 20, weight: .heavy))
@@ -58,7 +77,7 @@ struct GiverDonCardSheet: View {
 //                            .progressViewStyle(LinearProgressViewStyle(tint: .blueMain))
 //                            .padding(.horizontal, 15)
                         RoundedRectangle(cornerRadius: 4)
-                            .frame(width: screenSize.width*0.92 * (48000/120000), height: 8)
+                            .frame(width: screenSize.width*0.92 * (100000/120000), height: 8)
                             .foregroundColor(.blueMain)
                     }
                 }
@@ -119,7 +138,7 @@ struct GiverDonCardSheet: View {
 //                        self.presentationmode.wrappedValue.dismiss()
 //                    })
 //                }
-                SmallButton(text: "임영후님께 돈을 보냈어요!", clicked: {})
+                SmallButton(text: "임영후님께 돈을 보냈습니다", isDisable: false, clicked: {})
                 
             }
         }
