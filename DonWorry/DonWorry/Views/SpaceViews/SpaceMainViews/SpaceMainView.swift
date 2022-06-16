@@ -9,16 +9,6 @@ import SwiftUI
 
 struct SpaceMainView: View {
     
-    func createTopToastMessage() -> some View {
-        Text("복사했습니다!")
-            .font(.system(size: 12, weight: .bold))
-            .foregroundColor(.white)
-            .multilineTextAlignment(.center)
-            .frame(width: 110, height: 40)
-            .background(Color.grayC5)
-            .cornerRadius(20)
-    }
-    
     let leftPaddingSize: CGFloat = 25.0
     
     @Binding var naviSelection: String? // HomeView로 돌아가기 위한 변수입니다.
@@ -160,7 +150,7 @@ struct SpaceMainView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .popup(isPresented: $isPopUpPresented, type: .floater(verticalPadding: -40), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
-            createTopToastMessage()
+            copyTopToastMessage()
         }).zIndex(0)
         
     }

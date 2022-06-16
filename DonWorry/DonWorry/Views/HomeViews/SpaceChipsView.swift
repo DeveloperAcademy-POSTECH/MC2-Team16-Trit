@@ -17,7 +17,6 @@ struct SpaceChipsView: View {
     @Binding var selection: String
     let screen = UIScreen.main.bounds
     var al = 23
-    let switches = ["MC2 트라잇 모임", "MC2 번개모임", "밤샘코딩", "떱떱해모임", "MC2 그룹회식"]
     var body: some View {
         VStack {
             VStack {
@@ -36,10 +35,6 @@ struct SpaceChipsView: View {
                                 .frame(width: 112, height: 45)
                                 .foregroundColor(Color(hex: "EFEFEF"))
                         }
-                       
-                        
-                            
-//                            .foregroundColor(selection == switches[index] ? .blue : Color(hex: "EFEFEF"))
                         Text(switches[index])
                             .font(.system(size: widthForText(switches[index]) < 80 ? 13 : 12, weight: .bold))
                             .frame(width: 80, height: 24, alignment: .center)
