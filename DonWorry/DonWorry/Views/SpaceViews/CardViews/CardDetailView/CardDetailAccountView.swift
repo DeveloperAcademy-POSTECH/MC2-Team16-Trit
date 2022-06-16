@@ -37,7 +37,7 @@ struct CardDetailAccountView: View {
             .frame(width: 340, height: 90, alignment: .leading)
             .background(Color.grayF0)
             .cornerRadius(8)
-            .padding(.top, 20.5)
+            .padding(.top, 13.5)
         } else {
             VStack(spacing: 6) {
                 Image("chicken-leg")
@@ -46,7 +46,7 @@ struct CardDetailAccountView: View {
                     .applyTextWithLineLimitModifier(size: 13, weight: .medium, color: .black)
             }
             .frame(width: 340, height: 90, alignment: .leading)
-            .padding(.top, 20.5)
+            .padding(.top, 13.5)
         }
         
     }

@@ -10,17 +10,17 @@ import PhotosUI
 
 struct CardDetailView: View {
     
+    let admin = true
     @State var isShowingDialog = false
     @State var isShowingAlert = false
     @State private var isPhotoPickerShow = false
     @State private var clickedIndex = 0
     @State private var isEditMode = false
     @State private var cantDeleteAlert = false
-    @State private var isEditPrice = false
-    @State private var isEditAccount = false
+//    @State private var isEditPrice = false
+//    @State private var isEditAccount = false
     
     @StateObject var imageVM = detailImageViewModel()
-    let admin = true
     
     var body: some View {
         
@@ -53,18 +53,17 @@ struct CardDetailView: View {
                             .applyTextWithLineLimitModifier(size: 26, weight: .heavy, color: .black)
                         Text("나왔어요!")
                             .applyTextWithLineLimitModifier(size: 17, weight: .medium, color: .black)
-                        Spacer()
-                        if admin {
-                            Button {
-                                isEditPrice = true
-                            } label: {
-                                Image(systemName: "pencil")
-                                    .font(.system(size: 16, weight: .semibold, design: .default))
-                                    .foregroundColor(.black)
-                        
-                            }
-                            
-                        }
+//                        Spacer()
+//                        if admin {
+//                            Button {
+//                                isEditPrice = true
+//                            } label: {
+//                                Image(systemName: "pencil")
+//                                    .font(.system(size: 16, weight: .semibold, design: .default))
+//                                    .foregroundColor(.black)
+//                            }
+//
+//                        }
                     }
                     .padding(.top, 14)
                     .padding(.bottom, 19)
@@ -80,19 +79,9 @@ struct CardDetailView: View {
                         HStack {
                             Text("정산자")
                                 .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
-                            Spacer()
-                            Button {
-                                isEditAccount = true
-                            } label: {
-                                if admin {
-                                    Image(systemName: "pencil")
-                                        .font(.system(size: 16, weight: .semibold, design: .default))
-                                        .foregroundColor(.black)
-                                }
-                            }
                             }.padding(.top, 39)
                         }
-                        Spacer()
+//                        Spacer()
                     CardDetailAccountView(isAdmin: admin)
                 }
                 
@@ -100,7 +89,7 @@ struct CardDetailView: View {
                     Text("정산 참가자")
                         .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
                         .padding(.bottom, 25)
-                        .padding(.top, 35)
+                        .padding(.top, 30)
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: [GridItem(.fixed(30.0))], spacing: 35) {
                             ForEach(0..<4, id: \.self) { _ in
@@ -132,7 +121,7 @@ struct CardDetailView: View {
                         }
                     }
                 }
-                .padding(.top, 65)
+                .padding(.top, 70)
                 .padding(.bottom, 24)
                 
                 imageBox
@@ -267,7 +256,6 @@ extension CardDetailView {
         isPhotoPickerShow = true
     }
 }
-
 
 // TODO: 모델 들어오면 없어질 ViewModel
 class detailImageViewModel: ObservableObject {
