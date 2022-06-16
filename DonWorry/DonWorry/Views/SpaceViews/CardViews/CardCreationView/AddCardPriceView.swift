@@ -108,7 +108,11 @@ struct AddCardPriceView: View {
                 }
             }
             .frame(height: 360, alignment: .top)
-            .background(RoundedRectangle(cornerRadius: 38).stroke(Color.grayF5))
+            .background(RoundedRectangle(cornerRadius: 38)
+                .stroke(Color.grayF5)
+                .frame(height: 400)
+                .offset(y: 20)
+            )
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
