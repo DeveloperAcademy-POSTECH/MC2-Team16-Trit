@@ -56,7 +56,7 @@ struct AddCardDecoView: View {
                 ScrollViewReader { proxy in
                     ScrollView {
                         VStack(spacing: 20) {
-                            PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
+                            PreviewCardView(isDecoView: true, paymentIcon: paymentIcon, bank: $bank,
                                             account: $account,
                                             color: $color,
                                             date: $date,

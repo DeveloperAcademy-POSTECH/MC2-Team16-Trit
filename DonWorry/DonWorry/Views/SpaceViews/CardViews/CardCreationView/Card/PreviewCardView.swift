@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PreviewCardView: View {
     
+    let isDecoView: Bool
     var paymentIcon: Image?
     @Binding var bank: String
     @Binding var account: String
@@ -21,8 +22,7 @@ struct PreviewCardView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-
-            SpaceMainCardView(bank: bank, color: color.color, account: account, index: 0, isParticipated: false, date: date.getStringForMMDD(), paymentIcon: paymentIcon)
+            SpaceMainCardView(bank: bank, color: color.color, account: account, index: 0, isParticipated: false, date: date.getStringForMMDD(), paymentIcon: paymentIcon, isDecoView: isDecoView)
         }
         .padding()
     }

@@ -15,12 +15,12 @@ struct ContentView: View {
     var body: some View {
 
         // no user logged in
-        if authViewModel.userSession == nil {
-            SignInView()
-        } else {
+//        if authViewModel.userSession == nil {
+//            SignInView()
+//        } else {
         // have a logged in user
             HomeView()
-        }
+//        }
         
     }
 }

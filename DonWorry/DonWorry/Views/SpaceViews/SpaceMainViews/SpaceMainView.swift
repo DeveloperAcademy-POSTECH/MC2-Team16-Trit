@@ -47,7 +47,7 @@ struct SpaceMainView: View {
                                     self.mainSelection = "AddCardTitleView"
                                 }) .padding(.bottom, 70)
                             } else {
-                                SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "4299101009307", index: index, isParticipated: isCheckIndex(index), date: "05/05", paymentIcon: Image("chicken-leg"))
+                                SpaceMainCardView(bank: "하나은행", color: .blueMain, account: "4299101009307", index: index, isParticipated: isCheckIndex(index), date: "05/05", paymentIcon: Image("chicken-leg"), isDecoView: false)
                                     .onTapGesture {
                                         isModalPresented = true
                                     }
