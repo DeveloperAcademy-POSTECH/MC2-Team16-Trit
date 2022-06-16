@@ -25,11 +25,11 @@ struct GiverDonCardSheet: View {
                     .padding(.vertical, 30)
                     .padding(.horizontal)
                 
-                HStack(alignment: .bottom) {
+                HStack(alignment: .bottom, spacing: 3) {
                     Text("임영후")
-                        .font(.system(size: 30, weight: .heavy))
+                        .font(.system(size: 22, weight: .heavy))
                     Text("님께")
-                        .font(.system(size: 18, weight: .bold))
+                        .font(.system(size: 15, weight: .medium))
                         .padding(.bottom, 2)
                     Spacer()
                 }
@@ -38,14 +38,12 @@ struct GiverDonCardSheet: View {
                 
                 HStack {
                     Text("송금할 금액")
-                        .font(.system(size: 15, weight: .heavy))
                     Spacer()
                     Text("나의 정산 총액")
-                        .font(.system(size: 15, weight: .heavy))
                         .opacity(0.3)
                 }
                 .padding(.horizontal)
-                .font(.system(size: 15, weight: .bold))
+                .font(.system(size: 13, weight: .medium))
                 HStack {
                     HStack(alignment: .bottom, spacing: 2) {
                         Text("100000")
@@ -180,12 +178,11 @@ struct GiverDonCardSheetCell: View {
                     Spacer()
                     HStack(spacing: 2) {
                         Text("\(totalPayment)원")
-                            .font(.system(size: 13, weight: .bold))
                             .foregroundColor(Color(hex: "585656"))
                         Text("/\(number)명")
-                            .font(.system(size: 13, weight: .bold))
                             .foregroundColor(Color(hex: "0A84FF"))
                     }
+                    .font(.system(size: 13, weight: .medium))
                 }
                 HStack {
                     Text(date)
