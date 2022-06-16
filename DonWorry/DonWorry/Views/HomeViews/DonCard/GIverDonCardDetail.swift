@@ -27,17 +27,6 @@ struct GiverDonCardDetail: View {
                 .font(.system(size: 13, weight: .light))
             Text("\(currentUser.giveMoney!)원")
                 .font(.system(size: 20, weight: .heavy))
-            
-            VStack {
-                Image(systemName: "chevron.left.2")
-                    .rotationEffect(.degrees(90))
-                Spacer().frame(height: 5)
-                // 우선 슬라이드해서 보내는 기능은 미구현, 우선 버튼으로
-                Text("슬라이드해서 보내기")
-                    .font(.system(size: 8, weight: .semibold))
-            }
-            .offset(y: 10)
-            .opacity(0.35)
         }
         .foregroundColor(.white)
     }
