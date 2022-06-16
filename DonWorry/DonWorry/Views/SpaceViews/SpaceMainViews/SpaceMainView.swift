@@ -22,8 +22,6 @@ struct SpaceMainView: View {
     @State var isEditSpaceNaveViewOpened = false
     @State var isShareSheetPresented = false
     @State var checkedArray: [Int] = []
-
-    @State var currentUser = user4
     @State var spaceName = "MC2 첫 회식"
     @Binding var spaceID: String
     

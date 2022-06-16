@@ -34,3 +34,7 @@ var spaces: [Space] = [
           admin: "lumi"
          )
 ]
+
+
+// switches -> 나중에 space list 불러와서 바꾸기!
+var switches = ["MC2 트라잇 모임", "MC2 번개모임", "밤샘코딩", "떱떱해모임"]

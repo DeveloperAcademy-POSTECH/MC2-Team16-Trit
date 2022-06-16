@@ -12,17 +12,19 @@ struct TakerDonCard: View {
     var body: some View {
         ZStack(alignment: .leading) {
             BasicRoundRec(color: .takerDonCardColor)
-            TakerDonCardDetail(currentUser: currentUser)
+//            TakerDonCardDetail(currentUser: currentUser)
         }
     }
 }
 
-struct TakerCard_Previews: PreviewProvider {
-    static var previews: some View {
-        TakerDonCard(currentUser: user4)
-    }
-}
+//struct TakerCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TakerDonCard(currentUser: user4)
+//    }
+//}
 
+// TODO: 이거아래로쓰긴해야함!
+/*
 func makeGiverList(users: [User], contentUser: User) -> [User] {
     var giverlist: [User] = []
     users.forEach {
@@ -51,3 +53,4 @@ func makeDisplayGiverList(users: [User], contentUser: User) -> [User] {
     }
     return giverlist
 }
+*/

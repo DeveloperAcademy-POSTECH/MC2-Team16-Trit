@@ -14,7 +14,9 @@ struct ParticipateDonCard: View {
     //    @Binding var spaceID: String
     
     var body: some View {
-        NavigationLink(tag: "SpaceMainView", selection: $naviSelection, destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID")) }) {
+        NavigationLink(tag: "SpaceMainView",
+                       selection: $naviSelection,
+                       destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID")) }) {
             Button {
                 naviSelection = "SpaceMainView"
             } label: {

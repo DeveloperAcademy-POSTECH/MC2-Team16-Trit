@@ -16,15 +16,15 @@ struct TermView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
 
     var isDisable: Bool {
-        !termsOfService.filter { $0.isEssential }.allSatisfy { $0.isChecked }
+        !termsOfService.filter { $0.isEssential }.allSatisfy { $0.isAgreed }
     }
 
 //    @State private var termsOfService = [
-//        Term(title: "만 14세 이상입니다.", content: "만 14세 이상입니다. 내용", isEssential: true, isChecked: false, showContent: false),
-//        Term(title: "돈워리 서비스 이용약관 동의", content: "돈워리 서비스 이용약관 동의 내용", isEssential: true, isChecked: false, showContent: false),
-//        Term(title: "돈워리 개인정보 수집 및 이용 동의", content: "돈워리 개인정보 수집 및 이용 동의 내용", isEssential: true, isChecked: false, showContent: false),
-//        Term(title: "돈워리 개인정보 제 3자 제공 동의", content: "돈워리 개인정보 제 3자 제공 동의 내용", isEssential: false, isChecked: false, showContent: false),
-//        Term(title: "이벤트 알림 수신 동의", content: "이벤트 알림 수신 동의 내용", isEssential: false, isChecked: false, showContent: false)
+//        Term(title: "만 14세 이상입니다.", content: "만 14세 이상입니다. 내용", isEssential: true, isAgreed: false, showContent: false),
+//        Term(title: "돈워리 서비스 이용약관 동의", content: "돈워리 서비스 이용약관 동의 내용", isEssential: true, isAgreed: false, showContent: false),
+//        Term(title: "돈워리 개인정보 수집 및 이용 동의", content: "돈워리 개인정보 수집 및 이용 동의 내용", isEssential: true, isAgreed: false, showContent: false),
+//        Term(title: "돈워리 개인정보 제 3자 제공 동의", content: "돈워리 개인정보 제 3자 제공 동의 내용", isEssential: false, isAgreed: false, showContent: false),
+//        Term(title: "이벤트 알림 수신 동의", content: "이벤트 알림 수신 동의 내용", isEssential: false, isAgreed: false, showContent: false)
 //    ]
 
     var body: some View {
@@ -45,16 +45,16 @@ struct TermView: View {
             ScrollView {
                 HStack {
                     Button {
-                        let isAllChecked = termsOfService.allSatisfy { $0.isChecked }
+                        let isAllChecked = termsOfService.allSatisfy { $0.isAgreed }
                         for i in 0..<termsOfService.count {
                             withAnimation {
                                 if isAllChecked {
                                     // 모두 체크되어있으면 다 빼기
-                                    termsOfService[i].isChecked = false
+                                    termsOfService[i].isAgreed = false
                                     
                                 } else {
                                     // 하나라도 체크 안되어있으면 모두 체크하기
-                                    termsOfService[i].isChecked = true
+                                    termsOfService[i].isAgreed = true
                                 }
                             }
                         }
@@ -62,7 +62,7 @@ struct TermView: View {
                         
                         HStack {
                             Image(systemName: "circle.fill")
-                                .foregroundColor(termsOfService.allSatisfy { $0.isChecked } ? Color.blueMain : Color.grayE7)
+                                .foregroundColor(termsOfService.allSatisfy { $0.isAgreed } ? Color.blueMain : Color.grayE7)
                                 .padding(.trailing, 5)
                             Text("전체 동의하기")
                                 .font(.system(size: 17, weight: .bold))
@@ -114,7 +114,7 @@ struct TermView: View {
 //        .slideOverCard(isPresented: $showSheet, onDismiss: {
 //            showSheet = false
 //        }) {
-//            TermSheetView(agreedTerms: termsOfService.filter { $0.isChecked }, showSheet: $showSheet)
+//            TermSheetView(agreedTerms: termsOfService.filter { $0.isAgreed }, showSheet: $showSheet)
 //                .environmentObject(vm)
 //        }
     }

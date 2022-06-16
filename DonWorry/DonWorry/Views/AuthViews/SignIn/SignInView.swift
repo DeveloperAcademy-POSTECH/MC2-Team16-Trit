@@ -20,12 +20,12 @@ struct SignInView: View {
     @AppStorage("SignIn Status") var log_status = true // SignIn상태 저장
 
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
 
     
     var body: some View {
 
-        if viewModel.didAuthenticateUser {
+        if authViewModel.didAuthenticateUser {
 
             UserInfoView()
 
@@ -69,14 +69,14 @@ struct SignInView: View {
                     //                            LoginButtonView(company: company)
                     //                        }
                     //                    }
-                    // MARK: Test용 Button (추후에 UI Design이 수정될 것 같아 임시로 기능 확인을 위해 만들었습니다.)
                     VStack {
                         ZStack {
                             RoundedRectangle(cornerRadius: 25)
                                     .frame(width: 280, height: 45)
                                     .foregroundColor(.white)
+                            
                             Button {
-                                googleHandleLogin() // Google Social Login function
+                                authViewModel.googleLogin()
                             } label: {
                                 HStack(alignment: .center) {
 
@@ -91,17 +91,18 @@ struct SignInView: View {
                                         .frame(width: 280, height: 45)
                                         .background(.clear)
                             }
+                            
                         }
 
                         // Apple SignIn Butoon 입니다.
                         // Xcode에서 SignInWithAppleButton이라는 컴포넌트를 지원합니다.
-                        SignInWithAppleButtonView()
-                                .cornerRadius(25)
-                                .font(.system(size: 30, weight: .medium))
-                                .frame(width: 280, height: 50)
-                                .onTapGesture {
-                                    showAppleLogin()
-                                }
+//                        SignInWithAppleButtonView()
+//                                .cornerRadius(25)
+//                                .font(.system(size: 30, weight: .medium))
+//                                .frame(width: 280, height: 50)
+//                                .onTapGesture {
+//                                    showAppleLogin()
+//                                }
                     }
                 }
             }

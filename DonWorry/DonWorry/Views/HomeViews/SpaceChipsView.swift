@@ -14,6 +14,8 @@ struct SpaceChipsView: View {
         return string.widthOfString(font: .systemFont(ofSize: 13, weight: .bold))
     }
     
+   
+    
     @Binding var selection: String
     let screen = UIScreen.main.bounds
     var al = 23

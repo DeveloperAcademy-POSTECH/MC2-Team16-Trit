@@ -20,7 +20,7 @@ struct SpaceEmptyView: View {
     @State var isShareSheetPresented = false
     
     // DATA Model 이후
-    @State var currentUser = user4
+//    @State var currentUser = user4
     @State var spaceName = "MC2 첫 회식"
     @Binding var spaceID: String
     @Binding var isPopUpPresented: Bool
@@ -28,7 +28,7 @@ struct SpaceEmptyView: View {
     var body: some View {
         
         if isHomeView == true {
-            HomeView(currentUser: currentUser)
+            HomeView()
         } else {
             NavigationView {
                 ZStack(alignment: .bottom) {

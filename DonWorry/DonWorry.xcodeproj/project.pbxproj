@@ -101,6 +101,10 @@
 		A7C052A328561A66007072EE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A7C052A228561A66007072EE /* FirebaseFirestore */; };
 		A7C052A528561A66007072EE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7C052A428561A66007072EE /* FirebaseFirestoreSwift */; };
 		A7C052A728561A66007072EE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A7C052A628561A66007072EE /* FirebaseStorage */; };
+		A7E0733C285B0DBF009EA127 /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0733B285B0DBF009EA127 /* Transfer.swift */; };
+		A7E0733E285B0DCB009EA127 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0733D285B0DCB009EA127 /* Account.swift */; };
+		A7E07340285B0DD5009EA127 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0733F285B0DD5009EA127 /* Payment.swift */; };
+		A7E07342285B0DDE009EA127 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07341285B0DDE009EA127 /* Space.swift */; };
 		A7F363382859738A00012CD3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3E39E892285374F800D8E44C /* FirebaseFirestore */; };
 		A7F3633A2859813200012CD3 /* TransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F363392859813200012CD3 /* TransferViewModel.swift */; };
 		A7F3633C285984BC00012CD3 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F3633B285984BC00012CD3 /* PaymentViewModel.swift */; };
@@ -224,6 +228,10 @@
 		A7C0529928560B3D007072EE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		A7C0529B28560D45007072EE /* UIApplicationExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtention.swift; sourceTree = "<group>"; };
 		A7C0529D2856185C007072EE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		A7E0733B285B0DBF009EA127 /* Transfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
+		A7E0733D285B0DCB009EA127 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		A7E0733F285B0DD5009EA127 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		A7E07341285B0DDE009EA127 /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		A7F363392859813200012CD3 /* TransferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewModel.swift; sourceTree = "<group>"; };
 		A7F3633B285984BC00012CD3 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleProgressBar.swift; sourceTree = "<group>"; };
@@ -534,6 +542,10 @@
 		A7447992284759A60083BBF4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A7E07341285B0DDE009EA127 /* Space.swift */,
+				A7E0733F285B0DD5009EA127 /* Payment.swift */,
+				A7E0733B285B0DBF009EA127 /* Transfer.swift */,
+				A7E0733D285B0DCB009EA127 /* Account.swift */,
 				A74479A028476ADA0083BBF4 /* User.swift */,
 				2CC2118B2849F1CF0009F785 /* Term.swift */,
 				A704FC39284DF28900AC9736 /* Alert.swift */,
@@ -878,6 +890,7 @@
 				A74479B12847A8190083BBF4 /* SmallButton.swift in Sources */,
 				79BF17B3284D977C003A2A68 /* EditSpaceNameView.swift in Sources */,
 				A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */,
+				A7E07340285B0DD5009EA127 /* Payment.swift in Sources */,
 				4D6229CA2849295300A8E24C /* ImageManager.swift in Sources */,
 				3E208738284F6C98003A4CFD /* AppleLoginViewModel.swift in Sources */,
 				A74479AD2847A0580083BBF4 /* LargeButton.swift in Sources */,
@@ -889,9 +902,8 @@
 				79BF17A8284D0209003A2A68 /* TextExtension.swift in Sources */,
 				2CC211862849F1230009F785 /* TermView.swift in Sources */,
 				79BF1799284CFF40003A2A68 /* Modifiers.swift in Sources */,
-				A74479A328476ADE0083BBF4 /* FileServices.swift in Sources */,
 				79BF17A3284D002B003A2A68 /* AddCardTitleViewButton.swift in Sources */,
-				79BF17A3284D002B003A2A68 /* SpaceMainCalculateStartButton.swift in Sources */,
+				79BF17A3284D002B003A2A68 /* AddCardTitleViewButton.swift in Sources */,
 				A7B08C462858E17100A5D921 /* AccountViewModel.swift in Sources */,
 				7991F9FE28487E2B00DCAFB8 /* SpaceMainView.swift in Sources */,
 				2CC211862849F1230009F785 /* TermView.swift in Sources */,
@@ -918,6 +930,7 @@
 				79BF179D284CFF83003A2A68 /* ImageExtension.swift in Sources */,
 				C0936BFD284876800064CEFA /* ParticipateDonCard.swift in Sources */,
 				3EBC815D2843522900794955 /* ContentView.swift in Sources */,
+				A7E0733E285B0DCB009EA127 /* Account.swift in Sources */,
 				2CC211B7284CE9880009F785 /* TermSheetView.swift in Sources */,
 				A74479C22847E3760083BBF4 /* ChipButton.swift in Sources */,
 				A7133C2C285032DE006ED054 /* GrayLine.swift in Sources */,
@@ -926,15 +939,16 @@
 				2CC2118C2849F1CF0009F785 /* Term.swift in Sources */,
 				2CC211B0284C6A690009F785 /* AppleLoginButton.swift in Sources */,
 				79BF17A2284D002B003A2A68 /* SpaceMainBottomButton.swift in Sources */,
+				A7E0733C285B0DBF009EA127 /* Transfer.swift in Sources */,
 				3E39E89728539A1F00D8E44C /* SpaceViewModel.swift in Sources */,
 				A704FC3A284DF28900AC9736 /* Alert.swift in Sources */,
 				2CC68CB5285783CE0027DAED /* UIApplicationExtension.swift in Sources */,
 				A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */,
-				A7133C3F2850CD8D006ED054 /* Payment.swift in Sources */,
 				3E39E8A028562E1F00D8E44C /* AdditionUserInfoTest.swift in Sources */,
 				4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */,
 				2C3C3EA32854946700B29181 /* UserStateViewModel.swift in Sources */,
 				A704FC44284F6B5200AC9736 /* ShareSheet.swift in Sources */,
+				A7E07342285B0DDE009EA127 /* Space.swift in Sources */,
 				C0DBFADD28525D6C004650F1 /* GIverDonCardDetail.swift in Sources */,
 				C09C89712849101700E2A929 /* TakerDonCard.swift in Sources */,
 				A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */,
@@ -1119,8 +1133,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = 9QKHF269WJ;
-				DEVELOPMENT_TEAM = 2S73QX9MMY;
+				DEVELOPMENT_TEAM = 562Z37RH3N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DonWorry/Info.plist;
@@ -1134,8 +1147,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-220301.DonWorry";
-				PRODUCT_BUNDLE_IDENTIFIER = "-0220301.DonWorry.lum2";
+				PRODUCT_BUNDLE_IDENTIFIER = "-0220301.DonWorry.lum3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1152,8 +1164,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DonWorry/Preview Content\"";
-				DEVELOPMENT_TEAM = 9QKHF269WJ;
-				DEVELOPMENT_TEAM = 2S73QX9MMY;
+				DEVELOPMENT_TEAM = 562Z37RH3N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DonWorry/Info.plist;
@@ -1167,8 +1178,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-220301.DonWorry";
-				PRODUCT_BUNDLE_IDENTIFIER = "-0220301.DonWorry.lum2";
+				PRODUCT_BUNDLE_IDENTIFIER = "-0220301.DonWorry.lum3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1351,10 +1361,6 @@
 			package = 3E20872D284DA5F3003A4CFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
 		};
-		4DC4BEBA285ADC5C0033665A /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4DC4BEB9285ADC5C0033665A /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
 		3E39E892285374F800D8E44C /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3E39E891285374F800D8E44C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1363,6 +1369,11 @@
 		3E3C10B3285752A700FAF79A /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FirebaseFirestoreSwift;
+		};
+		4DC4BEBA285ADC5C0033665A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC4BEB9285ADC5C0033665A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		A704FC41284E01E400AC9736 /* SlideOverCard */ = {
 			isa = XCSwiftPackageProductDependency;

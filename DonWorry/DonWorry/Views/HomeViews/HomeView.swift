@@ -27,8 +27,6 @@ struct HomeView: View {
         spaceID.isEmpty
     }
 
-    var currentUser: User
-
     var body: some View {
         ZStack {
             VStack {
@@ -43,7 +41,7 @@ struct HomeView: View {
                         Button {
                             self.naviSelection = "ProfileView"
                         } label: {
-                            Image(authViewModel.currentUser.profileImage)
+                            Image(authViewModel.currentUser.image)
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 50, height: 50)
@@ -76,7 +74,8 @@ struct HomeView: View {
                 .padding(.bottom, 25)
                 .padding(.horizontal, 30)
 
-                // profileView
+               
+                /* SPACE/CARDVIEW -> 전체 수정 필요
                 SpaceChipsView(selection: $selection)
                 if authViewModel.currentUser.participant == selection {
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -113,10 +112,16 @@ struct HomeView: View {
                     ParticipateDonCard(isParticipateIn: true, naviSelection: $naviSelection)
                 }
                 Spacer()
+                */
+                 
+                 
             }
             .padding(.top)
 
-            NavigationLink(tag: "SpaceMainView", selection: $naviSelection, destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("3jcdsuhceuji2cndjwkskajcnc")) }, label: { EmptyView() })
+            NavigationLink(tag: "SpaceMainView",
+                           selection: $naviSelection,
+                           destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: $spaceID) }, label: { EmptyView() })
+            
                 .isDetailLink(false)
 
             VStack {
@@ -147,6 +152,7 @@ struct HomeView: View {
             OverMaxSpaceTopToastMessage()
         })
         .onAppear {
+            self.authViewModel.fetchUser()
             UIApplication.shared.hideKeyboard()
         }
         .ignoresSafeArea(.keyboard)
