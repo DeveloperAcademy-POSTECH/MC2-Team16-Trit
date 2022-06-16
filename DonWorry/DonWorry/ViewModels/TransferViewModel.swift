@@ -162,18 +162,15 @@ class TransferViewModel: ObservableObject {
     // MARK: 송금완료처리
     // parmas
     // > transferID: transferID (송금완료시키려는 tranfer의 ID)
-    func setTransferCompleted() {
+    func setTransferCompleted(transferID: String) {
         
-        /*
-        let docRef = db.collection(트랜스퍼).document(트랜스퍼아이디)
-        do {
-            try docRef.setData(isCompleted 를 바꾸는 코드 )
+        let transferRef = db.collection("Transfer").document(transferID)
+        
+        transferRef.setData(["isCompleted" : true], merge: true) { error in
+            if let error = error {
+                print("송금완료처리 실패")
+                print(error.localizedDescription)
+            }
         }
-        catch {
-            print(error)
-        }
-         */
-
     }
-    
 }
