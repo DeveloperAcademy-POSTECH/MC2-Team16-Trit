@@ -4,7 +4,7 @@
 //
 //  Created by Hankyu Lee on 2022/06/05.
 //
-//
+// https://www.patreon.com/posts/early-access-to-48191919
 import SwiftUI
 import PhotosUI
 
@@ -12,15 +12,16 @@ struct CardDetailView: View {
     
     @State var isShowingDialog = false
     @State var isShowingAlert = false
-    @State private var images: [UIImage] = [UIImage(named: "user1")!]
     @State private var isPhotoPickerShow = false
     @State private var clickedIndex = 0
     @State private var isEditMode = false
     
+    @StateObject var homeData = HomeViewModel()
+    
     var body: some View {
         
             VStack(alignment: .leading) {
-                
+
                 Group {
                     HStack(alignment: .center, spacing: 10) {
                         Image("chicken-leg")
@@ -140,12 +141,17 @@ struct CardDetailView: View {
                 
         }
         .padding([.leading, .trailing], 25)
+        .sheet(isPresented: $homeData.showImageViewer, content: {
+            CardDetailImageView()
+                .environmentObject(homeData)
+        })
         .sheet(isPresented: $isPhotoPickerShow) {
             let configuration = PHPickerConfiguration.config
             PhotoPicker(index: $clickedIndex, configuration: configuration,
-                        images: $images,
+                        images: $homeData.allImages,
                         isPresented: $isPhotoPickerShow)
         }
+        
     }
     
     private var imageBox: some View {
@@ -154,53 +160,59 @@ struct CardDetailView: View {
                 HStack {
                     LazyHGrid(rows: [GridItem(.fixed(340.0))], spacing: 20) {
                         ForEach(0..<3) { index in
-                            if images.count >= index {
-                                Button {
-                                    showPhotoPicker(index: index)
-                                } label: {
-                                        RoundedRectangle(cornerRadius: 10)
+                            if homeData.allImages.count >= index {
+                                RoundedRectangle(cornerRadius: 10)
+                                
+                                    .fill(index >= homeData.allImages.count && isEditMode ? Color.grayBC : Color.clear)
+                                .frame(width: 100, height: 100)
+                                
+                            // 사진 하나 있어도 두개보여준다. 에딧 모드일때만.
+                                .overlay(
+                                    ZStack(alignment: .topTrailing) {
                                         
-                                        .fill(index >= images.count && isEditMode ? Color.grayBC : Color.clear)
-                                        .frame(width: 100, height: 100)
+                                        if index < homeData.allImages.count { // 사진이 있으면 보여준다.
+                                                
+                                                Image(uiImage: homeData.allImages[index])
+                                                    .resizable()
+                                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 10)
+                                                            .stroke(Color.grayBC, lineWidth: 1)
+                                                    )
+                                                    
+                                            }
                                         
-                                    // 사진 하나 있어도 두개보여준다. 에딧 모드일때만.
-                                        .overlay(
-                                            ZStack(alignment: .topTrailing) {
-                                                    if index < images.count { // 사진이 있으면 보여준다.
-                                                        Image(uiImage: images[index])
-                                                            .resizable()
+                                            if isEditMode { // 수정중일때만 보여준다.
+                                                if index < homeData.allImages.count { // 사진이 있으면 보여준다.
+                                                    Button {
+                                                        removeImage(index: index)
+                                                    } label: {
+                                                        Image(systemName: "xmark")
+                                                            .font(.headline)
+                                                            .padding(5)
+                                                            .foregroundColor(.white)
+                                                            .background(Color.black.opacity(0.5))
                                                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                            
-                                                            .overlay(
-                                                                RoundedRectangle(cornerRadius: 10)
-                                                                    .stroke(Color.grayBC, lineWidth: 1)
-                                                            )
-                                                            
+                                                            .padding(5)
                                                     }
-                                                    if isEditMode { // 수정중일때만 보여준다.
-                                                        if index < images.count { // 사진이 있으면 보여준다.
-                                                            Button {
-                                                                removeImage(index: index)
-                                                            } label: {
-                                                                Image(systemName: "xmark")
-                                                                    .font(.headline)
-                                                                    .padding(5)
-                                                                    .foregroundColor(.white)
-                                                                    .background(Color.black.opacity(0.5))
-                                                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                                    .padding(5)
-                                                            }
-                                                        } else { // 사진없으면
-                                                            Image(systemName: "plus")
-                                                                .font(.largeTitle.weight(.light))
-                                                                .foregroundColor(Color.white)
-                                                                
-                                                        }
-                                                    }
+                                                } else { // 사진없으면
+                                                    Image(systemName: "plus")
+                                                        .font(.largeTitle.weight(.light))
+                                                        .foregroundColor(Color.white)
                                                 }
-                                        )
+                                            }
+                                        }
+                                )
+                                .onTapGesture {
+                                    if isEditMode {
+                                        showPhotoPicker(index: index)
+                                    } else {
+                                        withAnimation(.easeInOut) {
+                                            homeData.selectedImageID = index
+                                            homeData.showImageViewer.toggle()
+                                        }
+                                    }
                                 }
-                                .disabled(!isEditMode)
                             } else {
                                 EmptyView()
                             }
@@ -224,10 +236,38 @@ struct CardDetailView_Previews: PreviewProvider {
 extension CardDetailView {
     
     private func removeImage(index: Int) {
-        images.remove(at: index)
+        homeData.allImages.remove(at: index)
     }
     private func showPhotoPicker(index: Int) {
         clickedIndex = index
         isPhotoPickerShow = true
     }
 }
+
+// TODO: 모델 들어오면 없어질 ViewModel
+class HomeViewModel: ObservableObject {
+    
+    @Published var allImages: [UIImage] = [UIImage(named: "chicken-leg")!]
+    @Published var showImageViewer = false
+    @Published var selectedImageID: Int = 0
+    @Published var imageViewerOffset: CGSize = .zero
+
+    @Published var imageScale: CGFloat = 1
+    
+    func onEnd(value: DragGesture.Value) {
+        withAnimation(.easeInOut) {
+            var translation = value.translation.height
+            if translation < 0 {
+                translation = -translation
+            }
+            if translation < 250 {
+                imageViewerOffset = .zero
+            } else {
+                showImageViewer.toggle()
+                imageViewerOffset = .zero
+            }
+
+        }
+    }
+}
+
