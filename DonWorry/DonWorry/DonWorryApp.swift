@@ -21,7 +21,6 @@ struct DonWorryApp: App {
             NavigationView{
                 ContentView()
                     .environmentObject(AuthViewModel())
-                    .environmentObject(AccountViewModel())
             }
         }
     }

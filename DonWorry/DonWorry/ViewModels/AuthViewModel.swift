@@ -26,7 +26,7 @@ class AuthViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
-    @EnvironmentObject var accountViewModel: AccountViewModel
+//    @EnvironmentObject var accountViewModel: AccountViewModel
     
     private var tempUserSession = Auth.auth().currentUser // 회원가입시, 추가정보 이용을 위해 사용
     private var db = Firestore.firestore()
