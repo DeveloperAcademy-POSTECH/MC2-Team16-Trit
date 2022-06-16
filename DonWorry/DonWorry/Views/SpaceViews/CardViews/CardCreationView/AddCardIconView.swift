@@ -56,6 +56,7 @@ struct AddCardIconView: View {
                                 }
                             }
                         }
+                        .padding(.bottom, 110)
                         .padding(.horizontal, 30)
                     }
                     

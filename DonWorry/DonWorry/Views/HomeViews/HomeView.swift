@@ -15,6 +15,7 @@ struct HomeView: View {
     @State var isPresented : Bool = false // Space 입장 ID 입력 Sheet
     @State private var giverDonCardSheetState = false
     @State private var takerDonCardSheetState = false
+    @State private var overMaxSpaceNumber = false
     
     @State private var naviSelection: String? = nil // SpaceMainView에서 HomeView로 한번에 dismiss시키기 위한 변수
     @FocusState private var isFocused: Bool
@@ -124,12 +125,24 @@ struct HomeView: View {
                     
                     NavigationLink(destination: AddSpaceView(naviSelection: $naviSelection),
                                    tag: "AddSpaceView",
-                                   selection: $naviSelection) { MediumButton(text: "스페이스 만들기", clicked: { self.naviSelection = "AddSpaceView" }) }
+                                   selection: $naviSelection) { MediumButton(text: "스페이스 만들기", clicked: {
+                        if switches.count == 5 {
+                            print("스페이스 최대개수를 초과하셨습니다")
+                            overMaxSpaceNumber.toggle()
+                        } else {
+                            self.naviSelection = "AddSpaceView"
+                        }
+                        
+                    
+                    }) }
                         .isDetailLink(false)
                 }
                 .padding(.bottom)
             }
         }
+        .popup(isPresented: $overMaxSpaceNumber, type: .floater(verticalPadding: 10), position: .top, animation: .spring(), autohideIn: 1, closeOnTap: true, closeOnTapOutside: true, view: {
+            OverMaxSpaceTopToastMessage()
+        })
         .onAppear {
             UIApplication.shared.hideKeyboard()
         }
