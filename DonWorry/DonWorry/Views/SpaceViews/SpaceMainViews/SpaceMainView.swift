@@ -33,7 +33,7 @@ struct SpaceMainView: View {
         ZStack(alignment: .bottom) {
             VStack {
                 
-                SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
+                SpaceTopView(naviSelection: $naviSelection, spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
                     .padding(.vertical, 21)
                 
                 ScrollView {
