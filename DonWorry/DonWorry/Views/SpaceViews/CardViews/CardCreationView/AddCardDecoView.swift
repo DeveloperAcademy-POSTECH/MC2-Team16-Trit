@@ -65,7 +65,9 @@ struct AddCardDecoView: View {
     }
     
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
-    var paymentIcon: Image?
+    var paymentIcon: Image {
+        Image(category)
+    }
     
     var body: some View {
         VStack {

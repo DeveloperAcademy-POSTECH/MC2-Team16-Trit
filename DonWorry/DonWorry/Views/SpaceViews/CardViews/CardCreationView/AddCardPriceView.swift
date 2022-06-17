@@ -31,7 +31,9 @@ struct AddCardPriceView: View {
     let paymentTitle: String
     let category: String
     let spaceID: String
-    let paymentIcon = Image("category")
+    var paymentIcon: Image {
+        Image(category)
+    }
     
     var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
