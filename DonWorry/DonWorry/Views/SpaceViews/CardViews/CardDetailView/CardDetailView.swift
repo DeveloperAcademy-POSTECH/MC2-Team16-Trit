@@ -4,42 +4,69 @@
 //
 //  Created by Hankyu Lee on 2022/06/05.
 //
-//
+// https://www.patreon.com/posts/early-access-to-48191919
 import SwiftUI
 import PhotosUI
 
 struct CardDetailView: View {
     
+    let admin = true
     @State var isShowingDialog = false
     @State var isShowingAlert = false
-    @State private var images: [UIImage] = [UIImage(named: "user1")!]
     @State private var isPhotoPickerShow = false
     @State private var clickedIndex = 0
     @State private var isEditMode = false
+    @State private var cantDeleteAlert = false
+//    @State private var isEditPrice = false
+//    @State private var isEditAccount = false
+    
+    @StateObject var imageVM = detailImageViewModel()
     
     var body: some View {
         
-            VStack(alignment: .leading) {
-                
+        VStack(alignment: .leading, spacing: 0) {
+
                 Group {
-                    HStack(alignment: .center, spacing: 10) {
-                        Image("chicken-leg")
-                            .applyRectangleImageModifier(width: 25, height: 25, background: Color.grayEE.opacity(0.51))
-                        Text("유쓰네 택시")
-                            .applyTextWithLineLimitModifier(size: 20, weight: .heavy, color: .black)
+                    HStack(spacing: 10) {
+                        
                         Spacer()
                         Button {
                             isShowingDialog = true
                         } label: {
+                            
                             Image(systemName: "ellipsis")
+                                .padding(.top, 40)
                                 .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(.black)
                         }
                     }
-                    .padding(.top, 50)
-                    Text("총 102,000원")
-                        .applyTextWithLineLimitModifier(size: 30, weight: .heavy, color: .black)
-                        .padding(.bottom, 6.5)
+                    
+                    HStack(spacing: 8) {
+                        Image("chicken-leg")
+                            .applyRectangleImageModifier(width: 37, height: 37, background: Color.grayEE.opacity(0.51))
+                        Text("유쓰네 택시")
+                            .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
+                    }
+                    .padding(.top, 49)
+                    HStack(alignment: .firstTextBaseline, spacing: 14) {
+                        Text("102,000원")
+                            .applyTextWithLineLimitModifier(size: 26, weight: .heavy, color: .black)
+                        Text("나왔어요!")
+                            .applyTextWithLineLimitModifier(size: 17, weight: .medium, color: .black)
+//                        Spacer()
+//                        if admin {
+//                            Button {
+//                                isEditPrice = true
+//                            } label: {
+//                                Image(systemName: "pencil")
+//                                    .font(.system(size: 16, weight: .semibold, design: .default))
+//                                    .foregroundColor(.black)
+//                            }
+//
+//                        }
+                    }
+                    .padding(.top, 14)
+                    .padding(.bottom, 19)
                 }
                 
                 Divider()
@@ -47,58 +74,27 @@ struct CardDetailView: View {
                     .background(Color.grayEE)
                 
                 Group {
-                    Text("정산자")
-                        .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
-                        .padding(.top, 20)
                     HStack {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("우리은행")
-                                    .applyTextWithLineLimitModifier(size: 13, weight: .bold, color: .grayAccount)
-                                Button {
-                                    print("copy!")
-                                } label: {
-                                    Image(systemName: "doc.on.doc")
-                                        .foregroundColor(.grayWithBlue)
-                                        .font(Font.system(size: 15, weight: .medium))
-                                }
-                                .padding(.leading, 5)
-                            }
-                            .padding(.bottom, 5)
-                            HStack {
-                                Text("42991010090307")
-                                    .applyTextWithLineLimitModifier(size: 13, weight: .regular, color: .grayAccount)
-                                Text("(이한규)")
-                                    .applyTextWithLineLimitModifier(size: 13, weight: .regular, color: .grayAccount)
-                            }
+                        
+                        HStack {
+                            Text("정산자")
+                                .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
+                            }.padding(.top, 39)
                         }
-                        Spacer()
-                        VStack(spacing: 4) {
-                            Image("chicken-leg")
-                                .applyClipCircleModifier(width: 35, height: 35, background: .black, innerPadding: 5)
-                            Text("김유쓰")
-                                .applyTextWithLineLimitModifier(size: 13, weight: .bold, color: .black)
-                        }
-
-                    }
-                    .padding(20)
-                    .frame(width: 340, height: 90, alignment: .leading)
-                    .background(Color.grayF0)
-                    .cornerRadius(8)
-                    .padding(.top, 10)
+                    CardDetailAccountView(isAdmin: admin)
                 }
                 
                 Group {
                     Text("정산 참가자")
                         .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
-                        .padding(.top, 36)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 25)
+                        .padding(.top, 30)
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: [GridItem(.fixed(30.0))], spacing: 35) {
                             ForEach(0..<4, id: \.self) { _ in
                                 VStack(spacing: 13) {
-                                    Image("chicken-leg")
-                                        .applyClipCircleModifier(width: 35, height: 35, background: .yellow)
+                                    Image("user1")
+                                        .applyClipCircleModifier(width: 35, height: 35)
                                     Text("정루미")
                                         .applyTextWithLineLimitModifier(size: 17, weight: .regular, color: .black)
                                     // ToDo: 이름을 몇글자 까지 보여줄 것인지 정하기
@@ -108,21 +104,36 @@ struct CardDetailView: View {
                     }
                     .frame(maxHeight: 80)
                 }
+
             Group {
-                Text("첨부 사진")
-                    .applyTextWithLineLimitModifier(size: 17, weight: .heavy, color: .black)
-                    .padding(.top, 50)
-                    .padding(.bottom, 15)
+                HStack {
+                    Text("첨부 사진")
+                        .applyTextWithLineLimitModifier(size: 17, weight: .heavy, color: .black)
+                    Spacer()
+                    if admin {
+                        Button {
+                            isEditMode.toggle()
+                        } label: {
+                            Image(systemName: "pencil")
+                                .font(.system(size: 16, weight: .semibold, design: .default))
+                                .foregroundColor(.black)
+                        }
+                    }
+                }
+                .padding(.top, 70)
+                .padding(.bottom, 24)
+                
                 imageBox
             }
             Spacer()
             .confirmationDialog("", isPresented: $isShowingDialog, titleVisibility: .hidden) {
-                            Button("카드 수정") {
-                               print("카드 수정")
-                                isEditMode = true
-                            }
+
                             Button("카드 삭제") {
-                                isShowingAlert = true
+                                if admin {
+                                    isShowingAlert = true
+                                } else {
+                                    cantDeleteAlert = true
+                                }
                             }
                             Button("Cancel", role: .cancel) {}
                        }
@@ -137,13 +148,22 @@ struct CardDetailView: View {
                 Text("삭제하시겠습니까?")
                     .font(.system(size: 13, weight: .regular))
             })
+            .alert("참가자는 삭제할 수 없습니다.", isPresented: $cantDeleteAlert) {
+                Button("확인") {}
+            } message: {
+                Text("")
+            }
                 
         }
         .padding([.leading, .trailing], 25)
+        .sheet(isPresented: $imageVM.showImageViewer, content: {
+            CardDetailImageView()
+                .environmentObject(imageVM)
+        })
         .sheet(isPresented: $isPhotoPickerShow) {
             let configuration = PHPickerConfiguration.config
             PhotoPicker(index: $clickedIndex, configuration: configuration,
-                        images: $images,
+                        images: $imageVM.allImages,
                         isPresented: $isPhotoPickerShow)
         }
     }
@@ -154,53 +174,57 @@ struct CardDetailView: View {
                 HStack {
                     LazyHGrid(rows: [GridItem(.fixed(340.0))], spacing: 20) {
                         ForEach(0..<3) { index in
-                            if images.count >= index {
-                                Button {
-                                    showPhotoPicker(index: index)
-                                } label: {
-                                        RoundedRectangle(cornerRadius: 10)
+                            if imageVM.allImages.count >= index {
+                                RoundedRectangle(cornerRadius: 10)
+                                
+                                    .fill(index >= imageVM.allImages.count && isEditMode ? Color.grayBC : Color.clear)
+                                .frame(width: 100, height: 100)
+                                
+                            // 사진 하나 있어도 두개보여준다. 에딧 모드일때만.
+                                .overlay(
+                                    ZStack(alignment: .topTrailing) {
                                         
-                                        .fill(index >= images.count && isEditMode ? Color.grayBC : Color.clear)
-                                        .frame(width: 100, height: 100)
-                                        
-                                    // 사진 하나 있어도 두개보여준다. 에딧 모드일때만.
-                                        .overlay(
-                                            ZStack(alignment: .topTrailing) {
-                                                    if index < images.count { // 사진이 있으면 보여준다.
-                                                        Image(uiImage: images[index])
-                                                            .resizable()
+                                        if index < imageVM.allImages.count { // 사진이 있으면 보여준다.
+                                                
+                                                Image(uiImage: imageVM.allImages[index])
+                                                    .resizable()
+                                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 10)
+                                                            .stroke(Color.grayBC, lineWidth: 1)
+                                                    )
+                                            }
+                                            if isEditMode { // 수정중일때만 보여준다.
+                                                if index < imageVM.allImages.count { // 사진이 있으면 보여준다.
+                                                    Button {
+                                                        removeImage(index: index)
+                                                    } label: {
+                                                        Image(systemName: "xmark")
+                                                            .font(.headline)
+                                                            .padding(5)
+                                                            .foregroundColor(.white)
+                                                            .background(Color.black.opacity(0.5))
                                                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                            
-                                                            .overlay(
-                                                                RoundedRectangle(cornerRadius: 10)
-                                                                    .stroke(Color.grayBC, lineWidth: 1)
-                                                            )
-                                                            
+                                                            .padding(5)
                                                     }
-                                                    if isEditMode { // 수정중일때만 보여준다.
-                                                        if index < images.count { // 사진이 있으면 보여준다.
-                                                            Button {
-                                                                removeImage(index: index)
-                                                            } label: {
-                                                                Image(systemName: "xmark")
-                                                                    .font(.headline)
-                                                                    .padding(5)
-                                                                    .foregroundColor(.white)
-                                                                    .background(Color.black.opacity(0.5))
-                                                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                                    .padding(5)
-                                                            }
-                                                        } else { // 사진없으면
-                                                            Image(systemName: "plus")
-                                                                .font(.largeTitle.weight(.light))
-                                                                .foregroundColor(Color.white)
-                                                                
-                                                        }
-                                                    }
+                                                } else { // 사진없으면
+                                                    Image(systemName: "plus")
+                                                        .font(.largeTitle.weight(.light))
+                                                        .foregroundColor(Color.white)
                                                 }
-                                        )
+                                            }
+                                        }
+                                )
+                                .onTapGesture {
+                                    if isEditMode {
+                                        showPhotoPicker(index: index)
+                                    } else {
+                                        withAnimation(.easeInOut) {
+                                            imageVM.selectedImageID = index
+                                            imageVM.showImageViewer.toggle()
+                                        }
+                                    }
                                 }
-                                .disabled(!isEditMode)
                             } else {
                                 EmptyView()
                             }
@@ -224,10 +248,38 @@ struct CardDetailView_Previews: PreviewProvider {
 extension CardDetailView {
     
     private func removeImage(index: Int) {
-        images.remove(at: index)
+        imageVM.allImages.remove(at: index)
     }
     private func showPhotoPicker(index: Int) {
         clickedIndex = index
         isPhotoPickerShow = true
     }
 }
+
+// TODO: 모델 들어오면 없어질 ViewModel
+class detailImageViewModel: ObservableObject {
+    
+    @Published var allImages: [UIImage] = [UIImage(named: "user1")!]
+    @Published var showImageViewer = false
+    @Published var selectedImageID: Int = 0
+    @Published var imageViewerOffset: CGSize = .zero
+
+    @Published var imageScale: CGFloat = 1
+    
+    func onEnd(value: DragGesture.Value) {
+        withAnimation(.easeInOut) {
+            var translation = value.translation.height
+            if translation < 0 {
+                translation = -translation
+            }
+            if translation < 250 {
+                imageViewerOffset = .zero
+            } else {
+                showImageViewer.toggle()
+                imageViewerOffset = .zero
+            }
+
+        }
+    }
+}
+

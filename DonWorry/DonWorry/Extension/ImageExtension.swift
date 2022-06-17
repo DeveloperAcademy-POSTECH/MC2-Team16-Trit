@@ -20,9 +20,10 @@ extension Image {
    }
     
     // 이미지를 동그랗게 자르고 주변을 background 색으로 칠합니다. innerPadding을 기입하여 이미지와 동그라미 사이의 간격을 정합니다.
-    func applyClipCircleModifier(width: CGFloat, height: CGFloat, background: Color, innerPadding: CGFloat = 5 ) -> some View {
+    func applyClipCircleModifier(width: CGFloat, height: CGFloat) -> some View {
         self
-            .applyRectangleImageModifier(width: width, height: height, background: background, innerPadding: innerPadding)
+            .resizable()
+            .frame(width: width, height: height)
             .clipShape(Circle())
     }
         

@@ -60,10 +60,14 @@ struct PhotoPicker: UIViewControllerRepresentable {
                                     guard let self = self else { return }
                                     if let uiImage = image as? UIImage {
                                         self.parent.isPresented = false
-                                        if self.parent.images.count <= self.index {
-                                            self.parent.images += [UIImage()]
+                                        DispatchQueue.main.async {
+                                            if self.parent.images.count <= self.index {
+                                                self.parent.images += [UIImage()]
+                                            }
+                                            self.parent.images[self.index] = uiImage
+                                            print(self.parent.images.count)
                                         }
-                                        self.parent.images[self.index] = uiImage
+                                        
                                     }
                                 }
                             }
@@ -71,3 +75,5 @@ struct PhotoPicker: UIViewControllerRepresentable {
                     }
                 }
             }
+
+

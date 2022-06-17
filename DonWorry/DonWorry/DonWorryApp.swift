@@ -17,6 +17,7 @@ struct DonWorryApp: App {
 
     var body: some Scene {
         WindowGroup {
+//            SpaceMainView(naviSelection: .constant(""), spaceID: .constant(" "))
             NavigationView{
                 ContentView()
             }
