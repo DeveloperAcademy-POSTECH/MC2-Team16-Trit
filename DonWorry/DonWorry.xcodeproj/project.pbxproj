@@ -109,16 +109,16 @@
 		A7E0733E285B0DCB009EA127 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0733D285B0DCB009EA127 /* Account.swift */; };
 		A7E07340285B0DD5009EA127 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0733F285B0DD5009EA127 /* Payment.swift */; };
 		A7E07342285B0DDE009EA127 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07341285B0DDE009EA127 /* Space.swift */; };
-		A7E0734E285C1994009EA127 /* TakerDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07345285C1993009EA127 /* TakerDonCard.swift */; };
-		A7E0734F285C1994009EA127 /* TakerDonCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07346285C1993009EA127 /* TakerDonCardDetail.swift */; };
-		A7E07350285C1994009EA127 /* TakerDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07347285C1993009EA127 /* TakerDonCardSheetView.swift */; };
-		A7E07351285C1994009EA127 /* GiverDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07348285C1994009EA127 /* GiverDonCard.swift */; };
-		A7E07352285C1994009EA127 /* TakerDonCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07349285C1994009EA127 /* TakerDonCardSheet.swift */; };
-		A7E07353285C1994009EA127 /* GiverDonCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0734A285C1994009EA127 /* GiverDonCardSheet.swift */; };
-		A7E07355285C1994009EA127 /* GIverDonCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0734C285C1994009EA127 /* GIverDonCardDetail.swift */; };
-		A7E07356285C1994009EA127 /* GiverDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0734D285C1994009EA127 /* GiverDonCardSheetView.swift */; };
 		A7E07358285C27F1009EA127 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07357285C27F1009EA127 /* HomeView.swift */; };
 		A7E0735A285C285F009EA127 /* ParticipateDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07359285C285F009EA127 /* ParticipateDonCard.swift */; };
+		A7E0735F285C2E15009EA127 /* TakerDonCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0735B285C2E15009EA127 /* TakerDonCardDetail.swift */; };
+		A7E07360285C2E15009EA127 /* TakerDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0735C285C2E15009EA127 /* TakerDonCard.swift */; };
+		A7E07361285C2E15009EA127 /* TakerDonCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0735D285C2E15009EA127 /* TakerDonCardSheet.swift */; };
+		A7E07362285C2E15009EA127 /* TakerDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0735E285C2E15009EA127 /* TakerDonCardSheetView.swift */; };
+		A7E07367285C2E1F009EA127 /* GIverDonCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07363285C2E1F009EA127 /* GIverDonCardDetail.swift */; };
+		A7E07368285C2E1F009EA127 /* GiverDonCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07364285C2E1F009EA127 /* GiverDonCardSheet.swift */; };
+		A7E07369285C2E1F009EA127 /* GiverDonCardSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07365285C2E1F009EA127 /* GiverDonCardSheetView.swift */; };
+		A7E0736A285C2E1F009EA127 /* GiverDonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E07366285C2E1F009EA127 /* GiverDonCard.swift */; };
 		A7F363382859738A00012CD3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3E39E892285374F800D8E44C /* FirebaseFirestore */; };
 		A7F3633A2859813200012CD3 /* TransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F363392859813200012CD3 /* TransferViewModel.swift */; };
 		A7F3633C285984BC00012CD3 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F3633B285984BC00012CD3 /* PaymentViewModel.swift */; };
@@ -243,16 +243,16 @@
 		A7E0733D285B0DCB009EA127 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		A7E0733F285B0DD5009EA127 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		A7E07341285B0DDE009EA127 /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
-		A7E07345285C1993009EA127 /* TakerDonCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakerDonCard.swift; sourceTree = "<group>"; };
-		A7E07346285C1993009EA127 /* TakerDonCardDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakerDonCardDetail.swift; sourceTree = "<group>"; };
-		A7E07347285C1993009EA127 /* TakerDonCardSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakerDonCardSheetView.swift; path = "../../../../../../../../Desktop/유쓰팝업/DonCard/TakerDonCardSheetView.swift"; sourceTree = "<group>"; };
-		A7E07348285C1994009EA127 /* GiverDonCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiverDonCard.swift; sourceTree = "<group>"; };
-		A7E07349285C1994009EA127 /* TakerDonCardSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakerDonCardSheet.swift; sourceTree = "<group>"; };
-		A7E0734A285C1994009EA127 /* GiverDonCardSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiverDonCardSheet.swift; sourceTree = "<group>"; };
-		A7E0734C285C1994009EA127 /* GIverDonCardDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIverDonCardDetail.swift; sourceTree = "<group>"; };
-		A7E0734D285C1994009EA127 /* GiverDonCardSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GiverDonCardSheetView.swift; path = "../../../../../../../../Desktop/유쓰팝업/DonCard/GiverDonCardSheetView.swift"; sourceTree = "<group>"; };
 		A7E07357285C27F1009EA127 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A7E07359285C285F009EA127 /* ParticipateDonCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipateDonCard.swift; sourceTree = "<group>"; };
+		A7E0735B285C2E15009EA127 /* TakerDonCardDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakerDonCardDetail.swift; sourceTree = "<group>"; };
+		A7E0735C285C2E15009EA127 /* TakerDonCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakerDonCard.swift; sourceTree = "<group>"; };
+		A7E0735D285C2E15009EA127 /* TakerDonCardSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakerDonCardSheet.swift; sourceTree = "<group>"; };
+		A7E0735E285C2E15009EA127 /* TakerDonCardSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakerDonCardSheetView.swift; path = "../../../../../../../../Desktop/뀨의잔해/HomeViews/DonCard/TakerDonCardSheetView.swift"; sourceTree = "<group>"; };
+		A7E07363285C2E1F009EA127 /* GIverDonCardDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIverDonCardDetail.swift; sourceTree = "<group>"; };
+		A7E07364285C2E1F009EA127 /* GiverDonCardSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiverDonCardSheet.swift; sourceTree = "<group>"; };
+		A7E07365285C2E1F009EA127 /* GiverDonCardSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GiverDonCardSheetView.swift; path = "../../../../../../../../Desktop/뀨의잔해/HomeViews/DonCard/GiverDonCardSheetView.swift"; sourceTree = "<group>"; };
+		A7E07366285C2E1F009EA127 /* GiverDonCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiverDonCard.swift; sourceTree = "<group>"; };
 		A7F363392859813200012CD3 /* TransferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewModel.swift; sourceTree = "<group>"; };
 		A7F3633B285984BC00012CD3 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		C021ABC9284B2E5600B15AFF /* HalfCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleProgressBar.swift; sourceTree = "<group>"; };
@@ -512,15 +512,15 @@
 		A7133C342850387C006ED054 /* DonCard */ = {
 			isa = PBXGroup;
 			children = (
+				A7E07366285C2E1F009EA127 /* GiverDonCard.swift */,
+				A7E07363285C2E1F009EA127 /* GIverDonCardDetail.swift */,
+				A7E07364285C2E1F009EA127 /* GiverDonCardSheet.swift */,
+				A7E07365285C2E1F009EA127 /* GiverDonCardSheetView.swift */,
+				A7E0735C285C2E15009EA127 /* TakerDonCard.swift */,
+				A7E0735B285C2E15009EA127 /* TakerDonCardDetail.swift */,
+				A7E0735D285C2E15009EA127 /* TakerDonCardSheet.swift */,
+				A7E0735E285C2E15009EA127 /* TakerDonCardSheetView.swift */,
 				A7E07359285C285F009EA127 /* ParticipateDonCard.swift */,
-				A7E07348285C1994009EA127 /* GiverDonCard.swift */,
-				A7E0734C285C1994009EA127 /* GIverDonCardDetail.swift */,
-				A7E0734A285C1994009EA127 /* GiverDonCardSheet.swift */,
-				A7E0734D285C1994009EA127 /* GiverDonCardSheetView.swift */,
-				A7E07345285C1993009EA127 /* TakerDonCard.swift */,
-				A7E07346285C1993009EA127 /* TakerDonCardDetail.swift */,
-				A7E07349285C1994009EA127 /* TakerDonCardSheet.swift */,
-				A7E07347285C1993009EA127 /* TakerDonCardSheetView.swift */,
 			);
 			path = DonCard;
 			sourceTree = "<group>";
@@ -914,10 +914,10 @@
 				2CF61B3D2849B00B004C3768 /* AddCardTitleView.swift in Sources */,
 				A7C0529E2856185C007072EE /* UserService.swift in Sources */,
 				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
+				A7E07362285C2E15009EA127 /* TakerDonCardSheetView.swift in Sources */,
 				2CC211882849F1300009F785 /* TermRowView.swift in Sources */,
 				A704FC38284DE22C00AC9736 /* AlertRow.swift in Sources */,
 				3E39E89A28549A8E00D8E44C /* FIreBaseTestView.swift in Sources */,
-				A7E07355285C1994009EA127 /* GIverDonCardDetail.swift in Sources */,
 				A74479B12847A8190083BBF4 /* SmallButton.swift in Sources */,
 				79BF17B3284D977C003A2A68 /* EditSpaceNameView.swift in Sources */,
 				A74479B92847C99A0083BBF4 /* UnderlineTextField.swift in Sources */,
@@ -929,6 +929,7 @@
 				A74479B72847C5390083BBF4 /* NoticeTextMsg.swift in Sources */,
 				79BF17A6284D0034003A2A68 /* SpaceTopView.swift in Sources */,
 				79BF17AB284D143C003A2A68 /* CheckAttendanceView.swift in Sources */,
+				A7E07369285C2E1F009EA127 /* GiverDonCardSheetView.swift in Sources */,
 				79B438FC285B20A800D2B892 /* CardDetailImageView.swift in Sources */,
 				4DF86556285B5B44000299A8 /* CircularCollectionViewCell.swift in Sources */,
 				79BF17AD284D1454003A2A68 /* SmallCardView.swift in Sources */,
@@ -950,22 +951,23 @@
 				4D6229BD284925B900A8E24C /* PreviewCardView.swift in Sources */,
 				A7C0529C28560D45007072EE /* UIApplicationExtention.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
+				A7E0735F285C2E15009EA127 /* TakerDonCardDetail.swift in Sources */,
 				A7E0735A285C285F009EA127 /* ParticipateDonCard.swift in Sources */,
-				A7E0734F285C1994009EA127 /* TakerDonCardDetail.swift in Sources */,
 				A7F3633C285984BC00012CD3 /* PaymentViewModel.swift in Sources */,
 				4D6229CD284929C000A8E24C /* AddCardDecoView.swift in Sources */,
 				A7133C3028503674006ED054 /* ViewExtension.swift in Sources */,
 				A704FC3C284DF62F00AC9736 /* Date.swift in Sources */,
+				A7E07367285C2E1F009EA127 /* GIverDonCardDetail.swift in Sources */,
 				4DF86559285B5B44000299A8 /* CircularCollectionViewLayout.swift in Sources */,
 				A74479A528476AE30083BBF4 /* ColorExtension.swift in Sources */,
 				2CF61B3A2849AF97004C3768 /* SpaceEmptyView.swift in Sources */,
+				A7E07361285C2E15009EA127 /* TakerDonCardSheet.swift in Sources */,
 				A7F3633A2859813200012CD3 /* TransferViewModel.swift in Sources */,
+				A7E07360285C2E15009EA127 /* TakerDonCard.swift in Sources */,
 				A74479BD2847DF340083BBF4 /* HalfSheetModal.swift in Sources */,
 				79BF179D284CFF83003A2A68 /* ImageExtension.swift in Sources */,
-				A7E07351285C1994009EA127 /* GiverDonCard.swift in Sources */,
 				3EBC815D2843522900794955 /* ContentView.swift in Sources */,
 				A7E0733E285B0DCB009EA127 /* Account.swift in Sources */,
-				A7E07352285C1994009EA127 /* TakerDonCardSheet.swift in Sources */,
 				2CC211B7284CE9880009F785 /* TermSheetView.swift in Sources */,
 				A74479C22847E3760083BBF4 /* ChipButton.swift in Sources */,
 				A7133C2C285032DE006ED054 /* GrayLine.swift in Sources */,
@@ -973,6 +975,7 @@
 				79BF17A4284D002B003A2A68 /* SpaceMainCardView.swift in Sources */,
 				2CC2118C2849F1CF0009F785 /* Term.swift in Sources */,
 				2CC211B0284C6A690009F785 /* AppleLoginButton.swift in Sources */,
+				A7E0736A285C2E1F009EA127 /* GiverDonCard.swift in Sources */,
 				79BF17A2284D002B003A2A68 /* SpaceMainBottomButton.swift in Sources */,
 				A7E0733C285B0DBF009EA127 /* Transfer.swift in Sources */,
 				3E39E89728539A1F00D8E44C /* SpaceViewModel.swift in Sources */,
@@ -981,7 +984,6 @@
 				A704FC33284DDCF700AC9736 /* AlertView.swift in Sources */,
 				3E39E8A028562E1F00D8E44C /* AdditionUserInfoTest.swift in Sources */,
 				4D6229C0284926F600A8E24C /* PhotoPicker.swift in Sources */,
-				A7E07356285C1994009EA127 /* GiverDonCardSheetView.swift in Sources */,
 				A704FC44284F6B5200AC9736 /* ShareSheet.swift in Sources */,
 				A7E07342285B0DDE009EA127 /* Space.swift in Sources */,
 				A74479D8284918EB0083BBF4 /* EditAccountView.swift in Sources */,
@@ -991,6 +993,7 @@
 				79BF17B0284D953B003A2A68 /* CardDetailView.swift in Sources */,
 				A74479BF2847DF8D0083BBF4 /* SampleViewWithSheet.swift in Sources */,
 				2CC211B4284C6BB60009F785 /* GoogleLoginButton.swift in Sources */,
+				A7E07368285C2E1F009EA127 /* GiverDonCardSheet.swift in Sources */,
 				2CC211822849F0FA0009F785 /* SignInView.swift in Sources */,
 				2CF61B3F2849B18A004C3768 /* AddCardIconView.swift in Sources */,
 				A74479B32847BE170083BBF4 /* XSmallButton.swift in Sources */,
@@ -1001,15 +1004,12 @@
 				A74479AF2847A0600083BBF4 /* MediumButton.swift in Sources */,
 				C07ECB392849919C000C42C1 /* SpaceChipsView.swift in Sources */,
 				A7E07358285C27F1009EA127 /* HomeView.swift in Sources */,
-				A7E07353285C1994009EA127 /* GiverDonCardSheet.swift in Sources */,
 				A704FC3F284E01A300AC9736 /* SlideOverCard.swift in Sources */,
 				C021ABCA284B2E5600B15AFF /* HalfCircleProgressBar.swift in Sources */,
 				2C1A09FC285826B700AA193B /* UINavigationControllerExtension.swift in Sources */,
 				4DF86558285B5B44000299A8 /* HomeViewController.swift in Sources */,
-				A7E07350285C1994009EA127 /* TakerDonCardSheetView.swift in Sources */,
 				A7133C3B2850B22C006ED054 /* AddSpaceView.swift in Sources */,
 				3E39E89C2855980900D8E44C /* AccountTestView.swift in Sources */,
-				A7E0734E285C1994009EA127 /* TakerDonCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
