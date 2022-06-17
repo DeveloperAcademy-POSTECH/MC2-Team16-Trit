@@ -15,6 +15,7 @@ struct AddCardIconView: View {
     let paymentTitle: String
     
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
+    let spaceID: String
     @State private var paymentIcon : Image? = nil
     @State private var selectedItem: String = iconsArray.randomElement() ?? iconsArray[0]
     @State private var naviSelection : String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
@@ -66,7 +67,7 @@ struct AddCardIconView: View {
             VStack {
                 Spacer()
                 HStack {
-                    NavigationLink(tag: "AddCardPriceView", selection: $naviSelection, destination: { AddCardPriceView(mainSelection: $mainSelection, paymentTitle: paymentTitle, paymentIcon: paymentIcon) }) { EmptyView() }
+                    NavigationLink(tag: "AddCardPriceView", selection: $naviSelection, destination: { AddCardPriceView(mainSelection: $mainSelection, paymentTitle: paymentTitle, category: selectedItem, spaceID: spaceID) }) { EmptyView() }
                         .isDetailLink(false)
                     SmallButton(text: "다음", isDisable: false) {
                         self.naviSelection = "AddCardPriceView"
@@ -92,8 +93,10 @@ struct AddCardIconView: View {
     }
 }
 
+/*
 struct AddCardIconView1_Previews: PreviewProvider {
     static var previews: some View {
         AddCardIconView(paymentTitle: "땡땡이네 스타벅스", mainSelection: .constant(""))
     }
 }
+*/

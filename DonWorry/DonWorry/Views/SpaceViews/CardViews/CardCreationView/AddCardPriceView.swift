@@ -29,7 +29,9 @@ struct AddCardPriceView: View {
     }
     
     let paymentTitle: String
-    let paymentIcon: Image?
+    let category: String
+    let spaceID: String
+    let paymentIcon = Image("category")
     
     var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -43,7 +45,7 @@ struct AddCardPriceView: View {
     var body: some View {
         VStack {
             HStack {
-                paymentIcon?
+                paymentIcon
                     .resizable()
                     .scaledToFit()
                     .padding(10)
@@ -74,8 +76,12 @@ struct AddCardPriceView: View {
             HStack {
                 Spacer()
                 
-                NavigationLink(tag: "AddCardDecoView", selection: $naviSelection, destination: { AddCardDecoView(mainSelection: $mainSelection, paymentIcon: paymentIcon) }) { EmptyView() }
+                
+                NavigationLink(tag: "AddCardDecoView", selection: $naviSelection, destination: { AddCardDecoView(paymentTitle: paymentTitle, category: category, amount: numberPrice, spaceID: spaceID, mainSelection: $mainSelection) }) { EmptyView() }
                     .isDetailLink(false)
+                
+//                NavigationLink(tag: "AddCardDecoView", selection: $naviSelection, destination: { AddCardDecoView(mainSelection: $mainSelection, paymentTitle: paymentTitle, category: category, amount: numberPrice, spaceID: spaceID) }) { EmptyView() }
+//                    .isDetailLink(false)
                 SmallButton(text: "다음", isDisable: isDisable) {
                     self.naviSelection = "AddCardDecoView"
                 }
@@ -155,8 +161,10 @@ struct AddCardPriceView: View {
     }
 }
 
+/*
 struct AddCardPriceView_Previews: PreviewProvider {
     static var previews: some View {
         AddCardPriceView(mainSelection: .constant(""), paymentTitle: "땡땡이네 스타벅스", paymentIcon: Image("chicken-leg"))
     }
 }
+*/

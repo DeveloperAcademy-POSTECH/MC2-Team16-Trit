@@ -34,7 +34,7 @@ struct SpaceEmptyView: View {
                 ZStack(alignment: .bottom) {
                     VStack {
                         ScrollView {
-                            SpaceTopView(mainSelection: .constant(""), spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
+                            SpaceTopView(naviSelection: .constant(""), spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
                                 .padding(.vertical, 21)
                         }
                     }
