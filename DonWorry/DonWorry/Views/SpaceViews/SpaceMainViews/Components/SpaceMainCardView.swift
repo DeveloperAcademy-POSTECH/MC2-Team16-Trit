@@ -100,7 +100,7 @@ struct SpaceMainCardView: View {
                         }
                         .padding(.trailing, 18)
                     }
-                    .blur(radius: 6)
+                    .blur(radius: isParticipated ? 6 : 0)
                     if isParticipated {
                         Image(systemName: "checkmark.rectangle.fill")
                             .foregroundColor(.white)
