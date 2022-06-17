@@ -100,9 +100,11 @@ struct SpaceMainCardView: View {
                         }
                         .padding(.trailing, 18)
                     }
+                    .blur(radius: 6)
                     if isParticipated {
-                        Image(systemName: "checkmark")
+                        Image(systemName: "checkmark.rectangle.fill")
                             .foregroundColor(.white)
+                            
                             .font(.system(size: 70))
                     }
                 }
@@ -112,7 +114,7 @@ struct SpaceMainCardView: View {
 
 struct SpaceMainCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceMainCardView(bank: "우리은행",color: .blueMain, account: "429-910-1009307",date: "05/25",paymentIcon: Image("chicken-leg"), isDecoView: true)
+        SpaceMainCardView(bank: "우리은행",color: .blueMain, account: "429-910-1009307", isParticipated: true, date: "05/25",paymentIcon: Image("chicken-leg"), isDecoView: true)
     }
 }
 
