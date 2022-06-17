@@ -37,7 +37,7 @@ var transfers: [Transfer] = [
     Transfer(giver: users[4], taker: users[0], amount: 23432),
     Transfer(giver: users[4], taker: users[2], amount: 19984)
 ]
-
+/*
 // currentUser한테 돈을 줘야할 user의 리스트
 func makeGiverList(trnasfers: [Transfer], currentUser: User) -> [Transfer] {
     var giverTransferList: [Transfer] = []
@@ -68,12 +68,13 @@ func makeDisplayGiverList(makeGiverList: [Transfer]) -> [String] {
     var giverProfileImage: [String] = []
     if makeGiverList.count > 3 {
         makeGiverList[0..<4].forEach {
-            giverProfileImage.append($0.giver.image)
+            giverProfileImage.append($0.giver.profileimage)
         }
     } else {
         makeGiverList.forEach {
-            giverProfileImage.append($0.giver.image)
+            giverProfileImage.append($0.giver.profileimage)
         }
     }
     return giverProfileImage
 }
+*/

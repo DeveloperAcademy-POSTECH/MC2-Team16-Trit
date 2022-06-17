@@ -28,7 +28,7 @@ struct SpaceEmptyView: View {
     var body: some View {
         
         if isHomeView == true {
-            HomeView()
+            HomeView(currentUser: user4)
         } else {
             NavigationView {
                 ZStack(alignment: .bottom) {

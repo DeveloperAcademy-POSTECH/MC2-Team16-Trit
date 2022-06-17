@@ -77,9 +77,10 @@ struct TakerDonCardSheet: View {
                 .padding(.horizontal)
                 
                 HStack {
-                    LargeButton(text: "재촉하기", isDisable: false, clicked: {
+                    LargeButton(text: "재촉하기", isDisable: false){
                         self.presentationmode.wrappedValue.dismiss()
-                    })
+                    }
+                    
                 }
             }
         }

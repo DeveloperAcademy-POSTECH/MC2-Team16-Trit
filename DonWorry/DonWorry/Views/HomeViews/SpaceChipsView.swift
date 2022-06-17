@@ -19,6 +19,7 @@ struct SpaceChipsView: View {
     @Binding var selection: String
     let screen = UIScreen.main.bounds
     var al = 23
+    var maxSpaceNum = 5
     var body: some View {
         VStack {
             VStack {
@@ -51,7 +52,7 @@ struct SpaceChipsView: View {
                     }
                 }
                 HStack {
-                    ForEach(3..<5) { index in
+                    ForEach(3..<maxSpaceNum) { index in
                     ZStack {
                         if selection == switches[index] {
                             RoundedRectangle(cornerRadius: 50)

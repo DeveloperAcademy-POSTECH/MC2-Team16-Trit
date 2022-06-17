@@ -17,10 +17,14 @@ struct GiverDonCard: View {
     }
 }
 
-// MARK: transfer-vm 관련으로 대체 확인필요
-/*
-func findTaker(users: [User], currentUser: User) -> User {
-    var taker: User!
+struct GiverCard_Previews: PreviewProvider {
+    static var previews: some View {
+        GiverDonCard(currentUser: user1)
+    }
+}
+
+func findTaker(users: [OldUser], currentUser: OldUser) -> OldUser {
+    var taker: OldUser!
     users.forEach {
         if $0.userName == currentUser.giveTo {
             taker = $0
@@ -28,12 +32,3 @@ func findTaker(users: [User], currentUser: User) -> User {
     }
     return taker
 }
- */
-
-/*
-struct GiverCard_Previews: PreviewProvider {
-    static var previews: some View {
-        GiverDonCard(currentUser: user1)
-    }
-}
-*/

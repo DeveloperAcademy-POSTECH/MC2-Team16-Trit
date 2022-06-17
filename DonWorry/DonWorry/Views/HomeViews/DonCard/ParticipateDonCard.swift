@@ -14,9 +14,7 @@ struct ParticipateDonCard: View {
     //    @Binding var spaceID: String
     
     var body: some View {
-        NavigationLink(tag: "SpaceMainView",
-                       selection: $naviSelection,
-                       destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID")) }) {
+        NavigationLink(tag: "SpaceMainView", selection: $naviSelection, destination: { SpaceMainView(naviSelection: $naviSelection, spaceID: .constant("Hardcoded ID")) }) {
             Button {
                 naviSelection = "SpaceMainView"
             } label: {
@@ -58,7 +56,7 @@ struct BasicRoundRec: View {
         RoundedRectangle(cornerRadius: 20)
             .frame(width: 160, height: 215)
             .opacity(0.8)
-            .shadow(color: .black, radius: 3, x: 0, y: 2)
+//            .shadow(color: .black, radius: 3, x: 0, y: 2)
             .foregroundColor(color)
     }
 }
@@ -68,7 +66,7 @@ struct GradientRoundRec : View {
         RoundedRectangle(cornerRadius: 20)
             .fill(LinearGradient(colors: [.gradientTopBlue, .gradientBottomBlue], startPoint: .topLeading, endPoint: .bottomTrailing))
             .frame(width: 160, height: 215)
-            .shadow(color: .black, radius: 3, x: 0, y: 2)
+//            .shadow(color: .black, radius: 3, x: 0, y: 2)
     }
 }
 
@@ -79,3 +77,4 @@ struct ParticipateDonCard_Previews: PreviewProvider {
     }
 }
 */
+

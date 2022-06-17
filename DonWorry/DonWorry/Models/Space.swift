@@ -35,6 +35,5 @@ var spaces: [Space] = [
          )
 ]
 
-
 // switches -> 나중에 space list 불러와서 바꾸기!
-var switches = ["MC2 트라잇 모임", "MC2 번개모임", "밤샘코딩", "떱떱해모임"]
+var switches = ["MC2 트라잇 모임", "MC2 번개모임", "밤샘코딩", "MC1할맥", "MC3"]
