@@ -89,11 +89,8 @@ struct SpaceMainCardView: View {
                                             .padding(3.5)
                                             .background(Color.grayEE.opacity(0.6))
                                             .clipShape(Circle())
-                                            .offset(y:2)
-                                            
+                                            .offset(y: 2)
                                     }
-                                
-                                
                             }
                             Spacer()
                             Text(date)

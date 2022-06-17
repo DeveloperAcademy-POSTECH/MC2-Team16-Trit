@@ -81,7 +81,6 @@ struct CardDetailView: View {
                                 .applyTextWithLineLimitModifier(size: 17, weight: .bold, color: .black)
                             }.padding(.top, 39)
                         }
-//                        Spacer()
                     CardDetailAccountView(isAdmin: admin)
                 }
                 
