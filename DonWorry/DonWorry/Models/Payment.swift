@@ -20,11 +20,11 @@ struct Payment: Identifiable, Codable { // Hashable
     var attachedFile: [String] // 첨부파일 - URL 배열
     var givers: [String] // 보내는 사람 리스트 *User 참조해야함*
     var taker: String // 받는 사람 *User 참조해야함*
-    var account: String // 계좌정보 *Account 참조해야함*
+    var account: [String] // 계좌정보 *Account 참조해야함*
 }
 
 extension Payment {
-    static let empty = Payment(spaceID: "" ,paymentTitle: "", category: "", amount: 0, color: "", date: "", attachedFile: [], givers: [], taker: "", account: "")
+    static let empty = Payment(spaceID: "" ,paymentTitle: "", category: "", amount: 0, color: "", date: "", attachedFile: [], givers: [], taker: "", account: [])
 }
 
 
@@ -40,7 +40,7 @@ var payments: [Payment] = [
             attachedFile: [],
             givers: mockUsers,
             taker: mockUsers[0],
-            account: "accountRef"),
+            account: ["카카오뱅크", "김승창", "1234-1231234-123"]),
     
     Payment(spaceID: "",
             paymentTitle: "2차 횟집",
@@ -51,8 +51,8 @@ var payments: [Payment] = [
             attachedFile: [],
             givers: mockUsers,
             taker: mockUsers[0],
-            account:  "accountRef"),
-    
+            account: ["카카오뱅크", "김승창", "1234-1231234-123"]),
+
     Payment(spaceID: "",
             paymentTitle: "3차 뼈찜",
             category: "bone",
@@ -62,5 +62,5 @@ var payments: [Payment] = [
             attachedFile: [],
             givers: mockUsers,
             taker: mockUsers[0],
-            account: "accountRef")
+            account: ["카카오뱅크", "김승창", "1234-1231234-123"])
 ]

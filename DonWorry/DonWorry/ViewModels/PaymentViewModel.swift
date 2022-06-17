@@ -125,7 +125,7 @@ class PaymentViewModel: ObservableObject {
                                        attachedFile: d["attachedFile"] as! [String],
                                        givers: d["givers"] as! [String],
                                        taker: d["taker"] as! String,
-                                       account: d["account"] as! String)
+                                       account: d["account"] as! [String])
                     }
                 }
             }

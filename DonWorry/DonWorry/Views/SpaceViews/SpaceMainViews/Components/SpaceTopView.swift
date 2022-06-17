@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SpaceTopView: View {
+//    @StateObject var vm = PaymentViewModel()
     
     let leftPaddingSize = 25.0
-    @Binding var mainSelection: String?
+    @Binding var naviSelection: String? // HomeView로 돌아가기 위한 변수입니다.
     @Binding var spaceID: String
     @Binding var isIDPopUpPresented: Bool
-    @State private var naviSelection: String? = nil
     
     var body: some View {
         HStack {
@@ -35,10 +35,30 @@ struct SpaceTopView: View {
             }
             Spacer()
             
-            NavigationLink(tag: "CalculateStartView", selection: $naviSelection, destination: { HomeView() }) { EmptyView() }
-            .isDetailLink(false)
+//            NavigationLink(tag: "CalculateStartView", selection: $naviSelection, destination: { HomeView() }) { EmptyView() }
+//            .isDetailLink(false)
             Button {
-                self.naviSelection = "CalculateStartView"
+                // TODO: 알고리즘 적용 후 Lottie 화면 출력하기
+                /*
+                 --- 알고리즘 Input ---
+                 스페이스 내에 있는 payment의 개수
+                 
+                 payment amount
+                 payment givers
+                 payment taker
+                 --------------------
+                 */
+                
+                 /*
+                 --- 알고리즘 Output ---
+                 transfer giver
+                 transfer taker
+                 transfer amount
+                 ---------------------
+                 
+                 
+                 */
+                naviSelection = nil
             } label: {
                 Text("정산시작")
                     .applyTextWithLineLimitModifier(size: 16.0, weight: .bold, color: .blueMain)

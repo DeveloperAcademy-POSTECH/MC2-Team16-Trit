@@ -26,25 +26,42 @@ enum DecoCase: String, Identifiable, CaseIterable {
 }
 
 struct AddCardDecoView: View {
+    
+    let paymentTitle: String
+    let category: String
+    let amount: Int
+    let spaceID: String
+    @State var selectedColor = ""
+    
+    @StateObject var vm = PaymentViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
     
     //  추후 데이터 모델이 생성되면 ViewModel을 통해 데이터를 활용할 예정
     //  @StateObject var vm = AddCardDecoViewModel()
     @State private var decoCase: DecoCase = .색상변경
-    @State private var account: String = "1002-034-1234"
-    @State private var holder: String = "김예금"
+    
+    // MARK: onAppear 에서 초기화가 진행됨
+    @State private var accountHolder = ""
+    @State private var accountBank = ""
+    @State private var accountNumber = ""
+    
+//    @State private var account: String = "1002-034-1234"
+//    @State private var holder: String = "김예금"
     @State private var color: CardColor = CardColor.blue
     @State private var images: [UIImage] = []
     @State private var showPhotoPicker = false
-    @State private var bank: String = "은행 선택"
+//    @State private var bank: String = "은행 선택"
     @State private var date = Date()
     @State var clickedIndex = 0
     @FocusState private var isFocused: Bool
+    
 //    @State var focusedClicked: Bool = false
     
     var isDisable: Bool {
-        account.isEmpty || bank.isEmpty || holder.isEmpty
+        accountNumber.isEmpty || accountBank.isEmpty || accountHolder.isEmpty
     }
     
     private let colorColumns = [GridItem](repeating: GridItem(spacing: 20), count: 5)
@@ -56,8 +73,8 @@ struct AddCardDecoView: View {
                 ScrollViewReader { proxy in
                     ScrollView {
                         VStack(spacing: 20) {
-                            PreviewCardView(paymentIcon: paymentIcon, bank: $bank,
-                                            account: $account,
+                            PreviewCardView(paymentIcon: paymentIcon, bank: $accountBank,
+                                            account: $accountNumber,
                                             color: $color,
                                             date: $date,
                                             image: $images,
@@ -113,6 +130,13 @@ struct AddCardDecoView: View {
                     Spacer()
                     SmallButton(text: "완료", isDisable: isDisable) {
                         // TODO: 파이어베이스로 데이터 전송
+                
+                        let accountArr = [accountHolder, accountBank, accountNumber]
+                        
+                        // TODO: attachedFile만 추가로 구현하기 (Storage)
+                        let data = Payment(spaceID: spaceID, paymentTitle: paymentTitle, category: category, amount: amount, color: color.id, date: date.getStringForMMDD(), attachedFile: [], givers: [], taker: accountHolder, account: accountArr)
+                        vm.addPayment(spaceID: spaceID, data: data, user: AuthViewModel().currentUser)
+                        
                         mainSelection = nil
                     }
                     .disabled(isDisable ? true : false)
@@ -123,6 +147,9 @@ struct AddCardDecoView: View {
         }.id(1)
         .onAppear {
             UIApplication.shared.hideKeyboard()
+            accountHolder = authViewModel.currentUser.accountHolder
+            accountBank = authViewModel.currentUser.accountBank
+            accountNumber = authViewModel.currentUser.accountNumber
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -165,6 +192,8 @@ struct AddCardDecoView: View {
                     )
                     .onTapGesture {
                         withAnimation(.interactiveSpring()) {
+                            
+                            selectedColor = CardColor.id
                             color = CardColor
                         }
                     }
@@ -186,9 +215,9 @@ struct AddCardDecoView: View {
     // MARK: 계좌번호 입력 칸
     @ViewBuilder private var accountBox: some View {
         VStack {
-            UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: $holder)
+            UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: $accountHolder)
                 .keyboardType(.default)
-            AccountTextField(account: $account, bank: $bank)
+            AccountTextField(account: $accountNumber, bank: $accountBank)
                 .keyboardType(.decimalPad)
         }
         
@@ -326,6 +355,7 @@ struct CustomPicker: View {
     //    }
 }
 
+/*
 struct AddCardDecoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -333,3 +363,4 @@ struct AddCardDecoView_Previews: PreviewProvider {
         }
     }
 }
+*/

@@ -10,6 +10,7 @@ import SwiftUI
 struct AddCardTitleView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @Binding var mainSelection: String? // SpaceMainView로 돌아가기 위한 변수입니다.
+    let spaceID: String
     @State private var paymentTitle: String = ""
     @State private var naviSelection: String? = nil // 다음 페이지로 이동을 위한 일회성의 변수입니다.
     @FocusState private var isFocused: Bool
@@ -54,7 +55,7 @@ struct AddCardTitleView: View {
                     
                     NavigationLink(tag: "AddCardIconView",
                                    selection: $naviSelection,
-                                   destination: { AddCardIconView(paymentTitle: paymentTitle, mainSelection: $mainSelection)
+                                   destination: { AddCardIconView(paymentTitle: paymentTitle, mainSelection: $mainSelection, spaceID: spaceID)
                         
                     }) { EmptyView() }
                         .isDetailLink(false)
@@ -87,8 +88,10 @@ struct AddCardTitleView: View {
     }
 }
 
+/*
 struct NewPayment_Title_Previews: PreviewProvider {
     static var previews: some View {
         AddCardTitleView(mainSelection: .constant(""))
     }
 }
+*/

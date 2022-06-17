@@ -23,7 +23,7 @@ struct SpaceMainView: View {
     @State var isShareSheetPresented = false
     @State var checkedArray: [Int] = []
     @State var spaceName = "MC2 첫 회식"
-    @Binding var spaceID: String
+    @Binding var spaceID: String // AddCardDecoView까지 넘겨서 데이터로 전송해야함.
     
     @State private var isStarted = false // 정산시작이 되었는지 확인하는 변수
     @State private var showExitAlert = false // 스페이스 나가기 시 Alert를 보여주기 위한 변수
@@ -33,7 +33,7 @@ struct SpaceMainView: View {
         ZStack(alignment: .bottom) {
             VStack {
                 
-                SpaceTopView(mainSelection: $mainSelection, spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
+                SpaceTopView(naviSelection: $naviSelection, spaceID: $spaceID, isIDPopUpPresented: $isPopUpPresented)
                     .padding(.vertical, 21)
                 
                 ScrollView {
@@ -41,7 +41,7 @@ struct SpaceMainView: View {
                         ForEach(0..<5) { index in
                             if index == 4 {
                                 NavigationLink(tag: "AddCardTitleView", selection: $mainSelection, destination: {
-                                    AddCardTitleView(mainSelection: $mainSelection)
+                                    AddCardTitleView(mainSelection: $mainSelection, spaceID: spaceID)
                                 }, label: {
                                     EmptyView()
                                 })
