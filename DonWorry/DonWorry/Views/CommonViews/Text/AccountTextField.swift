@@ -46,9 +46,12 @@ struct AccountTextField: View {
             .cornerRadius(29)
             
             HStack {
-                Text(bank)
+                Text(bank.isEmpty ? "은행선택" : bank)
+                Spacer()
                 Image(systemName: "chevron.down")
             }
+            .font(.system(size: 14))
+            .padding(.horizontal, 7)
             .foregroundColor(.white)
             .frame(width: 101, height: 50)
             .background(Color.grayBD)

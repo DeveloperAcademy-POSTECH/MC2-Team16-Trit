@@ -20,9 +20,13 @@ struct PreviewCardView: View {
     
     @Binding var decoCase: DecoCase
     
+    var amount: Int
+    let accountHolder: String
+    let paymentTitle: String
+    
     var body: some View {
         VStack(alignment: .leading) {
-            SpaceMainCardView(bank: bank, color: color.color, account: account, index: 0, isParticipated: false, date: date.getStringForMMDD(), paymentIcon: paymentIcon, isDecoView: isDecoView)
+            SpaceMainCardView(bank: bank, spaceName: paymentTitle, color: color.color, account: account, index: 0, isParticipated: false, date: date.getStringForMMDD(), paymentIcon: paymentIcon, isDecoView: isDecoView, amount: amount, accountHolder: accountHolder)
         }
         .padding()
     }

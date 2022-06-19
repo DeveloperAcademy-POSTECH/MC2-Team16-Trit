@@ -12,16 +12,20 @@ struct UserInfoView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
 
     @State private var nickName = ""
-    @State private var account = ""
-    @State private var bank = ""
+//    @State private var account = ""
+//    @State private var bank = ""
     @State private var holder = ""
     @State private var naviSelection: String? = nil
     @FocusState private var isFocused: Bool
 
-    var isDisable: Bool {
-        nickName.isEmpty || account.isEmpty || holder.isEmpty || bank.isEmpty
-    }
+//    var isDisable: Bool {
+//        nickName.isEmpty || account.isEmpty || holder.isEmpty || bank.isEmpty
+//    }
 
+    var isDisable: Bool {
+        nickName.isEmpty || holder.isEmpty
+    }
+    
     var body: some View {
         VStack {
             Text("돈.워리")
@@ -55,27 +59,28 @@ struct UserInfoView: View {
                             .focused($isFocused)
                     }
 
-                    VStack(alignment: .leading) {
-                        Text("계좌번호")
-                            .font(.system(size: 17))
-                            .fontWeight(.semibold)
-
-                        AccountTextField(account: $account, bank: $bank)
-                            .focused($isFocused)
-
-                        Text("정산을 받으실 계좌번호입니다.(추후 변경 가능)")
-                            .font(.system(size: 13))
-                            .foregroundColor(Color.grayC5)
-
-                    }
+//                    VStack(alignment: .leading) {
+//                        Text("계좌번호")
+//                            .font(.system(size: 17))
+//                            .fontWeight(.semibold)
+//
+//                        AccountTextField(account: $account, bank: $bank)
+//                            .focused($isFocused)
+//
+//                        Text("정산을 받으실 계좌번호입니다.(추후 변경 가능)")
+//                            .font(.system(size: 13))
+//                            .foregroundColor(Color.grayC5)
+//
+//                    }
+                    
                 }
                 
             }
             
             Spacer()
             
-            NavigationLink(tag: "TermView", selection: $naviSelection, destination: { TermView().environmentObject(authViewModel) }) { SmallButton(text: "다음", isDisable: isDisable) {
-                naviSelection = "TermView"
+            NavigationLink(tag: "GetUserAccountView", selection: $naviSelection, destination: { GetUserAccountView().environmentObject(authViewModel) }) { SmallButton(text: "다음", isDisable: isDisable) {
+                naviSelection = "GetUserAccountView"
             }}
             .disabled(isDisable ? true : false)
             .padding(.bottom)

@@ -80,7 +80,10 @@ struct AddCardDecoView: View {
                                             color: $color,
                                             date: $date,
                                             image: $images,
-                                            decoCase: $decoCase)
+                                            decoCase: $decoCase,
+                                            amount: amount,
+                                            accountHolder: accountHolder,
+                                            paymentTitle: paymentTitle)
                             
                             .padding(.horizontal, 20)
                             VStack(spacing: 20) {
@@ -221,6 +224,8 @@ struct AddCardDecoView: View {
                 .keyboardType(.default)
             AccountTextField(account: $accountNumber, bank: $accountBank)
                 .keyboardType(.decimalPad)
+            
+//            NewAccountTextField(accountBank: $accountBank, accountNumber: $accountNumber)
         }
         
         //        TextField("계좌번호를 입력해주세요.", text: $account)

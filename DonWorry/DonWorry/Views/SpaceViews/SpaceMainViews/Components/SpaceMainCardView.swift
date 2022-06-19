@@ -1,4 +1,3 @@
-//
 //  SpaceMainCardView.swift
 //  DonWorry
 //
@@ -10,7 +9,7 @@ import SwiftUI
 struct SpaceMainCardView: View {
     
     let bank: String
-    let spaceName: String = "고기광"
+    let spaceName: String
     var color: Color
     var account: String
     var index: Int = 0
@@ -18,6 +17,20 @@ struct SpaceMainCardView: View {
     let date: String
     var paymentIcon: Image?
     let isDecoView: Bool
+    
+    let amount: Int
+    
+    let accountHolder: String
+    
+    var numberFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.usesGroupingSeparator = true
+        formatter.groupingSeparator = ","
+        formatter.groupingSize = 3
+        return formatter
+    }
+    
     var body: some View {
         
         ZStack(alignment: .trailing) {
@@ -50,7 +63,8 @@ struct SpaceMainCardView: View {
                                         .padding(.leading, 25)
                                 }
                                 HStack(alignment: .firstTextBaseline, spacing: 5) {
-                                    Text("135,800원")
+//                                    Text("135,800원")
+                                    Text("\(numberFormatter.string(for: amount) ?? "")원")
                                         .applyTextWithLineLimitModifier(lineLimit: 2, size: 20.0, weight: .heavy)
                                     Text("나왔어요.")
                                         .applyTextWithLineLimitModifier(size: 13.0, weight: .medium)
@@ -67,31 +81,30 @@ struct SpaceMainCardView: View {
                         Spacer()
                         VStack {
                             VStack(spacing: 2) {
-                                Image("user1")
+                                Image("people_ICON")
                                     .applyClipCircleModifier(width: 30, height: 30)
                                     .padding(.top, 25)
                                 
-                                Text("한규")
+                                Text(accountHolder)
                                     .applyTextWithLineLimitModifier(size: 12, weight: .medium)
                             }
                             
-                            
-                            ForEach(0..<4) { index in
-//                                ZStack {
-                                    Image("user2")
-                                        .applyClipCircleModifier(width: 24, height: 24)
-                                        .padding(.bottom, -14)
-                                // TODO: 4명보다 많으면 땡땡땡이 나타나도록.
-                                    if index >= 3 {
-                                        Image(systemName: "ellipsis")
-                                            .font(.system(size: 6, weight: .medium))
-                                            .foregroundColor(color)
-                                            .padding(3.5)
-                                            .background(Color.grayEE.opacity(0.6))
-                                            .clipShape(Circle())
-                                            .offset(y: 2)
-                                    }
-                            }
+//                            ForEach(0..<4) { index in
+////                                ZStack {
+//                                    Image("user2")
+//                                        .applyClipCircleModifier(width: 24, height: 24)
+//                                        .padding(.bottom, -14)
+//                                // TODO: 4명보다 많으면 땡땡땡이 나타나도록.
+//                                    if index >= 3 {
+//                                        Image(systemName: "ellipsis")
+//                                            .font(.system(size: 6, weight: .medium))
+//                                            .foregroundColor(color)
+//                                            .padding(3.5)
+//                                            .background(Color.grayEE.opacity(0.6))
+//                                            .clipShape(Circle())
+//                                            .offset(y: 2)
+//                                    }
+//                            }
                             Spacer()
                             Text(date)
                                 .applyTextWithLineLimitModifier(size: 9, weight: .bold, color: color)
@@ -112,11 +125,11 @@ struct SpaceMainCardView: View {
     }
 }
 
-struct SpaceMainCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        SpaceMainCardView(bank: "우리은행",color: .blueMain, account: "429-910-1009307", isParticipated: true, date: "05/25",paymentIcon: Image("chicken-leg"), isDecoView: true)
-    }
-}
+//struct SpaceMainCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SpaceMainCardView(bank: "우리은행",color: .blueMain, account: "429-910-1009307", isParticipated: true, date: "05/25",paymentIcon: Image("chicken-leg"), isDecoView: true)
+//    }
+//}
 
 extension SpaceMainCardView {
     @ViewBuilder private func accountView(isDecoView: Bool) -> some View {
