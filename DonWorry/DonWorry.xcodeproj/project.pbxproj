@@ -314,6 +314,7 @@
 				4D6229B82848FED000A8E24C /* Card */,
 				2CF61B3C2849B00B004C3768 /* AddCardTitleView.swift */,
 				2CF61B3E2849B18A004C3768 /* AddCardIconView.swift */,
+				79BF17AE284D951D003A2A68 /* CardDetailView */,
 				2CF61B402849B1A0004C3768 /* AddCardPriceView.swift */,
 				4D6229CC284929C000A8E24C /* AddCardDecoView.swift */,
 			);
@@ -507,7 +508,6 @@
 			isa = PBXGroup;
 			children = (
 				2CF61B3B2849AF9A004C3768 /* CardCreationView */,
-				79BF17AE284D951D003A2A68 /* CardDetailView */,
 			);
 			path = CardViews;
 			sourceTree = "<group>";

@@ -10,7 +10,7 @@ import SlideOverCard
 
 struct HomeView: View {
     
-    @State var selection: String = "밤샘코딩"
+    @State var selection: String = "MC2 트라잇 모임"
     @State var spaceID: String = ""
     @State var isPresented : Bool = false // Space 입장 ID 입력 Sheet
     @State private var giverDonCardSheetState = false

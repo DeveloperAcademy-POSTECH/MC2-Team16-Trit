@@ -18,9 +18,12 @@ struct SpaceMainCardView: View {
     var paymentIcon: Image?
     let isDecoView: Bool
     
+    
     let amount: Int
     
     let accountHolder: String
+    
+    var numOfPpl: Int
     
     var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -50,6 +53,7 @@ struct SpaceMainCardView: View {
                 )
                 .overlay {
                     HStack {
+                        
                         VStack(alignment: .leading, spacing: 0) {
                             
                             Text(spaceName)
@@ -63,7 +67,7 @@ struct SpaceMainCardView: View {
                                         .padding(.leading, 25)
                                 }
                                 HStack(alignment: .firstTextBaseline, spacing: 5) {
-//                                    Text("135,800원")
+                                    //                                    Text("135,800원")
                                     Text("\(numberFormatter.string(for: amount) ?? "")원")
                                         .applyTextWithLineLimitModifier(lineLimit: 2, size: 20.0, weight: .heavy)
                                     Text("나왔어요.")
@@ -74,8 +78,8 @@ struct SpaceMainCardView: View {
                             
                             Spacer()
                             accountView(isDecoView: isDecoView)
-                            .padding(.leading, 27)
-                            .padding(.bottom, 28)
+                                .padding(.leading, 27)
+                                .padding(.bottom, 28)
                             
                         }
                         Spacer()
@@ -89,22 +93,34 @@ struct SpaceMainCardView: View {
                                     .applyTextWithLineLimitModifier(size: 12, weight: .medium)
                             }
                             
-//                            ForEach(0..<4) { index in
-////                                ZStack {
-//                                    Image("user2")
-//                                        .applyClipCircleModifier(width: 24, height: 24)
-//                                        .padding(.bottom, -14)
-//                                // TODO: 4명보다 많으면 땡땡땡이 나타나도록.
-//                                    if index >= 3 {
-//                                        Image(systemName: "ellipsis")
-//                                            .font(.system(size: 6, weight: .medium))
-//                                            .foregroundColor(color)
-//                                            .padding(3.5)
-//                                            .background(Color.grayEE.opacity(0.6))
-//                                            .clipShape(Circle())
-//                                            .offset(y: 2)
-//                                    }
-//                            }
+                            ForEach(0..<3) { index in
+                                //                                ZStack {
+                                
+                                Image("people_ICON")
+                                    .applyClipCircleModifier(width: 24, height: 24)
+                                    .padding(.bottom, -14)
+
+                                // TODO: 4명보다 많으면 땡땡땡이 나타나도록.
+                                //                                    if index >= 3 {
+                                //                                        Image(systemName: "ellipsis")
+                                //                                            .font(.system(size: 6, weight: .medium))
+                                //                                            .foregroundColor(color)
+                                //                                            .padding(3.5)
+                                //                                            .background(Color.grayEE.opacity(0.6))
+                                //                                            .clipShape(Circle())
+                                //                                            .offset(y: 2)
+                                //                                    }
+                                
+                            }
+                            
+                            Image(systemName: "ellipsis")
+                                .font(.system(size: 6, weight: .medium))
+                                .foregroundColor(color)
+                                .padding(3.5)
+                                .background(Color.grayEE.opacity(0.6))
+                                .clipShape(Circle())
+                                .offset(y: 10)
+                            
                             Spacer()
                             Text(date)
                                 .applyTextWithLineLimitModifier(size: 9, weight: .bold, color: color)
@@ -117,7 +133,7 @@ struct SpaceMainCardView: View {
                     if isParticipated {
                         Image(systemName: "checkmark.rectangle.fill")
                             .foregroundColor(.white)
-                            
+                        
                             .font(.system(size: 70))
                     }
                 }
@@ -144,9 +160,18 @@ extension SpaceMainCardView {
         } else {
             HStack {
                 Text("현재").applyTextWithLineLimitModifier(size: 13.0, weight: .heavy)
-                Text("3명").applyTextWithLineLimitModifier(size: 13.0, weight: .heavy)
+                Text("\(numOfPpl)명").applyTextWithLineLimitModifier(size: 13.0, weight: .heavy)
                 Text("참가 중 ...").applyTextWithLineLimitModifier(size: 13.0, weight: .heavy)
             }.frame(height: 40, alignment: .bottom)
         }
     }
 }
+
+/*
+ let HardcodedPayments = [
+ SpaceMainCardView(bank: "카카오뱅크", spaceName: "왕십리삼겹살", color: Color.blueMain, account: "3333-01-0930532", index: 0, isParticipated: false, date: "06 / 20", paymentIcon: Image("spoon-and-knife"), isDecoView: false, amount: 136000, accountHolder: "Avery"),
+ SpaceMainCardView(bank: "우리은행", spaceName: "비룡", color: Color.pink, account: "1002-045-401235", index: 1, isParticipated: false, date: "06 / 20", paymentIcon: Image("spoon-and-knife"), isDecoView: false, amount: 88000, accountHolder: "Asher"),
+ SpaceMainCardView(bank: "", spaceName: "순수치킨", color: Color.brown, account: "", index: 2, isParticipated: false, date: "06 / 20", paymentIcon: Image("chicken-leg"), isDecoView: false, amount: 100800, accountHolder: "Isaac"),
+ SpaceMainCardView(bank: "", spaceName: "베스킨라빈스", color: Color.green, account: "", index: 3, isParticipated: false, date: "06 / 20", paymentIcon: Image("chocolate-ice-cream"), isDecoView: false, amount: 80000, accountHolder: "Lumi")
+ ]
+ */

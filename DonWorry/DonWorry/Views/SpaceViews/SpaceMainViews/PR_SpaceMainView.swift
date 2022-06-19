@@ -11,10 +11,10 @@
 import SwiftUI
 
 let HardcodedPayments = [
-    SpaceMainCardView(bank: "카카오뱅크", spaceName: "저녁 식사", color: Color.blueMain, account: "3333-01-0930532", index: 0, isParticipated: false, date: "06 / 12", paymentIcon: Image("chicken-leg"), isDecoView: false, amount: 136000, accountHolder: "Avery"),
-    SpaceMainCardView(bank: "우리은행", spaceName: "노래방", color: Color.pink, account: "1002-045-401235", index: 1, isParticipated: false, date: "06 / 14", paymentIcon: Image("movie-camera"), isDecoView: false, amount: 88000, accountHolder: "Asher"),
-    SpaceMainCardView(bank: "", spaceName: "회식", color: Color.brown, account: "", index: 2, isParticipated: false, date: "06 / 15", paymentIcon: Image("spoon-and-knife"), isDecoView: false, amount: 100800, accountHolder: "Isaac"),
-    SpaceMainCardView(bank: "", spaceName: "피자집", color: Color.green, account: "", index: 3, isParticipated: false, date: "06 / 18", paymentIcon: Image("wine-glass"), isDecoView: false, amount: 80000, accountHolder: "Lumi")
+    SpaceMainCardView(bank: "카카오뱅크", spaceName: "왕십리삼겹살", color: Color.blueMain, account: "3333-01-0930532", index: 0, isParticipated: false, date: "06 / 20", paymentIcon: Image("spoon-and-knife"), isDecoView: false, amount: 136000, accountHolder: "Avery", numOfPpl: 5),
+    SpaceMainCardView(bank: "우리은행", spaceName: "비룡", color: Color.pink, account: "1002-045-401235", index: 1, isParticipated: false, date: "06 / 20", paymentIcon: Image("spoon-and-knife"), isDecoView: false, amount: 88000, accountHolder: "Asher", numOfPpl: 4),
+    SpaceMainCardView(bank: "", spaceName: "순수치킨", color: Color.brown, account: "", index: 2, isParticipated: false, date: "06 / 20", paymentIcon: Image("chicken-leg"), isDecoView: false, amount: 100800, accountHolder: "Isaac", numOfPpl: 5),
+    SpaceMainCardView(bank: "", spaceName: "베스킨라빈스", color: Color.green, account: "", index: 3, isParticipated: false, date: "06 / 20", paymentIcon: Image("chocolate-ice-cream"), isDecoView: false, amount: 80000, accountHolder: "Lumi", numOfPpl: 5)
 ]
 
 struct SpaceMainView: View {

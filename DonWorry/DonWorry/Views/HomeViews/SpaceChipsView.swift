@@ -19,7 +19,7 @@ struct SpaceChipsView: View {
     @Binding var selection: String
     let screen = UIScreen.main.bounds
     var al = 23
-    var maxSpaceNum = 5
+    var maxSpaceNum = 4
     var body: some View {
         VStack {
             VStack {

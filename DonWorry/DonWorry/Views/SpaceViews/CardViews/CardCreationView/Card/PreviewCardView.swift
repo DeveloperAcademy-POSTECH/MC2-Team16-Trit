@@ -26,7 +26,7 @@ struct PreviewCardView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            SpaceMainCardView(bank: bank, spaceName: paymentTitle, color: color.color, account: account, index: 0, isParticipated: false, date: date.getStringForMMDD(), paymentIcon: paymentIcon, isDecoView: isDecoView, amount: amount, accountHolder: accountHolder)
+            SpaceMainCardView(bank: bank, spaceName: paymentTitle, color: color.color, account: account, index: 0, isParticipated: false, date: date.getStringForMMDD(), paymentIcon: paymentIcon, isDecoView: isDecoView, amount: amount, accountHolder: accountHolder, numOfPpl: 2)
         }
         .padding()
     }

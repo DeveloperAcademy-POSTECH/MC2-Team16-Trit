@@ -44,9 +44,9 @@ struct AddCardDecoView: View {
     @State private var decoCase: DecoCase = .색상변경
     
     // MARK: onAppear 에서 초기화가 진행됨
-    @State private var accountHolder = ""
-    @State private var accountBank = ""
-    @State private var accountNumber = ""
+    @State private var accountHolder = "Avery"
+    @State private var accountBank = "카카오뱅크"
+    @State private var accountNumber = "3333-01-0930532"
     
 //    @State private var account: String = "1002-034-1234"
 //    @State private var holder: String = "김예금"
@@ -133,7 +133,7 @@ struct AddCardDecoView: View {
                 
                 VStack {
                     Spacer()
-                    SmallButton(text: "완료", isDisable: isDisable) {
+                    SmallButton(text: "완료", isDisable: false) {
                         // TODO: 파이어베이스로 데이터 전송
                 
                         let accountArr = [accountHolder, accountBank, accountNumber]
@@ -144,7 +144,7 @@ struct AddCardDecoView: View {
                         
                         mainSelection = nil
                     }
-                    .disabled(isDisable ? true : false)
+//                    .disabled(isDisable ? true : false)
                     .padding(.bottom)
                 }
                 .ignoresSafeArea(.keyboard)
@@ -220,9 +220,9 @@ struct AddCardDecoView: View {
     // MARK: 계좌번호 입력 칸
     @ViewBuilder private var accountBox: some View {
         VStack {
-            UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: $accountHolder)
+            UnderlineTextField(placeholder: "예금주명을 적어주세요.", charLimit: 10, text: .constant("정찬희(Avery)"))
                 .keyboardType(.default)
-            AccountTextField(account: $accountNumber, bank: $accountBank)
+            AccountTextField(account: .constant("3333-01-0930532"), bank: .constant("카카오뱅크"))
                 .keyboardType(.decimalPad)
             
 //            NewAccountTextField(accountBank: $accountBank, accountNumber: $accountNumber)

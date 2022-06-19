@@ -45,9 +45,9 @@ extension User {
 let users: [OldUser] = [user1, user2, user3, user4]
 
 let user1: OldUser = OldUser(userName: "애셔", profileImage: "user1", giveMoney: 12000, giveTo: "루미", participant: "밤샘코딩")
-let user2: OldUser = OldUser(userName: "유쓰", profileImage: "user2", takeMoney: 12000, userAccount: "2346128947294우리은행", participant: "밤샘코딩")
+let user2: OldUser = OldUser(userName: "루미", profileImage: "user4", takeMoney: 12000, userAccount: "2346128947294우리은행", participant: "밤샘코딩")
 let user3: OldUser = OldUser(userName: "버리", profileImage: "user3", giveMoney: 18000, giveTo: "루미", participant: "밤샘코딩")
-let user4: OldUser = OldUser(userName: "루미", profileImage: "user4", takeMoney: 30000, giveMoney: 12000, giveTo: "유쓰", userAccount: "61630204093436국민", participant: "밤샘코딩")
+let user4: OldUser = OldUser(userName: "유쓰", profileImage: "youth", takeMoney: 30000, giveMoney: 12000, giveTo: "루미", userAccount: "61630204093436국민", participant: "밤샘코딩")
 
 var mockspaces: [String] = ["123455", "23444", "32133"]
 

@@ -19,7 +19,7 @@ struct ContentView: View {
 //            SignInView()
 //        } else {
         // have a logged in user
-            HomeView(currentUser: user4)
+            HomeView(currentUser: user1)
 //        }
         
     }
